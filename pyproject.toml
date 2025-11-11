@@ -1,0 +1,21 @@
+[project]
+name = "cyclone-center-firstpass"
+version = "0.1.0"
+description = "First-pass detector+locator del centro di ciclone su full-basin"
+authors = [{name="You", email="you@example.com"}]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "torch>=2.2",
+    "torchvision>=0.17",
+    "opencv-python",
+    "numpy",
+    "pandas",
+    "tqdm",
+    "pyyaml",
+    "scikit-image",
+    "matplotlib",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
