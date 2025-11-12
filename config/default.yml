@@ -2,15 +2,18 @@ data:
   manifest_train: data/manifests/train.csv
   manifest_val:   data/manifests/val.csv
   manifest_test:  data/manifests/test.csv
-  # se vuoi precalcolare immagini letterbox per velocità:
-  cache_letterboxed_dir: null  # es: data/letterboxed
+
   image_col: image_path
   presence_col: presence
   cx_col: cx
   cy_col: cy
 
+  use_pre_letterboxed: true
+  letterbox_meta_csv: letterbox_meta.csv  # prodotto dallo script
+  letterbox_size_assert: 384   # per sicurezza: deve coincidere con out_size nel CSV
+
 train:
-  image_size: 512
+  image_size: 384
   batch_size: 64
   num_workers: 8
   epochs: 30

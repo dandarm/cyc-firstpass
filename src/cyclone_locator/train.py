@@ -31,14 +31,20 @@ def main():
         image_size=cfg["train"]["image_size"],
         heatmap_stride=cfg["train"]["heatmap_stride"],
         heatmap_sigma_px=cfg["loss"]["heatmap_sigma_px"],
-        use_aug=cfg["train"]["use_aug"]
+        use_aug=cfg["train"]["use_aug"],
+        use_pre_letterboxed=cfg["data"]["use_pre_letterboxed"],
+        letterbox_meta_csv=cfg["data"]["letterbox_meta_csv"],
+        letterbox_size_assert=cfg["data"]["letterbox_size_assert"]
     )
     ds_va = MedFullBasinDataset(
         cfg["data"]["manifest_val"],
         image_size=cfg["train"]["image_size"],
         heatmap_stride=cfg["train"]["heatmap_stride"],
         heatmap_sigma_px=cfg["loss"]["heatmap_sigma_px"],
-        use_aug=False
+        use_aug=False,
+        use_pre_letterboxed=cfg["data"]["use_pre_letterboxed"],
+        letterbox_meta_csv=cfg["data"]["letterbox_meta_csv"],
+        letterbox_size_assert=cfg["data"]["letterbox_size_assert"]
     )
     tr_loader = DataLoader(ds_tr, batch_size=cfg["train"]["batch_size"], shuffle=True,
                            num_workers=cfg["train"]["num_workers"], pin_memory=True, drop_last=True)
