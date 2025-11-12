@@ -1,6 +1,5 @@
 import os, cv2, torch, numpy as np, pandas as pd
 from torch.utils.data import Dataset
-from cyclone_locator.transforms.letterbox import letterbox_image, forward_map_xy
 
 def make_gaussian_heatmap(H, W, cx, cy, sigma):
     """Heatmap gaussiana centrata in (cx,cy) su mappa HxW (float32)."""
@@ -10,9 +9,9 @@ def make_gaussian_heatmap(H, W, cx, cy, sigma):
 
 class MedFullBasinDataset(Dataset):
     """
-    Legge un CSV manifest con: image_path (ORIG), presence (0/1), cx, cy (in pixel originali).
-    Se use_pre_letterboxed=True, fa join con letterbox_meta.csv per ottenere resized_path e meta.
-    Crea target heatmap alla risoluzione (S,S) con S=image_size//stride.
+    Legge un CSV manifest con: image_path, presence (0/1) e coordinate target.
+    Supporta sia manifest con path originali + meta letterbox, sia manifest già letterbox
+    con colonne x_pix_resized/y_pix_resized.
     """
     def __init__(self, csv_path, image_size=512, heatmap_stride=4,
                  heatmap_sigma_px=8, use_aug=False,
@@ -24,7 +23,18 @@ class MedFullBasinDataset(Dataset):
         self.Wo = self.image_size // self.stride
         self.sigma = float(heatmap_sigma_px)
         self.use_aug = bool(use_aug)
-        self.use_pre_lb = bool(use_pre_letterboxed)
+
+        self.df["image_path"] = self.df["image_path"].astype(str)
+
+        cols = set(self.df.columns)
+        self._has_resized_keypoints = {"x_pix_resized", "y_pix_resized"}.issubset(cols)
+        self._has_orig_keypoints = {"cx", "cy"}.issubset(cols)
+        if not self._has_resized_keypoints and not self._has_orig_keypoints:
+            raise ValueError("manifest must include either cx/cy or x_pix_resized/y_pix_resized columns")
+
+        # Se il manifest contiene path già letterbox, non serve meta CSV
+        self.letterboxed_manifest = self._has_resized_keypoints
+        self.use_pre_lb = bool(use_pre_letterboxed) and not self.letterboxed_manifest
 
         self.meta_map = None
         if self.use_pre_lb:
@@ -39,7 +49,7 @@ class MedFullBasinDataset(Dataset):
             meta_df["orig_path_abs"] = meta_df["orig_path"].apply(lambda p: os.path.abspath(p))
             self.meta_map = {r["orig_path_abs"]: r for _, r in meta_df.iterrows()}
 
-        # normalizza path originali a absolute per la join
+        # normalizza path a absolute per la join
         self.df["image_path_abs"] = self.df["image_path"].apply(lambda p: os.path.abspath(p))
 
     def __len__(self):
@@ -70,19 +80,34 @@ class MedFullBasinDataset(Dataset):
         row = self.df.iloc[idx]
         orig_abs = row["image_path_abs"]
 
-        # carica immagine già letterbox + meta
-        if self.use_pre_lb:
+        if self.letterboxed_manifest:
+            lb = cv2.imread(orig_abs, cv2.IMREAD_UNCHANGED)
+            if lb is None:
+                raise FileNotFoundError(orig_abs)
+            if lb.shape[0] != self.image_size or lb.shape[1] != self.image_size:
+                raise ValueError(
+                    f"letterboxed image size {lb.shape[:2]} != expected square {self.image_size}"
+                )
+            meta = dict(scale=1.0, pad_x=0.0, pad_y=0.0,
+                        out_size=self.image_size, orig_w=self.image_size, orig_h=self.image_size)
+        elif self.use_pre_lb:
             lb, meta = self._load_resized_and_meta(orig_abs)
             if meta["out_size"] != self.image_size:
                 raise ValueError(f"image_size mismatch: dataset={self.image_size} vs meta={meta['out_size']}")
         else:
-            # fallback (sconsigliato): se proprio vuoi fare on-the-fly
             raise RuntimeError("use_pre_letterboxed=False non supportato in questa configurazione")
 
         presence = int(row["presence"])
         if presence == 1:
-            cx, cy = float(row["cx"]), float(row["cy"])
-            xg, yg = self._forward_map_xy(cx, cy, meta)
+            if self.letterboxed_manifest and self._has_resized_keypoints and \
+               not pd.isna(row["x_pix_resized"]) and not pd.isna(row["y_pix_resized"]):
+                xg = float(row["x_pix_resized"])
+                yg = float(row["y_pix_resized"])
+            elif self._has_orig_keypoints and not pd.isna(row["cx"]) and not pd.isna(row["cy"]):
+                cx, cy = float(row["cx"]), float(row["cy"])
+                xg, yg = self._forward_map_xy(cx, cy, meta)
+            else:
+                raise ValueError("Positive sample without keypoint coordinates")
         else:
             xg, yg = -1.0, -1.0
 
