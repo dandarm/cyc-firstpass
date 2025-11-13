@@ -116,23 +116,81 @@ Questo primo pass è deliberatamente **leggero, robusto e agnostico** rispetto a
 * **ROI/**: ritagli centrati sulle predizioni per alimentare il secondo stadio HR.
 * Questi formati sono **stabili** e versionabili, adatti sia ad analisi manuale sia a pipeline automatiche.
 
-```mermaid
-flowchart TB
-    I[Full-basin frame\n(letterbox S×S)] --> BN[Backbone\nResNet-18/50]
-    BN --> DEC[Decoder deconv/upsampling\n(stride = s)]
-    DEC --> HM[(Heatmap 1ch)]
-    HM --> PK[Peak decode\n(argmax / soft-argmax)]
-    PK --> XYg[(x_g, y_g) @ S×S]
-    XYg --> BP[Back-projection\n→ pixel originali\n(scale, pad)]
-    BP --> ROI[Crop ROI centrata]
-    ROI --> OUT1[preds.csv + ROI/]
 
-    DEC --> PH[Presence head\n(GAP + MLP → logit)]
-    PH --> SG[sigmoid]
-    SG --> THR{presence_prob ≥ τ?}
-    THR -- sì --> ROI
-    THR -- no --> OUT0[No-cyclone\n(presence_prob, no ROI)]
+```mermaid
+graph TD
+  subgraph INPUT
+    I[Full basin frame letterbox SxS]
+  end
+
+  subgraph MODEL
+    BN[Backbone ResNet18 or ResNet50] --> DEC[Decoder upsampling stride s]
+    DEC --> HM[Heatmap one channel]
+    DEC --> PH[Presence head GAP plus MLP to logit]
+  end
+
+  HM --> PK[Peak decode argmax or soft argmax]
+  PK --> XYG[xg yg in SxS]
+  XYG --> BP[Back projection to original pixels using scale and pad]
+  BP --> ROI[Crop ROI centered]
+  ROI --> OUT1[preds csv and ROI folder]
+
+  PH --> SG[sigmoid]
+  SG --> THR{presence prob ge tau}
+  THR -- yes --> ROI
+  THR -- no --> OUT0[No cyclone only presence prob]
+%% Palette semplice per categorie
+classDef data fill:#E8F0FF,stroke:#2D3E50,stroke-width:1px;
+classDef model fill:#E9FBE8,stroke:#2D3E50,stroke-width:1px;
+classDef decision fill:#FFF0E1,stroke:#2D3E50,stroke-width:1px;
+classDef output fill:#FFF8CC,stroke:#2D3E50,stroke-width:1px;
+
+%% Assegna classi ai nodi (usa solo gli ID che compaiono nel tuo grafo)
+class I,A,LB,R,W,KP,PRJ,LBL,M data;
+class BN,DEC,HM,PH,PK,SG model;
+class THR decision;
+class XYG,BP,ROI,OUT0,OUT1,J,DL output;
+
 ```
+
+<br>
+<br>
+
+```mermaid
+graph LR
+  subgraph PRE
+    A[Original frames] --> LB[Pre letterbox offline SxS and meta scale pad]
+    LB --> R[Frames SxS normalized]
+  end
+
+  subgraph WINDOWS
+    W[medicanes new windows csv] --> LBL[Window labeling to presence 0 or 1]
+    W --> KP[Optional keypoints time xpix ypix at 1290x420]
+    KP --> PRJ[Project keypoints to SxS using letterbox params]
+  end
+
+  LBL --> M[Manifests train val test]
+  PRJ --> M
+
+  subgraph RUNTIME
+    R --> J[Join manifests with frames SxS]
+    M --> J
+    J --> DL[Dataloader and runner first pass]
+  end
+  %% Palette semplice per categorie
+classDef data fill:#E8F0FF,stroke:#2D3E50,stroke-width:1px;
+classDef model fill:#E9FBE8,stroke:#2D3E50,stroke-width:1px;
+classDef decision fill:#FFF0E1,stroke:#2D3E50,stroke-width:1px;
+classDef output fill:#FFF8CC,stroke:#2D3E50,stroke-width:1px;
+
+%% Assegna classi ai nodi (usa solo gli ID che compaiono nel tuo grafo)
+class I,A,LB,R,W,KP,PRJ,LBL,M data;
+class BN,DEC,HM,PH,PK,SG model;
+class THR decision;
+class XYG,BP,ROI,OUT0,OUT1,J,DL output;
+
+  ```
+
 
 ## 5) Flusso dati end‑to‑end (panoramica)
 1. **Input immagini** (full‑basin, dimensioni originali, naming con data/ora inclusa).
