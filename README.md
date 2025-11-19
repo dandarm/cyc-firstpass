@@ -68,21 +68,44 @@ python -m src.cyclone_locator.train \
 ```
 
 
-## Inferenza
+## Inferenza / Eval
+Il nuovo entrypoint supporta sia la sola inferenza sia una modalità di valutazione completa
+con curve e metriche aggregate. Esempio **eval pulita** (niente ROI):
+
 ```bash
-python -m cyclone_locator.infer \
-  --config config/default.yaml \
+python -m src.cyclone_locator.infer \
+  --config config/default.yml \
   --checkpoint outputs/runs/exp1/checkpoints/best.ckpt \
-  --out_dir outputs/preds/ \
-  --presence_threshold 0.5 \
-  --roi_base_radius_px 128 \
-  --roi_sigma_multiplier 2.0
+  --manifest_csv manifests/val.csv \
+  --threshold 0.5 \
+  --out_dir outputs/eval/val \
+  --save-preds outputs/eval/val/preds_val.csv \
+  --metrics-out outputs/eval/val/metrics_val.json \
+  --sweep-curves outputs/eval/val/curves
 ```
 
-### Output:
+Output principali:
 
-Cosa produce
+- `preds_*.csv` con `image_path,presence_prob,x_g,y_g,logit` (+ `presence_pred` se passi `--threshold`).
+- `metrics_*.json` con AUPRC, ROC-AUC, precision/recall/F1@τ, confusion matrix e metriche di localizzazione
+  (MAE/MedAE/percentili entro R px, opzionalmente entro R km via `--km-per-px`).
+- `curves/{pr,roc}_curve.csv` se specifichi `--sweep-curves DIR`.
+- Log dettagliato in `<out_dir>/eval.log`.
 
-outputs/preds/preds.csv con: orig_path, resized_path, presence_prob, x_g, y_g (SxS), x_orig, y_orig (pixel originali), r_crop_px, roi_path.
+Per attivare la back-projection e salvare le ROI del secondo stadio:
 
-outputs/preds/roi/*.png  ROI con i ritagli centrati per il VideoMAE HR.
+```bash
+python -m src.cyclone_locator.infer \
+  --config config/default.yml \
+  --checkpoint outputs/runs/exp1/checkpoints/best.ckpt \
+  --manifest_csv manifests/test.csv \
+  --letterbox-meta manifests/letterbox_meta.csv \
+  --export-roi \
+  --roi-dir outputs/eval/test/roi \
+  --threshold 0.55 \
+  --save-preds outputs/eval/test/preds_test.csv
+```
+
+Con `--export-roi` vengono aggiunte le colonne `x_orig,y_orig,roi_path` in `preds.csv`
+e i ritagli PNG vengono salvati in `roi_dir`. Le metriche di centro rispettano la policy
+"detection-first" di default; usa `--oracle-localization` per diagnostica.
