@@ -77,6 +77,7 @@ python -m src.cyclone_locator.infer \
   --config config/default.yml \
   --checkpoint outputs/runs/exp1/checkpoints/best.ckpt \
   --manifest_csv manifests/val.csv \
+  --letterbox-meta manifests/letterbox_meta.csv \
   --threshold 0.5 \
   --out_dir outputs/eval/val \
   --save-preds outputs/eval/val/preds_val.csv \
@@ -88,7 +89,8 @@ Output principali:
 
 - `preds_*.csv` con `image_path,presence_prob,x_g,y_g,logit` (+ `presence_pred` se passi `--threshold`).
 - `metrics_*.json` con AUPRC, ROC-AUC, precision/recall/F1@τ, confusion matrix e metriche di localizzazione
-  (MAE/MedAE/percentili entro R px, opzionalmente entro R km via `--km-per-px`).
+  (MAE/MedAE/percentili entro R px, automaticamente anche in km se fornisci `--letterbox-meta`
+  così da poter ricostruire le coordinate globali tramite le utility di `medicane_utils`, vedi `pixel_km_conversion.md`).
 - `curves/{pr,roc}_curve.csv` se specifichi `--sweep-curves DIR`.
 - Log dettagliato in `<out_dir>/eval.log`.
 

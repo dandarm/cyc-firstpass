@@ -16,6 +16,7 @@ from cyclone_locator.models.simplebaseline import SimpleBaseline
 from cyclone_locator.utils.geometry import crop_square
 from cyclone_locator.utils.metric import peak_and_width
 from cyclone_locator import metrics as metrics_lib
+from cyclone_locator import geo_utils
 
 
 LOGGER_NAME = "cyclone_eval"
@@ -56,10 +57,8 @@ def parse_args() -> argparse.Namespace:
                         help="Usa soft-argmax per decodificare il centro (default argmax)")
     parser.add_argument("--oracle-localization", action="store_true",
                         help="Valuta l'errore centro su tutti i GT positivi (ignora decisione binaria)")
-    parser.add_argument("--km-per-px", type=float, default=None,
-                        help="Conversione px->km per metriche in km (opzionale)")
     parser.add_argument("--center-thresholds-px", type=float, nargs="+", default=[8, 16, 24, 32])
-    parser.add_argument("--center-thresholds-km", type=float, nargs="+", default=None)
+    parser.add_argument("--center-thresholds-km", type=float, nargs="+", default=[25, 50, 100, 200])
     parser.add_argument("--heatmap-stride", type=int, default=None,
                         help="Override stride della heatmap (default: config.train.heatmap_stride)")
     parser.add_argument("--image-size", type=int, default=None,
@@ -155,6 +154,10 @@ def load_manifest(manifest_csv: str, logger: logging.Logger) -> pd.DataFrame:
         df["x_pix_resized"] = pd.to_numeric(df["x_pix_resized"], errors="coerce")
     if "y_pix_resized" in df.columns:
         df["y_pix_resized"] = pd.to_numeric(df["y_pix_resized"], errors="coerce")
+    if "cx" in df.columns:
+        df["cx"] = pd.to_numeric(df["cx"], errors="coerce")
+    if "cy" in df.columns:
+        df["cy"] = pd.to_numeric(df["cy"], errors="coerce")
 
     if "datetime" in df.columns:
         df["_sort_dt"] = pd.to_datetime(df["datetime"], errors="coerce")
@@ -196,6 +199,107 @@ def load_letterbox_meta(meta_csv: str) -> Dict[str, Dict[str, float]]:
         meta_map[entry["orig_path"]] = entry
         meta_map[entry["resized_path"]] = entry
     return meta_map
+
+
+def _convert_letterbox_to_original(x_lb: float, y_lb: float, meta: Dict[str, float]) -> Tuple[float, float]:
+    x_orig = (x_lb - meta["pad_x"]) / meta["scale"]
+    y_orig = (y_lb - meta["pad_y"]) / meta["scale"]
+    return float(x_orig), float(y_orig)
+
+
+def attach_original_xy(
+    df: pd.DataFrame,
+    meta_map: Dict[str, Dict[str, float]],
+    x_col: str,
+    y_col: str,
+    out_x: str,
+    out_y: str,
+    logger: logging.Logger,
+) -> pd.DataFrame:
+    x_list: List[float] = []
+    y_list: List[float] = []
+    missing_meta = 0
+    for row in df.itertuples():
+        x_val = getattr(row, x_col, np.nan)
+        y_val = getattr(row, y_col, np.nan)
+        if not (np.isfinite(x_val) and np.isfinite(y_val)):
+            x_list.append(np.nan)
+            y_list.append(np.nan)
+            continue
+        meta = meta_map.get(row.image_path)
+        if meta is None:
+            missing_meta += 1
+            x_list.append(np.nan)
+            y_list.append(np.nan)
+            continue
+        x_orig, y_orig = _convert_letterbox_to_original(x_val, y_val, meta)
+        x_list.append(x_orig)
+        y_list.append(y_orig)
+    if missing_meta:
+        logger.warning("Missing letterbox meta for %d samples while computing %s/%s", missing_meta, out_x, out_y)
+    df[out_x] = x_list
+    df[out_y] = y_list
+    return df
+
+
+def attach_manifest_gt_orig(manifest_df: pd.DataFrame, meta_map: Optional[Dict[str, Dict[str, float]]],
+                            logger: logging.Logger) -> pd.DataFrame:
+    if "x_orig_gt" in manifest_df.columns and "y_orig_gt" in manifest_df.columns:
+        return manifest_df
+    if {"cx", "cy"}.issubset(manifest_df.columns):
+        manifest_df["x_orig_gt"] = pd.to_numeric(manifest_df["cx"], errors="coerce")
+        manifest_df["y_orig_gt"] = pd.to_numeric(manifest_df["cy"], errors="coerce")
+        return manifest_df
+    if meta_map is not None and {"x_pix_resized", "y_pix_resized"}.issubset(manifest_df.columns):
+        manifest_df = attach_original_xy(
+            manifest_df,
+            meta_map,
+            x_col="x_pix_resized",
+            y_col="y_pix_resized",
+            out_x="x_orig_gt",
+            out_y="y_orig_gt",
+            logger=logger,
+        )
+        return manifest_df
+    logger.warning("Manifest lacks cx/cy and cannot map resized keypoints to original coordinates; "
+                   "geo metrics in km will be unavailable.")
+    return manifest_df
+
+
+def compute_geo_center_metrics(
+    joined: pd.DataFrame,
+    eval_mask: np.ndarray,
+    thresholds_km: Optional[Sequence[float]],
+    localization_policy: str,
+    logger: logging.Logger,
+) -> Optional[Dict[str, object]]:
+    required_cols = ["x_orig", "y_orig", "x_orig_gt", "y_orig_gt"]
+    if not set(required_cols).issubset(joined.columns):
+        logger.info("Skipping geo metrics: missing columns %s", required_cols)
+        return None
+    coords = joined[required_cols].to_numpy(dtype=float)
+    valid = eval_mask & np.isfinite(coords).all(axis=1)
+    if not valid.any():
+        logger.info("Skipping geo metrics: no valid samples with original coordinates.")
+        return None
+    pred_x = coords[valid, 0]
+    pred_y = coords[valid, 1]
+    gt_x = coords[valid, 2]
+    gt_y = coords[valid, 3]
+    try:
+        lat_pred, lon_pred = geo_utils.pixels_to_latlon(pred_x, pred_y)
+        lat_gt, lon_gt = geo_utils.pixels_to_latlon(gt_x, gt_y)
+        distances = geo_utils.haversine_km(lat_pred, lon_pred, lat_gt, lon_gt)
+    except Exception as exc:  # pragma: no cover - runtime dependency (Basemap) missing
+        logger.warning("Impossibile calcolare metriche km: %s", exc)
+        return None
+    finite = np.isfinite(distances)
+    if not finite.any():
+        logger.info("Skipping geo metrics: haversine distances all invalid.")
+        return None
+    distances = distances[finite]
+    logger.info("Geo metrics computed on %d samples", len(distances))
+    return metrics_lib.center_metrics_summary(distances, thresholds=thresholds_km, unit="km", policy=localization_policy)
 
 
 class EvalDataset(Dataset):
@@ -321,24 +425,25 @@ def apply_backprojection_and_roi(
     stride: int,
 ) -> pd.DataFrame:
     os.makedirs(roi_dir, exist_ok=True)
-    x_orig_list, y_orig_list, roi_paths, roi_radius = [], [], [], []
+    roi_paths: List[str] = []
+    roi_radius: List[float] = []
     missing_meta = 0
     saved = 0
     for row in preds_df.itertuples():
         meta = meta_map.get(row.image_path)
         if meta is None:
-            x_orig_list.append(np.nan)
-            y_orig_list.append(np.nan)
+            missing_meta += 1
             roi_paths.append("")
             roi_radius.append(np.nan)
-            missing_meta += 1
             continue
-        x_orig = (row.x_g - meta["pad_x"]) / meta["scale"]
-        y_orig = (row.y_g - meta["pad_y"]) / meta["scale"]
-        x_orig = float(np.clip(x_orig, 0, max(meta["orig_w"] - 1, 0)))
-        y_orig = float(np.clip(y_orig, 0, max(meta["orig_h"] - 1, 0)))
-        x_orig_list.append(x_orig)
-        y_orig_list.append(y_orig)
+        x_orig = getattr(row, "x_orig", np.nan)
+        y_orig = getattr(row, "y_orig", np.nan)
+        if not np.isfinite(x_orig) or not np.isfinite(y_orig):
+            roi_paths.append("")
+            roi_radius.append(np.nan)
+            continue
+        x_orig_clipped = float(np.clip(x_orig, 0, max(meta["orig_w"] - 1, 0)))
+        y_orig_clipped = float(np.clip(y_orig, 0, max(meta["orig_h"] - 1, 0)))
         r_dynamic = roi_sigma_multiplier * row.peak_width_heatmap * stride if row.peak_width_heatmap > 0 else 0
         r_crop = max(roi_base_radius, int(round(r_dynamic)))
         if row.presence_prob >= threshold:
@@ -347,7 +452,7 @@ def apply_backprojection_and_roi(
             if orig_img is None:
                 roi_paths.append("")
                 continue
-            roi = crop_square(orig_img, (x_orig, y_orig), r_crop)
+            roi = crop_square(orig_img, (x_orig_clipped, y_orig_clipped), r_crop)
             stem = os.path.splitext(os.path.basename(meta["orig_path"]))[0]
             roi_name = f"{row.manifest_idx:06d}_{stem}.png"
             roi_path = os.path.join(roi_dir, roi_name)
@@ -359,8 +464,6 @@ def apply_backprojection_and_roi(
             roi_radius.append(np.nan)
     logging.getLogger(LOGGER_NAME).info("Back-projection complete. ROI salvate: %d (missing meta: %d)",
                                         saved, missing_meta)
-    preds_df["x_orig"] = x_orig_list
-    preds_df["y_orig"] = y_orig_list
     preds_df["roi_path"] = roi_paths
     preds_df["roi_radius_px"] = roi_radius
     return preds_df
@@ -416,6 +519,16 @@ def main():
             raise FileNotFoundError(f"letterbox meta not found: {args.letterbox_meta}")
         meta_map = load_letterbox_meta(args.letterbox_meta)
         logger.info("Loaded letterbox meta for %d frames", len(meta_map))
+        preds_df = attach_original_xy(
+            preds_df,
+            meta_map,
+            x_col="x_g",
+            y_col="y_g",
+            out_x="x_orig",
+            out_y="y_orig",
+            logger=logger,
+        )
+        manifest_df = attach_manifest_gt_orig(manifest_df, meta_map, logger)
     if args.export_roi:
         if meta_map is None:
             raise ValueError("--export-roi richiede --letterbox-meta")
@@ -430,7 +543,7 @@ def main():
             stride=stride,
         )
     elif meta_map is not None:
-        logger.info("Letterbox meta fornito ma --export-roi disattivo: x_orig/y_orig non verranno salvati.")
+        logger.info("ROI export disattivato: meta caricati ma non verranno salvati ritagli.")
 
     save_preds = args.save_preds or os.path.join(out_dir, "preds.csv")
     os.makedirs(os.path.dirname(save_preds) or out_dir, exist_ok=True)
@@ -443,8 +556,11 @@ def main():
     metrics_path = args.metrics_out
     curves_dir = args.sweep_curves
     has_presence_gt = "presence" in manifest_df.columns and manifest_df["presence"].notna().any()
-    has_center_gt = {"x_pix_resized", "y_pix_resized"}.issubset(manifest_df.columns) and \
-        manifest_df["x_pix_resized"].notna().any() and manifest_df["y_pix_resized"].notna().any()
+    has_center_gt = False
+    if {"x_pix_resized", "y_pix_resized"}.issubset(manifest_df.columns):
+        has_center_gt = manifest_df["x_pix_resized"].notna().any() and manifest_df["y_pix_resized"].notna().any()
+    if not has_center_gt and {"cx", "cy"}.issubset(manifest_df.columns):
+        has_center_gt = manifest_df["cx"].notna().any() and manifest_df["cy"].notna().any()
     if metrics_path and not has_presence_gt:
         logger.warning("Metrics requested but manifest lacks presence GT. Skipping metrics.")
         metrics_path = None
@@ -510,14 +626,15 @@ def main():
                     unit="px",
                     policy=localization_policy,
                 )
-                if args.km_per_px and args.center_thresholds_km:
-                    errors_km = errors_px * args.km_per_px
-                    metrics_payload["center_metrics_km"] = metrics_lib.center_metrics_summary(
-                        errors_km,
-                        thresholds=args.center_thresholds_km,
-                        unit="km",
-                        policy=localization_policy,
-                    )
+                geo_metrics = compute_geo_center_metrics(
+                    joined,
+                    mask_array,
+                    thresholds_km=args.center_thresholds_km,
+                    localization_policy=localization_policy,
+                    logger=logger,
+                )
+                if geo_metrics is not None:
+                    metrics_payload["center_metrics_km"] = geo_metrics
             with open(metrics_path, "w") as f:
                 json.dump(metrics_payload, f, indent=2)
             logger.info("Metrics saved to %s", metrics_path)
