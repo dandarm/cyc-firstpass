@@ -15,7 +15,7 @@ data:
 train:
   image_size: 384
   batch_size: 128
-  num_workers: 8
+  num_workers: 0
   epochs: 30
   lr: 1.0e-3
   weight_decay: 1.0e-4
@@ -23,6 +23,7 @@ train:
   seed: 42
   save_dir: checkpoints
   val_every: 1
+  best_ckpt_start_epoch: 10
   backbone: resnet18        # resnet18|resnet50
   heatmap_stride: 4         # output 128x128 quando input 512
   use_aug: false            # puoi mettere true se serve

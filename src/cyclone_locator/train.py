@@ -22,6 +22,7 @@ def parse_args():
     ap.add_argument("--bs", type=int)
     ap.add_argument("--lr", type=float)
     ap.add_argument("--log_dir")
+    ap.add_argument("--best_ckpt_start_epoch", type=int)
     return ap.parse_args()
 
 def set_seed(sd):
@@ -77,6 +78,8 @@ def main():
         cfg["train"]["lr"] = args.lr
     if args.log_dir:
         cfg["train"]["save_dir"] = args.log_dir
+    if args.best_ckpt_start_epoch is not None:
+        cfg["train"]["best_ckpt_start_epoch"] = args.best_ckpt_start_epoch
 
     set_seed(cfg["train"]["seed"])
 
@@ -145,6 +148,7 @@ def main():
     ]
     print(f"Logging metrics to {log_path}")
     best_val = 1e9; best_path = None
+    best_start_epoch = cfg["train"].get("best_ckpt_start_epoch", 1)
 
     with open(log_path, "w", newline="") as log_file:
         writer = csv.DictWriter(log_file, fieldnames=log_fields)
@@ -187,7 +191,7 @@ def main():
 
                 ckpt_path = os.path.join(save_dir, f"epoch{epoch:03d}_val{val_score:.4f}.ckpt")
                 torch.save({"model": model.state_dict(), "cfg": cfg}, ckpt_path)
-                if val_score < best_val:
+                if epoch >= best_start_epoch and val_score < best_val:
                     best_val = val_score; best_path = ckpt_path
                     torch.save({"model": model.state_dict(), "cfg": cfg}, os.path.join(save_dir, "best.ckpt"))
                     print("Saved best:", os.path.join(save_dir, "best.ckpt"))
