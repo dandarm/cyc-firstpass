@@ -32,6 +32,24 @@ def set_seed(sd):
 def bce_logits(pred, target):
     return nn.functional.binary_cross_entropy_with_logits(pred, target)
 
+def combine_losses(L_hm, L_pr, loss_cfg):
+    hm_w = loss_cfg["w_heatmap"]
+    pr_w = loss_cfg["w_presence"]
+
+    if loss_cfg.get("auto_balance", False):
+        # Riallinea i pesi in base alle magnitudini correnti per evitare che una loss
+        # (tipicamente la detection/presence) domini l'altra.
+        hm_det = L_hm.detach()
+        pr_det = L_pr.detach()
+        total = hm_det + pr_det + 1e-6
+        hm_w = hm_w * 0.5 * total / (hm_det + 1e-6)
+        pr_w = pr_w * 0.5 * total / (pr_det + 1e-6)
+        min_w, max_w = loss_cfg.get("auto_balance_clip", (0.1, 10.0))
+        hm_w = torch.clamp(hm_w, min=min_w, max=max_w)
+        pr_w = torch.clamp(pr_w, min=min_w, max=max_w)
+
+    return hm_w, pr_w, hm_w*L_hm + pr_w*L_pr
+
 def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights):
     vL, vHm, vPr = [], [], []
     with torch.no_grad():
@@ -43,7 +61,7 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights):
                 hm_p, pres_logit = model(img)
                 L_hm = hm_loss(hm_p, hm_t, pres.view(-1))
                 L_pr = bce_logits(pres_logit, pres)
-                L = loss_weights[0]*L_hm + loss_weights[1]*L_pr
+                _, _, L = combine_losses(L_hm, L_pr, loss_weights)
             vL.append(L.item()); vHm.append(L_hm.item()); vPr.append(L_pr.item())
     return {
         "loss": float(np.mean(vL)),
@@ -155,7 +173,7 @@ def main():
     opt = torch.optim.AdamW(model.parameters(), lr=cfg["train"]["lr"], weight_decay=cfg["train"]["weight_decay"])
     scaler = GradScaler(enabled=cfg["train"]["amp"])
     hm_loss = HeatmapMSE()
-    loss_weights = (cfg["loss"]["w_heatmap"], cfg["loss"]["w_presence"])
+    loss_weights = cfg["loss"]
 
     save_dir = cfg["train"]["save_dir"]; os.makedirs(save_dir, exist_ok=True)
     log_path = os.path.join(save_dir, "training_log.csv")
@@ -187,7 +205,7 @@ def main():
                     hm_p, pres_logit = model(img)
                     L_hm = hm_loss(hm_p, hm_t, pres.view(-1))                # solo positivi
                     L_pr = bce_logits(pres_logit, pres)                      # tutti
-                    L = cfg["loss"]["w_heatmap"]*L_hm + cfg["loss"]["w_presence"]*L_pr
+                    _, _, L = combine_losses(L_hm, L_pr, loss_weights)
                 scaler.scale(L).backward()
                 scaler.step(opt); scaler.update()
 

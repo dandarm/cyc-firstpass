@@ -32,6 +32,8 @@ loss:
   heatmap_sigma_px: 8
   w_heatmap: 1.0
   w_presence: 1.0
+  auto_balance: true          # bilancia automaticamente le magnitudini di heatmap e presence
+  auto_balance_clip: [0.1, 10.0]
 
 infer:
   batch_size: 128
