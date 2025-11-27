@@ -14,6 +14,7 @@ TARGET_SIZE="384"
 VAL_SPLIT="0.15"
 TEST_SPLIT="0.15"
 ATTACH_KEYPOINTS="auto"
+BUFFER_HOURS="36"
 
 mkdir -p "$OUT_DIR"
 
@@ -24,4 +25,5 @@ exec python scripts/make_manifest_from_windows.py \
   --orig-size "$ORIG_SIZE_X" "$ORIG_SIZE_Y" \
   --target-size "$TARGET_SIZE" \
   --val-split "$VAL_SPLIT" --test-split "$TEST_SPLIT" \
-  --attach-keypoints "$ATTACH_KEYPOINTS"
+  --attach-keypoints "$ATTACH_KEYPOINTS" \
+  --buffer-hours "$BUFFER_HOURS"

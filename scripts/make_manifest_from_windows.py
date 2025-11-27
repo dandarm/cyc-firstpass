@@ -108,6 +108,12 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--val-split", type=float, default=0.15)
     ap.add_argument("--test-split", type=float, default=0.15)
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument(
+        "--buffer-hours",
+        type=float,
+        default=0.0,
+        help="Conserva i frame (anche label 0) entro questa distanza oraria dai bordi delle finestre",
+    )
     ap.add_argument("--attach-keypoints", choices=["auto", "never"], default="auto")
     ap.add_argument("--exts", default=".png,.jpg,.jpeg", help="comma separated image extensions")
     return ap.parse_args()
@@ -168,6 +174,17 @@ def main() -> None:
         attach_keypoints,
         letterbox_params,
     )
+
+    if args.buffer_hours > 0:
+        buffer = pd.Timedelta(hours=args.buffer_hours)
+        intervals = labeler.intervals
+
+        def in_buffer(ts: pd.Timestamp) -> bool:
+            return any((ts >= start - buffer) and (ts <= end + buffer) for start, end in intervals)
+
+        mask_pos = master_df["presence"] == 1
+        mask_buffer = master_df["datetime"].apply(in_buffer)
+        master_df = master_df[mask_pos | mask_buffer].reset_index(drop=True)
 
     rng = np.random.default_rng(args.seed)
     master_df["split"] = None
