@@ -14,7 +14,7 @@ BACKBONE="resnet18"
 EPOCHS="20"
 BATCH_SIZE="64"
 LR="3e-4"
-LOG_DIR="outputs/runs/exp1"
+LOG_DIR="outputs/runs/exp2"
 
 mkdir -p "$LOG_DIR"
 

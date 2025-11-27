@@ -243,6 +243,28 @@ class WindowsLabeling:
                 return kp
         return None
 
+    def event_id_for(self, timestamp: datetime | pd.Timestamp) -> Optional[str]:
+        """Return the event/cyclone id owning this timestamp, if any."""
+        ts = pd.Timestamp(timestamp)
+        for track in self._event_tracks:
+            if track.contains(ts):
+                return track.event_id
+        return None
+
+    def nearest_event(self, timestamp: datetime | pd.Timestamp):
+        """Return (event_id, time_gap) of the closest event track to the timestamp."""
+        ts = pd.Timestamp(timestamp)
+        best_id: Optional[str] = None
+        best_gap: Optional[pd.Timedelta] = None
+        for track in self._event_tracks:
+            if track.contains(ts):
+                return track.event_id, pd.Timedelta(0)
+            gap = min(abs(ts - track.start), abs(ts - track.end))
+            if best_gap is None or gap < best_gap:
+                best_gap = gap
+                best_id = track.event_id
+        return best_id, best_gap
+
     def has_keypoints(self) -> bool:
         return bool(self._keypoints)
 

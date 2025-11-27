@@ -5,9 +5,8 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from collections import defaultdict
 from pathlib import Path
-from typing import Dict, List, Sequence
+from typing import List, Sequence
 
 import numpy as np
 import pandas as pd
@@ -16,6 +15,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
 if SRC.exists():
     sys.path.insert(0, str(SRC))
+
+from medicane_utils.buil_dataset import get_train_test_validation_df
 
 from cyclone_locator.datasets.windows_labeling import (
     WindowsLabeling,
@@ -30,38 +31,6 @@ def list_images(images_dir: Path, exts: Sequence[str]) -> List[Path]:
     for ext in exts:
         files.extend(sorted(images_dir.glob(f"**/*{ext}")))
     return sorted(set(files))
-
-
-def stratified_split_indices(labels: Sequence[int], val_frac: float, test_frac: float, seed: int) -> Dict[str, List[int]]:
-    if val_frac < 0 or test_frac < 0 or val_frac + test_frac >= 1:
-        raise ValueError("val_frac and test_frac must be >=0 and sum to less than 1")
-    rng = np.random.default_rng(seed)
-    grouped: Dict[int, List[int]] = defaultdict(list)
-    for idx, lbl in enumerate(labels):
-        grouped[int(lbl)].append(idx)
-
-    splits = {"train": [], "val": [], "test": []}
-    for idxs in grouped.values():
-        arr = np.array(idxs, dtype=int)
-        rng.shuffle(arr)
-        n = len(arr)
-        n_test = int(round(n * test_frac))
-        n_val = int(round(n * val_frac))
-        if n_test + n_val > n:
-            overflow = n_test + n_val - n
-            if n_test >= overflow:
-                n_test -= overflow
-            else:
-                overflow -= n_test
-                n_test = 0
-                n_val = max(0, n_val - overflow)
-        test_idx = arr[:n_test]
-        val_idx = arr[n_test:n_test + n_val]
-        train_idx = arr[n_test + n_val:]
-        splits["test"].extend(test_idx.tolist())
-        splits["val"].extend(val_idx.tolist())
-        splits["train"].extend(train_idx.tolist())
-    return splits
 
 
 def build_master_dataframe(
@@ -83,6 +52,7 @@ def build_master_dataframe(
             "image_path": str(path.resolve()),
             "datetime": timestamp,
             "presence": presence,
+            "event_id": labeler.event_id_for(timestamp),
         }
         kp = labeler.keypoint_for(timestamp)
         if presence == 1 and kp is not None:
@@ -155,7 +125,33 @@ def main() -> None:
     if not images_dir.exists():
         raise FileNotFoundError(images_dir)
 
-    labeler = WindowsLabeling.from_csv(windows_csv)
+    windows_df = pd.read_csv(windows_csv, parse_dates=["time", "start_time", "end_time"], keep_default_na=True)
+    event_id_col = WindowsLabeling._detect_event_id_column(windows_df)  # type: ignore[attr-defined]
+    if event_id_col is None:
+        raise ValueError("Non trovo una colonna id evento (es. id_final) in windows_csv")
+
+    train_pct = 1.0 - args.val_split - args.test_split
+    if train_pct <= 0:
+        raise ValueError("val_split + test_split devono essere < 1")
+
+    df_train, df_test, df_val = get_train_test_validation_df(
+        windows_df,
+        percentage=train_pct,
+        validation_percentage=args.val_split,
+        id_col=event_id_col,
+        verbose=False,
+    )
+    normalize_id = WindowsLabeling._normalize_event_id  # type: ignore[attr-defined]
+    train_ids = {normalize_id(v) for v in df_train[event_id_col].unique() if pd.notna(v)}
+    val_ids = {normalize_id(v) for v in df_val[event_id_col].unique() if pd.notna(v)}
+    test_ids = {normalize_id(v) for v in df_test[event_id_col].unique() if pd.notna(v)}
+    for id_set in (train_ids, val_ids, test_ids):
+        id_set.discard(None)
+    event_split = {eid: "train" for eid in train_ids}
+    event_split.update({eid: "val" for eid in val_ids})
+    event_split.update({eid: "test" for eid in test_ids})
+
+    labeler = WindowsLabeling.from_dataframe(windows_df)
     attach_keypoints = False
     if args.attach_keypoints == "auto":
         attach_keypoints = labeler.has_keypoints()
@@ -173,12 +169,42 @@ def main() -> None:
         letterbox_params,
     )
 
-    labels = master_df["presence"].astype(int).tolist()
-    splits = stratified_split_indices(labels, args.val_split, args.test_split, args.seed)
+    rng = np.random.default_rng(args.seed)
+    master_df["split"] = None
+    event_ids = master_df["event_id"].apply(normalize_id)
+    master_df.loc[event_ids.isin(train_ids), "split"] = "train"
+    master_df.loc[event_ids.isin(val_ids), "split"] = "val"
+    master_df.loc[event_ids.isin(test_ids), "split"] = "test"
+
+    # distribuisci background senza event_id in modo riproducibile secondo le frazioni richieste
+    mask_unassigned = master_df["split"].isna()
+    if mask_unassigned.any():
+        max_gap = pd.Timedelta(days=7)
+        reassigned = 0
+        for idx, row in master_df.loc[mask_unassigned].iterrows():
+            eid, gap = labeler.nearest_event(row["datetime"])
+            eid_norm = normalize_id(eid) if eid is not None else None
+            if eid_norm and gap is not None and gap <= max_gap and eid_norm in event_split:
+                master_df.at[idx, "split"] = event_split[eid_norm]
+                master_df.at[idx, "event_id"] = eid_norm
+                reassigned += 1
+        if reassigned:
+            print(f"[INFO] Assegnate {reassigned} righe senza event_id allo split dell'evento più vicino (<= {max_gap})")
+
+    mask_unassigned = master_df["split"].isna()
+    if mask_unassigned.any():
+        probs = np.array([train_pct, args.val_split, args.test_split], dtype=float)
+        probs = probs / probs.sum()
+        choices = rng.choice(["train", "val", "test"], size=mask_unassigned.sum(), p=probs)
+        master_df.loc[mask_unassigned, "split"] = choices
+        print(f"[INFO] Assegnate {mask_unassigned.sum()} righe senza event_id con split casuale riproducibile")
+
+    if master_df["split"].isna().any():
+        raise RuntimeError("Alcune righe non hanno split assegnato")
 
     manifests = {}
-    for split_name, indices in splits.items():
-        df_split = master_df.iloc[indices].copy()
+    for split_name in ("train", "val", "test"):
+        df_split = master_df[master_df["split"] == split_name].copy()
         df_split.sort_values("datetime", inplace=True)
         manifests[split_name] = df_split
 
