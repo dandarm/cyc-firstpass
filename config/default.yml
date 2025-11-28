@@ -14,13 +14,13 @@ data:
 
 train:
   image_size: 384
-  batch_size: 320
+  batch_size: 356
   num_workers: 20
-  epochs: 200
+  epochs: 5000
   lr: 1.0e-3
   weight_decay: 1.0e-4
   amp: true
-  seed: 44
+  seed: 47
   save_dir: checkpoints
   val_every: 1
   best_ckpt_start_epoch: 10
@@ -30,10 +30,10 @@ train:
 
 loss:
   heatmap_sigma_px: 8
-  w_heatmap: 1.0
+  w_heatmap: 1000.0
   w_presence: 1.0
-  auto_balance: true          # bilancia automaticamente le magnitudini di heatmap e presence
-  auto_balance_clip: [0.1, 10.0]
+  auto_balance: false          # bilancia automaticamente le magnitudini di heatmap e presence
+  auto_balance_clip: [0.1, 100.0]
 
 infer:
   batch_size: 128

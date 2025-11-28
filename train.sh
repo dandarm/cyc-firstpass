@@ -11,10 +11,12 @@ IMAGE_SIZE="384"
 HEATMAP_STRIDE="4"
 HEATMAP_SIGMA="8"
 BACKBONE="resnet18"
+
 EPOCHS="20"
 BATCH_SIZE="64"
 LR="3e-4"
-LOG_DIR="outputs/runs/exp3"
+
+LOG_DIR="outputs/runs/exp4"
 
 mkdir -p "$LOG_DIR"
 
