@@ -12,6 +12,7 @@ import torch
 from torch.utils.data import DataLoader, Dataset
 import yaml
 
+from cyclone_locator.datasets.temporal_utils import TemporalWindowSelector
 from cyclone_locator.models.simplebaseline import SimpleBaseline
 from cyclone_locator.utils.geometry import crop_square
 from cyclone_locator.utils.metric import peak_and_width
@@ -67,6 +68,8 @@ def parse_args() -> argparse.Namespace:
                         help="Override raggio base ROI in px")
     parser.add_argument("--roi-sigma-multiplier", type=float, default=None,
                         help="Override moltiplicatore sigma ROI")
+    parser.add_argument("--temporal_T", type=int, default=None,
+                        help="Override dimensione finestra temporale (default: config.train.temporal_T o 1)")
     return parser.parse_args()
 
 
@@ -303,29 +306,57 @@ def compute_geo_center_metrics(
 
 
 class EvalDataset(Dataset):
-    def __init__(self, manifest_df: pd.DataFrame, image_size: int, logger: logging.Logger):
+    def __init__(self, manifest_df: pd.DataFrame, image_size: int, logger: logging.Logger, temporal_T: int = 1):
         self.df = manifest_df.reset_index(drop=True)
         self.logger = logger
         self.image_size = int(image_size)
         self.warned_size = False
+        self.temporal_selector = TemporalWindowSelector(temporal_T)
 
     def __len__(self) -> int:
         return len(self.df)
 
+    def _normalize_frame(self, frame_np: np.ndarray) -> np.ndarray:
+        if frame_np.ndim == 2:
+            frame_np = frame_np[..., None]
+        frame_np = frame_np.astype(np.float32)
+        return frame_np / 255.0
+
     def __getitem__(self, idx: int) -> Dict[str, torch.Tensor]:
         row = self.df.iloc[idx]
         path = row["image_path"]
-        img = cv2.imread(path, cv2.IMREAD_UNCHANGED)
-        if img is None:
+
+        center_img = cv2.imread(path, cv2.IMREAD_UNCHANGED)
+        if center_img is None:
             raise FileNotFoundError(f"cannot read image: {path}")
-        h, w = img.shape[:2]
+        h, w = center_img.shape[:2]
         if (h != self.image_size or w != self.image_size) and not self.warned_size:
             self.logger.warning("Image size mismatch (%s vs %d). Continuing anyway.", (h, w), self.image_size)
             self.warned_size = True
-        if img.ndim == 2:
-            img = img[..., None]
-        img = img.astype(np.float32) / 255.0
-        tensor = torch.from_numpy(img).permute(2, 0, 1)
+
+        window_paths = self.temporal_selector.get_window(path)
+        frames = []
+        for p in window_paths:
+            if p == path:
+                img_np = center_img
+            else:
+                try:
+                    img_np = cv2.imread(p, cv2.IMREAD_UNCHANGED)
+                except Exception:
+                    img_np = None
+                if img_np is None:
+                    img_np = center_img
+            if img_np.shape != center_img.shape:
+                img_np = center_img
+            frames.append(img_np)
+
+        frames = [self._normalize_frame(f) for f in frames]
+        ch = frames[0].shape[2]
+        fused = np.concatenate(frames, axis=2)
+        if fused.shape[2] != ch * len(frames) and not self.warned_size:
+            self.logger.warning("Channel mismatch in temporal fusion (%d vs expected %d)", fused.shape[2], ch * len(frames))
+            self.warned_size = True
+        tensor = torch.from_numpy(fused).permute(2, 0, 1)
         return {
             "image": tensor,
             "image_path": path,
@@ -340,9 +371,9 @@ def collate_batch(batch: List[Dict[str, torch.Tensor]]) -> Dict[str, torch.Tenso
     return {"image": images, "image_path": paths, "manifest_idx": manifest_idx}
 
 
-def build_model(cfg: dict, checkpoint_path: str, device: torch.device, logger: logging.Logger) -> torch.nn.Module:
+def build_model(cfg: dict, checkpoint_path: str, device: torch.device, logger: logging.Logger, temporal_T: int) -> torch.nn.Module:
     backbone = cfg.get("train", {}).get("backbone", "resnet18")
-    model = SimpleBaseline(backbone=backbone)
+    model = SimpleBaseline(backbone=backbone, temporal_T=temporal_T)
     state = torch.load(checkpoint_path, map_location="cpu")
     weights = state.get("model", state)
     model.load_state_dict(weights, strict=True)
@@ -501,6 +532,7 @@ def main():
 
     image_size = args.image_size or cfg.get("train", {}).get("image_size", 512)
     stride = args.heatmap_stride or cfg.get("train", {}).get("heatmap_stride", 4)
+    temporal_T = args.temporal_T or cfg.get("train", {}).get("temporal_T", 1)
     batch_size = args.batch_size or cfg.get("train", {}).get("batch_size", 32)
     presence_threshold_default = cfg.get("infer", {}).get("presence_threshold", 0.5)
     threshold_for_metrics = args.threshold if args.threshold is not None else presence_threshold_default
@@ -517,7 +549,7 @@ def main():
         logger.error("Manifest is empty after filtering, aborting")
         return
 
-    dataset = EvalDataset(manifest_df, image_size=image_size, logger=logger)
+    dataset = EvalDataset(manifest_df, image_size=image_size, logger=logger, temporal_T=temporal_T)
     loader = DataLoader(
         dataset,
         batch_size=batch_size,
@@ -527,7 +559,7 @@ def main():
         collate_fn=collate_batch,
     )
 
-    model = build_model(cfg, args.checkpoint, device, logger)
+    model = build_model(cfg, args.checkpoint, device, logger, temporal_T=temporal_T)
     preds = run_inference(model, loader, device, stride, args.soft_argmax, args.amp)
     preds_df = pd.DataFrame(preds).sort_values("manifest_idx").reset_index(drop=True)
     if args.threshold is not None:

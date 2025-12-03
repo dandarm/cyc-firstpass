@@ -13,8 +13,9 @@ class SimpleBaseline(nn.Module):
     ResNet backbone -> 3 deconv -> head heatmap(1 canale) + head presenza(1 logit).
     - out heatmap size: input/4 (se 3 deconv su feature stride 32 -> saliamo a /4)
     """
-    def __init__(self, backbone="resnet18", out_heatmap_ch=1):
+    def __init__(self, backbone="resnet18", out_heatmap_ch=1, temporal_T: int = 1):
         super().__init__()
+        temporal_T = max(1, int(temporal_T))
         if backbone == "resnet18":
             m = tvm.resnet18(weights=tvm.ResNet18_Weights.IMAGENET1K_V1)
             feat_ch = 512
@@ -23,6 +24,20 @@ class SimpleBaseline(nn.Module):
             feat_ch = 2048
         else:
             raise ValueError("backbone must be resnet18|resnet50")
+
+        in_ch = 3 * temporal_T
+        if in_ch != m.conv1.in_channels:
+            base_conv = m.conv1
+            new_conv = nn.Conv2d(
+                in_ch, base_conv.out_channels,
+                kernel_size=base_conv.kernel_size,
+                stride=base_conv.stride,
+                padding=base_conv.padding,
+                bias=False,
+            )
+            with torch.no_grad():
+                new_conv.weight.copy_(base_conv.weight.repeat(1, temporal_T, 1, 1) / temporal_T)
+            m.conv1 = new_conv
 
         # Prendiamo tutto tranne l'avgpool e fc
         self.stem = nn.Sequential(

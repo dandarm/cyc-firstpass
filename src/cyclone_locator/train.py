@@ -18,6 +18,7 @@ def parse_args():
     ap.add_argument("--heatmap_stride", type=int)
     ap.add_argument("--heatmap_sigma_px", type=float)
     ap.add_argument("--backbone")
+    ap.add_argument("--temporal_T", type=int)
     ap.add_argument("--epochs", type=int)
     ap.add_argument("--bs", type=int)
     ap.add_argument("--lr", type=float)
@@ -75,6 +76,8 @@ def main():
         cfg["loss"]["heatmap_sigma_px"] = args.heatmap_sigma_px
     if args.backbone:
         cfg["train"]["backbone"] = args.backbone
+    if args.temporal_T:
+        cfg["train"]["temporal_T"] = args.temporal_T
     if args.epochs:
         cfg["train"]["epochs"] = args.epochs
     if args.bs:
@@ -97,7 +100,8 @@ def main():
         use_aug=cfg["train"]["use_aug"],
         use_pre_letterboxed=cfg["data"]["use_pre_letterboxed"],
         letterbox_meta_csv=cfg["data"]["letterbox_meta_csv"],
-        letterbox_size_assert=cfg["data"]["letterbox_size_assert"]
+        letterbox_size_assert=cfg["data"]["letterbox_size_assert"],
+        temporal_T=cfg["train"].get("temporal_T", 1)
     )
     ds_va = MedFullBasinDataset(
         cfg["data"]["manifest_val"],
@@ -107,7 +111,8 @@ def main():
         use_aug=False,
         use_pre_letterboxed=cfg["data"]["use_pre_letterboxed"],
         letterbox_meta_csv=cfg["data"]["letterbox_meta_csv"],
-        letterbox_size_assert=cfg["data"]["letterbox_size_assert"]
+        letterbox_size_assert=cfg["data"]["letterbox_size_assert"],
+        temporal_T=cfg["train"].get("temporal_T", 1)
     )
     test_loader = None
     manifest_test = cfg["data"].get("manifest_test")
@@ -121,7 +126,8 @@ def main():
                 use_aug=False,
                 use_pre_letterboxed=cfg["data"]["use_pre_letterboxed"],
                 letterbox_meta_csv=cfg["data"]["letterbox_meta_csv"],
-                letterbox_size_assert=cfg["data"]["letterbox_size_assert"]
+                letterbox_size_assert=cfg["data"]["letterbox_size_assert"],
+                temporal_T=cfg["train"].get("temporal_T", 1)
             )
             test_loader = DataLoader(
                 ds_te,
@@ -153,7 +159,11 @@ def main():
     )
 
     # Model
-    model = SimpleBaseline(backbone=cfg["train"]["backbone"], out_heatmap_ch=1)
+    model = SimpleBaseline(
+        backbone=cfg["train"]["backbone"],
+        out_heatmap_ch=1,
+        temporal_T=cfg["train"].get("temporal_T", 1)
+    )
     model = model.cuda()
 
     # Optim

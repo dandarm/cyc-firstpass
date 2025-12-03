@@ -1,6 +1,8 @@
 import os, cv2, torch, numpy as np, pandas as pd
 from torch.utils.data import Dataset
 
+from cyclone_locator.datasets.temporal_utils import TemporalWindowSelector
+
 def make_gaussian_heatmap(H, W, cx, cy, sigma):
     """Heatmap gaussiana centrata in (cx,cy) su mappa HxW (float32)."""
     yy, xx = np.mgrid[0:H, 0:W]
@@ -15,7 +17,8 @@ class MedFullBasinDataset(Dataset):
     """
     def __init__(self, csv_path, image_size=512, heatmap_stride=4,
                  heatmap_sigma_px=8, use_aug=False,
-                 use_pre_letterboxed=True, letterbox_meta_csv=None, letterbox_size_assert=None):
+                 use_pre_letterboxed=True, letterbox_meta_csv=None, letterbox_size_assert=None,
+                 temporal_T=1):
         self.df = pd.read_csv(csv_path)
         self.image_size = int(image_size)
         self.stride = int(heatmap_stride)
@@ -23,6 +26,7 @@ class MedFullBasinDataset(Dataset):
         self.Wo = self.image_size // self.stride
         self.sigma = float(heatmap_sigma_px)
         self.use_aug = bool(use_aug)
+        self.temporal_selector = TemporalWindowSelector(temporal_T)
 
         self.df["image_path"] = self.df["image_path"].astype(str)
 
@@ -76,26 +80,52 @@ class MedFullBasinDataset(Dataset):
         yg = meta["scale"] * y_orig + meta["pad_y"]
         return xg, yg
 
+    def _load_letterboxed(self, abs_path):
+        if self.letterboxed_manifest:
+            lb = cv2.imread(abs_path, cv2.IMREAD_UNCHANGED)
+            if lb is None:
+                raise FileNotFoundError(abs_path)
+            meta = dict(scale=1.0, pad_x=0.0, pad_y=0.0,
+                        out_size=self.image_size, orig_w=self.image_size, orig_h=self.image_size)
+        elif self.use_pre_lb:
+            lb, meta = self._load_resized_and_meta(abs_path)
+        else:
+            raise RuntimeError("use_pre_letterboxed=False non supportato in questa configurazione")
+        if lb is None:
+            raise FileNotFoundError(abs_path)
+        if lb.shape[0] != self.image_size or lb.shape[1] != self.image_size:
+            raise ValueError(
+                f"letterboxed image size {lb.shape[:2]} != expected square {self.image_size}"
+            )
+        if meta["out_size"] != self.image_size:
+            raise ValueError(f"image_size mismatch: dataset={self.image_size} vs meta={meta['out_size']}")
+        return lb, meta
+
+    def _normalize_frame(self, frame_np):
+        if frame_np.ndim == 2:
+            frame_np = frame_np[..., None]
+        frame_np = frame_np.astype(np.float32)
+        return frame_np / 255.0
+
     def __getitem__(self, idx):
         row = self.df.iloc[idx]
         orig_abs = row["image_path_abs"]
 
-        if self.letterboxed_manifest:
-            lb = cv2.imread(orig_abs, cv2.IMREAD_UNCHANGED)
-            if lb is None:
-                raise FileNotFoundError(orig_abs)
-            if lb.shape[0] != self.image_size or lb.shape[1] != self.image_size:
-                raise ValueError(
-                    f"letterboxed image size {lb.shape[:2]} != expected square {self.image_size}"
-                )
-            meta = dict(scale=1.0, pad_x=0.0, pad_y=0.0,
-                        out_size=self.image_size, orig_w=self.image_size, orig_h=self.image_size)
-        elif self.use_pre_lb:
-            lb, meta = self._load_resized_and_meta(orig_abs)
-            if meta["out_size"] != self.image_size:
-                raise ValueError(f"image_size mismatch: dataset={self.image_size} vs meta={meta['out_size']}")
-        else:
-            raise RuntimeError("use_pre_letterboxed=False non supportato in questa configurazione")
+        center_img, meta = self._load_letterboxed(orig_abs)
+        window_paths = self.temporal_selector.get_window(orig_abs)
+
+        frames = []
+        for path in window_paths:
+            if path == orig_abs:
+                img_np = center_img
+            else:
+                try:
+                    img_np, _ = self._load_letterboxed(path)
+                except Exception:
+                    img_np = center_img
+            if img_np.shape != center_img.shape:
+                img_np = center_img
+            frames.append(img_np)
 
         presence = int(row["presence"])
         if presence == 1:
@@ -112,17 +142,17 @@ class MedFullBasinDataset(Dataset):
             xg, yg = -1.0, -1.0
 
         # augment minimi (opzionali)
-        if self.use_aug:
-            if np.random.rand() < 0.5:
-                lb = np.fliplr(lb).copy()
-                if presence == 1:
-                    xg = self.image_size - 1 - xg
+        if self.use_aug and np.random.rand() < 0.5:
+            frames = [np.fliplr(f).copy() for f in frames]
+            if presence == 1:
+                xg = self.image_size - 1 - xg
 
-        # to tensor [0,1], (C,H,W)
-        if lb.ndim == 2:
-            lb = lb[..., None]
-        lb = lb.astype(np.float32) / 255.0
-        img_t = torch.from_numpy(lb).permute(2,0,1)
+        frames = [self._normalize_frame(f) for f in frames]
+        ch = frames[0].shape[2]
+        fused = np.concatenate(frames, axis=2)
+        if fused.shape[2] != ch * len(frames):
+            raise ValueError("Unexpected channel mismatch in temporal fusion")
+        img_t = torch.from_numpy(fused).permute(2,0,1)
 
         # target heatmap a risoluzione ridotta
         if presence == 1:

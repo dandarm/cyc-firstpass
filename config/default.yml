@@ -27,6 +27,7 @@ train:
   backbone: resnet18        # resnet18|resnet50
   heatmap_stride: 4         # output 128x128 quando input 512
   use_aug: false            # puoi mettere true se serve
+  temporal_T: 1             # numero di frame temporali (early fusion canali)
 
 loss:
   heatmap_sigma_px: 8
