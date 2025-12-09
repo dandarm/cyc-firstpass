@@ -14,12 +14,13 @@ data:
 
 train:
   image_size: 384
-  batch_size: 356  
+  batch_size: 356   # per GPU; global = batch_size * world_size
   num_workers: 20
   epochs: 500
   lr: 1.0e-3
   weight_decay: 1.0e-4
   amp: true
+  scale_lr_by_world_size: true
   seed: 47
   save_dir: checkpoints
   val_every: 1

@@ -1,12 +1,19 @@
-import os, argparse, yaml, time, csv
+import os, argparse, yaml, time, csv, random
 import numpy as np
 import torch, torch.nn as nn
-from torch.utils.data import DataLoader
+import torch.distributed as dist
+from torch.utils.data import DataLoader, DistributedSampler
 from torch.cuda.amp import autocast, GradScaler
 
 from cyclone_locator.datasets.med_fullbasin import MedFullBasinDataset
 from cyclone_locator.models.simplebaseline import SimpleBaseline
 from cyclone_locator.losses.heatmap_loss import HeatmapMSE
+from cyclone_locator.utils.distributed import (
+    cleanup_distributed,
+    get_resources,
+    is_main_process,
+    reduce_mean,
+)
 
 def parse_args():
     ap = argparse.ArgumentParser()
@@ -26,8 +33,18 @@ def parse_args():
     return ap.parse_args()
 
 def set_seed(sd):
-    import random, numpy as np, torch
-    random.seed(sd); np.random.seed(sd); torch.manual_seed(sd); torch.cuda.manual_seed_all(sd)
+    random.seed(sd)
+    np.random.seed(sd)
+    torch.manual_seed(sd)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(sd)
+
+
+def seed_worker(worker_id):
+    """Ensure dataloader workers get different seeds."""
+    worker_seed = torch.initial_seed() % 2**32
+    random.seed(worker_seed)
+    np.random.seed(worker_seed)
 
 def bce_logits(pred, target):
     return nn.functional.binary_cross_entropy_with_logits(pred, target)
@@ -37,13 +54,13 @@ def combine_losses(L_hm, L_pr, loss_cfg):
     pr_w = loss_cfg["w_presence"]
     return hm_w, pr_w, hm_w * L_hm + pr_w * L_pr
 
-def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights):
+def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device):
     vL, vHm, vPr = [], [], []
     with torch.no_grad():
         for batch in loader:
-            img = batch["image"].cuda(non_blocking=True)
-            hm_t = batch["heatmap"].cuda(non_blocking=True)
-            pres = batch["presence"].cuda(non_blocking=True)
+            img = batch["image"].to(device, non_blocking=True)
+            hm_t = batch["heatmap"].to(device, non_blocking=True)
+            pres = batch["presence"].to(device, non_blocking=True)
             with autocast(enabled=amp_enabled):
                 hm_p, pres_logit = model(img)
                 L_hm = hm_loss(hm_p, hm_t)
@@ -86,7 +103,30 @@ def main():
     if args.best_ckpt_start_epoch is not None:
         cfg["train"]["best_ckpt_start_epoch"] = args.best_ckpt_start_epoch
 
-    set_seed(cfg["train"]["seed"])
+    rank, local_rank, world_size, _, env_num_workers = get_resources()
+    distributed = world_size > 1
+    device = torch.device(f"cuda:{local_rank}" if torch.cuda.is_available() else "cpu")
+
+    if distributed and device.type == "cuda":
+        torch.cuda.set_device(local_rank)
+    if distributed:
+        dist.init_process_group(
+            backend="nccl" if device.type == "cuda" else "gloo",
+            init_method="env://",
+            rank=rank,
+            world_size=world_size
+        )
+        dist.barrier()
+
+    set_seed(cfg["train"]["seed"] + rank)
+
+    configured_workers = cfg["train"].get("num_workers", env_num_workers)
+    num_workers = configured_workers if configured_workers is not None else env_num_workers
+    if env_num_workers and num_workers is not None:
+        num_workers = min(num_workers, env_num_workers)
+    num_workers = int(num_workers or 0)
+    cfg["train"]["num_workers"] = num_workers
+    pin_memory = device.type == "cuda"
 
     # Datasets
     ds_tr = MedFullBasinDataset(
@@ -109,6 +149,7 @@ def main():
         letterbox_meta_csv=cfg["data"]["letterbox_meta_csv"],
         letterbox_size_assert=cfg["data"]["letterbox_size_assert"]
     )
+
     test_loader = None
     manifest_test = cfg["data"].get("manifest_test")
     if manifest_test:
@@ -127,42 +168,70 @@ def main():
                 ds_te,
                 batch_size=cfg["train"]["batch_size"],
                 shuffle=False,
-                num_workers=cfg["train"]["num_workers"],
-                pin_memory=True,
-                persistent_workers=cfg["train"]["num_workers"] > 0
+                num_workers=num_workers,
+                pin_memory=pin_memory,
+                persistent_workers=num_workers > 0,
+                worker_init_fn=seed_worker if num_workers > 0 else None
             )
-        else:
+        elif is_main_process(rank):
             print(f"[WARN] Test manifest {manifest_test} non trovato: salto l'eval di test.")
+
+    train_sampler = DistributedSampler(
+        ds_tr,
+        num_replicas=world_size,
+        rank=rank,
+        shuffle=True,
+        drop_last=True
+    ) if distributed else None
 
     tr_loader = DataLoader(
         ds_tr,
         batch_size=cfg["train"]["batch_size"],
-        shuffle=True,
-        num_workers=cfg["train"]["num_workers"],
-        pin_memory=True,
-        persistent_workers=cfg["train"]["num_workers"] > 0,
+        shuffle=train_sampler is None,
+        sampler=train_sampler,
+        num_workers=num_workers,
+        pin_memory=pin_memory,
+        persistent_workers=num_workers > 0,
+        worker_init_fn=seed_worker if num_workers > 0 else None,
         drop_last=True
     )
     va_loader = DataLoader(
         ds_va,
         batch_size=cfg["train"]["batch_size"],
         shuffle=False,
-        num_workers=cfg["train"]["num_workers"],
-        pin_memory=True,
-        persistent_workers=cfg["train"]["num_workers"] > 0
+        num_workers=num_workers,
+        pin_memory=pin_memory,
+        persistent_workers=num_workers > 0,
+        worker_init_fn=seed_worker if num_workers > 0 else None
     )
 
     # Model
     model = SimpleBaseline(backbone=cfg["train"]["backbone"], out_heatmap_ch=1)
-    model = model.cuda()
+    model = model.to(device)
+
+    if distributed:
+        model = torch.nn.parallel.DistributedDataParallel(
+            model,
+            device_ids=[local_rank] if device.type == "cuda" else None,
+            output_device=local_rank if device.type == "cuda" else None
+        )
+    model_to_save = model.module if distributed else model
 
     # Optim
-    opt = torch.optim.AdamW(model.parameters(), lr=cfg["train"]["lr"], weight_decay=cfg["train"]["weight_decay"])
-    scaler = GradScaler(enabled=cfg["train"]["amp"])
+    base_lr = cfg["train"]["lr"]
+    scaled_lr = base_lr * world_size if (distributed and cfg["train"].get("scale_lr_by_world_size", True)) else base_lr
+    opt = torch.optim.AdamW(model.parameters(), lr=scaled_lr, weight_decay=cfg["train"]["weight_decay"])
+    scaler = GradScaler(enabled=cfg["train"]["amp"] and device.type == "cuda")
     hm_loss = HeatmapMSE()
     loss_weights = cfg["loss"]
 
-    save_dir = cfg["train"]["save_dir"]; os.makedirs(save_dir, exist_ok=True)
+    if is_main_process(rank):
+        save_dir = cfg["train"]["save_dir"]; os.makedirs(save_dir, exist_ok=True)
+    else:
+        save_dir = cfg["train"]["save_dir"]
+    if distributed:
+        dist.barrier()
+
     log_path = os.path.join(save_dir, "training_log.csv")
     log_fields = [
         "epoch",
@@ -170,22 +239,35 @@ def main():
         "val_loss", "val_heatmap_loss", "val_presence_loss",
         "test_loss", "test_heatmap_loss", "test_presence_loss"
     ]
-    print(f"Logging metrics to {log_path}")
+    if is_main_process(rank):
+        print(f"[INFO] rank {rank}/{world_size} device={device}")
+        print(f"[INFO] batch_size per GPU={cfg['train']['batch_size']} (global={cfg['train']['batch_size'] * world_size})")
+        if scaled_lr != base_lr:
+            print(f"[INFO] lr scaled from {base_lr} to {scaled_lr} for world_size={world_size}")
+        print(f"Logging metrics to {log_path}")
+
     best_val = 1e9; best_path = None
     best_start_epoch = cfg["train"].get("best_ckpt_start_epoch", 1)
 
-    with open(log_path, "w", newline="") as log_file:
+    log_file = None
+    writer = None
+    if is_main_process(rank):
+        log_file = open(log_path, "w", newline="")
         writer = csv.DictWriter(log_file, fieldnames=log_fields)
         writer.writeheader()
 
+    try:
         for epoch in range(1, cfg["train"]["epochs"]+1):
             epoch_start = time.time()
+            if train_sampler is not None:
+                train_sampler.set_epoch(epoch)
+
             model.train()
             losses = []; hm_losses = []; pres_losses = []; peak_preds = []
             for batch in tr_loader:
-                img = batch["image"].cuda(non_blocking=True)
-                hm_t = batch["heatmap"].cuda(non_blocking=True)
-                pres = batch["presence"].cuda(non_blocking=True)
+                img = batch["image"].to(device, non_blocking=True)
+                hm_t = batch["heatmap"].to(device, non_blocking=True)
+                pres = batch["presence"].to(device, non_blocking=True)
 
                 opt.zero_grad(set_to_none=True)
                 with autocast(enabled=cfg["train"]["amp"]):
@@ -199,18 +281,24 @@ def main():
                 losses.append(L.item()); hm_losses.append(L_hm.item()); pres_losses.append(L_pr.item())
                 peak_preds.append(hm_p.detach().amax(dim=[-1, -2]).mean().item())
 
-            tr_loss = float(np.mean(losses))
-            tr_hm = float(np.mean(hm_losses))
-            tr_pr = float(np.mean(pres_losses))
-            tr_peak = float(np.mean(peak_preds))
-            print(f"[Epoch {epoch}] train: L={tr_loss:.4f} (hm={tr_hm:.4f}, pr={tr_pr:.4f}, peak={tr_peak:.4f})")
+            tr_loss = float(np.mean(losses)) if losses else 0.0
+            tr_hm = float(np.mean(hm_losses)) if hm_losses else 0.0
+            tr_pr = float(np.mean(pres_losses)) if pres_losses else 0.0
+            tr_peak = float(np.mean(peak_preds)) if peak_preds else 0.0
+
+            metrics_tensor = torch.tensor([tr_loss, tr_hm, tr_pr, tr_peak], device=device)
+            metrics_tensor = reduce_mean(metrics_tensor)
+            tr_loss, tr_hm, tr_pr, tr_peak = [float(x) for x in metrics_tensor.tolist()]
+
+            if is_main_process(rank):
+                print(f"[Epoch {epoch}] train: L={tr_loss:.4f} (hm={tr_hm:.4f}, pr={tr_pr:.4f}, peak={tr_peak:.4f})")
 
             val_metrics = None; test_metrics = None
-            if epoch % cfg["train"]["val_every"] == 0:
+            if epoch % cfg["train"]["val_every"] == 0 and is_main_process(rank):
                 model.eval()
-                val_metrics = evaluate_loader(model, va_loader, hm_loss, cfg["train"]["amp"], loss_weights)
+                val_metrics = evaluate_loader(model, va_loader, hm_loss, cfg["train"]["amp"], loss_weights, device)
                 if test_loader is not None:
-                    test_metrics = evaluate_loader(model, test_loader, hm_loss, cfg["train"]["amp"], loss_weights)
+                    test_metrics = evaluate_loader(model, test_loader, hm_loss, cfg["train"]["amp"], loss_weights, device)
                 model.train()
 
                 val_score = val_metrics["loss"]
@@ -223,29 +311,39 @@ def main():
                     best_target = os.path.join(save_dir, "best.ckpt")
                     t0 = time.time()
                     print(f"[Epoch {epoch}] saving BEST checkpoint to {best_target} ...")
-                    torch.save({"model": model.state_dict(), "cfg": cfg}, best_target)
+                    torch.save({"model": model_to_save.state_dict(), "cfg": cfg}, best_target)
                     print(f"[Epoch {epoch}] best checkpoint saved in {time.time()-t0:.2f}s")
                     best_path = best_target
                 else:
                     print(f"[Epoch {epoch}] no val improvement ({val_score:.4f} >= {best_val:.4f}); checkpoint not saved")
 
-            row = {
-                "epoch": epoch,
-                "train_loss": tr_loss,
-                "train_heatmap_loss": tr_hm,
-                "train_presence_loss": tr_pr,
-                "val_loss": val_metrics["loss"] if val_metrics else "",
-                "val_heatmap_loss": val_metrics["hm"] if val_metrics else "",
-                "val_presence_loss": val_metrics["presence"] if val_metrics else "",
-                "test_loss": test_metrics["loss"] if test_metrics else "",
-                "test_heatmap_loss": test_metrics["hm"] if test_metrics else "",
-                "test_presence_loss": test_metrics["presence"] if test_metrics else ""
-            }
-            writer.writerow(row); log_file.flush()
-            elapsed = time.time() - epoch_start
-            print(f"[Epoch {epoch}] elapsed: {elapsed:.1f}s")
+            if writer is not None:
+                row = {
+                    "epoch": epoch,
+                    "train_loss": tr_loss,
+                    "train_heatmap_loss": tr_hm,
+                    "train_presence_loss": tr_pr,
+                    "val_loss": val_metrics["loss"] if val_metrics else "",
+                    "val_heatmap_loss": val_metrics["hm"] if val_metrics else "",
+                    "val_presence_loss": val_metrics["presence"] if val_metrics else "",
+                    "test_loss": test_metrics["loss"] if test_metrics else "",
+                    "test_heatmap_loss": test_metrics["hm"] if test_metrics else "",
+                    "test_presence_loss": test_metrics["presence"] if test_metrics else ""
+                }
+                writer.writerow(row); log_file.flush()
 
-    print("Done. Best:", best_path)
+            if distributed:
+                dist.barrier()
+            elapsed = time.time() - epoch_start
+            if is_main_process(rank):
+                print(f"[Epoch {epoch}] elapsed: {elapsed:.1f}s")
+    finally:
+        if log_file is not None:
+            log_file.close()
+
+    if is_main_process(rank):
+        print("Done. Best:", best_path)
+    cleanup_distributed()
 
 if __name__ == "__main__":
     main()
