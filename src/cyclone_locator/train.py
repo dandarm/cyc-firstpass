@@ -133,6 +133,8 @@ def main():
     num_workers = int(num_workers or 0)
     cfg["train"]["num_workers"] = num_workers
     dl_timeout = int(cfg["train"].get("dataloader_timeout_s", 0) or 0)
+    # PyTorch requires timeout=0 when num_workers=0 (single-process data loading).
+    loader_timeout = dl_timeout if num_workers > 0 else 0
     pin_memory = device.type == "cuda"
 
     # Datasets
@@ -199,7 +201,7 @@ def main():
         num_workers=num_workers,
         pin_memory=pin_memory,
         persistent_workers=num_workers > 0,
-        timeout=dl_timeout,
+        timeout=loader_timeout,
         worker_init_fn=seed_worker if num_workers > 0 else None,
         drop_last=True
     )
@@ -210,7 +212,7 @@ def main():
         num_workers=num_workers,
         pin_memory=pin_memory,
         persistent_workers=num_workers > 0,
-        timeout=dl_timeout,
+        timeout=loader_timeout,
         worker_init_fn=seed_worker if num_workers > 0 else None
     )
 
