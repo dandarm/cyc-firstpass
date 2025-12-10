@@ -39,6 +39,38 @@ def combine_losses(L_hm, L_pr, loss_cfg):
     pr_w = loss_cfg["w_presence"]
     return hm_w, pr_w, hm_w * L_hm + pr_w * L_pr
 
+def log_batch_temporal_samples(batch, temporal_selector, tag="train", max_samples=3):
+    T = temporal_selector.temporal_T
+    if T <= 1:
+        return
+    paths = batch.get("image_path_abs") or batch.get("image_path")
+    if paths is None:
+        return
+    if isinstance(paths, str):
+        paths = [paths]
+    count = min(max_samples, len(paths))
+    print(f"[Debug] {tag}: showing {count} temporal samples (T={T}, stride={temporal_selector.temporal_stride})")
+    for i in range(count):
+        center_path = paths[i]
+        window = temporal_selector.get_window(center_path)
+        window_str = ", ".join(os.path.basename(p) for p in window)
+        print(f"  sample {i}: {os.path.basename(center_path)} -> [{window_str}]")
+
+def log_temporal_debug_samples(dataset, tag="train", max_samples=3):
+    T = dataset.temporal_selector.temporal_T
+    stride = dataset.temporal_selector.temporal_stride
+    if T <= 1 or len(dataset) == 0:
+        return
+    step = max(1, len(dataset) // max_samples)
+    indices = [min(i, len(dataset) - 1) for i in range(0, len(dataset), step)][:max_samples]
+    print(f"[Debug] {tag} temporal samples (T={T}, stride={stride})")
+    for idx in indices:
+        row = dataset.df.iloc[idx]
+        center_abs = row["image_path_abs"]
+        window = dataset.temporal_selector.get_window(center_abs)
+        window_str = ", ".join(os.path.basename(p) for p in window)
+        print(f"  idx={idx}: {os.path.basename(row['image_path'])} -> [{window_str}]")
+
 def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights):
     vL, vHm, vPr = [], [], []
     with torch.no_grad():
@@ -113,6 +145,7 @@ def main():
         temporal_T=temporal_T,
         temporal_stride=temporal_stride
     )
+    log_temporal_debug_samples(ds_tr, tag="train")
     ds_va = MedFullBasinDataset(
         cfg["data"]["manifest_val"],
         image_size=cfg["train"]["image_size"],
@@ -204,7 +237,8 @@ def main():
             epoch_start = time.time()
             model.train()
             losses = []; hm_losses = []; pres_losses = []; peak_preds = []
-            for batch in tr_loader:
+            for batch_idx, batch in enumerate(tr_loader, 1):
+                #log_batch_temporal_samples(batch, ds_tr.temporal_selector, tag=f"train batch {batch_idx}", max_samples=3)
                 img = batch["image"].cuda(non_blocking=True)
                 hm_t = batch["heatmap"].cuda(non_blocking=True)
                 pres = batch["presence"].cuda(non_blocking=True)

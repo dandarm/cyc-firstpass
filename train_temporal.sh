@@ -17,7 +17,7 @@ EPOCHS="20"
 BATCH_SIZE="32"
 LR="3e-4"
 
-LOG_DIR="outputs/runs/exp11_temporalT${TEMPORAL_T}_bs${BATCH_SIZE}_buffer36"
+LOG_DIR="outputs/runs/exp13_temporalT${TEMPORAL_T}_bs${BATCH_SIZE}_buffer36_stride6"
 
 mkdir -p "$LOG_DIR"
 

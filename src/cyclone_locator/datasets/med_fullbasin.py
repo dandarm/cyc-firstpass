@@ -179,7 +179,8 @@ class MedFullBasinDataset(Dataset):
             "meta_pad_y": meta["pad_y"],
             "orig_w": meta["orig_w"],
             "orig_h": meta["orig_h"],
-            "image_path": row["image_path"]
+            "image_path": row["image_path"],
+            "image_path_abs": orig_abs
         }
 
         return sample
