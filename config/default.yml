@@ -28,6 +28,7 @@ train:
   heatmap_stride: 4         # output 128x128 quando input 512
   use_aug: false            # puoi mettere true se serve
   temporal_T: 1             # numero di frame temporali (early fusion canali)
+  temporal_stride: 1        # salto tra frame temporali (>=1)
 
 loss:
   heatmap_sigma_px: 8

@@ -7,11 +7,13 @@ class TemporalWindowSelector:
 
     The selector keeps a cached, sorted listing per directory to avoid
     repeatedly touching the filesystem when workers spawn. The window size is
-    defined by ``temporal_T``; for ``T=1`` the original path is returned.
+    defined by ``temporal_T`` and the spacing by ``temporal_stride``; for
+    ``T=1`` the original path is returned.
     """
 
-    def __init__(self, temporal_T: int = 1):
+    def __init__(self, temporal_T: int = 1, temporal_stride: int = 1):
         self.temporal_T = max(1, int(temporal_T))
+        self.temporal_stride = max(1, int(temporal_stride))
         self.half = self.temporal_T // 2
         self._dir_cache: Dict[str, List[str]] = {}
         self._dir_index: Dict[str, Dict[str, int]] = {}
@@ -43,7 +45,8 @@ class TemporalWindowSelector:
 
         window: List[str] = []
         for offset in range(-self.half, self.half + 1):
-            candidate_idx = center_idx + offset
+            stride_offset = offset * self.temporal_stride
+            candidate_idx = center_idx + stride_offset
             if 0 <= candidate_idx < len(files):
                 candidate = files[candidate_idx]
             else:

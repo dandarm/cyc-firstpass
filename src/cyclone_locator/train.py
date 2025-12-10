@@ -19,6 +19,7 @@ def parse_args():
     ap.add_argument("--heatmap_sigma_px", type=float)
     ap.add_argument("--backbone")
     ap.add_argument("--temporal_T", type=int)
+    ap.add_argument("--temporal_stride", type=int)
     ap.add_argument("--epochs", type=int)
     ap.add_argument("--bs", type=int)
     ap.add_argument("--lr", type=float)
@@ -78,6 +79,8 @@ def main():
         cfg["train"]["backbone"] = args.backbone
     if args.temporal_T:
         cfg["train"]["temporal_T"] = args.temporal_T
+    if args.temporal_stride:
+        cfg["train"]["temporal_stride"] = args.temporal_stride
     if args.epochs:
         cfg["train"]["epochs"] = args.epochs
     if args.bs:
@@ -91,6 +94,12 @@ def main():
 
     set_seed(cfg["train"]["seed"])
 
+    temporal_T = max(1, int(cfg["train"].get("temporal_T", 1)))
+    temporal_stride = max(1, int(cfg["train"].get("temporal_stride", 1)))
+    cfg["train"]["temporal_T"] = temporal_T
+    cfg["train"]["temporal_stride"] = temporal_stride
+    print(f"Temporal window: T={temporal_T}, stride={temporal_stride}")
+
     # Datasets
     ds_tr = MedFullBasinDataset(
         cfg["data"]["manifest_train"],
@@ -101,7 +110,8 @@ def main():
         use_pre_letterboxed=cfg["data"]["use_pre_letterboxed"],
         letterbox_meta_csv=cfg["data"]["letterbox_meta_csv"],
         letterbox_size_assert=cfg["data"]["letterbox_size_assert"],
-        temporal_T=cfg["train"].get("temporal_T", 1)
+        temporal_T=temporal_T,
+        temporal_stride=temporal_stride
     )
     ds_va = MedFullBasinDataset(
         cfg["data"]["manifest_val"],
@@ -112,7 +122,8 @@ def main():
         use_pre_letterboxed=cfg["data"]["use_pre_letterboxed"],
         letterbox_meta_csv=cfg["data"]["letterbox_meta_csv"],
         letterbox_size_assert=cfg["data"]["letterbox_size_assert"],
-        temporal_T=cfg["train"].get("temporal_T", 1)
+        temporal_T=temporal_T,
+        temporal_stride=temporal_stride
     )
     test_loader = None
     manifest_test = cfg["data"].get("manifest_test")
@@ -127,7 +138,8 @@ def main():
                 use_pre_letterboxed=cfg["data"]["use_pre_letterboxed"],
                 letterbox_meta_csv=cfg["data"]["letterbox_meta_csv"],
                 letterbox_size_assert=cfg["data"]["letterbox_size_assert"],
-                temporal_T=cfg["train"].get("temporal_T", 1)
+                temporal_T=temporal_T,
+                temporal_stride=temporal_stride
             )
             test_loader = DataLoader(
                 ds_te,
@@ -162,7 +174,7 @@ def main():
     model = SimpleBaseline(
         backbone=cfg["train"]["backbone"],
         out_heatmap_ch=1,
-        temporal_T=cfg["train"].get("temporal_T", 1)
+        temporal_T=temporal_T
     )
     model = model.cuda()
 

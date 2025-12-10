@@ -70,6 +70,8 @@ def parse_args() -> argparse.Namespace:
                         help="Override moltiplicatore sigma ROI")
     parser.add_argument("--temporal_T", type=int, default=None,
                         help="Override dimensione finestra temporale (default: config.train.temporal_T o 1)")
+    parser.add_argument("--temporal_stride", type=int, default=None,
+                        help="Override stride temporale tra frame (default: config.train.temporal_stride o 1)")
     return parser.parse_args()
 
 
@@ -306,12 +308,13 @@ def compute_geo_center_metrics(
 
 
 class EvalDataset(Dataset):
-    def __init__(self, manifest_df: pd.DataFrame, image_size: int, logger: logging.Logger, temporal_T: int = 1):
+    def __init__(self, manifest_df: pd.DataFrame, image_size: int, logger: logging.Logger,
+                 temporal_T: int = 1, temporal_stride: int = 1):
         self.df = manifest_df.reset_index(drop=True)
         self.logger = logger
         self.image_size = int(image_size)
         self.warned_size = False
-        self.temporal_selector = TemporalWindowSelector(temporal_T)
+        self.temporal_selector = TemporalWindowSelector(temporal_T, temporal_stride)
 
     def __len__(self) -> int:
         return len(self.df)
@@ -532,7 +535,8 @@ def main():
 
     image_size = args.image_size or cfg.get("train", {}).get("image_size", 512)
     stride = args.heatmap_stride or cfg.get("train", {}).get("heatmap_stride", 4)
-    temporal_T = args.temporal_T or cfg.get("train", {}).get("temporal_T", 1)
+    temporal_T = max(1, int(args.temporal_T or cfg.get("train", {}).get("temporal_T", 1)))
+    temporal_stride = max(1, int(args.temporal_stride or cfg.get("train", {}).get("temporal_stride", 1)))
     batch_size = args.batch_size or cfg.get("train", {}).get("batch_size", 32)
     presence_threshold_default = cfg.get("infer", {}).get("presence_threshold", 0.5)
     threshold_for_metrics = args.threshold if args.threshold is not None else presence_threshold_default
@@ -549,7 +553,15 @@ def main():
         logger.error("Manifest is empty after filtering, aborting")
         return
 
-    dataset = EvalDataset(manifest_df, image_size=image_size, logger=logger, temporal_T=temporal_T)
+    logger.info("Temporal window: T=%d, stride=%d", temporal_T, temporal_stride)
+
+    dataset = EvalDataset(
+        manifest_df,
+        image_size=image_size,
+        logger=logger,
+        temporal_T=temporal_T,
+        temporal_stride=temporal_stride,
+    )
     loader = DataLoader(
         dataset,
         batch_size=batch_size,

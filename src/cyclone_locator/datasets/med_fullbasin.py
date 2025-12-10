@@ -18,7 +18,7 @@ class MedFullBasinDataset(Dataset):
     def __init__(self, csv_path, image_size=512, heatmap_stride=4,
                  heatmap_sigma_px=8, use_aug=False,
                  use_pre_letterboxed=True, letterbox_meta_csv=None, letterbox_size_assert=None,
-                 temporal_T=1):
+                 temporal_T=1, temporal_stride=1):
         self.df = pd.read_csv(csv_path)
         self.image_size = int(image_size)
         self.stride = int(heatmap_stride)
@@ -26,7 +26,7 @@ class MedFullBasinDataset(Dataset):
         self.Wo = self.image_size // self.stride
         self.sigma = float(heatmap_sigma_px)
         self.use_aug = bool(use_aug)
-        self.temporal_selector = TemporalWindowSelector(temporal_T)
+        self.temporal_selector = TemporalWindowSelector(temporal_T, temporal_stride)
 
         self.df["image_path"] = self.df["image_path"].astype(str)
 
