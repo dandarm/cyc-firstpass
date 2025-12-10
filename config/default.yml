@@ -19,7 +19,7 @@ train:
   dataloader_timeout_s: 0   # >0 per evitare deadlock: solleva eccezione se il dataloader si blocca
   persistent_workers: false   # disattiva (false) se sospetti deadlock dei worker tra le epoche
   epochs: 500
-  lr: 2.0e-3
+  lr: 2.0e-4
   weight_decay: 1.0e-4
   amp: true
   scale_lr_by_world_size: true
@@ -33,7 +33,7 @@ train:
 
 loss:
   heatmap_sigma_px: 8
-  w_heatmap: 1000.0
+  w_heatmap: 100.0
   w_presence: 1.0
   auto_balance: false          # bilancia automaticamente le magnitudini di heatmap e presence
   auto_balance_clip: [0.1, 100.0]
