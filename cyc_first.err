@@ -1,7 +1,7 @@
-[lrdn0218.leonardo.local:3607556] MCW rank 0 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn0218.leonardo.local:3607556] MCW rank 1 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn0218.leonardo.local:3607556] MCW rank 2 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn0218.leonardo.local:3607556] MCW rank 3 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
+[lrdn0477.leonardo.local:1906776] MCW rank 0 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
+[lrdn0477.leonardo.local:1906776] MCW rank 1 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
+[lrdn0477.leonardo.local:1906776] MCW rank 2 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
+[lrdn0477.leonardo.local:1906776] MCW rank 3 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
 /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
   _torch_pytree._register_pytree_node(
 /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
@@ -10,82 +10,4 @@
   _torch_pytree._register_pytree_node(
 /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
   _torch_pytree._register_pytree_node(
-Traceback (most recent call last):
-Traceback (most recent call last):
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 358, in <module>
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 358, in <module>
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 358, in <module>
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 358, in <module>
-    main()
-    main()
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 276, in main
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 276, in main
-    main()
-    main()
-    for batch in tr_loader:
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 276, in main
-  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 439, in __iter__
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 276, in main
-    for batch in tr_loader:
-  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 439, in __iter__
-    for batch in tr_loader:
-  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 439, in __iter__
-    for batch in tr_loader:
-  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 439, in __iter__
-    return self._get_iterator()
-    return self._get_iterator()
-    return self._get_iterator()
-           ^^^^^^^^^^^^^^^^^^^^
-           ^^^^^^^^^^^^^^^^^^^^
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 384, in _get_iterator
-  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 384, in _get_iterator
-  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 384, in _get_iterator
-    return self._get_iterator()
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 384, in _get_iterator
-    return _SingleProcessDataLoaderIter(self)
-    return _SingleProcessDataLoaderIter(self)
-    return _SingleProcessDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 661, in __init__
-  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 661, in __init__
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 661, in __init__
-    return _SingleProcessDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 661, in __init__
-    assert self._timeout == 0
-    assert self._timeout == 0
-           ^^^^^^^^^^^^^^^^^^
-           ^^^^^^^^^^^^^^^^^^
-AssertionError
-AssertionError
-    assert self._timeout == 0
-           ^^^^^^^^^^^^^^^^^^
-AssertionError
-    assert self._timeout == 0
-           ^^^^^^^^^^^^^^^^^^
-AssertionError
---------------------------------------------------------------------------
-Primary job  terminated normally, but 1 process returned
-a non-zero exit code. Per user-direction, the job has been aborted.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-mpirun detected that one or more processes exited with non-zero status, thus causing
-the job to be terminated. The first process to do so was:
-
-  Process name: [[23414,1],2]
-  Exit code:    1
---------------------------------------------------------------------------
+slurmstepd: error: *** JOB 27924141 ON lrdn0477 CANCELLED AT 2025-12-10T12:30:23 ***
