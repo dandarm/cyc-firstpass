@@ -32,6 +32,7 @@ def parse_args():
     ap.add_argument("--best_ckpt_start_epoch", type=int)
     ap.add_argument("--num_workers", type=int, help="Override dataloader workers (use 0 to debug NCCL stalls)")
     ap.add_argument("--dataloader_timeout_s", type=int, help="Timeout (s) for DataLoader get_batch to avoid deadlocks")
+    ap.add_argument("--persistent_workers", type=int, choices=[0,1], help="Set persistent_workers (1=keep workers alive between epochs)")
     return ap.parse_args()
 
 def set_seed(sd):
@@ -56,8 +57,9 @@ def combine_losses(L_hm, L_pr, loss_cfg):
     pr_w = loss_cfg["w_presence"]
     return hm_w, pr_w, hm_w * L_hm + pr_w * L_pr
 
-def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device):
+def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, rank: int = 0):
     vL, vHm, vPr = [], [], []
+    bad_batches = 0
     with torch.no_grad():
         for batch in loader:
             img = batch["image"].to(device, non_blocking=True)
@@ -68,11 +70,17 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device):
                 L_hm = hm_loss(hm_p, hm_t)
                 L_pr = bce_logits(pres_logit, pres)
                 _, _, L = combine_losses(L_hm, L_pr, loss_weights)
+            if not torch.isfinite(L):
+                bad_batches += 1
+                if bad_batches <= 3 and rank == 0:
+                    print(f"[WARN] non-finite val loss (rank {rank}), skipping batch")
+                continue
             vL.append(L.item()); vHm.append(L_hm.item()); vPr.append(L_pr.item())
     return {
-        "loss": float(np.mean(vL)),
-        "hm": float(np.mean(vHm)),
-        "presence": float(np.mean(vPr))
+        "loss": float(np.mean(vL)) if len(vL) > 0 else float("nan"),
+        "hm": float(np.mean(vHm)) if len(vHm) > 0 else float("nan"),
+        "presence": float(np.mean(vPr)) if len(vPr) > 0 else float("nan"),
+        "bad_batches": bad_batches
     }
 
 def main():
@@ -108,6 +116,8 @@ def main():
         cfg["train"]["num_workers"] = args.num_workers
     if args.dataloader_timeout_s is not None:
         cfg["train"]["dataloader_timeout_s"] = args.dataloader_timeout_s
+    if args.persistent_workers is not None:
+        cfg["train"]["persistent_workers"] = bool(args.persistent_workers)
 
     rank, local_rank, world_size, _, env_num_workers = get_resources()
     distributed = world_size > 1
@@ -135,6 +145,8 @@ def main():
     dl_timeout = int(cfg["train"].get("dataloader_timeout_s", 0) or 0)
     # PyTorch requires timeout=0 when num_workers=0 (single-process data loading).
     loader_timeout = dl_timeout if num_workers > 0 else 0
+    persistent_workers_cfg = bool(cfg["train"].get("persistent_workers", True))
+    persistent_workers = num_workers > 0 and persistent_workers_cfg
     pin_memory = device.type == "cuda"
 
     # Datasets
@@ -179,7 +191,7 @@ def main():
                 shuffle=False,
                 num_workers=num_workers,
                 pin_memory=pin_memory,
-                persistent_workers=num_workers > 0,
+                persistent_workers=persistent_workers,
                 worker_init_fn=seed_worker if num_workers > 0 else None
             )
         elif is_main_process(rank):
@@ -200,7 +212,7 @@ def main():
         sampler=train_sampler,
         num_workers=num_workers,
         pin_memory=pin_memory,
-        persistent_workers=num_workers > 0,
+        persistent_workers=persistent_workers,
         timeout=loader_timeout,
         worker_init_fn=seed_worker if num_workers > 0 else None,
         drop_last=True
@@ -211,7 +223,7 @@ def main():
         shuffle=False,
         num_workers=num_workers,
         pin_memory=pin_memory,
-        persistent_workers=num_workers > 0,
+        persistent_workers=persistent_workers,
         timeout=loader_timeout,
         worker_init_fn=seed_worker if num_workers > 0 else None
     )
@@ -286,6 +298,10 @@ def main():
                     L_hm = hm_loss(hm_p, hm_t)
                     L_pr = bce_logits(pres_logit, pres)
                     _, _, L = combine_losses(L_hm, L_pr, loss_weights)
+                if not torch.isfinite(L):
+                    if is_main_process(rank):
+                        print(f"[ERROR] non-finite train loss at epoch {epoch}; aborting to avoid hang.")
+                    raise RuntimeError("Non-finite training loss")
                 scaler.scale(L).backward()
                 scaler.step(opt); scaler.update()
 
