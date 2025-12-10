@@ -1,2 +1,2 @@
 epoch,train_loss,train_heatmap_loss,train_presence_loss,val_loss,val_heatmap_loss,val_presence_loss,test_loss,test_heatmap_loss,test_presence_loss
-1,8621.3232421875,8.620537757873535,0.7857570052146912,nan,nan,nan,nan,nan,nan
+1,5743.611328125,5.742913722991943,0.697591245174408,nan,nan,nan,nan,nan,nan
