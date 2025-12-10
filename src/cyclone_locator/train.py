@@ -57,8 +57,9 @@ def combine_losses(L_hm, L_pr, loss_cfg):
     pr_w = loss_cfg["w_presence"]
     return hm_w, pr_w, hm_w * L_hm + pr_w * L_pr
 
-def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, rank: int = 0):
-    vL, vHm, vPr = [], [], []
+def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, rank: int = 0,
+                    distributed: bool = False, world_size: int = 1):
+    sum_L, sum_hm, sum_pr = 0.0, 0.0, 0.0
     bad_batches = 0
     total_batches = 0
     with torch.no_grad():
@@ -80,13 +81,27 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, r
                 if bad_batches <= 3 and rank == 0:
                     print(f"[WARN] non-finite val loss (rank {rank}), skipping batch")
                 continue
-            vL.append(L.item()); vHm.append(L_hm.item()); vPr.append(L_pr.item())
+            sum_L += L.item(); sum_hm += L_hm.item(); sum_pr += L_pr.item()
+
+    totals = torch.tensor(
+        [sum_L, sum_hm, sum_pr, float(total_batches), float(bad_batches)],
+        device=device
+    )
+    if distributed:
+        dist.all_reduce(totals, op=dist.ReduceOp.SUM)
+    sum_L, sum_hm, sum_pr, total_batches, bad_batches = totals.tolist()
+    if total_batches - bad_batches > 0:
+        mean_L = sum_L / (total_batches - bad_batches)
+        mean_hm = sum_hm / (total_batches - bad_batches)
+        mean_pr = sum_pr / (total_batches - bad_batches)
+    else:
+        mean_L = mean_hm = mean_pr = float("nan")
     return {
-        "loss": float(np.mean(vL)) if len(vL) > 0 else float("nan"),
-        "hm": float(np.mean(vHm)) if len(vHm) > 0 else float("nan"),
-        "presence": float(np.mean(vPr)) if len(vPr) > 0 else float("nan"),
-        "bad_batches": bad_batches,
-        "total_batches": total_batches
+        "loss": float(mean_L),
+        "hm": float(mean_hm),
+        "presence": float(mean_pr),
+        "bad_batches": int(bad_batches),
+        "total_batches": int(total_batches)
     }
 
 def main():
@@ -191,10 +206,18 @@ def main():
                 letterbox_meta_csv=cfg["data"]["letterbox_meta_csv"],
                 letterbox_size_assert=cfg["data"]["letterbox_size_assert"]
             )
+            test_sampler = DistributedSampler(
+                ds_te,
+                num_replicas=world_size,
+                rank=rank,
+                shuffle=False,
+                drop_last=False
+            ) if distributed else None
             test_loader = DataLoader(
                 ds_te,
                 batch_size=cfg["train"]["batch_size"],
-                shuffle=False,
+                shuffle=test_sampler is None,
+                sampler=test_sampler,
                 num_workers=num_workers,
                 pin_memory=pin_memory,
                 persistent_workers=persistent_workers,
@@ -223,10 +246,19 @@ def main():
         worker_init_fn=seed_worker if num_workers > 0 else None,
         drop_last=True
     )
+    va_sampler = DistributedSampler(
+        ds_va,
+        num_replicas=world_size,
+        rank=rank,
+        shuffle=False,
+        drop_last=False
+    ) if distributed else None
+
     va_loader = DataLoader(
         ds_va,
         batch_size=cfg["train"]["batch_size"],
-        shuffle=False,
+        shuffle=va_sampler is None,
+        sampler=va_sampler,
         num_workers=num_workers,
         pin_memory=pin_memory,
         persistent_workers=persistent_workers,
@@ -331,13 +363,20 @@ def main():
             if epoch % cfg["train"]["val_every"] == 0:
                 if distributed:
                     dist.barrier()
-                if is_main_process(rank):
-                    eval_model = model.module if distributed else model
-                    eval_model.eval()
-                    val_metrics = evaluate_loader(eval_model, va_loader, hm_loss, False, loss_weights, device)
-                    if test_loader is not None:
-                        test_metrics = evaluate_loader(eval_model, test_loader, hm_loss, False, loss_weights, device)
-                    eval_model.train()
+
+                eval_model = model.module if distributed else model
+                eval_model.eval()
+                val_metrics = evaluate_loader(
+                    eval_model, va_loader, hm_loss, False, loss_weights, device,
+                    rank=rank, distributed=distributed, world_size=world_size
+                )
+                if test_loader is not None:
+                    test_metrics = evaluate_loader(
+                        eval_model, test_loader, hm_loss, False, loss_weights, device,
+                        rank=rank, distributed=distributed, world_size=world_size
+                    )
+                eval_model.train()
+
                 if distributed:
                     dist.barrier()
 
@@ -353,18 +392,18 @@ def main():
                             raise RuntimeError("Validation produced only non-finite batches; aborting.")
                     print(f"          val:  L={val_score:.4f} (hm={val_metrics['hm']:.4f}, pr={val_metrics['presence']:.4f})")
 
-                if epoch < best_start_epoch:
-                    print(f"[Epoch {epoch}] checkpoint skip: epoch < best_ckpt_start_epoch ({best_start_epoch})")
-                elif val_score < best_val:
-                    best_val = val_score
-                    best_target = os.path.join(save_dir, "best.ckpt")
-                    t0 = time.time()
-                    print(f"[Epoch {epoch}] saving BEST checkpoint to {best_target} ...")
-                    torch.save({"model": model_to_save.state_dict(), "cfg": cfg}, best_target)
-                    print(f"[Epoch {epoch}] best checkpoint saved in {time.time()-t0:.2f}s")
-                    best_path = best_target
-                else:
-                    print(f"[Epoch {epoch}] no val improvement ({val_score:.4f} >= {best_val:.4f}); checkpoint not saved")
+                    if epoch < best_start_epoch:
+                        print(f"[Epoch {epoch}] checkpoint skip: epoch < best_ckpt_start_epoch ({best_start_epoch})")
+                    elif val_score < best_val:
+                        best_val = val_score
+                        best_target = os.path.join(save_dir, "best.ckpt")
+                        t0 = time.time()
+                        print(f"[Epoch {epoch}] saving BEST checkpoint to {best_target} ...")
+                        torch.save({"model": model_to_save.state_dict(), "cfg": cfg}, best_target)
+                        print(f"[Epoch {epoch}] best checkpoint saved in {time.time()-t0:.2f}s")
+                        best_path = best_target
+                    else:
+                        print(f"[Epoch {epoch}] no val improvement ({val_score:.4f} >= {best_val:.4f}); checkpoint not saved")
 
             if writer is not None:
                 row = {
