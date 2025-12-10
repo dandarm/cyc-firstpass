@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=cyc-firstpass-train
 #SBATCH --nodes=1                # aggiorna se usi un solo nodo
-#SBATCH --ntasks-per-node=1      # una task per GPU
-#SBATCH --gres=gpu:1
+#SBATCH --ntasks-per-node=2      # una task per GPU
+#SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=8
 #SBATCH --partition=boost_usr_prod
 #SBATCH --time=00:30:00
