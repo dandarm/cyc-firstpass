@@ -15,8 +15,8 @@ data:
 train:
   image_size: 384
   batch_size: 256   # per GPU; global = batch_size * world_size
-  num_workers: 4
-  dataloader_timeout_s: 0   # >0 per evitare deadlock: solleva eccezione se il dataloader si blocca
+  num_workers: 0
+  dataloader_timeout_s: 60   # >0 per evitare deadlock: solleva eccezione se il dataloader si blocca
   persistent_workers: false   # disattiva (false) se sospetti deadlock dei worker tra le epoche
   epochs: 500
   lr: 2.0e-4
@@ -25,7 +25,7 @@ train:
   scale_lr_by_world_size: true
   seed: 491
   save_dir: checkpoints
-  val_every: 1
+  val_every: 999
   best_ckpt_start_epoch: 5
   backbone: resnet18        # resnet18|resnet50
   heatmap_stride: 4         # output 128x128 quando input 512

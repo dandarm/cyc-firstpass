@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=cyc-firstpass-train
 #SBATCH --nodes=1                # aggiorna se usi un solo nodo
-#SBATCH --ntasks-per-node=4      # una task per GPU
-#SBATCH --gres=gpu:4
+#SBATCH --ntasks-per-node=1      # una task per GPU
+#SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --partition=boost_usr_prod
 #SBATCH --time=00:30:00
@@ -25,6 +25,9 @@ LOG_DIR="outputs/runs/exp_mpi_1"
 mkdir -p "$LOG_DIR"
 
 export NCCL_DEBUG=INFO
+# per debug dettagliato e gestione errori asincroni NCCL
+export TORCH_DISTRIBUTED_DEBUG=DETAIL
+export NCCL_ASYNC_ERROR_HANDLING=1
 # imposta MASTER_ADDR/PORT per l'inizializzazione distribuita
 export MASTER_ADDR="$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)"
 export MASTER_PORT=12340
@@ -38,5 +41,5 @@ mpirun --map-by socket:PE=${CPUS_PER_TASK} --report-bindings \
     --train_csv "$TRAIN_CSV" \
     --val_csv "$VAL_CSV" \
     --log_dir "$LOG_DIR" \
-    --num_workers 2 \
-    --dataloader_timeout_s 60
+    --num_workers 0 \
+    --dataloader_timeout_s 30
