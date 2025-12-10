@@ -1,19 +1,7 @@
-[lrdn0553.leonardo.local:2694485] MCW rank 0 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn0553.leonardo.local:2694485] MCW rank 1 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn0553.leonardo.local:2694485] MCW rank 2 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn0553.leonardo.local:2694485] MCW rank 3 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
-[lrdn0749.leonardo.local:2266824] MCW rank 8 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn0810.leonardo.local:1963029] MCW rank 12 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn0749.leonardo.local:2266824] MCW rank 9 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn0810.leonardo.local:1963029] MCW rank 13 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn0749.leonardo.local:2266824] MCW rank 10 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn0810.leonardo.local:1963029] MCW rank 14 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn0749.leonardo.local:2266824] MCW rank 11 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
-[lrdn0810.leonardo.local:1963029] MCW rank 15 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
-[lrdn0695.leonardo.local:276005] MCW rank 4 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn0695.leonardo.local:276005] MCW rank 5 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn0695.leonardo.local:276005] MCW rank 6 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn0695.leonardo.local:276005] MCW rank 7 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
+[lrdn0091.leonardo.local:299636] MCW rank 0 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
+[lrdn0091.leonardo.local:299636] MCW rank 1 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
+[lrdn0091.leonardo.local:299636] MCW rank 2 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
+[lrdn0091.leonardo.local:299636] MCW rank 3 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
 /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
   _torch_pytree._register_pytree_node(
 /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
@@ -22,136 +10,112 @@
   _torch_pytree._register_pytree_node(
 /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
   _torch_pytree._register_pytree_node(
-/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
-  _torch_pytree._register_pytree_node(
-/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
-  _torch_pytree._register_pytree_node(
-/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
-  _torch_pytree._register_pytree_node(
-/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
-  _torch_pytree._register_pytree_node(
-/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
-  _torch_pytree._register_pytree_node(
-/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
-  _torch_pytree._register_pytree_node(
-/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
-  _torch_pytree._register_pytree_node(
-/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
-  _torch_pytree._register_pytree_node(
-/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
-  _torch_pytree._register_pytree_node(
-/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
-  _torch_pytree._register_pytree_node(
-/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
-  _torch_pytree._register_pytree_node(
-/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
-  _torch_pytree._register_pytree_node(
-[rank1]:[E ProcessGroupNCCL.cpp:523] [Rank 1] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=29, OpType=BROADCAST, NumelIn=11136, NumelOut=11136, Timeout(ms)=600000) ran for 600205 milliseconds before timing out.
+[rank1]:[E ProcessGroupNCCL.cpp:523] [Rank 1] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=88, OpType=ALLREDUCE, NumelIn=1, NumelOut=1, Timeout(ms)=600000) ran for 600499 milliseconds before timing out.
+[rank3]:[E ProcessGroupNCCL.cpp:523] [Rank 3] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=88, OpType=ALLREDUCE, NumelIn=1, NumelOut=1, Timeout(ms)=600000) ran for 600501 milliseconds before timing out.
+[rank2]:[E ProcessGroupNCCL.cpp:523] [Rank 2] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=88, OpType=ALLREDUCE, NumelIn=1, NumelOut=1, Timeout(ms)=600000) ran for 600504 milliseconds before timing out.
+[rank3]:[E ProcessGroupNCCL.cpp:537] Some NCCL operations have failed or timed out. Due to the asynchronous nature of CUDA kernels, subsequent GPU operations might run on corrupted/incomplete data.
 [rank1]:[E ProcessGroupNCCL.cpp:537] Some NCCL operations have failed or timed out. Due to the asynchronous nature of CUDA kernels, subsequent GPU operations might run on corrupted/incomplete data.
 [rank1]:[E ProcessGroupNCCL.cpp:543] To avoid data inconsistency, we are taking the entire process down.
-[rank1]:[E ProcessGroupNCCL.cpp:1182] [Rank 1] NCCL watchdog thread terminated with exception: [Rank 1] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=29, OpType=BROADCAST, NumelIn=11136, NumelOut=11136, Timeout(ms)=600000) ran for 600205 milliseconds before timing out.
-Exception raised from checkTimeout at /leonardo/prod/build/libraries/cineca-ai/4.3.0/none/BA_WORK/cineca-ai-4.3.0/work-dir/000002/000000_cineca-ai/work/sources/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:525 (most recent call first):
-frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x146bfaca26e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
-frame #1: <unknown function> + 0xf5a321 (0x146bfbce0321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #2: c10d::ProcessGroupNCCL::WorkNCCL::checkTimeout(std::optional<std::chrono::duration<long, std::ratio<1l, 1000l> > >) + 0x1e0 (0x146bfbcb87e0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #3: c10d::ProcessGroupNCCL::workCleanupLoop() + 0x189 (0x146bfbcb8cd9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #4: c10d::ProcessGroupNCCL::ncclCommWatchdog() + 0x110 (0x146bfbcb95a0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #5: <unknown function> + 0xe0a53 (0x146c12f64a53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
-frame #6: <unknown function> + 0x81ca (0x146c3ef1a1ca in /lib64/libpthread.so.0)
-frame #7: clone + 0x43 (0x146c3e3fce73 in /lib64/libc.so.6)
-
-terminate called after throwing an instance of 'c10::DistBackendError'
-  what():  [Rank 1] NCCL watchdog thread terminated with exception: [Rank 1] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=29, OpType=BROADCAST, NumelIn=11136, NumelOut=11136, Timeout(ms)=600000) ran for 600205 milliseconds before timing out.
-Exception raised from checkTimeout at /leonardo/prod/build/libraries/cineca-ai/4.3.0/none/BA_WORK/cineca-ai-4.3.0/work-dir/000002/000000_cineca-ai/work/sources/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:525 (most recent call first):
-frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x146bfaca26e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
-frame #1: <unknown function> + 0xf5a321 (0x146bfbce0321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #2: c10d::ProcessGroupNCCL::WorkNCCL::checkTimeout(std::optional<std::chrono::duration<long, std::ratio<1l, 1000l> > >) + 0x1e0 (0x146bfbcb87e0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #3: c10d::ProcessGroupNCCL::workCleanupLoop() + 0x189 (0x146bfbcb8cd9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #4: c10d::ProcessGroupNCCL::ncclCommWatchdog() + 0x110 (0x146bfbcb95a0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #5: <unknown function> + 0xe0a53 (0x146c12f64a53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
-frame #6: <unknown function> + 0x81ca (0x146c3ef1a1ca in /lib64/libpthread.so.0)
-frame #7: clone + 0x43 (0x146c3e3fce73 in /lib64/libc.so.6)
-
-Exception raised from ncclCommWatchdog at /leonardo/prod/build/libraries/cineca-ai/4.3.0/none/BA_WORK/cineca-ai-4.3.0/work-dir/000002/000000_cineca-ai/work/sources/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:1186 (most recent call first):
-frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x146bfaca26e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
-frame #1: <unknown function> + 0xf5a321 (0x146bfbce0321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #2: <unknown function> + 0xca7df6 (0x146bfba2ddf6 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #3: <unknown function> + 0xe0a53 (0x146c12f64a53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
-frame #4: <unknown function> + 0x81ca (0x146c3ef1a1ca in /lib64/libpthread.so.0)
-frame #5: clone + 0x43 (0x146c3e3fce73 in /lib64/libc.so.6)
-
-[rank3]:[E ProcessGroupNCCL.cpp:523] [Rank 3] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=29, OpType=BROADCAST, NumelIn=11136, NumelOut=11136, Timeout(ms)=600000) ran for 600376 milliseconds before timing out.
-[rank2]:[E ProcessGroupNCCL.cpp:523] [Rank 2] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=29, OpType=BROADCAST, NumelIn=11136, NumelOut=11136, Timeout(ms)=600000) ran for 600227 milliseconds before timing out.
-[rank3]:[E ProcessGroupNCCL.cpp:537] Some NCCL operations have failed or timed out. Due to the asynchronous nature of CUDA kernels, subsequent GPU operations might run on corrupted/incomplete data.
 [rank3]:[E ProcessGroupNCCL.cpp:543] To avoid data inconsistency, we are taking the entire process down.
-[rank3]:[E ProcessGroupNCCL.cpp:1182] [Rank 3] NCCL watchdog thread terminated with exception: [Rank 3] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=29, OpType=BROADCAST, NumelIn=11136, NumelOut=11136, Timeout(ms)=600000) ran for 600376 milliseconds before timing out.
-Exception raised from checkTimeout at /leonardo/prod/build/libraries/cineca-ai/4.3.0/none/BA_WORK/cineca-ai-4.3.0/work-dir/000002/000000_cineca-ai/work/sources/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:525 (most recent call first):
-frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x14d336b456e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
-frame #1: <unknown function> + 0xf5a321 (0x14d337b83321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #2: c10d::ProcessGroupNCCL::WorkNCCL::checkTimeout(std::optional<std::chrono::duration<long, std::ratio<1l, 1000l> > >) + 0x1e0 (0x14d337b5b7e0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #3: c10d::ProcessGroupNCCL::workCleanupLoop() + 0x189 (0x14d337b5bcd9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #4: c10d::ProcessGroupNCCL::ncclCommWatchdog() + 0x110 (0x14d337b5c5a0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #5: <unknown function> + 0xe0a53 (0x14d34ee07a53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
-frame #6: <unknown function> + 0x81ca (0x14d37adbd1ca in /lib64/libpthread.so.0)
-frame #7: clone + 0x43 (0x14d37a29fe73 in /lib64/libc.so.6)
-
-terminate called after throwing an instance of 'c10::DistBackendError'
-  what():  [Rank 3] NCCL watchdog thread terminated with exception: [Rank 3] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=29, OpType=BROADCAST, NumelIn=11136, NumelOut=11136, Timeout(ms)=600000) ran for 600376 milliseconds before timing out.
-Exception raised from checkTimeout at /leonardo/prod/build/libraries/cineca-ai/4.3.0/none/BA_WORK/cineca-ai-4.3.0/work-dir/000002/000000_cineca-ai/work/sources/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:525 (most recent call first):
-frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x14d336b456e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
-frame #1: <unknown function> + 0xf5a321 (0x14d337b83321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #2: c10d::ProcessGroupNCCL::WorkNCCL::checkTimeout(std::optional<std::chrono::duration<long, std::ratio<1l, 1000l> > >) + 0x1e0 (0x14d337b5b7e0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #3: c10d::ProcessGroupNCCL::workCleanupLoop() + 0x189 (0x14d337b5bcd9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #4: c10d::ProcessGroupNCCL::ncclCommWatchdog() + 0x110 (0x14d337b5c5a0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #5: <unknown function> + 0xe0a53 (0x14d34ee07a53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
-frame #6: <unknown function> + 0x81ca (0x14d37adbd1ca in /lib64/libpthread.so.0)
-frame #7: clone + 0x43 (0x14d37a29fe73 in /lib64/libc.so.6)
-
-Exception raised from ncclCommWatchdog at /leonardo/prod/build/libraries/cineca-ai/4.3.0/none/BA_WORK/cineca-ai-4.3.0/work-dir/000002/000000_cineca-ai/work/sources/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:1186 (most recent call first):
-frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x14d336b456e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
-frame #1: <unknown function> + 0xf5a321 (0x14d337b83321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #2: <unknown function> + 0xca7df6 (0x14d3378d0df6 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #3: <unknown function> + 0xe0a53 (0x14d34ee07a53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
-frame #4: <unknown function> + 0x81ca (0x14d37adbd1ca in /lib64/libpthread.so.0)
-frame #5: clone + 0x43 (0x14d37a29fe73 in /lib64/libc.so.6)
-
 [rank2]:[E ProcessGroupNCCL.cpp:537] Some NCCL operations have failed or timed out. Due to the asynchronous nature of CUDA kernels, subsequent GPU operations might run on corrupted/incomplete data.
 [rank2]:[E ProcessGroupNCCL.cpp:543] To avoid data inconsistency, we are taking the entire process down.
-[rank2]:[E ProcessGroupNCCL.cpp:1182] [Rank 2] NCCL watchdog thread terminated with exception: [Rank 2] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=29, OpType=BROADCAST, NumelIn=11136, NumelOut=11136, Timeout(ms)=600000) ran for 600227 milliseconds before timing out.
+[rank3]:[E ProcessGroupNCCL.cpp:1182] [Rank 3] NCCL watchdog thread terminated with exception: [Rank 3] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=88, OpType=ALLREDUCE, NumelIn=1, NumelOut=1, Timeout(ms)=600000) ran for 600501 milliseconds before timing out.
 Exception raised from checkTimeout at /leonardo/prod/build/libraries/cineca-ai/4.3.0/none/BA_WORK/cineca-ai-4.3.0/work-dir/000002/000000_cineca-ai/work/sources/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:525 (most recent call first):
-frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x14f74721c6e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
-frame #1: <unknown function> + 0xf5a321 (0x14f74825a321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #2: c10d::ProcessGroupNCCL::WorkNCCL::checkTimeout(std::optional<std::chrono::duration<long, std::ratio<1l, 1000l> > >) + 0x1e0 (0x14f7482327e0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #3: c10d::ProcessGroupNCCL::workCleanupLoop() + 0x189 (0x14f748232cd9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #4: c10d::ProcessGroupNCCL::ncclCommWatchdog() + 0x110 (0x14f7482335a0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #5: <unknown function> + 0xe0a53 (0x14f75f4dea53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
-frame #6: <unknown function> + 0x81ca (0x14f78b4941ca in /lib64/libpthread.so.0)
-frame #7: clone + 0x43 (0x14f78a976e73 in /lib64/libc.so.6)
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x1475db4e86e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0xf5a321 (0x1475dc526321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #2: c10d::ProcessGroupNCCL::WorkNCCL::checkTimeout(std::optional<std::chrono::duration<long, std::ratio<1l, 1000l> > >) + 0x1e0 (0x1475dc4fe7e0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: c10d::ProcessGroupNCCL::workCleanupLoop() + 0x189 (0x1475dc4fecd9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: c10d::ProcessGroupNCCL::ncclCommWatchdog() + 0x110 (0x1475dc4ff5a0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xe0a53 (0x1475f37aaa53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
+frame #6: <unknown function> + 0x81ca (0x14761f76e1ca in /lib64/libpthread.so.0)
+frame #7: clone + 0x43 (0x14761ec50e73 in /lib64/libc.so.6)
+
+[rank1]:[E ProcessGroupNCCL.cpp:1182] [Rank 1] NCCL watchdog thread terminated with exception: [Rank 1] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=88, OpType=ALLREDUCE, NumelIn=1, NumelOut=1, Timeout(ms)=600000) ran for 600499 milliseconds before timing out.
+Exception raised from checkTimeout at /leonardo/prod/build/libraries/cineca-ai/4.3.0/none/BA_WORK/cineca-ai-4.3.0/work-dir/000002/000000_cineca-ai/work/sources/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:525 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x1505860c16e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0xf5a321 (0x1505870ff321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #2: c10d::ProcessGroupNCCL::WorkNCCL::checkTimeout(std::optional<std::chrono::duration<long, std::ratio<1l, 1000l> > >) + 0x1e0 (0x1505870d77e0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: c10d::ProcessGroupNCCL::workCleanupLoop() + 0x189 (0x1505870d7cd9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: c10d::ProcessGroupNCCL::ncclCommWatchdog() + 0x110 (0x1505870d85a0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xe0a53 (0x15059e383a53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
+frame #6: <unknown function> + 0x81ca (0x1505ca3391ca in /lib64/libpthread.so.0)
+frame #7: clone + 0x43 (0x1505c981be73 in /lib64/libc.so.6)
+
+[rank2]:[E ProcessGroupNCCL.cpp:1182] [Rank 2] NCCL watchdog thread terminated with exception: [Rank 2] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=88, OpType=ALLREDUCE, NumelIn=1, NumelOut=1, Timeout(ms)=600000) ran for 600504 milliseconds before timing out.
+Exception raised from checkTimeout at /leonardo/prod/build/libraries/cineca-ai/4.3.0/none/BA_WORK/cineca-ai-4.3.0/work-dir/000002/000000_cineca-ai/work/sources/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:525 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x14b3873886e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0xf5a321 (0x14b3883c6321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #2: c10d::ProcessGroupNCCL::WorkNCCL::checkTimeout(std::optional<std::chrono::duration<long, std::ratio<1l, 1000l> > >) + 0x1e0 (0x14b38839e7e0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: c10d::ProcessGroupNCCL::workCleanupLoop() + 0x189 (0x14b38839ecd9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: c10d::ProcessGroupNCCL::ncclCommWatchdog() + 0x110 (0x14b38839f5a0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xe0a53 (0x14b39f64aa53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
+frame #6: <unknown function> + 0x81ca (0x14b3cb6001ca in /lib64/libpthread.so.0)
+frame #7: clone + 0x43 (0x14b3caae2e73 in /lib64/libc.so.6)
 
 terminate called after throwing an instance of 'c10::DistBackendError'
-  what():  [Rank 2] NCCL watchdog thread terminated with exception: [Rank 2] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=29, OpType=BROADCAST, NumelIn=11136, NumelOut=11136, Timeout(ms)=600000) ran for 600227 milliseconds before timing out.
+terminate called after throwing an instance of 'c10::DistBackendError'
+terminate called after throwing an instance of 'c10::DistBackendError'
+  what():  [Rank 3] NCCL watchdog thread terminated with exception: [Rank 3] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=88, OpType=ALLREDUCE, NumelIn=1, NumelOut=1, Timeout(ms)=600000) ran for 600501 milliseconds before timing out.
 Exception raised from checkTimeout at /leonardo/prod/build/libraries/cineca-ai/4.3.0/none/BA_WORK/cineca-ai-4.3.0/work-dir/000002/000000_cineca-ai/work/sources/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:525 (most recent call first):
-frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x14f74721c6e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
-frame #1: <unknown function> + 0xf5a321 (0x14f74825a321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #2: c10d::ProcessGroupNCCL::WorkNCCL::checkTimeout(std::optional<std::chrono::duration<long, std::ratio<1l, 1000l> > >) + 0x1e0 (0x14f7482327e0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #3: c10d::ProcessGroupNCCL::workCleanupLoop() + 0x189 (0x14f748232cd9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #4: c10d::ProcessGroupNCCL::ncclCommWatchdog() + 0x110 (0x14f7482335a0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #5: <unknown function> + 0xe0a53 (0x14f75f4dea53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
-frame #6: <unknown function> + 0x81ca (0x14f78b4941ca in /lib64/libpthread.so.0)
-frame #7: clone + 0x43 (0x14f78a976e73 in /lib64/libc.so.6)
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x1475db4e86e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0xf5a321 (0x1475dc526321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #2: c10d::ProcessGroupNCCL::WorkNCCL::checkTimeout(std::optional<std::chrono::duration<long, std::ratio<1l, 1000l> > >) + 0x1e0 (0x1475dc4fe7e0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: c10d::ProcessGroupNCCL::workCleanupLoop() + 0x189 (0x1475dc4fecd9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: c10d::ProcessGroupNCCL::ncclCommWatchdog() + 0x110 (0x1475dc4ff5a0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xe0a53 (0x1475f37aaa53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
+frame #6: <unknown function> + 0x81ca (0x14761f76e1ca in /lib64/libpthread.so.0)
+frame #7: clone + 0x43 (0x14761ec50e73 in /lib64/libc.so.6)
 
 Exception raised from ncclCommWatchdog at /leonardo/prod/build/libraries/cineca-ai/4.3.0/none/BA_WORK/cineca-ai-4.3.0/work-dir/000002/000000_cineca-ai/work/sources/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:1186 (most recent call first):
-frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x14f74721c6e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
-frame #1: <unknown function> + 0xf5a321 (0x14f74825a321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #2: <unknown function> + 0xca7df6 (0x14f747fa7df6 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
-frame #3: <unknown function> + 0xe0a53 (0x14f75f4dea53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
-frame #4: <unknown function> + 0x81ca (0x14f78b4941ca in /lib64/libpthread.so.0)
-frame #5: clone + 0x43 (0x14f78a976e73 in /lib64/libc.so.6)
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x1475db4e86e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0xf5a321 (0x1475dc526321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #2: <unknown function> + 0xca7df6 (0x1475dc273df6 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: <unknown function> + 0xe0a53 (0x1475f37aaa53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
+frame #4: <unknown function> + 0x81ca (0x14761f76e1ca in /lib64/libpthread.so.0)
+frame #5: clone + 0x43 (0x14761ec50e73 in /lib64/libc.so.6)
+
+  what():  [Rank 1] NCCL watchdog thread terminated with exception: [Rank 1] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=88, OpType=ALLREDUCE, NumelIn=1, NumelOut=1, Timeout(ms)=600000) ran for 600499 milliseconds before timing out.
+Exception raised from checkTimeout at /leonardo/prod/build/libraries/cineca-ai/4.3.0/none/BA_WORK/cineca-ai-4.3.0/work-dir/000002/000000_cineca-ai/work/sources/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:525 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x1505860c16e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0xf5a321 (0x1505870ff321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #2: c10d::ProcessGroupNCCL::WorkNCCL::checkTimeout(std::optional<std::chrono::duration<long, std::ratio<1l, 1000l> > >) + 0x1e0 (0x1505870d77e0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: c10d::ProcessGroupNCCL::workCleanupLoop() + 0x189 (0x1505870d7cd9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: c10d::ProcessGroupNCCL::ncclCommWatchdog() + 0x110 (0x1505870d85a0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xe0a53 (0x15059e383a53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
+frame #6: <unknown function> + 0x81ca (0x1505ca3391ca in /lib64/libpthread.so.0)
+frame #7: clone + 0x43 (0x1505c981be73 in /lib64/libc.so.6)
+
+Exception raised from ncclCommWatchdog at /leonardo/prod/build/libraries/cineca-ai/4.3.0/none/BA_WORK/cineca-ai-4.3.0/work-dir/000002/000000_cineca-ai/work/sources/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:1186 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x1505860c16e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0xf5a321 (0x1505870ff321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #2: <unknown function> + 0xca7df6 (0x150586e4cdf6 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: <unknown function> + 0xe0a53 (0x15059e383a53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
+frame #4: <unknown function> + 0x81ca (0x1505ca3391ca in /lib64/libpthread.so.0)
+frame #5: clone + 0x43 (0x1505c981be73 in /lib64/libc.so.6)
+
+  what():  [Rank 2] NCCL watchdog thread terminated with exception: [Rank 2] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=88, OpType=ALLREDUCE, NumelIn=1, NumelOut=1, Timeout(ms)=600000) ran for 600504 milliseconds before timing out.
+Exception raised from checkTimeout at /leonardo/prod/build/libraries/cineca-ai/4.3.0/none/BA_WORK/cineca-ai-4.3.0/work-dir/000002/000000_cineca-ai/work/sources/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:525 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x14b3873886e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0xf5a321 (0x14b3883c6321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #2: c10d::ProcessGroupNCCL::WorkNCCL::checkTimeout(std::optional<std::chrono::duration<long, std::ratio<1l, 1000l> > >) + 0x1e0 (0x14b38839e7e0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: c10d::ProcessGroupNCCL::workCleanupLoop() + 0x189 (0x14b38839ecd9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: c10d::ProcessGroupNCCL::ncclCommWatchdog() + 0x110 (0x14b38839f5a0 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xe0a53 (0x14b39f64aa53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
+frame #6: <unknown function> + 0x81ca (0x14b3cb6001ca in /lib64/libpthread.so.0)
+frame #7: clone + 0x43 (0x14b3caae2e73 in /lib64/libc.so.6)
+
+Exception raised from ncclCommWatchdog at /leonardo/prod/build/libraries/cineca-ai/4.3.0/none/BA_WORK/cineca-ai-4.3.0/work-dir/000002/000000_cineca-ai/work/sources/pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:1186 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x99 (0x14b3873886e9 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0xf5a321 (0x14b3883c6321 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #2: <unknown function> + 0xca7df6 (0x14b388113df6 in /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: <unknown function> + 0xe0a53 (0x14b39f64aa53 in /leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/gcc-12.2.0-gmhym3kmbzqlpwkzhgab2xsoygsdwxcl/lib64/libstdc++.so.6)
+frame #4: <unknown function> + 0x81ca (0x14b3cb6001ca in /lib64/libpthread.so.0)
+frame #5: clone + 0x43 (0x14b3caae2e73 in /lib64/libc.so.6)
 
 --------------------------------------------------------------------------
 Primary job  terminated normally, but 1 process returned
 a non-zero exit code. Per user-direction, the job has been aborted.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-mpirun noticed that process rank 1 with PID 0 on node lrdn0553 exited on signal 6 (Aborted).
+mpirun noticed that process rank 2 with PID 299644 on node lrdn0091 exited on signal 6 (Aborted).
 --------------------------------------------------------------------------
