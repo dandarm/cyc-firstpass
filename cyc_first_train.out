@@ -759,3 +759,45 @@ Logging metrics to outputs/runs/exp_mpi_3/training_log.csv
 [Epoch 8] elapsed: 31.4s
 [Epoch 9] train: L=3.2938 (hm=0.0131, pr=0.6765, peak=0.1339)
 [Epoch 9] elapsed: 15.1s
+[Epoch 10] train: L=3.2538 (hm=0.0129, pr=0.6744, peak=0.2019)
+          val:  L=43386.5508 (hm=216.8032, pr=25.9093)
+[Epoch 10] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
+[Epoch 10] best checkpoint saved in 0.07s
+[Epoch 10] elapsed: 32.6s
+[Epoch 11] train: L=1.3839 (hm=0.0036, pr=0.6707, peak=0.0972)
+[Epoch 11] elapsed: 15.1s
+[Epoch 12] train: L=1.5191 (hm=0.0043, pr=0.6668, peak=0.0704)
+          val:  L=1098.7791 (hm=5.4814, pr=2.4913)
+[Epoch 12] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
+[Epoch 12] best checkpoint saved in 0.07s
+[Epoch 12] elapsed: 31.6s
+[Epoch 13] train: L=1.5551 (hm=0.0044, pr=0.6664, peak=0.0658)
+[Epoch 13] elapsed: 15.4s
+[Epoch 14] train: L=1.0227 (hm=0.0018, pr=0.6671, peak=0.0406)
+          val:  L=1.7127 (hm=0.0050, pr=0.7042)
+[Epoch 14] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
+[Epoch 14] best checkpoint saved in 0.08s
+[Epoch 14] elapsed: 32.1s
+[Epoch 15] train: L=1.0241 (hm=0.0018, pr=0.6651, peak=0.0349)
+[Epoch 15] elapsed: 15.5s
+[Epoch 16] train: L=0.8699 (hm=0.0010, pr=0.6619, peak=0.0203)
+          val:  L=1.7371 (hm=0.0046, pr=0.8140)
+[Epoch 16] no val improvement (1.7371 >= 1.7127); checkpoint not saved
+[Epoch 16] elapsed: 31.9s
+[Epoch 17] train: L=0.8686 (hm=0.0010, pr=0.6588, peak=0.0086)
+[Epoch 17] elapsed: 15.0s
+[Epoch 18] train: L=0.8735 (hm=0.0011, pr=0.6572, peak=0.0123)
+          val:  L=1.5106 (hm=0.0033, pr=0.8534)
+[Epoch 18] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
+[Epoch 18] best checkpoint saved in 0.07s
+[Epoch 18] elapsed: 31.8s
+[Epoch 19] train: L=0.7945 (hm=0.0007, pr=0.6555, peak=0.0178)
+[Epoch 19] elapsed: 15.6s
+[Epoch 20] train: L=0.8023 (hm=0.0007, pr=0.6552, peak=0.0299)
+          val:  L=0.9100 (hm=0.0009, pr=0.7248)
+[Epoch 20] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
+[Epoch 20] best checkpoint saved in 0.08s
+[Epoch 20] elapsed: 31.9s
+[Epoch 21] train: L=0.7825 (hm=0.0006, pr=0.6546, peak=0.0198)
+[Epoch 21] elapsed: 15.5s
+[Epoch 22] train: L=0.7855 (hm=0.0007, pr=0.6542, peak=0.0160)
