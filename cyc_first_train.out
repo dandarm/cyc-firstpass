@@ -25,645 +25,645 @@ Temporal window: T=5, stride=6
 Temporal window: T=5, stride=6
 Temporal window: T=5, stride=6
 Temporal window: T=5, stride=6
-lrdn0090:2401189:2401189 [0] NCCL INFO Bootstrap : Using ib0:10.128.7.137<0>
-lrdn0090:2401189:2401189 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
-lrdn0090:2401189:2401189 [0] NCCL INFO cudaDriverVersion 12020
+lrdn0022:1834494:1834494 [0] NCCL INFO Bootstrap : Using ib0:10.128.6.121<0>
+lrdn0022:1834494:1834494 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+lrdn0022:1834494:1834494 [0] NCCL INFO cudaDriverVersion 12020
 NCCL version 2.19.1+cuda12.1
-lrdn0090:2401190:2401190 [1] NCCL INFO cudaDriverVersion 12020
-lrdn0090:2401192:2401192 [3] NCCL INFO cudaDriverVersion 12020
-lrdn0090:2401191:2401191 [2] NCCL INFO cudaDriverVersion 12020
-lrdn0808:41109:41109 [0] NCCL INFO cudaDriverVersion 12020
-lrdn0808:41110:41110 [1] NCCL INFO cudaDriverVersion 12020
-lrdn0808:41112:41112 [3] NCCL INFO cudaDriverVersion 12020
-lrdn0808:41111:41111 [2] NCCL INFO cudaDriverVersion 12020
-lrdn0090:2401190:2401190 [1] NCCL INFO Bootstrap : Using ib0:10.128.7.137<0>
-lrdn0090:2401192:2401192 [3] NCCL INFO Bootstrap : Using ib0:10.128.7.137<0>
-lrdn0090:2401191:2401191 [2] NCCL INFO Bootstrap : Using ib0:10.128.7.137<0>
-lrdn0090:2401190:2401190 [1] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
-lrdn0090:2401191:2401191 [2] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
-lrdn0090:2401192:2401192 [3] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
-lrdn0786:3734537:3734537 [1] NCCL INFO cudaDriverVersion 12020
-lrdn0786:3734536:3734536 [0] NCCL INFO cudaDriverVersion 12020
-lrdn0786:3734538:3734538 [2] NCCL INFO cudaDriverVersion 12020
-lrdn0786:3734539:3734539 [3] NCCL INFO cudaDriverVersion 12020
-lrdn0786:3734537:3734537 [1] NCCL INFO Bootstrap : Using ib0:10.128.18.105<0>
-lrdn0786:3734539:3734539 [3] NCCL INFO Bootstrap : Using ib0:10.128.18.105<0>
-lrdn0786:3734536:3734536 [0] NCCL INFO Bootstrap : Using ib0:10.128.18.105<0>
-lrdn0786:3734538:3734538 [2] NCCL INFO Bootstrap : Using ib0:10.128.18.105<0>
-lrdn0808:41109:41109 [0] NCCL INFO Bootstrap : Using ib0:10.128.18.193<0>
-lrdn0808:41112:41112 [3] NCCL INFO Bootstrap : Using ib0:10.128.18.193<0>
-lrdn0808:41111:41111 [2] NCCL INFO Bootstrap : Using ib0:10.128.18.193<0>
-lrdn0808:41110:41110 [1] NCCL INFO Bootstrap : Using ib0:10.128.18.193<0>
-lrdn0786:3734539:3734539 [3] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
-lrdn0786:3734538:3734538 [2] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
-lrdn0786:3734536:3734536 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
-lrdn0786:3734537:3734537 [1] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
-lrdn0750:2924822:2924822 [2] NCCL INFO cudaDriverVersion 12020
-lrdn0808:41109:41109 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
-lrdn0808:41110:41110 [1] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
-lrdn0808:41111:41111 [2] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
-lrdn0808:41112:41112 [3] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
-lrdn0750:2924821:2924821 [1] NCCL INFO cudaDriverVersion 12020
-lrdn0750:2924822:2924822 [2] NCCL INFO Bootstrap : Using ib0:10.128.17.217<0>
-lrdn0750:2924822:2924822 [2] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
-lrdn0750:2924823:2924823 [3] NCCL INFO cudaDriverVersion 12020
-lrdn0750:2924820:2924820 [0] NCCL INFO cudaDriverVersion 12020
-lrdn0750:2924823:2924823 [3] NCCL INFO Bootstrap : Using ib0:10.128.17.217<0>
-lrdn0750:2924820:2924820 [0] NCCL INFO Bootstrap : Using ib0:10.128.17.217<0>
-lrdn0750:2924821:2924821 [1] NCCL INFO Bootstrap : Using ib0:10.128.17.217<0>
-lrdn0750:2924820:2924820 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
-lrdn0750:2924823:2924823 [3] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
-lrdn0750:2924821:2924821 [1] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
-lrdn0090:2401189:2401252 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.7.137<0>
-lrdn0090:2401189:2401252 [0] NCCL INFO Using non-device net plugin version 0
-lrdn0090:2401189:2401252 [0] NCCL INFO Using network IB
-lrdn0090:2401192:2401255 [3] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.7.137<0>
-lrdn0090:2401192:2401255 [3] NCCL INFO Using non-device net plugin version 0
-lrdn0090:2401192:2401255 [3] NCCL INFO Using network IB
-lrdn0090:2401191:2401254 [2] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.7.137<0>
-lrdn0090:2401191:2401254 [2] NCCL INFO Using non-device net plugin version 0
-lrdn0090:2401191:2401254 [2] NCCL INFO Using network IB
-lrdn0090:2401190:2401253 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.7.137<0>
-lrdn0090:2401190:2401253 [1] NCCL INFO Using non-device net plugin version 0
-lrdn0090:2401190:2401253 [1] NCCL INFO Using network IB
-lrdn0786:3734538:3734598 [2] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.18.105<0>
-lrdn0786:3734537:3734599 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.18.105<0>
-lrdn0786:3734538:3734598 [2] NCCL INFO Using non-device net plugin version 0
-lrdn0786:3734538:3734598 [2] NCCL INFO Using network IB
-lrdn0786:3734537:3734599 [1] NCCL INFO Using non-device net plugin version 0
-lrdn0786:3734537:3734599 [1] NCCL INFO Using network IB
-lrdn0750:2924820:2924883 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.17.217<0>
-lrdn0750:2924823:2924882 [3] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.17.217<0>
-lrdn0750:2924822:2924881 [2] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.17.217<0>
-lrdn0750:2924822:2924881 [2] NCCL INFO Using non-device net plugin version 0
-lrdn0750:2924822:2924881 [2] NCCL INFO Using network IB
-lrdn0750:2924820:2924883 [0] NCCL INFO Using non-device net plugin version 0
-lrdn0750:2924820:2924883 [0] NCCL INFO Using network IB
-lrdn0750:2924823:2924882 [3] NCCL INFO Using non-device net plugin version 0
-lrdn0750:2924823:2924882 [3] NCCL INFO Using network IB
-lrdn0786:3734539:3734600 [3] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.18.105<0>
-lrdn0786:3734539:3734600 [3] NCCL INFO Using non-device net plugin version 0
-lrdn0786:3734539:3734600 [3] NCCL INFO Using network IB
-lrdn0808:41110:41173 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.18.193<0>
-lrdn0808:41109:41172 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.18.193<0>
-lrdn0808:41110:41173 [1] NCCL INFO Using non-device net plugin version 0
-lrdn0808:41110:41173 [1] NCCL INFO Using network IB
-lrdn0808:41112:41171 [3] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.18.193<0>
-lrdn0808:41112:41171 [3] NCCL INFO Using non-device net plugin version 0
-lrdn0808:41112:41171 [3] NCCL INFO Using network IB
-lrdn0808:41111:41170 [2] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.18.193<0>
-lrdn0808:41109:41172 [0] NCCL INFO Using non-device net plugin version 0
-lrdn0808:41109:41172 [0] NCCL INFO Using network IB
-lrdn0808:41111:41170 [2] NCCL INFO Using non-device net plugin version 0
-lrdn0808:41111:41170 [2] NCCL INFO Using network IB
-lrdn0786:3734536:3734597 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.18.105<0>
-lrdn0786:3734536:3734597 [0] NCCL INFO Using non-device net plugin version 0
-lrdn0786:3734536:3734597 [0] NCCL INFO Using network IB
-lrdn0750:2924821:2924884 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.17.217<0>
-lrdn0750:2924821:2924884 [1] NCCL INFO Using non-device net plugin version 0
-lrdn0750:2924821:2924884 [1] NCCL INFO Using network IB
-lrdn0808:41112:41171 [3] NCCL INFO comm 0xa197060 rank 15 nranks 16 cudaDev 3 nvmlDev 3 busId c8000 commId 0x17d78f2fdd0002ae - Init START
-lrdn0090:2401189:2401252 [0] NCCL INFO comm 0x9bf5580 rank 0 nranks 16 cudaDev 0 nvmlDev 0 busId 1d000 commId 0x17d78f2fdd0002ae - Init START
-lrdn0090:2401190:2401253 [1] NCCL INFO comm 0xa8e78f0 rank 1 nranks 16 cudaDev 1 nvmlDev 1 busId 56000 commId 0x17d78f2fdd0002ae - Init START
-lrdn0750:2924820:2924883 [0] NCCL INFO comm 0x9e42490 rank 4 nranks 16 cudaDev 0 nvmlDev 0 busId 1d000 commId 0x17d78f2fdd0002ae - Init START
-lrdn0090:2401192:2401255 [3] NCCL INFO comm 0x9bf4080 rank 3 nranks 16 cudaDev 3 nvmlDev 3 busId c8000 commId 0x17d78f2fdd0002ae - Init START
-lrdn0750:2924821:2924884 [1] NCCL INFO comm 0x9415c20 rank 5 nranks 16 cudaDev 1 nvmlDev 1 busId 56000 commId 0x17d78f2fdd0002ae - Init START
-lrdn0090:2401191:2401254 [2] NCCL INFO comm 0x930b960 rank 2 nranks 16 cudaDev 2 nvmlDev 2 busId 8f000 commId 0x17d78f2fdd0002ae - Init START
-lrdn0786:3734538:3734598 [2] NCCL INFO comm 0xa455b30 rank 10 nranks 16 cudaDev 2 nvmlDev 2 busId 8f000 commId 0x17d78f2fdd0002ae - Init START
-lrdn0808:41110:41173 [1] NCCL INFO comm 0x9bccb30 rank 13 nranks 16 cudaDev 1 nvmlDev 1 busId 56000 commId 0x17d78f2fdd0002ae - Init START
-lrdn0786:3734536:3734597 [0] NCCL INFO comm 0xa0e5830 rank 8 nranks 16 cudaDev 0 nvmlDev 0 busId 1d000 commId 0x17d78f2fdd0002ae - Init START
-lrdn0786:3734539:3734600 [3] NCCL INFO comm 0xa505050 rank 11 nranks 16 cudaDev 3 nvmlDev 3 busId c8000 commId 0x17d78f2fdd0002ae - Init START
-lrdn0808:41109:41172 [0] NCCL INFO comm 0x9395400 rank 12 nranks 16 cudaDev 0 nvmlDev 0 busId 1d000 commId 0x17d78f2fdd0002ae - Init START
-lrdn0786:3734537:3734599 [1] NCCL INFO comm 0xa1315b0 rank 9 nranks 16 cudaDev 1 nvmlDev 1 busId 56000 commId 0x17d78f2fdd0002ae - Init START
-lrdn0750:2924823:2924882 [3] NCCL INFO comm 0x9060970 rank 7 nranks 16 cudaDev 3 nvmlDev 3 busId c8000 commId 0x17d78f2fdd0002ae - Init START
-lrdn0750:2924822:2924881 [2] NCCL INFO comm 0xae11890 rank 6 nranks 16 cudaDev 2 nvmlDev 2 busId 8f000 commId 0x17d78f2fdd0002ae - Init START
-lrdn0808:41111:41170 [2] NCCL INFO comm 0x92c62f0 rank 14 nranks 16 cudaDev 2 nvmlDev 2 busId 8f000 commId 0x17d78f2fdd0002ae - Init START
-lrdn0750:2924823:2924882 [3] NCCL INFO NVLS multicast support is not available on dev 3
-lrdn0090:2401189:2401252 [0] NCCL INFO Setting affinity for GPU 0 to ff
-lrdn0090:2401189:2401252 [0] NCCL INFO NVLS multicast support is not available on dev 0
-lrdn0786:3734538:3734598 [2] NCCL INFO NVLS multicast support is not available on dev 2
-lrdn0750:2924822:2924881 [2] NCCL INFO NVLS multicast support is not available on dev 2
-lrdn0786:3734537:3734599 [1] NCCL INFO Setting affinity for GPU 1 to ff00
-lrdn0786:3734537:3734599 [1] NCCL INFO NVLS multicast support is not available on dev 1
-lrdn0808:41109:41172 [0] NCCL INFO Setting affinity for GPU 0 to ff
-lrdn0808:41109:41172 [0] NCCL INFO NVLS multicast support is not available on dev 0
-lrdn0808:41110:41173 [1] NCCL INFO Setting affinity for GPU 1 to ff00
-lrdn0808:41110:41173 [1] NCCL INFO NVLS multicast support is not available on dev 1
-lrdn0090:2401192:2401255 [3] NCCL INFO NVLS multicast support is not available on dev 3
-lrdn0808:41112:41171 [3] NCCL INFO NVLS multicast support is not available on dev 3
-lrdn0090:2401190:2401253 [1] NCCL INFO Setting affinity for GPU 1 to ff00
-lrdn0090:2401190:2401253 [1] NCCL INFO NVLS multicast support is not available on dev 1
-lrdn0750:2924821:2924884 [1] NCCL INFO Setting affinity for GPU 1 to ff00
-lrdn0750:2924821:2924884 [1] NCCL INFO NVLS multicast support is not available on dev 1
-lrdn0090:2401191:2401254 [2] NCCL INFO NVLS multicast support is not available on dev 2
-lrdn0786:3734539:3734600 [3] NCCL INFO NVLS multicast support is not available on dev 3
-lrdn0808:41111:41170 [2] NCCL INFO NVLS multicast support is not available on dev 2
-lrdn0786:3734536:3734597 [0] NCCL INFO Setting affinity for GPU 0 to ff
-lrdn0786:3734536:3734597 [0] NCCL INFO NVLS multicast support is not available on dev 0
-lrdn0750:2924820:2924883 [0] NCCL INFO Setting affinity for GPU 0 to ff
-lrdn0750:2924820:2924883 [0] NCCL INFO NVLS multicast support is not available on dev 0
-lrdn0090:2401192:2401255 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] -1/-1/-1->3->2 [2] 0/-1/-1->3->2 [3] 1/11/-1->3->-1 [4] -1/-1/-1->3->2 [5] -1/-1/-1->3->2 [6] 0/-1/-1->3->2 [7] 1/-1/-1->3->7
-lrdn0090:2401192:2401255 [3] NCCL INFO P2P Chunksize set to 131072
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 00/08 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 01/08 :    0   3   2   5   4   7   6   9   8  11  10  13  12  15  14   1
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 02/08 :    0   3   6   5   4   7  10   9   8  11  14  13  12  15   2   1
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 03/08 :    0   7   6   5   4  11  10   9   8  15  14  13  12   3   2   1
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 04/08 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 05/08 :    0   3   2   5   4   7   6   9   8  11  10  13  12  15  14   1
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 06/08 :    0   3   6   5   4   7  10   9   8  11  14  13  12  15   2   1
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 07/08 :    0   7   6   5   4  11  10   9   8  15  14  13  12   3   2   1
-lrdn0090:2401189:2401252 [0] NCCL INFO Trees [0] 1/8/-1->0->-1 [1] 1/8/-1->0->-1 [2] 1/-1/-1->0->3 [3] -1/-1/-1->0->2 [4] 1/-1/-1->0->4 [5] 1/-1/-1->0->4 [6] 1/-1/-1->0->3 [7] -1/-1/-1->0->2
-lrdn0090:2401189:2401252 [0] NCCL INFO P2P Chunksize set to 131072
-lrdn0090:2401191:2401254 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1 [2] 3/10/-1->2->-1 [3] 0/-1/-1->2->1 [4] 3/-1/-1->2->1 [5] 3/-1/-1->2->1 [6] 3/-1/-1->2->6 [7] 0/-1/-1->2->1
-lrdn0090:2401191:2401254 [2] NCCL INFO P2P Chunksize set to 131072
-lrdn0090:2401190:2401253 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0 [2] -1/-1/-1->1->0 [3] 2/-1/-1->1->3 [4] 2/-1/-1->1->0 [5] 2/-1/-1->1->0 [6] -1/-1/-1->1->0 [7] 2/-1/-1->1->3
-lrdn0090:2401190:2401253 [1] NCCL INFO P2P Chunksize set to 131072
-lrdn0786:3734539:3734600 [3] NCCL INFO Trees [0] -1/-1/-1->11->10 [1] -1/-1/-1->11->10 [2] 8/6/-1->11->10 [3] 9/15/-1->11->3 [4] -1/-1/-1->11->10 [5] -1/-1/-1->11->10 [6] 8/-1/-1->11->10 [7] 9/-1/-1->11->5
-lrdn0786:3734539:3734600 [3] NCCL INFO P2P Chunksize set to 131072
-lrdn0786:3734538:3734598 [2] NCCL INFO Trees [0] 11/-1/-1->10->9 [1] 11/-1/-1->10->9 [2] 11/14/-1->10->2 [3] 8/-1/-1->10->9 [4] 11/-1/-1->10->9 [5] 11/-1/-1->10->9 [6] 11/-1/-1->10->7 [7] 8/-1/-1->10->9
-lrdn0786:3734538:3734598 [2] NCCL INFO P2P Chunksize set to 131072
-lrdn0808:41109:41172 [0] NCCL INFO Trees [0] 13/-1/-1->12->8 [1] 13/-1/-1->12->8 [2] 13/-1/-1->12->15 [3] -1/-1/-1->12->14 [4] 13/4/-1->12->-1 [5] 13/4/-1->12->-1 [6] 13/-1/-1->12->15 [7] -1/-1/-1->12->14
-lrdn0808:41109:41172 [0] NCCL INFO P2P Chunksize set to 131072
-lrdn0786:3734536:3734597 [0] NCCL INFO Trees [0] 9/12/-1->8->0 [1] 9/12/-1->8->0 [2] 9/-1/-1->8->11 [3] -1/-1/-1->8->10 [4] 9/-1/-1->8->5 [5] 9/-1/-1->8->5 [6] 9/-1/-1->8->11 [7] -1/-1/-1->8->10
-lrdn0786:3734536:3734597 [0] NCCL INFO P2P Chunksize set to 131072
-lrdn0808:41110:41173 [1] NCCL INFO Trees [0] 14/-1/-1->13->12 [1] 14/-1/-1->13->12 [2] -1/-1/-1->13->12 [3] 14/-1/-1->13->15 [4] 14/-1/-1->13->12 [5] 14/-1/-1->13->12 [6] -1/-1/-1->13->12 [7] 14/-1/-1->13->15
-lrdn0808:41110:41173 [1] NCCL INFO P2P Chunksize set to 131072
-lrdn0750:2924820:2924883 [0] NCCL INFO Trees [0] 5/-1/-1->4->9 [1] 5/-1/-1->4->9 [2] 5/-1/-1->4->7 [3] -1/-1/-1->4->6 [4] 5/0/-1->4->12 [5] 5/0/-1->4->12 [6] 5/-1/-1->4->7 [7] -1/-1/-1->4->6
-lrdn0750:2924820:2924883 [0] NCCL INFO P2P Chunksize set to 131072
-lrdn0786:3734537:3734599 [1] NCCL INFO Trees [0] 10/4/-1->9->8 [1] 10/4/-1->9->8 [2] -1/-1/-1->9->8 [3] 10/7/-1->9->11 [4] 10/-1/-1->9->8 [5] 10/-1/-1->9->8 [6] -1/-1/-1->9->8 [7] 10/-1/-1->9->11
-lrdn0786:3734537:3734599 [1] NCCL INFO P2P Chunksize set to 131072
-lrdn0808:41112:41171 [3] NCCL INFO Trees [0] -1/-1/-1->15->14 [1] -1/-1/-1->15->14 [2] 12/-1/-1->15->14 [3] 13/-1/-1->15->11 [4] -1/-1/-1->15->14 [5] -1/-1/-1->15->14 [6] 12/-1/-1->15->14 [7] 13/7/-1->15->-1
-lrdn0808:41112:41171 [3] NCCL INFO P2P Chunksize set to 131072
-lrdn0808:41111:41170 [2] NCCL INFO Trees [0] 15/-1/-1->14->13 [1] 15/-1/-1->14->13 [2] 15/-1/-1->14->10 [3] 12/-1/-1->14->13 [4] 15/-1/-1->14->13 [5] 15/-1/-1->14->13 [6] 15/6/-1->14->-1 [7] 12/-1/-1->14->13
-lrdn0808:41111:41170 [2] NCCL INFO P2P Chunksize set to 131072
-lrdn0750:2924821:2924884 [1] NCCL INFO Trees [0] 6/-1/-1->5->4 [1] 6/-1/-1->5->4 [2] -1/-1/-1->5->4 [3] 6/-1/-1->5->7 [4] 6/8/-1->5->4 [5] 6/8/-1->5->4 [6] -1/-1/-1->5->4 [7] 6/11/-1->5->7
-lrdn0750:2924821:2924884 [1] NCCL INFO P2P Chunksize set to 131072
-lrdn0750:2924823:2924882 [3] NCCL INFO Trees [0] -1/-1/-1->7->6 [1] -1/-1/-1->7->6 [2] 4/-1/-1->7->6 [3] 5/-1/-1->7->9 [4] -1/-1/-1->7->6 [5] -1/-1/-1->7->6 [6] 4/10/-1->7->6 [7] 5/3/-1->7->15
-lrdn0750:2924823:2924882 [3] NCCL INFO P2P Chunksize set to 131072
-lrdn0750:2924822:2924881 [2] NCCL INFO Trees [0] 7/-1/-1->6->5 [1] 7/-1/-1->6->5 [2] 7/-1/-1->6->11 [3] 4/-1/-1->6->5 [4] 7/-1/-1->6->5 [5] 7/-1/-1->6->5 [6] 7/2/-1->6->14 [7] 4/-1/-1->6->5
-lrdn0750:2924822:2924881 [2] NCCL INFO P2P Chunksize set to 131072
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 00/0 : 9[1] -> 10[2] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 00/0 : 10[2] -> 11[3] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 04/0 : 10[2] -> 11[3] via P2P/CUMEM/read
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 00/0 : 5[1] -> 6[2] via P2P/CUMEM/read
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/CUMEM/read
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 00/0 : 6[2] -> 7[3] via P2P/CUMEM/read
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[2] via P2P/CUMEM/read
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 04/0 : 6[2] -> 7[3] via P2P/CUMEM/read
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 04/0 : 5[1] -> 6[2] via P2P/CUMEM/read
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 04/0 : 2[2] -> 3[3] via P2P/CUMEM/read
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 04/0 : 1[1] -> 2[2] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 04/0 : 9[1] -> 10[2] via P2P/CUMEM/read
-lrdn0808:41111:41170 [2] NCCL INFO Channel 00/0 : 14[2] -> 15[3] via P2P/CUMEM/read
-lrdn0808:41110:41173 [1] NCCL INFO Channel 00/0 : 13[1] -> 14[2] via P2P/CUMEM/read
-lrdn0808:41111:41170 [2] NCCL INFO Channel 04/0 : 14[2] -> 15[3] via P2P/CUMEM/read
-lrdn0808:41110:41173 [1] NCCL INFO Channel 04/0 : 13[1] -> 14[2] via P2P/CUMEM/read
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 00/0 : 7[3] -> 8[0] [receive] via NET/IB/0/GDRDMA
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 00/0 : 11[3] -> 12[0] [send] via NET/IB/0(8)/GDRDMA
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 04/0 : 7[3] -> 8[0] [receive] via NET/IB/0/GDRDMA
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 00/0 : 8[0] -> 9[1] via P2P/CUMEM/read
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 04/0 : 11[3] -> 12[0] [send] via NET/IB/0(8)/GDRDMA
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 00/0 : 3[3] -> 4[0] [receive] via NET/IB/0/GDRDMA
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 04/0 : 8[0] -> 9[1] via P2P/CUMEM/read
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 00/0 : 7[3] -> 8[0] [send] via NET/IB/0(4)/GDRDMA
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 00/0 : 15[3] -> 0[0] [receive] via NET/IB/0/GDRDMA
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 00/0 : 3[3] -> 4[0] [send] via NET/IB/0(0)/GDRDMA
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 04/0 : 3[3] -> 4[0] [receive] via NET/IB/0/GDRDMA
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 00/0 : 4[0] -> 5[1] via P2P/CUMEM/read
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 04/0 : 7[3] -> 8[0] [send] via NET/IB/0(4)/GDRDMA
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 04/0 : 15[3] -> 0[0] [receive] via NET/IB/0/GDRDMA
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM/read
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 04/0 : 3[3] -> 4[0] [send] via NET/IB/0(0)/GDRDMA
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 04/0 : 4[0] -> 5[1] via P2P/CUMEM/read
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 04/0 : 0[0] -> 1[1] via P2P/CUMEM/read
-lrdn0808:41109:41172 [0] NCCL INFO Channel 00/0 : 11[3] -> 12[0] [receive] via NET/IB/0/GDRDMA
-lrdn0808:41112:41171 [3] NCCL INFO Channel 00/0 : 15[3] -> 0[0] [send] via NET/IB/0(12)/GDRDMA
-lrdn0808:41109:41172 [0] NCCL INFO Channel 04/0 : 11[3] -> 12[0] [receive] via NET/IB/0/GDRDMA
-lrdn0808:41109:41172 [0] NCCL INFO Channel 00/0 : 12[0] -> 13[1] via P2P/CUMEM/read
-lrdn0808:41112:41171 [3] NCCL INFO Channel 04/0 : 15[3] -> 0[0] [send] via NET/IB/0(12)/GDRDMA
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 01/0 : 8[0] -> 11[3] via P2P/CUMEM/read
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 01/0 : 4[0] -> 7[3] via P2P/CUMEM/read
-lrdn0808:41109:41172 [0] NCCL INFO Channel 04/0 : 12[0] -> 13[1] via P2P/CUMEM/read
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 02/0 : 8[0] -> 11[3] via P2P/CUMEM/read
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 02/0 : 4[0] -> 7[3] via P2P/CUMEM/read
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 05/0 : 8[0] -> 11[3] via P2P/CUMEM/read
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 01/0 : 0[0] -> 3[3] via P2P/CUMEM/read
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 05/0 : 4[0] -> 7[3] via P2P/CUMEM/read
-lrdn0808:41109:41172 [0] NCCL INFO Channel 01/0 : 12[0] -> 15[3] via P2P/CUMEM/read
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 06/0 : 8[0] -> 11[3] via P2P/CUMEM/read
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 02/0 : 0[0] -> 3[3] via P2P/CUMEM/read
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 06/0 : 4[0] -> 7[3] via P2P/CUMEM/read
-lrdn0808:41109:41172 [0] NCCL INFO Channel 02/0 : 12[0] -> 15[3] via P2P/CUMEM/read
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 05/0 : 0[0] -> 3[3] via P2P/CUMEM/read
-lrdn0808:41109:41172 [0] NCCL INFO Channel 05/0 : 12[0] -> 15[3] via P2P/CUMEM/read
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 06/0 : 0[0] -> 3[3] via P2P/CUMEM/read
-lrdn0808:41109:41172 [0] NCCL INFO Channel 06/0 : 12[0] -> 15[3] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 02/0 : 7[3] -> 10[2] [receive] via NET/IB/2/GDRDMA
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 02/0 : 11[3] -> 14[2] [send] via NET/IB/2(10)/GDRDMA
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 06/0 : 7[3] -> 10[2] [receive] via NET/IB/2/GDRDMA
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 02/0 : 3[3] -> 6[2] [receive] via NET/IB/2/GDRDMA
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 06/0 : 11[3] -> 14[2] [send] via NET/IB/2(10)/GDRDMA
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 02/0 : 7[3] -> 10[2] [send] via NET/IB/2(6)/GDRDMA
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 06/0 : 3[3] -> 6[2] [receive] via NET/IB/2/GDRDMA
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 06/0 : 7[3] -> 10[2] [send] via NET/IB/2(6)/GDRDMA
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 02/0 : 15[3] -> 2[2] [receive] via NET/IB/2/GDRDMA
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 02/0 : 3[3] -> 6[2] [send] via NET/IB/2(2)/GDRDMA
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 06/0 : 15[3] -> 2[2] [receive] via NET/IB/2/GDRDMA
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 06/0 : 3[3] -> 6[2] [send] via NET/IB/2(2)/GDRDMA
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 01/0 : 6[2] -> 9[1] [receive] via NET/IB/1/GDRDMA
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 01/0 : 10[2] -> 13[1] [send] via NET/IB/1(9)/GDRDMA
-lrdn0808:41111:41170 [2] NCCL INFO Channel 02/0 : 11[3] -> 14[2] [receive] via NET/IB/2/GDRDMA
-lrdn0808:41112:41171 [3] NCCL INFO Channel 02/0 : 15[3] -> 2[2] [send] via NET/IB/2(14)/GDRDMA
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 01/0 : 2[2] -> 5[1] [receive] via NET/IB/1/GDRDMA
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 05/0 : 6[2] -> 9[1] [receive] via NET/IB/1/GDRDMA
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 01/0 : 6[2] -> 9[1] [send] via NET/IB/1(5)/GDRDMA
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 05/0 : 10[2] -> 13[1] [send] via NET/IB/1(9)/GDRDMA
-lrdn0808:41111:41170 [2] NCCL INFO Channel 06/0 : 11[3] -> 14[2] [receive] via NET/IB/2/GDRDMA
-lrdn0808:41112:41171 [3] NCCL INFO Channel 06/0 : 15[3] -> 2[2] [send] via NET/IB/2(14)/GDRDMA
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 05/0 : 2[2] -> 5[1] [receive] via NET/IB/1/GDRDMA
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 05/0 : 6[2] -> 9[1] [send] via NET/IB/1(5)/GDRDMA
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 01/0 : 14[2] -> 1[1] [receive] via NET/IB/1/GDRDMA
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 01/0 : 2[2] -> 5[1] [send] via NET/IB/1(1)/GDRDMA
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 05/0 : 14[2] -> 1[1] [receive] via NET/IB/1/GDRDMA
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 05/0 : 2[2] -> 5[1] [send] via NET/IB/1(1)/GDRDMA
-lrdn0808:41110:41173 [1] NCCL INFO Channel 01/0 : 10[2] -> 13[1] [receive] via NET/IB/1/GDRDMA
-lrdn0808:41111:41170 [2] NCCL INFO Channel 01/0 : 14[2] -> 1[1] [send] via NET/IB/1(13)/GDRDMA
-lrdn0808:41110:41173 [1] NCCL INFO Channel 05/0 : 10[2] -> 13[1] [receive] via NET/IB/1/GDRDMA
-lrdn0808:41111:41170 [2] NCCL INFO Channel 05/0 : 14[2] -> 1[1] [send] via NET/IB/1(13)/GDRDMA
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 02/0 : 6[2] -> 5[1] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 01/0 : 9[1] -> 8[0] via P2P/CUMEM/read
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 03/0 : 6[2] -> 5[1] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 02/0 : 9[1] -> 8[0] via P2P/CUMEM/read
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 06/0 : 6[2] -> 5[1] via P2P/CUMEM/read
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 01/0 : 5[1] -> 4[0] via P2P/CUMEM/read
-lrdn0808:41110:41173 [1] NCCL INFO Channel 01/0 : 13[1] -> 12[0] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 03/0 : 9[1] -> 8[0] via P2P/CUMEM/read
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 02/0 : 2[2] -> 1[1] via P2P/CUMEM/read
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM/read
-lrdn0808:41111:41170 [2] NCCL INFO Channel 02/0 : 14[2] -> 13[1] via P2P/CUMEM/read
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 07/0 : 6[2] -> 5[1] via P2P/CUMEM/read
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 02/0 : 5[1] -> 4[0] via P2P/CUMEM/read
-lrdn0808:41110:41173 [1] NCCL INFO Channel 02/0 : 13[1] -> 12[0] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 02/0 : 10[2] -> 9[1] via P2P/CUMEM/read
-lrdn0808:41111:41170 [2] NCCL INFO Channel 03/0 : 14[2] -> 13[1] via P2P/CUMEM/read
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 03/0 : 2[2] -> 1[1] via P2P/CUMEM/read
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 05/0 : 9[1] -> 8[0] via P2P/CUMEM/read
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 03/0 : 5[1] -> 4[0] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 03/0 : 10[2] -> 9[1] via P2P/CUMEM/read
-lrdn0808:41110:41173 [1] NCCL INFO Channel 03/0 : 13[1] -> 12[0] via P2P/CUMEM/read
-lrdn0808:41111:41170 [2] NCCL INFO Channel 06/0 : 14[2] -> 13[1] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 06/0 : 9[1] -> 8[0] via P2P/CUMEM/read
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 06/0 : 2[2] -> 1[1] via P2P/CUMEM/read
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM/read
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 05/0 : 5[1] -> 4[0] via P2P/CUMEM/read
-lrdn0808:41110:41173 [1] NCCL INFO Channel 05/0 : 13[1] -> 12[0] via P2P/CUMEM/read
-lrdn0808:41111:41170 [2] NCCL INFO Channel 07/0 : 14[2] -> 13[1] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 06/0 : 10[2] -> 9[1] via P2P/CUMEM/read
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 06/0 : 5[1] -> 4[0] via P2P/CUMEM/read
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 07/0 : 2[2] -> 1[1] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 07/0 : 9[1] -> 8[0] via P2P/CUMEM/read
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 05/0 : 1[1] -> 0[0] via P2P/CUMEM/read
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 03/0 : 8[0] -> 15[3] [send] via NET/IB/3(11)/GDRDMA
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 07/0 : 5[1] -> 4[0] via P2P/CUMEM/read
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 03/0 : 4[0] -> 11[3] [send] via NET/IB/3(7)/GDRDMA
-lrdn0808:41110:41173 [1] NCCL INFO Channel 06/0 : 13[1] -> 12[0] via P2P/CUMEM/read
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 03/0 : 4[0] -> 11[3] [receive] via NET/IB/3/GDRDMA
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 07/0 : 8[0] -> 15[3] [send] via NET/IB/3(11)/GDRDMA
-lrdn0808:41110:41173 [1] NCCL INFO Channel 07/0 : 13[1] -> 12[0] via P2P/CUMEM/read
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 06/0 : 1[1] -> 0[0] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 07/0 : 10[2] -> 9[1] via P2P/CUMEM/read
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 03/0 : 0[0] -> 7[3] [send] via NET/IB/3(3)/GDRDMA
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 07/0 : 4[0] -> 11[3] [receive] via NET/IB/3/GDRDMA
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 03/0 : 0[0] -> 7[3] [receive] via NET/IB/3/GDRDMA
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 03/0 : 12[0] -> 3[3] [receive] via NET/IB/3/GDRDMA
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 07/0 : 4[0] -> 11[3] [send] via NET/IB/3(7)/GDRDMA
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 07/0 : 0[0] -> 7[3] [receive] via NET/IB/3/GDRDMA
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 07/0 : 0[0] -> 7[3] [send] via NET/IB/3(3)/GDRDMA
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 07/0 : 12[0] -> 3[3] [receive] via NET/IB/3/GDRDMA
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 07/0 : 1[1] -> 0[0] via P2P/CUMEM/read
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 01/0 : 7[3] -> 6[2] via P2P/CUMEM/read
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 01/0 : 11[3] -> 10[2] via P2P/CUMEM/read
-lrdn0808:41109:41172 [0] NCCL INFO Channel 03/0 : 12[0] -> 3[3] [send] via NET/IB/3(15)/GDRDMA
-lrdn0808:41112:41171 [3] NCCL INFO Channel 03/0 : 8[0] -> 15[3] [receive] via NET/IB/3/GDRDMA
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 03/0 : 11[3] -> 10[2] via P2P/CUMEM/read
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 03/0 : 7[3] -> 6[2] via P2P/CUMEM/read
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/CUMEM/read
-lrdn0808:41109:41172 [0] NCCL INFO Channel 07/0 : 12[0] -> 3[3] [send] via NET/IB/3(15)/GDRDMA
-lrdn0808:41112:41171 [3] NCCL INFO Channel 07/0 : 8[0] -> 15[3] [receive] via NET/IB/3/GDRDMA
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 05/0 : 11[3] -> 10[2] via P2P/CUMEM/read
-lrdn0808:41112:41171 [3] NCCL INFO Channel 01/0 : 15[3] -> 14[2] via P2P/CUMEM/read
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 05/0 : 7[3] -> 6[2] via P2P/CUMEM/read
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 03/0 : 3[3] -> 2[2] via P2P/CUMEM/read
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 07/0 : 11[3] -> 10[2] via P2P/CUMEM/read
-lrdn0808:41112:41171 [3] NCCL INFO Channel 03/0 : 15[3] -> 14[2] via P2P/CUMEM/read
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 07/0 : 7[3] -> 6[2] via P2P/CUMEM/read
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 05/0 : 3[3] -> 2[2] via P2P/CUMEM/read
-lrdn0808:41112:41171 [3] NCCL INFO Channel 05/0 : 15[3] -> 14[2] via P2P/CUMEM/read
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 07/0 : 3[3] -> 2[2] via P2P/CUMEM/read
-lrdn0808:41112:41171 [3] NCCL INFO Channel 07/0 : 15[3] -> 14[2] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Connected all rings
-lrdn0786:3734536:3734597 [0] NCCL INFO Connected all rings
-lrdn0090:2401190:2401253 [1] NCCL INFO Connected all rings
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 01/0 : 8[0] -> 9[1] via P2P/CUMEM/read
-lrdn0090:2401189:2401252 [0] NCCL INFO Connected all rings
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM/read
-lrdn0090:2401191:2401254 [2] NCCL INFO Connected all rings
-lrdn0090:2401192:2401255 [3] NCCL INFO Connected all rings
-lrdn0750:2924820:2924883 [0] NCCL INFO Connected all rings
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 01/0 : 4[0] -> 5[1] via P2P/CUMEM/read
-lrdn0786:3734539:3734600 [3] NCCL INFO Connected all rings
-lrdn0750:2924821:2924884 [1] NCCL INFO Connected all rings
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 02/0 : 8[0] -> 9[1] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Connected all rings
-lrdn0750:2924823:2924882 [3] NCCL INFO Connected all rings
-lrdn0750:2924822:2924881 [2] NCCL INFO Connected all rings
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 02/0 : 4[0] -> 5[1] via P2P/CUMEM/read
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM/read
-lrdn0808:41110:41173 [1] NCCL INFO Connected all rings
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 05/0 : 8[0] -> 9[1] via P2P/CUMEM/read
-lrdn0808:41109:41172 [0] NCCL INFO Connected all rings
-lrdn0808:41109:41172 [0] NCCL INFO Channel 01/0 : 12[0] -> 13[1] via P2P/CUMEM/read
-lrdn0808:41112:41171 [3] NCCL INFO Connected all rings
-lrdn0808:41111:41170 [2] NCCL INFO Connected all rings
-lrdn0808:41109:41172 [0] NCCL INFO Channel 02/0 : 12[0] -> 13[1] via P2P/CUMEM/read
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 05/0 : 4[0] -> 5[1] via P2P/CUMEM/read
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 05/0 : 0[0] -> 1[1] via P2P/CUMEM/read
-lrdn0808:41109:41172 [0] NCCL INFO Channel 05/0 : 12[0] -> 13[1] via P2P/CUMEM/read
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 06/0 : 8[0] -> 9[1] via P2P/CUMEM/read
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 06/0 : 4[0] -> 5[1] via P2P/CUMEM/read
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 06/0 : 0[0] -> 1[1] via P2P/CUMEM/read
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 01/0 : 9[1] -> 10[2] via P2P/CUMEM/read
-lrdn0808:41109:41172 [0] NCCL INFO Channel 06/0 : 12[0] -> 13[1] via P2P/CUMEM/read
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 01/0 : 5[1] -> 6[2] via P2P/CUMEM/read
-lrdn0808:41110:41173 [1] NCCL INFO Channel 01/0 : 13[1] -> 14[2] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 03/0 : 9[1] -> 10[2] via P2P/CUMEM/read
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 01/0 : 1[1] -> 2[2] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 01/0 : 10[2] -> 11[3] via P2P/CUMEM/read
-lrdn0808:41111:41170 [2] NCCL INFO Channel 01/0 : 14[2] -> 15[3] via P2P/CUMEM/read
-lrdn0808:41111:41170 [2] NCCL INFO Channel 02/0 : 14[2] -> 15[3] via P2P/CUMEM/read
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 03/0 : 5[1] -> 6[2] via P2P/CUMEM/read
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 02/0 : 2[2] -> 3[3] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 02/0 : 10[2] -> 11[3] via P2P/CUMEM/read
-lrdn0808:41110:41173 [1] NCCL INFO Channel 03/0 : 13[1] -> 14[2] via P2P/CUMEM/read
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 01/0 : 6[2] -> 7[3] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 05/0 : 9[1] -> 10[2] via P2P/CUMEM/read
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 03/0 : 1[1] -> 2[2] via P2P/CUMEM/read
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 02/0 : 6[2] -> 7[3] via P2P/CUMEM/read
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 05/0 : 5[1] -> 6[2] via P2P/CUMEM/read
-lrdn0808:41111:41170 [2] NCCL INFO Channel 05/0 : 14[2] -> 15[3] via P2P/CUMEM/read
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 05/0 : 2[2] -> 3[3] via P2P/CUMEM/read
-lrdn0808:41110:41173 [1] NCCL INFO Channel 05/0 : 13[1] -> 14[2] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 05/0 : 10[2] -> 11[3] via P2P/CUMEM/read
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 05/0 : 6[2] -> 7[3] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 07/0 : 9[1] -> 10[2] via P2P/CUMEM/read
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 05/0 : 1[1] -> 2[2] via P2P/CUMEM/read
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 07/0 : 5[1] -> 6[2] via P2P/CUMEM/read
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 06/0 : 2[2] -> 3[3] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 06/0 : 10[2] -> 11[3] via P2P/CUMEM/read
-lrdn0808:41111:41170 [2] NCCL INFO Channel 06/0 : 14[2] -> 15[3] via P2P/CUMEM/read
-lrdn0808:41110:41173 [1] NCCL INFO Channel 07/0 : 13[1] -> 14[2] via P2P/CUMEM/read
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 07/0 : 1[1] -> 2[2] via P2P/CUMEM/read
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 06/0 : 6[2] -> 7[3] via P2P/CUMEM/read
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 03/0 : 8[0] -> 10[2] via P2P/CUMEM/read
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 03/0 : 4[0] -> 6[2] via P2P/CUMEM/read
-lrdn0808:41109:41172 [0] NCCL INFO Channel 03/0 : 12[0] -> 14[2] via P2P/CUMEM/read
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 03/0 : 0[0] -> 2[2] via P2P/CUMEM/read
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 03/0 : 5[1] -> 7[3] via P2P/CUMEM/read
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 07/0 : 8[0] -> 10[2] via P2P/CUMEM/read
-lrdn0808:41110:41173 [1] NCCL INFO Channel 03/0 : 13[1] -> 15[3] via P2P/CUMEM/read
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 07/0 : 4[0] -> 6[2] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 03/0 : 7[3] -> 9[1] [receive] via NET/IB/3/GDRDMA
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 03/0 : 1[1] -> 3[3] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 03/0 : 9[1] -> 11[3] via P2P/CUMEM/read
-lrdn0808:41109:41172 [0] NCCL INFO Channel 07/0 : 12[0] -> 14[2] via P2P/CUMEM/read
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 07/0 : 5[1] -> 7[3] via P2P/CUMEM/read
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 07/0 : 0[0] -> 2[2] via P2P/CUMEM/read
-lrdn0808:41110:41173 [1] NCCL INFO Channel 07/0 : 13[1] -> 15[3] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 07/0 : 9[1] -> 11[3] via P2P/CUMEM/read
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 07/0 : 1[1] -> 3[3] via P2P/CUMEM/read
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 03/0 : 7[3] -> 9[1] [send] via NET/IB/3/GDRDMA
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 04/0 : 0[0] -> 4[0] [receive] via NET/IB/0/GDRDMA
-lrdn0808:41109:41172 [0] NCCL INFO Channel 00/0 : 8[0] -> 12[0] [receive] via NET/IB/0/GDRDMA
-lrdn0808:41111:41170 [2] NCCL INFO Channel 02/0 : 10[2] -> 14[2] [receive] via NET/IB/2/GDRDMA
-lrdn0808:41112:41171 [3] NCCL INFO Channel 03/0 : 11[3] -> 15[3] [receive] via NET/IB/3/GDRDMA
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 04/0 : 0[0] -> 4[0] [send] via NET/IB/0/GDRDMA
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 02/0 : 10[2] -> 14[2] [send] via NET/IB/2/GDRDMA
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 07/0 : 3[3] -> 7[3] [send] via NET/IB/3/GDRDMA
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 06/0 : 2[2] -> 6[2] [send] via NET/IB/2/GDRDMA
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 04/0 : 5[1] -> 8[0] [receive] via NET/IB/0/GDRDMA
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 06/0 : 2[2] -> 6[2] [receive] via NET/IB/2/GDRDMA
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 03/0 : 11[3] -> 15[3] [send] via NET/IB/3/GDRDMA
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 04/0 : 5[1] -> 8[0] [send] via NET/IB/0(4)/GDRDMA
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 00/0 : 4[0] -> 9[1] [receive] via NET/IB/0/GDRDMA
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 05/0 : 0[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
-lrdn0808:41109:41172 [0] NCCL INFO Channel 01/0 : 8[0] -> 12[0] [receive] via NET/IB/1/GDRDMA
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 05/0 : 5[1] -> 8[0] [receive] via NET/IB/1/GDRDMA
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 05/0 : 5[1] -> 8[0] [send] via NET/IB/1/GDRDMA
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 07/0 : 3[3] -> 7[3] [receive] via NET/IB/3/GDRDMA
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 02/0 : 10[2] -> 2[2] [receive] via NET/IB/2/GDRDMA
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 03/0 : 11[3] -> 3[3] [receive] via NET/IB/3/GDRDMA
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 01/0 : 4[0] -> 9[1] [receive] via NET/IB/1/GDRDMA
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 02/0 : 6[2] -> 11[3] [receive] via NET/IB/2/GDRDMA
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 02/0 : 2[2] -> 10[2] [send] via NET/IB/2/GDRDMA
-lrdn0808:41112:41171 [3] NCCL INFO Channel 07/0 : 7[3] -> 15[3] [receive] via NET/IB/3/GDRDMA
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 02/0 : 6[2] -> 11[3] [send] via NET/IB/2/GDRDMA
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 03/0 : 3[3] -> 11[3] [send] via NET/IB/3/GDRDMA
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 00/0 : 8[0] -> 12[0] [send] via NET/IB/0/GDRDMA
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 05/0 : 0[0] -> 4[0] [send] via NET/IB/1(1)/GDRDMA
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 02/0 : 2[2] -> 10[2] [receive] via NET/IB/2/GDRDMA
-lrdn0808:41112:41171 [3] NCCL INFO Channel 07/0 : 15[3] -> 7[3] [send] via NET/IB/3/GDRDMA
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 07/0 : 15[3] -> 7[3] [receive] via NET/IB/3/GDRDMA
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 01/0 : 8[0] -> 12[0] [send] via NET/IB/1(9)/GDRDMA
-lrdn0808:41111:41170 [2] NCCL INFO Channel 06/0 : 6[2] -> 14[2] [receive] via NET/IB/2/GDRDMA
-lrdn0808:41111:41170 [2] NCCL INFO Channel 06/0 : 14[2] -> 6[2] [send] via NET/IB/2/GDRDMA
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 07/0 : 7[3] -> 15[3] [send] via NET/IB/3/GDRDMA
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 06/0 : 6[2] -> 2[2] [receive] via NET/IB/2/GDRDMA
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 07/0 : 5[1] -> 11[3] [send] via NET/IB/3(7)/GDRDMA
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 06/0 : 14[2] -> 6[2] [receive] via NET/IB/2/GDRDMA
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 02/0 : 10[2] -> 2[2] [send] via NET/IB/2/GDRDMA
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 07/0 : 5[1] -> 11[3] [receive] via NET/IB/3/GDRDMA
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 02/0 : 14[2] -> 10[2] [receive] via NET/IB/2/GDRDMA
-lrdn0808:41112:41171 [3] NCCL INFO Channel 03/0 : 15[3] -> 11[3] [send] via NET/IB/3/GDRDMA
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 06/0 : 6[2] -> 14[2] [send] via NET/IB/2/GDRDMA
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 07/0 : 7[3] -> 3[3] [send] via NET/IB/3/GDRDMA
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 00/0 : 8[0] -> 0[0] [receive] via NET/IB/0/GDRDMA
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 00/0 : 0[0] -> 8[0] [receive] via NET/IB/0/GDRDMA
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 03/0 : 3[3] -> 11[3] [receive] via NET/IB/3/GDRDMA
-lrdn0808:41109:41172 [0] NCCL INFO Channel 04/0 : 4[0] -> 12[0] [receive] via NET/IB/0/GDRDMA
-lrdn0808:41111:41170 [2] NCCL INFO Channel 02/0 : 14[2] -> 10[2] [send] via NET/IB/2/GDRDMA
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 02/0 : 11[3] -> 6[2] [receive] via NET/IB/2/GDRDMA
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 01/0 : 8[0] -> 0[0] [receive] via NET/IB/1/GDRDMA
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 03/0 : 11[3] -> 3[3] [send] via NET/IB/3/GDRDMA
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 01/0 : 0[0] -> 8[0] [receive] via NET/IB/1/GDRDMA
-lrdn0808:41109:41172 [0] NCCL INFO Channel 05/0 : 4[0] -> 12[0] [receive] via NET/IB/1/GDRDMA
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 07/0 : 11[3] -> 5[1] [receive] via NET/IB/3/GDRDMA
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 00/0 : 0[0] -> 8[0] [send] via NET/IB/0/GDRDMA
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 00/0 : 8[0] -> 0[0] [send] via NET/IB/0/GDRDMA
-lrdn0808:41111:41170 [2] NCCL INFO Channel 03/0 : 14[2] -> 12[0] via P2P/CUMEM/read
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 07/0 : 7[3] -> 3[3] [receive] via NET/IB/3/GDRDMA
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 06/0 : 10[2] -> 7[3] [send] via NET/IB/2/GDRDMA
-lrdn0808:41109:41172 [0] NCCL INFO Channel 04/0 : 12[0] -> 4[0] [send] via NET/IB/0/GDRDMA
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 00/0 : 4[0] -> 9[1] [send] via NET/IB/0/GDRDMA
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 01/0 : 0[0] -> 8[0] [send] via NET/IB/1(1)/GDRDMA
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 02/0 : 3[3] -> 0[0] via P2P/CUMEM/read
-lrdn0808:41109:41172 [0] NCCL INFO Channel 05/0 : 12[0] -> 4[0] [send] via NET/IB/1(13)/GDRDMA
-lrdn0808:41111:41170 [2] NCCL INFO Channel 07/0 : 14[2] -> 12[0] via P2P/CUMEM/read
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 01/0 : 8[0] -> 0[0] [send] via NET/IB/1(9)/GDRDMA
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 01/0 : 4[0] -> 9[1] [send] via NET/IB/1(5)/GDRDMA
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 04/0 : 4[0] -> 0[0] [receive] via NET/IB/0/GDRDMA
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 07/0 : 11[3] -> 5[1] [send] via NET/IB/3/GDRDMA
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 06/0 : 10[2] -> 7[3] [receive] via NET/IB/2/GDRDMA
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 06/0 : 3[3] -> 0[0] via P2P/CUMEM/read
-lrdn0090:2401189:2401252 [0] NCCL INFO Channel 05/0 : 4[0] -> 0[0] [receive] via NET/IB/1/GDRDMA
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 02/0 : 7[3] -> 4[0] via P2P/CUMEM/read
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 04/0 : 12[0] -> 4[0] [receive] via NET/IB/0/GDRDMA
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 00/0 : 12[0] -> 8[0] [receive] via NET/IB/0/GDRDMA
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 02/0 : 11[3] -> 6[2] [send] via NET/IB/2(10)/GDRDMA
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 05/0 : 12[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 04/0 : 4[0] -> 12[0] [send] via NET/IB/0/GDRDMA
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 01/0 : 12[0] -> 8[0] [receive] via NET/IB/1/GDRDMA
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 06/0 : 7[3] -> 4[0] via P2P/CUMEM/read
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 05/0 : 4[0] -> 12[0] [send] via NET/IB/1(5)/GDRDMA
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 00/0 : 9[1] -> 4[0] [send] via NET/IB/0(8)/GDRDMA
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 04/0 : 8[0] -> 5[1] [receive] via NET/IB/0/GDRDMA
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 01/0 : 9[1] -> 4[0] [send] via NET/IB/1/GDRDMA
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 03/0 : 15[3] -> 11[3] [receive] via NET/IB/3/GDRDMA
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 00/0 : 9[1] -> 4[0] [receive] via NET/IB/0/GDRDMA
-lrdn0808:41109:41172 [0] NCCL INFO Channel 00/0 : 12[0] -> 8[0] [send] via NET/IB/0/GDRDMA
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 05/0 : 8[0] -> 5[1] [receive] via NET/IB/1/GDRDMA
-lrdn0808:41109:41172 [0] NCCL INFO Channel 01/0 : 12[0] -> 8[0] [send] via NET/IB/1(13)/GDRDMA
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 03/0 : 10[2] -> 8[0] via P2P/CUMEM/read
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 01/0 : 9[1] -> 4[0] [receive] via NET/IB/1/GDRDMA
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 03/0 : 2[2] -> 0[0] via P2P/CUMEM/read
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 02/0 : 11[3] -> 8[0] via P2P/CUMEM/read
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 06/0 : 6[2] -> 2[2] [send] via NET/IB/2/GDRDMA
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 04/0 : 4[0] -> 0[0] [send] via NET/IB/0/GDRDMA
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 03/0 : 6[2] -> 4[0] via P2P/CUMEM/read
-lrdn0750:2924820:2924883 [0] NCCL INFO Channel 05/0 : 4[0] -> 0[0] [send] via NET/IB/1(5)/GDRDMA
-lrdn0808:41112:41171 [3] NCCL INFO Channel 02/0 : 15[3] -> 12[0] via P2P/CUMEM/read
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 07/0 : 2[2] -> 0[0] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 07/0 : 10[2] -> 8[0] via P2P/CUMEM/read
-lrdn0808:41112:41171 [3] NCCL INFO Channel 06/0 : 15[3] -> 12[0] via P2P/CUMEM/read
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 06/0 : 11[3] -> 8[0] via P2P/CUMEM/read
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 07/0 : 6[2] -> 4[0] via P2P/CUMEM/read
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 03/0 : 3[3] -> 1[1] via P2P/CUMEM/read
-lrdn0808:41112:41171 [3] NCCL INFO Channel 03/0 : 15[3] -> 13[1] via P2P/CUMEM/read
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 04/0 : 8[0] -> 5[1] [send] via NET/IB/0/GDRDMA
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 03/0 : 9[1] -> 7[3] [receive] via NET/IB/3/GDRDMA
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 03/0 : 9[1] -> 7[3] [send] via NET/IB/3(11)/GDRDMA
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 07/0 : 3[3] -> 1[1] via P2P/CUMEM/read
-lrdn0786:3734536:3734597 [0] NCCL INFO Channel 05/0 : 8[0] -> 5[1] [send] via NET/IB/1(9)/GDRDMA
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 03/0 : 7[3] -> 5[1] via P2P/CUMEM/read
-lrdn0808:41112:41171 [3] NCCL INFO Channel 07/0 : 15[3] -> 13[1] via P2P/CUMEM/read
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 03/0 : 11[3] -> 9[1] via P2P/CUMEM/read
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 07/0 : 7[3] -> 5[1] via P2P/CUMEM/read
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 07/0 : 11[3] -> 9[1] via P2P/CUMEM/read
-lrdn0808:41112:41171 [3] NCCL INFO Channel 00/0 : 15[3] -> 14[2] via P2P/CUMEM/read
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/CUMEM/read
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 00/0 : 11[3] -> 10[2] via P2P/CUMEM/read
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 02/0 : 3[3] -> 2[2] via P2P/CUMEM/read
-lrdn0808:41112:41171 [3] NCCL INFO Channel 02/0 : 15[3] -> 14[2] via P2P/CUMEM/read
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 00/0 : 7[3] -> 6[2] via P2P/CUMEM/read
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 02/0 : 11[3] -> 10[2] via P2P/CUMEM/read
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 02/0 : 7[3] -> 6[2] via P2P/CUMEM/read
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 04/0 : 3[3] -> 2[2] via P2P/CUMEM/read
-lrdn0808:41112:41171 [3] NCCL INFO Channel 04/0 : 15[3] -> 14[2] via P2P/CUMEM/read
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 04/0 : 11[3] -> 10[2] via P2P/CUMEM/read
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 04/0 : 7[3] -> 6[2] via P2P/CUMEM/read
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 00/0 : 6[2] -> 5[1] via P2P/CUMEM/read
-lrdn0808:41112:41171 [3] NCCL INFO Channel 06/0 : 15[3] -> 14[2] via P2P/CUMEM/read
-lrdn0808:41111:41170 [2] NCCL INFO Channel 00/0 : 14[2] -> 13[1] via P2P/CUMEM/read
-lrdn0090:2401192:2401255 [3] NCCL INFO Channel 06/0 : 3[3] -> 2[2] via P2P/CUMEM/read
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM/read
-lrdn0786:3734539:3734600 [3] NCCL INFO Channel 06/0 : 11[3] -> 10[2] via P2P/CUMEM/read
-lrdn0750:2924823:2924882 [3] NCCL INFO Channel 06/0 : 7[3] -> 6[2] via P2P/CUMEM/read
-lrdn0808:41110:41173 [1] NCCL INFO Channel 00/0 : 13[1] -> 12[0] via P2P/CUMEM/read
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 01/0 : 6[2] -> 5[1] via P2P/CUMEM/read
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 00/0 : 2[2] -> 1[1] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 00/0 : 9[1] -> 8[0] via P2P/CUMEM/read
-lrdn0808:41111:41170 [2] NCCL INFO Channel 01/0 : 14[2] -> 13[1] via P2P/CUMEM/read
-lrdn0090:2401190:2401253 [1] NCCL INFO Channel 04/0 : 1[1] -> 0[0] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 00/0 : 10[2] -> 9[1] via P2P/CUMEM/read
-lrdn0808:41110:41173 [1] NCCL INFO Channel 04/0 : 13[1] -> 12[0] via P2P/CUMEM/read
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 01/0 : 2[2] -> 1[1] via P2P/CUMEM/read
-lrdn0786:3734537:3734599 [1] NCCL INFO Channel 04/0 : 9[1] -> 8[0] via P2P/CUMEM/read
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 00/0 : 5[1] -> 4[0] via P2P/CUMEM/read
-lrdn0808:41111:41170 [2] NCCL INFO Channel 04/0 : 14[2] -> 13[1] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 01/0 : 10[2] -> 9[1] via P2P/CUMEM/read
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 04/0 : 6[2] -> 5[1] via P2P/CUMEM/read
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 04/0 : 2[2] -> 1[1] via P2P/CUMEM/read
-lrdn0808:41111:41170 [2] NCCL INFO Channel 05/0 : 14[2] -> 13[1] via P2P/CUMEM/read
-lrdn0750:2924821:2924884 [1] NCCL INFO Channel 04/0 : 5[1] -> 4[0] via P2P/CUMEM/read
-lrdn0750:2924822:2924881 [2] NCCL INFO Channel 05/0 : 6[2] -> 5[1] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 04/0 : 10[2] -> 9[1] via P2P/CUMEM/read
-lrdn0090:2401191:2401254 [2] NCCL INFO Channel 05/0 : 2[2] -> 1[1] via P2P/CUMEM/read
-lrdn0786:3734538:3734598 [2] NCCL INFO Channel 05/0 : 10[2] -> 9[1] via P2P/CUMEM/read
-lrdn0090:2401189:2401252 [0] NCCL INFO Connected all trees
-lrdn0090:2401189:2401252 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-lrdn0090:2401189:2401252 [0] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
-lrdn0090:2401190:2401253 [1] NCCL INFO Connected all trees
-lrdn0090:2401190:2401253 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-lrdn0090:2401190:2401253 [1] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
-lrdn0750:2924820:2924883 [0] NCCL INFO Connected all trees
-lrdn0750:2924820:2924883 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-lrdn0750:2924820:2924883 [0] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
-lrdn0750:2924821:2924884 [1] NCCL INFO Connected all trees
-lrdn0750:2924821:2924884 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-lrdn0750:2924821:2924884 [1] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
-lrdn0090:2401192:2401255 [3] NCCL INFO Connected all trees
-lrdn0090:2401192:2401255 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-lrdn0090:2401192:2401255 [3] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
-lrdn0090:2401191:2401254 [2] NCCL INFO Connected all trees
-lrdn0090:2401191:2401254 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-lrdn0090:2401191:2401254 [2] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
-lrdn0808:41109:41172 [0] NCCL INFO Connected all trees
-lrdn0808:41109:41172 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-lrdn0808:41109:41172 [0] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
-lrdn0808:41110:41173 [1] NCCL INFO Connected all trees
-lrdn0808:41110:41173 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-lrdn0808:41110:41173 [1] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
-lrdn0808:41112:41171 [3] NCCL INFO Connected all trees
-lrdn0808:41112:41171 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-lrdn0808:41112:41171 [3] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
-lrdn0808:41111:41170 [2] NCCL INFO Connected all trees
-lrdn0808:41111:41170 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-lrdn0808:41111:41170 [2] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
-lrdn0750:2924822:2924881 [2] NCCL INFO Connected all trees
-lrdn0750:2924822:2924881 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-lrdn0750:2924822:2924881 [2] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
-lrdn0750:2924823:2924882 [3] NCCL INFO Connected all trees
-lrdn0750:2924823:2924882 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-lrdn0750:2924823:2924882 [3] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
-lrdn0786:3734536:3734597 [0] NCCL INFO Connected all trees
-lrdn0786:3734536:3734597 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-lrdn0786:3734536:3734597 [0] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
-lrdn0786:3734537:3734599 [1] NCCL INFO Connected all trees
-lrdn0786:3734537:3734599 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-lrdn0786:3734537:3734599 [1] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
-lrdn0786:3734539:3734600 [3] NCCL INFO Connected all trees
-lrdn0786:3734539:3734600 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-lrdn0786:3734539:3734600 [3] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
-lrdn0786:3734538:3734598 [2] NCCL INFO Connected all trees
-lrdn0786:3734538:3734598 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-lrdn0786:3734538:3734598 [2] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
-lrdn0786:3734537:3734599 [1] NCCL INFO comm 0xa1315b0 rank 9 nranks 16 cudaDev 1 nvmlDev 1 busId 56000 commId 0x17d78f2fdd0002ae - Init COMPLETE
-lrdn0786:3734539:3734600 [3] NCCL INFO comm 0xa505050 rank 11 nranks 16 cudaDev 3 nvmlDev 3 busId c8000 commId 0x17d78f2fdd0002ae - Init COMPLETE
-lrdn0786:3734536:3734597 [0] NCCL INFO comm 0xa0e5830 rank 8 nranks 16 cudaDev 0 nvmlDev 0 busId 1d000 commId 0x17d78f2fdd0002ae - Init COMPLETE
-lrdn0786:3734538:3734598 [2] NCCL INFO comm 0xa455b30 rank 10 nranks 16 cudaDev 2 nvmlDev 2 busId 8f000 commId 0x17d78f2fdd0002ae - Init COMPLETE
-lrdn0090:2401190:2401253 [1] NCCL INFO comm 0xa8e78f0 rank 1 nranks 16 cudaDev 1 nvmlDev 1 busId 56000 commId 0x17d78f2fdd0002ae - Init COMPLETE
-lrdn0090:2401189:2401252 [0] NCCL INFO comm 0x9bf5580 rank 0 nranks 16 cudaDev 0 nvmlDev 0 busId 1d000 commId 0x17d78f2fdd0002ae - Init COMPLETE
-lrdn0090:2401192:2401255 [3] NCCL INFO comm 0x9bf4080 rank 3 nranks 16 cudaDev 3 nvmlDev 3 busId c8000 commId 0x17d78f2fdd0002ae - Init COMPLETE
-lrdn0090:2401191:2401254 [2] NCCL INFO comm 0x930b960 rank 2 nranks 16 cudaDev 2 nvmlDev 2 busId 8f000 commId 0x17d78f2fdd0002ae - Init COMPLETE
-lrdn0750:2924822:2924881 [2] NCCL INFO comm 0xae11890 rank 6 nranks 16 cudaDev 2 nvmlDev 2 busId 8f000 commId 0x17d78f2fdd0002ae - Init COMPLETE
-lrdn0750:2924821:2924884 [1] NCCL INFO comm 0x9415c20 rank 5 nranks 16 cudaDev 1 nvmlDev 1 busId 56000 commId 0x17d78f2fdd0002ae - Init COMPLETE
-lrdn0750:2924820:2924883 [0] NCCL INFO comm 0x9e42490 rank 4 nranks 16 cudaDev 0 nvmlDev 0 busId 1d000 commId 0x17d78f2fdd0002ae - Init COMPLETE
-lrdn0750:2924823:2924882 [3] NCCL INFO comm 0x9060970 rank 7 nranks 16 cudaDev 3 nvmlDev 3 busId c8000 commId 0x17d78f2fdd0002ae - Init COMPLETE
-lrdn0808:41109:41172 [0] NCCL INFO comm 0x9395400 rank 12 nranks 16 cudaDev 0 nvmlDev 0 busId 1d000 commId 0x17d78f2fdd0002ae - Init COMPLETE
-lrdn0808:41110:41173 [1] NCCL INFO comm 0x9bccb30 rank 13 nranks 16 cudaDev 1 nvmlDev 1 busId 56000 commId 0x17d78f2fdd0002ae - Init COMPLETE
-lrdn0808:41111:41170 [2] NCCL INFO comm 0x92c62f0 rank 14 nranks 16 cudaDev 2 nvmlDev 2 busId 8f000 commId 0x17d78f2fdd0002ae - Init COMPLETE
-lrdn0808:41112:41171 [3] NCCL INFO comm 0xa197060 rank 15 nranks 16 cudaDev 3 nvmlDev 3 busId c8000 commId 0x17d78f2fdd0002ae - Init COMPLETE
+lrdn0022:1834495:1834495 [1] NCCL INFO cudaDriverVersion 12020
+lrdn0022:1834496:1834496 [2] NCCL INFO cudaDriverVersion 12020
+lrdn0022:1834497:1834497 [3] NCCL INFO cudaDriverVersion 12020
+lrdn0502:3175068:3175068 [1] NCCL INFO cudaDriverVersion 12020
+lrdn0502:3175067:3175067 [0] NCCL INFO cudaDriverVersion 12020
+lrdn0022:1834495:1834495 [1] NCCL INFO Bootstrap : Using ib0:10.128.6.121<0>
+lrdn0022:1834497:1834497 [3] NCCL INFO Bootstrap : Using ib0:10.128.6.121<0>
+lrdn0022:1834496:1834496 [2] NCCL INFO Bootstrap : Using ib0:10.128.6.121<0>
+lrdn0502:3175069:3175069 [2] NCCL INFO cudaDriverVersion 12020
+lrdn0502:3175070:3175070 [3] NCCL INFO cudaDriverVersion 12020
+lrdn0022:1834497:1834497 [3] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+lrdn0022:1834496:1834496 [2] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+lrdn0022:1834495:1834495 [1] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+lrdn0485:288168:288168 [3] NCCL INFO cudaDriverVersion 12020
+lrdn0485:288166:288166 [1] NCCL INFO cudaDriverVersion 12020
+lrdn0474:3101002:3101002 [2] NCCL INFO cudaDriverVersion 12020
+lrdn0485:288165:288165 [0] NCCL INFO cudaDriverVersion 12020
+lrdn0474:3101003:3101003 [3] NCCL INFO cudaDriverVersion 12020
+lrdn0474:3101001:3101001 [1] NCCL INFO cudaDriverVersion 12020
+lrdn0474:3101000:3101000 [0] NCCL INFO cudaDriverVersion 12020
+lrdn0485:288167:288167 [2] NCCL INFO cudaDriverVersion 12020
+lrdn0474:3101003:3101003 [3] NCCL INFO Bootstrap : Using ib0:10.128.13.137<0>
+lrdn0474:3101000:3101000 [0] NCCL INFO Bootstrap : Using ib0:10.128.13.137<0>
+lrdn0474:3101002:3101002 [2] NCCL INFO Bootstrap : Using ib0:10.128.13.137<0>
+lrdn0474:3101001:3101001 [1] NCCL INFO Bootstrap : Using ib0:10.128.13.137<0>
+lrdn0502:3175070:3175070 [3] NCCL INFO Bootstrap : Using ib0:10.128.13.249<0>
+lrdn0502:3175069:3175069 [2] NCCL INFO Bootstrap : Using ib0:10.128.13.249<0>
+lrdn0502:3175067:3175067 [0] NCCL INFO Bootstrap : Using ib0:10.128.13.249<0>
+lrdn0502:3175068:3175068 [1] NCCL INFO Bootstrap : Using ib0:10.128.13.249<0>
+lrdn0485:288166:288166 [1] NCCL INFO Bootstrap : Using ib0:10.128.13.181<0>
+lrdn0485:288168:288168 [3] NCCL INFO Bootstrap : Using ib0:10.128.13.181<0>
+lrdn0485:288165:288165 [0] NCCL INFO Bootstrap : Using ib0:10.128.13.181<0>
+lrdn0485:288167:288167 [2] NCCL INFO Bootstrap : Using ib0:10.128.13.181<0>
+lrdn0474:3101001:3101001 [1] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+lrdn0474:3101003:3101003 [3] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+lrdn0474:3101000:3101000 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+lrdn0474:3101002:3101002 [2] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+lrdn0502:3175070:3175070 [3] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+lrdn0502:3175067:3175067 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+lrdn0502:3175068:3175068 [1] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+lrdn0502:3175069:3175069 [2] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+lrdn0485:288165:288165 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+lrdn0485:288167:288167 [2] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+lrdn0485:288168:288168 [3] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+lrdn0485:288166:288166 [1] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+lrdn0022:1834494:1834556 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.6.121<0>
+lrdn0022:1834494:1834556 [0] NCCL INFO Using non-device net plugin version 0
+lrdn0022:1834494:1834556 [0] NCCL INFO Using network IB
+lrdn0022:1834496:1834559 [2] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.6.121<0>
+lrdn0022:1834496:1834559 [2] NCCL INFO Using non-device net plugin version 0
+lrdn0022:1834496:1834559 [2] NCCL INFO Using network IB
+lrdn0022:1834497:1834558 [3] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.6.121<0>
+lrdn0022:1834497:1834558 [3] NCCL INFO Using non-device net plugin version 0
+lrdn0022:1834497:1834558 [3] NCCL INFO Using network IB
+lrdn0022:1834495:1834557 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.6.121<0>
+lrdn0022:1834495:1834557 [1] NCCL INFO Using non-device net plugin version 0
+lrdn0022:1834495:1834557 [1] NCCL INFO Using network IB
+lrdn0485:288165:288225 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.13.181<0>
+lrdn0485:288166:288228 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.13.181<0>
+lrdn0485:288168:288226 [3] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.13.181<0>
+lrdn0485:288168:288226 [3] NCCL INFO Using non-device net plugin version 0
+lrdn0485:288168:288226 [3] NCCL INFO Using network IB
+lrdn0485:288166:288228 [1] NCCL INFO Using non-device net plugin version 0
+lrdn0485:288166:288228 [1] NCCL INFO Using network IB
+lrdn0485:288165:288225 [0] NCCL INFO Using non-device net plugin version 0
+lrdn0485:288165:288225 [0] NCCL INFO Using network IB
+lrdn0502:3175067:3175127 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.13.249<0>
+lrdn0502:3175067:3175127 [0] NCCL INFO Using non-device net plugin version 0
+lrdn0502:3175067:3175127 [0] NCCL INFO Using network IB
+lrdn0502:3175070:3175130 [3] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.13.249<0>
+lrdn0502:3175070:3175130 [3] NCCL INFO Using non-device net plugin version 0
+lrdn0502:3175070:3175130 [3] NCCL INFO Using network IB
+lrdn0502:3175069:3175129 [2] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.13.249<0>
+lrdn0502:3175069:3175129 [2] NCCL INFO Using non-device net plugin version 0
+lrdn0502:3175069:3175129 [2] NCCL INFO Using network IB
+lrdn0474:3101002:3101064 [2] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.13.137<0>
+lrdn0474:3101002:3101064 [2] NCCL INFO Using non-device net plugin version 0
+lrdn0474:3101002:3101064 [2] NCCL INFO Using network IB
+lrdn0502:3175068:3175128 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.13.249<0>
+lrdn0502:3175068:3175128 [1] NCCL INFO Using non-device net plugin version 0
+lrdn0502:3175068:3175128 [1] NCCL INFO Using network IB
+lrdn0474:3101003:3101062 [3] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.13.137<0>
+lrdn0474:3101003:3101062 [3] NCCL INFO Using non-device net plugin version 0
+lrdn0474:3101003:3101062 [3] NCCL INFO Using network IB
+lrdn0474:3101000:3101063 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.13.137<0>
+lrdn0474:3101000:3101063 [0] NCCL INFO Using non-device net plugin version 0
+lrdn0474:3101000:3101063 [0] NCCL INFO Using network IB
+lrdn0474:3101001:3101065 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.13.137<0>
+lrdn0474:3101001:3101065 [1] NCCL INFO Using non-device net plugin version 0
+lrdn0474:3101001:3101065 [1] NCCL INFO Using network IB
+lrdn0485:288167:288227 [2] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [RO]; OOB ib0:10.128.13.181<0>
+lrdn0485:288167:288227 [2] NCCL INFO Using non-device net plugin version 0
+lrdn0485:288167:288227 [2] NCCL INFO Using network IB
+lrdn0022:1834494:1834556 [0] NCCL INFO comm 0xaea9370 rank 0 nranks 16 cudaDev 0 nvmlDev 0 busId 1d000 commId 0xb6cf841d262439fc - Init START
+lrdn0022:1834495:1834557 [1] NCCL INFO comm 0xa81bd50 rank 1 nranks 16 cudaDev 1 nvmlDev 1 busId 56000 commId 0xb6cf841d262439fc - Init START
+lrdn0502:3175070:3175130 [3] NCCL INFO comm 0xa6e6620 rank 15 nranks 16 cudaDev 3 nvmlDev 3 busId c8000 commId 0xb6cf841d262439fc - Init START
+lrdn0022:1834497:1834558 [3] NCCL INFO comm 0xa717db0 rank 3 nranks 16 cudaDev 3 nvmlDev 3 busId c8000 commId 0xb6cf841d262439fc - Init START
+lrdn0022:1834496:1834559 [2] NCCL INFO comm 0xa0f9920 rank 2 nranks 16 cudaDev 2 nvmlDev 2 busId 8f000 commId 0xb6cf841d262439fc - Init START
+lrdn0502:3175069:3175129 [2] NCCL INFO comm 0x97cc450 rank 14 nranks 16 cudaDev 2 nvmlDev 2 busId 8f000 commId 0xb6cf841d262439fc - Init START
+lrdn0474:3101000:3101063 [0] NCCL INFO comm 0xa4a5b60 rank 4 nranks 16 cudaDev 0 nvmlDev 0 busId 1d000 commId 0xb6cf841d262439fc - Init START
+lrdn0502:3175068:3175128 [1] NCCL INFO comm 0xa6c0060 rank 13 nranks 16 cudaDev 1 nvmlDev 1 busId 56000 commId 0xb6cf841d262439fc - Init START
+lrdn0485:288165:288225 [0] NCCL INFO comm 0x98f5630 rank 8 nranks 16 cudaDev 0 nvmlDev 0 busId 1d000 commId 0xb6cf841d262439fc - Init START
+lrdn0474:3101003:3101062 [3] NCCL INFO comm 0x9a52d80 rank 7 nranks 16 cudaDev 3 nvmlDev 3 busId c8000 commId 0xb6cf841d262439fc - Init START
+lrdn0485:288167:288227 [2] NCCL INFO comm 0xa30dec0 rank 10 nranks 16 cudaDev 2 nvmlDev 2 busId 8f000 commId 0xb6cf841d262439fc - Init START
+lrdn0474:3101002:3101064 [2] NCCL INFO comm 0xaf89040 rank 6 nranks 16 cudaDev 2 nvmlDev 2 busId 8f000 commId 0xb6cf841d262439fc - Init START
+lrdn0485:288168:288226 [3] NCCL INFO comm 0x9952050 rank 11 nranks 16 cudaDev 3 nvmlDev 3 busId c8000 commId 0xb6cf841d262439fc - Init START
+lrdn0474:3101001:3101065 [1] NCCL INFO comm 0x9fc2d20 rank 5 nranks 16 cudaDev 1 nvmlDev 1 busId 56000 commId 0xb6cf841d262439fc - Init START
+lrdn0485:288166:288228 [1] NCCL INFO comm 0x9abae60 rank 9 nranks 16 cudaDev 1 nvmlDev 1 busId 56000 commId 0xb6cf841d262439fc - Init START
+lrdn0502:3175067:3175127 [0] NCCL INFO comm 0xae35880 rank 12 nranks 16 cudaDev 0 nvmlDev 0 busId 1d000 commId 0xb6cf841d262439fc - Init START
+lrdn0485:288165:288225 [0] NCCL INFO Setting affinity for GPU 0 to ff
+lrdn0485:288165:288225 [0] NCCL INFO NVLS multicast support is not available on dev 0
+lrdn0022:1834496:1834559 [2] NCCL INFO NVLS multicast support is not available on dev 2
+lrdn0474:3101001:3101065 [1] NCCL INFO Setting affinity for GPU 1 to ff00
+lrdn0474:3101001:3101065 [1] NCCL INFO NVLS multicast support is not available on dev 1
+lrdn0485:288168:288226 [3] NCCL INFO NVLS multicast support is not available on dev 3
+lrdn0474:3101002:3101064 [2] NCCL INFO NVLS multicast support is not available on dev 2
+lrdn0474:3101000:3101063 [0] NCCL INFO Setting affinity for GPU 0 to ff
+lrdn0474:3101000:3101063 [0] NCCL INFO NVLS multicast support is not available on dev 0
+lrdn0022:1834497:1834558 [3] NCCL INFO NVLS multicast support is not available on dev 3
+lrdn0022:1834494:1834556 [0] NCCL INFO Setting affinity for GPU 0 to ff
+lrdn0022:1834494:1834556 [0] NCCL INFO NVLS multicast support is not available on dev 0
+lrdn0474:3101003:3101062 [3] NCCL INFO NVLS multicast support is not available on dev 3
+lrdn0502:3175070:3175130 [3] NCCL INFO NVLS multicast support is not available on dev 3
+lrdn0485:288167:288227 [2] NCCL INFO NVLS multicast support is not available on dev 2
+lrdn0022:1834495:1834557 [1] NCCL INFO Setting affinity for GPU 1 to ff00
+lrdn0022:1834495:1834557 [1] NCCL INFO NVLS multicast support is not available on dev 1
+lrdn0485:288166:288228 [1] NCCL INFO Setting affinity for GPU 1 to ff00
+lrdn0485:288166:288228 [1] NCCL INFO NVLS multicast support is not available on dev 1
+lrdn0502:3175069:3175129 [2] NCCL INFO NVLS multicast support is not available on dev 2
+lrdn0502:3175068:3175128 [1] NCCL INFO Setting affinity for GPU 1 to ff00
+lrdn0502:3175068:3175128 [1] NCCL INFO NVLS multicast support is not available on dev 1
+lrdn0502:3175067:3175127 [0] NCCL INFO Setting affinity for GPU 0 to ff
+lrdn0502:3175067:3175127 [0] NCCL INFO NVLS multicast support is not available on dev 0
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 00/08 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 01/08 :    0   3   2   5   4   7   6   9   8  11  10  13  12  15  14   1
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 02/08 :    0   3   6   5   4   7  10   9   8  11  14  13  12  15   2   1
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 03/08 :    0   7   6   5   4  11  10   9   8  15  14  13  12   3   2   1
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 04/08 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 05/08 :    0   3   2   5   4   7   6   9   8  11  10  13  12  15  14   1
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 06/08 :    0   3   6   5   4   7  10   9   8  11  14  13  12  15   2   1
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 07/08 :    0   7   6   5   4  11  10   9   8  15  14  13  12   3   2   1
+lrdn0022:1834494:1834556 [0] NCCL INFO Trees [0] 1/8/-1->0->-1 [1] 1/8/-1->0->-1 [2] 1/-1/-1->0->3 [3] -1/-1/-1->0->2 [4] 1/-1/-1->0->4 [5] 1/-1/-1->0->4 [6] 1/-1/-1->0->3 [7] -1/-1/-1->0->2
+lrdn0022:1834494:1834556 [0] NCCL INFO P2P Chunksize set to 131072
+lrdn0022:1834495:1834557 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0 [2] -1/-1/-1->1->0 [3] 2/-1/-1->1->3 [4] 2/-1/-1->1->0 [5] 2/-1/-1->1->0 [6] -1/-1/-1->1->0 [7] 2/-1/-1->1->3
+lrdn0022:1834495:1834557 [1] NCCL INFO P2P Chunksize set to 131072
+lrdn0022:1834497:1834558 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] -1/-1/-1->3->2 [2] 0/-1/-1->3->2 [3] 1/11/-1->3->-1 [4] -1/-1/-1->3->2 [5] -1/-1/-1->3->2 [6] 0/-1/-1->3->2 [7] 1/-1/-1->3->7
+lrdn0022:1834497:1834558 [3] NCCL INFO P2P Chunksize set to 131072
+lrdn0022:1834496:1834559 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1 [2] 3/10/-1->2->-1 [3] 0/-1/-1->2->1 [4] 3/-1/-1->2->1 [5] 3/-1/-1->2->1 [6] 3/-1/-1->2->6 [7] 0/-1/-1->2->1
+lrdn0022:1834496:1834559 [2] NCCL INFO P2P Chunksize set to 131072
+lrdn0502:3175067:3175127 [0] NCCL INFO Trees [0] 13/-1/-1->12->8 [1] 13/-1/-1->12->8 [2] 13/-1/-1->12->15 [3] -1/-1/-1->12->14 [4] 13/4/-1->12->-1 [5] 13/4/-1->12->-1 [6] 13/-1/-1->12->15 [7] -1/-1/-1->12->14
+lrdn0502:3175067:3175127 [0] NCCL INFO P2P Chunksize set to 131072
+lrdn0502:3175068:3175128 [1] NCCL INFO Trees [0] 14/-1/-1->13->12 [1] 14/-1/-1->13->12 [2] -1/-1/-1->13->12 [3] 14/-1/-1->13->15 [4] 14/-1/-1->13->12 [5] 14/-1/-1->13->12 [6] -1/-1/-1->13->12 [7] 14/-1/-1->13->15
+lrdn0502:3175068:3175128 [1] NCCL INFO P2P Chunksize set to 131072
+lrdn0502:3175070:3175130 [3] NCCL INFO Trees [0] -1/-1/-1->15->14 [1] -1/-1/-1->15->14 [2] 12/-1/-1->15->14 [3] 13/-1/-1->15->11 [4] -1/-1/-1->15->14 [5] -1/-1/-1->15->14 [6] 12/-1/-1->15->14 [7] 13/7/-1->15->-1
+lrdn0502:3175070:3175130 [3] NCCL INFO P2P Chunksize set to 131072
+lrdn0474:3101003:3101062 [3] NCCL INFO Trees [0] -1/-1/-1->7->6 [1] -1/-1/-1->7->6 [2] 4/-1/-1->7->6 [3] 5/-1/-1->7->9 [4] -1/-1/-1->7->6 [5] -1/-1/-1->7->6 [6] 4/10/-1->7->6 [7] 5/3/-1->7->15
+lrdn0474:3101003:3101062 [3] NCCL INFO P2P Chunksize set to 131072
+lrdn0502:3175069:3175129 [2] NCCL INFO Trees [0] 15/-1/-1->14->13 [1] 15/-1/-1->14->13 [2] 15/-1/-1->14->10 [3] 12/-1/-1->14->13 [4] 15/-1/-1->14->13 [5] 15/-1/-1->14->13 [6] 15/6/-1->14->-1 [7] 12/-1/-1->14->13
+lrdn0502:3175069:3175129 [2] NCCL INFO P2P Chunksize set to 131072
+lrdn0474:3101002:3101064 [2] NCCL INFO Trees [0] 7/-1/-1->6->5 [1] 7/-1/-1->6->5 [2] 7/-1/-1->6->11 [3] 4/-1/-1->6->5 [4] 7/-1/-1->6->5 [5] 7/-1/-1->6->5 [6] 7/2/-1->6->14 [7] 4/-1/-1->6->5
+lrdn0474:3101002:3101064 [2] NCCL INFO P2P Chunksize set to 131072
+lrdn0474:3101000:3101063 [0] NCCL INFO Trees [0] 5/-1/-1->4->9 [1] 5/-1/-1->4->9 [2] 5/-1/-1->4->7 [3] -1/-1/-1->4->6 [4] 5/0/-1->4->12 [5] 5/0/-1->4->12 [6] 5/-1/-1->4->7 [7] -1/-1/-1->4->6
+lrdn0474:3101000:3101063 [0] NCCL INFO P2P Chunksize set to 131072
+lrdn0485:288165:288225 [0] NCCL INFO Trees [0] 9/12/-1->8->0 [1] 9/12/-1->8->0 [2] 9/-1/-1->8->11 [3] -1/-1/-1->8->10 [4] 9/-1/-1->8->5 [5] 9/-1/-1->8->5 [6] 9/-1/-1->8->11 [7] -1/-1/-1->8->10
+lrdn0485:288165:288225 [0] NCCL INFO P2P Chunksize set to 131072
+lrdn0474:3101001:3101065 [1] NCCL INFO Trees [0] 6/-1/-1->5->4 [1] 6/-1/-1->5->4 [2] -1/-1/-1->5->4 [3] 6/-1/-1->5->7 [4] 6/8/-1->5->4 [5] 6/8/-1->5->4 [6] -1/-1/-1->5->4 [7] 6/11/-1->5->7
+lrdn0474:3101001:3101065 [1] NCCL INFO P2P Chunksize set to 131072
+lrdn0485:288166:288228 [1] NCCL INFO Trees [0] 10/4/-1->9->8 [1] 10/4/-1->9->8 [2] -1/-1/-1->9->8 [3] 10/7/-1->9->11 [4] 10/-1/-1->9->8 [5] 10/-1/-1->9->8 [6] -1/-1/-1->9->8 [7] 10/-1/-1->9->11
+lrdn0485:288166:288228 [1] NCCL INFO P2P Chunksize set to 131072
+lrdn0485:288168:288226 [3] NCCL INFO Trees [0] -1/-1/-1->11->10 [1] -1/-1/-1->11->10 [2] 8/6/-1->11->10 [3] 9/15/-1->11->3 [4] -1/-1/-1->11->10 [5] -1/-1/-1->11->10 [6] 8/-1/-1->11->10 [7] 9/-1/-1->11->5
+lrdn0485:288168:288226 [3] NCCL INFO P2P Chunksize set to 131072
+lrdn0485:288167:288227 [2] NCCL INFO Trees [0] 11/-1/-1->10->9 [1] 11/-1/-1->10->9 [2] 11/14/-1->10->2 [3] 8/-1/-1->10->9 [4] 11/-1/-1->10->9 [5] 11/-1/-1->10->9 [6] 11/-1/-1->10->7 [7] 8/-1/-1->10->9
+lrdn0485:288167:288227 [2] NCCL INFO P2P Chunksize set to 131072
+lrdn0485:288166:288228 [1] NCCL INFO Channel 00/0 : 9[1] -> 10[2] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 00/0 : 10[2] -> 11[3] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 04/0 : 10[2] -> 11[3] via P2P/CUMEM/read
+lrdn0485:288166:288228 [1] NCCL INFO Channel 04/0 : 9[1] -> 10[2] via P2P/CUMEM/read
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 00/0 : 13[1] -> 14[2] via P2P/CUMEM/read
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 00/0 : 14[2] -> 15[3] via P2P/CUMEM/read
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 04/0 : 14[2] -> 15[3] via P2P/CUMEM/read
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 04/0 : 13[1] -> 14[2] via P2P/CUMEM/read
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[2] via P2P/CUMEM/read
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 04/0 : 1[1] -> 2[2] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 00/0 : 5[1] -> 6[2] via P2P/CUMEM/read
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/CUMEM/read
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 04/0 : 2[2] -> 3[3] via P2P/CUMEM/read
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 00/0 : 6[2] -> 7[3] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 04/0 : 5[1] -> 6[2] via P2P/CUMEM/read
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 04/0 : 6[2] -> 7[3] via P2P/CUMEM/read
+lrdn0485:288165:288225 [0] NCCL INFO Channel 00/0 : 7[3] -> 8[0] [receive] via NET/IB/0/GDRDMA
+lrdn0485:288168:288226 [3] NCCL INFO Channel 00/0 : 11[3] -> 12[0] [send] via NET/IB/0(8)/GDRDMA
+lrdn0485:288165:288225 [0] NCCL INFO Channel 04/0 : 7[3] -> 8[0] [receive] via NET/IB/0/GDRDMA
+lrdn0485:288165:288225 [0] NCCL INFO Channel 00/0 : 8[0] -> 9[1] via P2P/CUMEM/read
+lrdn0485:288168:288226 [3] NCCL INFO Channel 04/0 : 11[3] -> 12[0] [send] via NET/IB/0(8)/GDRDMA
+lrdn0485:288165:288225 [0] NCCL INFO Channel 04/0 : 8[0] -> 9[1] via P2P/CUMEM/read
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 00/0 : 11[3] -> 12[0] [receive] via NET/IB/0/GDRDMA
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 00/0 : 15[3] -> 0[0] [send] via NET/IB/0(12)/GDRDMA
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 04/0 : 11[3] -> 12[0] [receive] via NET/IB/0/GDRDMA
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 00/0 : 12[0] -> 13[1] via P2P/CUMEM/read
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 04/0 : 15[3] -> 0[0] [send] via NET/IB/0(12)/GDRDMA
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 04/0 : 12[0] -> 13[1] via P2P/CUMEM/read
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 00/0 : 3[3] -> 4[0] [receive] via NET/IB/0/GDRDMA
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 00/0 : 7[3] -> 8[0] [send] via NET/IB/0(4)/GDRDMA
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 00/0 : 15[3] -> 0[0] [receive] via NET/IB/0/GDRDMA
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 00/0 : 3[3] -> 4[0] [send] via NET/IB/0(0)/GDRDMA
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 04/0 : 3[3] -> 4[0] [receive] via NET/IB/0/GDRDMA
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 04/0 : 15[3] -> 0[0] [receive] via NET/IB/0/GDRDMA
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 00/0 : 4[0] -> 5[1] via P2P/CUMEM/read
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM/read
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 04/0 : 3[3] -> 4[0] [send] via NET/IB/0(0)/GDRDMA
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 04/0 : 7[3] -> 8[0] [send] via NET/IB/0(4)/GDRDMA
+lrdn0485:288165:288225 [0] NCCL INFO Channel 01/0 : 8[0] -> 11[3] via P2P/CUMEM/read
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 04/0 : 4[0] -> 5[1] via P2P/CUMEM/read
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 04/0 : 0[0] -> 1[1] via P2P/CUMEM/read
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 01/0 : 12[0] -> 15[3] via P2P/CUMEM/read
+lrdn0485:288165:288225 [0] NCCL INFO Channel 02/0 : 8[0] -> 11[3] via P2P/CUMEM/read
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 02/0 : 12[0] -> 15[3] via P2P/CUMEM/read
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 01/0 : 4[0] -> 7[3] via P2P/CUMEM/read
+lrdn0485:288165:288225 [0] NCCL INFO Channel 05/0 : 8[0] -> 11[3] via P2P/CUMEM/read
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 05/0 : 12[0] -> 15[3] via P2P/CUMEM/read
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 01/0 : 0[0] -> 3[3] via P2P/CUMEM/read
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 06/0 : 12[0] -> 15[3] via P2P/CUMEM/read
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 02/0 : 4[0] -> 7[3] via P2P/CUMEM/read
+lrdn0485:288165:288225 [0] NCCL INFO Channel 06/0 : 8[0] -> 11[3] via P2P/CUMEM/read
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 02/0 : 0[0] -> 3[3] via P2P/CUMEM/read
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 05/0 : 4[0] -> 7[3] via P2P/CUMEM/read
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 05/0 : 0[0] -> 3[3] via P2P/CUMEM/read
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 06/0 : 4[0] -> 7[3] via P2P/CUMEM/read
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 06/0 : 0[0] -> 3[3] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 02/0 : 7[3] -> 10[2] [receive] via NET/IB/2/GDRDMA
+lrdn0485:288168:288226 [3] NCCL INFO Channel 02/0 : 11[3] -> 14[2] [send] via NET/IB/2(10)/GDRDMA
+lrdn0485:288167:288227 [2] NCCL INFO Channel 06/0 : 7[3] -> 10[2] [receive] via NET/IB/2/GDRDMA
+lrdn0485:288168:288226 [3] NCCL INFO Channel 06/0 : 11[3] -> 14[2] [send] via NET/IB/2(10)/GDRDMA
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 02/0 : 11[3] -> 14[2] [receive] via NET/IB/2/GDRDMA
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 02/0 : 15[3] -> 2[2] [send] via NET/IB/2(14)/GDRDMA
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 06/0 : 11[3] -> 14[2] [receive] via NET/IB/2/GDRDMA
+lrdn0485:288166:288228 [1] NCCL INFO Channel 01/0 : 6[2] -> 9[1] [receive] via NET/IB/1/GDRDMA
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 06/0 : 15[3] -> 2[2] [send] via NET/IB/2(14)/GDRDMA
+lrdn0485:288167:288227 [2] NCCL INFO Channel 01/0 : 10[2] -> 13[1] [send] via NET/IB/1(9)/GDRDMA
+lrdn0485:288166:288228 [1] NCCL INFO Channel 05/0 : 6[2] -> 9[1] [receive] via NET/IB/1/GDRDMA
+lrdn0485:288167:288227 [2] NCCL INFO Channel 05/0 : 10[2] -> 13[1] [send] via NET/IB/1(9)/GDRDMA
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 02/0 : 3[3] -> 6[2] [receive] via NET/IB/2/GDRDMA
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 02/0 : 7[3] -> 10[2] [send] via NET/IB/2(6)/GDRDMA
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 02/0 : 15[3] -> 2[2] [receive] via NET/IB/2/GDRDMA
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 02/0 : 3[3] -> 6[2] [send] via NET/IB/2(2)/GDRDMA
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 06/0 : 3[3] -> 6[2] [receive] via NET/IB/2/GDRDMA
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 06/0 : 7[3] -> 10[2] [send] via NET/IB/2(6)/GDRDMA
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 06/0 : 15[3] -> 2[2] [receive] via NET/IB/2/GDRDMA
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 06/0 : 3[3] -> 6[2] [send] via NET/IB/2(2)/GDRDMA
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 01/0 : 10[2] -> 13[1] [receive] via NET/IB/1/GDRDMA
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 01/0 : 14[2] -> 1[1] [send] via NET/IB/1(13)/GDRDMA
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 05/0 : 10[2] -> 13[1] [receive] via NET/IB/1/GDRDMA
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 05/0 : 14[2] -> 1[1] [send] via NET/IB/1(13)/GDRDMA
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 01/0 : 2[2] -> 5[1] [receive] via NET/IB/1/GDRDMA
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 01/0 : 6[2] -> 9[1] [send] via NET/IB/1(5)/GDRDMA
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 05/0 : 2[2] -> 5[1] [receive] via NET/IB/1/GDRDMA
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 05/0 : 6[2] -> 9[1] [send] via NET/IB/1(5)/GDRDMA
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 01/0 : 14[2] -> 1[1] [receive] via NET/IB/1/GDRDMA
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 01/0 : 2[2] -> 5[1] [send] via NET/IB/1(1)/GDRDMA
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 05/0 : 14[2] -> 1[1] [receive] via NET/IB/1/GDRDMA
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 05/0 : 2[2] -> 5[1] [send] via NET/IB/1(1)/GDRDMA
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 02/0 : 6[2] -> 5[1] via P2P/CUMEM/read
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM/read
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 01/0 : 13[1] -> 12[0] via P2P/CUMEM/read
+lrdn0485:288166:288228 [1] NCCL INFO Channel 01/0 : 9[1] -> 8[0] via P2P/CUMEM/read
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 02/0 : 2[2] -> 1[1] via P2P/CUMEM/read
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 02/0 : 14[2] -> 13[1] via P2P/CUMEM/read
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 03/0 : 6[2] -> 5[1] via P2P/CUMEM/read
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 02/0 : 13[1] -> 12[0] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 01/0 : 5[1] -> 4[0] via P2P/CUMEM/read
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM/read
+lrdn0485:288165:288225 [0] NCCL INFO Channel 03/0 : 8[0] -> 15[3] [send] via NET/IB/3(11)/GDRDMA
+lrdn0485:288166:288228 [1] NCCL INFO Channel 02/0 : 9[1] -> 8[0] via P2P/CUMEM/read
+lrdn0485:288168:288226 [3] NCCL INFO Channel 03/0 : 4[0] -> 11[3] [receive] via NET/IB/3/GDRDMA
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 03/0 : 2[2] -> 1[1] via P2P/CUMEM/read
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 06/0 : 6[2] -> 5[1] via P2P/CUMEM/read
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 03/0 : 14[2] -> 13[1] via P2P/CUMEM/read
+lrdn0485:288165:288225 [0] NCCL INFO Channel 07/0 : 8[0] -> 15[3] [send] via NET/IB/3(11)/GDRDMA
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 02/0 : 5[1] -> 4[0] via P2P/CUMEM/read
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 03/0 : 13[1] -> 12[0] via P2P/CUMEM/read
+lrdn0485:288168:288226 [3] NCCL INFO Channel 07/0 : 4[0] -> 11[3] [receive] via NET/IB/3/GDRDMA
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 06/0 : 2[2] -> 1[1] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 02/0 : 10[2] -> 9[1] via P2P/CUMEM/read
+lrdn0485:288166:288228 [1] NCCL INFO Channel 03/0 : 9[1] -> 8[0] via P2P/CUMEM/read
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 07/0 : 6[2] -> 5[1] via P2P/CUMEM/read
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 06/0 : 14[2] -> 13[1] via P2P/CUMEM/read
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 05/0 : 13[1] -> 12[0] via P2P/CUMEM/read
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 05/0 : 1[1] -> 0[0] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 03/0 : 5[1] -> 4[0] via P2P/CUMEM/read
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 07/0 : 2[2] -> 1[1] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 03/0 : 10[2] -> 9[1] via P2P/CUMEM/read
+lrdn0485:288166:288228 [1] NCCL INFO Channel 05/0 : 9[1] -> 8[0] via P2P/CUMEM/read
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 06/0 : 1[1] -> 0[0] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 05/0 : 5[1] -> 4[0] via P2P/CUMEM/read
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 07/0 : 14[2] -> 13[1] via P2P/CUMEM/read
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 06/0 : 13[1] -> 12[0] via P2P/CUMEM/read
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 03/0 : 12[0] -> 3[3] [send] via NET/IB/3(15)/GDRDMA
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 03/0 : 8[0] -> 15[3] [receive] via NET/IB/3/GDRDMA
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 07/0 : 1[1] -> 0[0] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 06/0 : 10[2] -> 9[1] via P2P/CUMEM/read
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 07/0 : 12[0] -> 3[3] [send] via NET/IB/3(15)/GDRDMA
+lrdn0485:288166:288228 [1] NCCL INFO Channel 06/0 : 9[1] -> 8[0] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 06/0 : 5[1] -> 4[0] via P2P/CUMEM/read
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 07/0 : 8[0] -> 15[3] [receive] via NET/IB/3/GDRDMA
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 07/0 : 13[1] -> 12[0] via P2P/CUMEM/read
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 01/0 : 15[3] -> 14[2] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 07/0 : 5[1] -> 4[0] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 07/0 : 10[2] -> 9[1] via P2P/CUMEM/read
+lrdn0485:288166:288228 [1] NCCL INFO Channel 07/0 : 9[1] -> 8[0] via P2P/CUMEM/read
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 03/0 : 15[3] -> 14[2] via P2P/CUMEM/read
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 03/0 : 4[0] -> 11[3] [send] via NET/IB/3(7)/GDRDMA
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 03/0 : 0[0] -> 7[3] [receive] via NET/IB/3/GDRDMA
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 03/0 : 0[0] -> 7[3] [send] via NET/IB/3(3)/GDRDMA
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 03/0 : 12[0] -> 3[3] [receive] via NET/IB/3/GDRDMA
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 07/0 : 0[0] -> 7[3] [send] via NET/IB/3(3)/GDRDMA
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 07/0 : 4[0] -> 11[3] [send] via NET/IB/3(7)/GDRDMA
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 05/0 : 15[3] -> 14[2] via P2P/CUMEM/read
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 07/0 : 12[0] -> 3[3] [receive] via NET/IB/3/GDRDMA
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 07/0 : 0[0] -> 7[3] [receive] via NET/IB/3/GDRDMA
+lrdn0485:288168:288226 [3] NCCL INFO Channel 01/0 : 11[3] -> 10[2] via P2P/CUMEM/read
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/CUMEM/read
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 07/0 : 15[3] -> 14[2] via P2P/CUMEM/read
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 01/0 : 7[3] -> 6[2] via P2P/CUMEM/read
+lrdn0485:288168:288226 [3] NCCL INFO Channel 03/0 : 11[3] -> 10[2] via P2P/CUMEM/read
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 03/0 : 3[3] -> 2[2] via P2P/CUMEM/read
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 03/0 : 7[3] -> 6[2] via P2P/CUMEM/read
+lrdn0485:288168:288226 [3] NCCL INFO Channel 05/0 : 11[3] -> 10[2] via P2P/CUMEM/read
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 05/0 : 3[3] -> 2[2] via P2P/CUMEM/read
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 05/0 : 7[3] -> 6[2] via P2P/CUMEM/read
+lrdn0485:288168:288226 [3] NCCL INFO Channel 07/0 : 11[3] -> 10[2] via P2P/CUMEM/read
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 07/0 : 3[3] -> 2[2] via P2P/CUMEM/read
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 07/0 : 7[3] -> 6[2] via P2P/CUMEM/read
+lrdn0474:3101003:3101062 [3] NCCL INFO Connected all rings
+lrdn0474:3101002:3101064 [2] NCCL INFO Connected all rings
+lrdn0022:1834494:1834556 [0] NCCL INFO Connected all rings
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM/read
+lrdn0022:1834495:1834557 [1] NCCL INFO Connected all rings
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM/read
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 05/0 : 0[0] -> 1[1] via P2P/CUMEM/read
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 06/0 : 0[0] -> 1[1] via P2P/CUMEM/read
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 01/0 : 6[2] -> 7[3] via P2P/CUMEM/read
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 02/0 : 6[2] -> 7[3] via P2P/CUMEM/read
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 01/0 : 1[1] -> 2[2] via P2P/CUMEM/read
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 03/0 : 1[1] -> 2[2] via P2P/CUMEM/read
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 05/0 : 6[2] -> 7[3] via P2P/CUMEM/read
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 05/0 : 1[1] -> 2[2] via P2P/CUMEM/read
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 06/0 : 6[2] -> 7[3] via P2P/CUMEM/read
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 07/0 : 1[1] -> 2[2] via P2P/CUMEM/read
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 03/0 : 0[0] -> 2[2] via P2P/CUMEM/read
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 07/0 : 0[0] -> 2[2] via P2P/CUMEM/read
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 03/0 : 7[3] -> 9[1] [send] via NET/IB/3/GDRDMA
+lrdn0502:3175067:3175127 [0] NCCL INFO Connected all rings
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 01/0 : 12[0] -> 13[1] via P2P/CUMEM/read
+lrdn0502:3175068:3175128 [1] NCCL INFO Connected all rings
+lrdn0474:3101001:3101065 [1] NCCL INFO Connected all rings
+lrdn0022:1834496:1834559 [2] NCCL INFO Connected all rings
+lrdn0022:1834497:1834558 [3] NCCL INFO Connected all rings
+lrdn0474:3101000:3101063 [0] NCCL INFO Connected all rings
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 01/0 : 4[0] -> 5[1] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Connected all rings
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 02/0 : 12[0] -> 13[1] via P2P/CUMEM/read
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 02/0 : 4[0] -> 5[1] via P2P/CUMEM/read
+lrdn0502:3175070:3175130 [3] NCCL INFO Connected all rings
+lrdn0502:3175069:3175129 [2] NCCL INFO Connected all rings
+lrdn0485:288168:288226 [3] NCCL INFO Connected all rings
+lrdn0485:288165:288225 [0] NCCL INFO Connected all rings
+lrdn0485:288165:288225 [0] NCCL INFO Channel 01/0 : 8[0] -> 9[1] via P2P/CUMEM/read
+lrdn0485:288165:288225 [0] NCCL INFO Channel 02/0 : 8[0] -> 9[1] via P2P/CUMEM/read
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 05/0 : 4[0] -> 5[1] via P2P/CUMEM/read
+lrdn0485:288166:288228 [1] NCCL INFO Connected all rings
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 05/0 : 12[0] -> 13[1] via P2P/CUMEM/read
+lrdn0485:288165:288225 [0] NCCL INFO Channel 05/0 : 8[0] -> 9[1] via P2P/CUMEM/read
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 06/0 : 4[0] -> 5[1] via P2P/CUMEM/read
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/CUMEM/read
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 06/0 : 12[0] -> 13[1] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 01/0 : 5[1] -> 6[2] via P2P/CUMEM/read
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 02/0 : 2[2] -> 3[3] via P2P/CUMEM/read
+lrdn0485:288165:288225 [0] NCCL INFO Channel 06/0 : 8[0] -> 9[1] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 03/0 : 5[1] -> 6[2] via P2P/CUMEM/read
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 05/0 : 2[2] -> 3[3] via P2P/CUMEM/read
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 01/0 : 13[1] -> 14[2] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 05/0 : 5[1] -> 6[2] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 01/0 : 10[2] -> 11[3] via P2P/CUMEM/read
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 06/0 : 2[2] -> 3[3] via P2P/CUMEM/read
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 03/0 : 13[1] -> 14[2] via P2P/CUMEM/read
+lrdn0485:288166:288228 [1] NCCL INFO Channel 01/0 : 9[1] -> 10[2] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 02/0 : 10[2] -> 11[3] via P2P/CUMEM/read
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 01/0 : 14[2] -> 15[3] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 07/0 : 5[1] -> 6[2] via P2P/CUMEM/read
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 03/0 : 1[1] -> 3[3] via P2P/CUMEM/read
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 02/0 : 14[2] -> 15[3] via P2P/CUMEM/read
+lrdn0485:288166:288228 [1] NCCL INFO Channel 03/0 : 9[1] -> 10[2] via P2P/CUMEM/read
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 05/0 : 13[1] -> 14[2] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 05/0 : 10[2] -> 11[3] via P2P/CUMEM/read
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 05/0 : 14[2] -> 15[3] via P2P/CUMEM/read
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 03/0 : 4[0] -> 6[2] via P2P/CUMEM/read
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 07/0 : 13[1] -> 14[2] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 03/0 : 5[1] -> 7[3] via P2P/CUMEM/read
+lrdn0485:288166:288228 [1] NCCL INFO Channel 05/0 : 9[1] -> 10[2] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 06/0 : 10[2] -> 11[3] via P2P/CUMEM/read
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 07/0 : 4[0] -> 6[2] via P2P/CUMEM/read
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 07/0 : 1[1] -> 3[3] via P2P/CUMEM/read
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 06/0 : 14[2] -> 15[3] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 07/0 : 5[1] -> 7[3] via P2P/CUMEM/read
+lrdn0485:288166:288228 [1] NCCL INFO Channel 07/0 : 9[1] -> 10[2] via P2P/CUMEM/read
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 03/0 : 12[0] -> 14[2] via P2P/CUMEM/read
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 03/0 : 13[1] -> 15[3] via P2P/CUMEM/read
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 07/0 : 12[0] -> 14[2] via P2P/CUMEM/read
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 04/0 : 0[0] -> 4[0] [send] via NET/IB/0/GDRDMA
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 06/0 : 2[2] -> 6[2] [send] via NET/IB/2/GDRDMA
+lrdn0485:288165:288225 [0] NCCL INFO Channel 03/0 : 8[0] -> 10[2] via P2P/CUMEM/read
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 07/0 : 3[3] -> 7[3] [send] via NET/IB/3/GDRDMA
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 04/0 : 0[0] -> 4[0] [receive] via NET/IB/0/GDRDMA
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 06/0 : 2[2] -> 6[2] [receive] via NET/IB/2/GDRDMA
+lrdn0485:288166:288228 [1] NCCL INFO Channel 03/0 : 7[3] -> 9[1] [receive] via NET/IB/3/GDRDMA
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 05/0 : 0[0] -> 4[0] [send] via NET/IB/1(1)/GDRDMA
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 02/0 : 10[2] -> 2[2] [receive] via NET/IB/2/GDRDMA
+lrdn0485:288166:288228 [1] NCCL INFO Channel 03/0 : 9[1] -> 11[3] via P2P/CUMEM/read
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 07/0 : 13[1] -> 15[3] via P2P/CUMEM/read
+lrdn0485:288165:288225 [0] NCCL INFO Channel 07/0 : 8[0] -> 10[2] via P2P/CUMEM/read
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 02/0 : 2[2] -> 10[2] [send] via NET/IB/2/GDRDMA
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 05/0 : 0[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 04/0 : 5[1] -> 8[0] [send] via NET/IB/0(4)/GDRDMA
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 02/0 : 6[2] -> 11[3] [send] via NET/IB/2/GDRDMA
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 00/0 : 8[0] -> 0[0] [receive] via NET/IB/0/GDRDMA
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 05/0 : 5[1] -> 8[0] [send] via NET/IB/1/GDRDMA
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 01/0 : 8[0] -> 0[0] [receive] via NET/IB/1/GDRDMA
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 00/0 : 4[0] -> 9[1] [send] via NET/IB/0/GDRDMA
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 00/0 : 0[0] -> 8[0] [send] via NET/IB/0/GDRDMA
+lrdn0485:288166:288228 [1] NCCL INFO Channel 07/0 : 9[1] -> 11[3] via P2P/CUMEM/read
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 01/0 : 4[0] -> 9[1] [send] via NET/IB/1(5)/GDRDMA
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 01/0 : 0[0] -> 8[0] [send] via NET/IB/1(1)/GDRDMA
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 03/0 : 11[3] -> 15[3] [receive] via NET/IB/3/GDRDMA
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 00/0 : 8[0] -> 12[0] [receive] via NET/IB/0/GDRDMA
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 02/0 : 10[2] -> 14[2] [receive] via NET/IB/2/GDRDMA
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 01/0 : 8[0] -> 12[0] [receive] via NET/IB/1/GDRDMA
+lrdn0485:288167:288227 [2] NCCL INFO Channel 02/0 : 10[2] -> 14[2] [send] via NET/IB/2/GDRDMA
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 07/0 : 3[3] -> 7[3] [receive] via NET/IB/3/GDRDMA
+lrdn0485:288168:288226 [3] NCCL INFO Channel 03/0 : 11[3] -> 15[3] [send] via NET/IB/3/GDRDMA
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 03/0 : 11[3] -> 3[3] [receive] via NET/IB/3/GDRDMA
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 07/0 : 15[3] -> 7[3] [receive] via NET/IB/3/GDRDMA
+lrdn0485:288166:288228 [1] NCCL INFO Channel 00/0 : 4[0] -> 9[1] [receive] via NET/IB/0/GDRDMA
+lrdn0485:288167:288227 [2] NCCL INFO Channel 02/0 : 2[2] -> 10[2] [receive] via NET/IB/2/GDRDMA
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 03/0 : 3[3] -> 11[3] [send] via NET/IB/3/GDRDMA
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 07/0 : 7[3] -> 15[3] [send] via NET/IB/3/GDRDMA
+lrdn0485:288168:288226 [3] NCCL INFO Channel 02/0 : 6[2] -> 11[3] [receive] via NET/IB/2/GDRDMA
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 06/0 : 6[2] -> 14[2] [receive] via NET/IB/2/GDRDMA
+lrdn0485:288166:288228 [1] NCCL INFO Channel 01/0 : 4[0] -> 9[1] [receive] via NET/IB/1/GDRDMA
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 06/0 : 14[2] -> 6[2] [send] via NET/IB/2/GDRDMA
+lrdn0485:288167:288227 [2] NCCL INFO Channel 02/0 : 10[2] -> 2[2] [send] via NET/IB/2/GDRDMA
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 06/0 : 6[2] -> 2[2] [receive] via NET/IB/2/GDRDMA
+lrdn0485:288168:288226 [3] NCCL INFO Channel 07/0 : 5[1] -> 11[3] [receive] via NET/IB/3/GDRDMA
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 07/0 : 7[3] -> 15[3] [receive] via NET/IB/3/GDRDMA
+lrdn0485:288167:288227 [2] NCCL INFO Channel 02/0 : 14[2] -> 10[2] [receive] via NET/IB/2/GDRDMA
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 07/0 : 15[3] -> 7[3] [send] via NET/IB/3/GDRDMA
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 04/0 : 12[0] -> 4[0] [receive] via NET/IB/0/GDRDMA
+lrdn0485:288166:288228 [1] NCCL INFO Channel 00/0 : 9[1] -> 4[0] [send] via NET/IB/0(8)/GDRDMA
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 06/0 : 14[2] -> 6[2] [receive] via NET/IB/2/GDRDMA
+lrdn0485:288166:288228 [1] NCCL INFO Channel 01/0 : 9[1] -> 4[0] [send] via NET/IB/1/GDRDMA
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 03/0 : 15[3] -> 11[3] [send] via NET/IB/3/GDRDMA
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 05/0 : 12[0] -> 4[0] [receive] via NET/IB/1/GDRDMA
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 06/0 : 6[2] -> 14[2] [send] via NET/IB/2/GDRDMA
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 04/0 : 4[0] -> 12[0] [send] via NET/IB/0/GDRDMA
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 07/0 : 7[3] -> 3[3] [send] via NET/IB/3/GDRDMA
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 05/0 : 4[0] -> 12[0] [send] via NET/IB/1(5)/GDRDMA
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 02/0 : 11[3] -> 6[2] [receive] via NET/IB/2/GDRDMA
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 02/0 : 14[2] -> 10[2] [send] via NET/IB/2/GDRDMA
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 03/0 : 14[2] -> 12[0] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 06/0 : 10[2] -> 7[3] [send] via NET/IB/2/GDRDMA
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 07/0 : 14[2] -> 12[0] via P2P/CUMEM/read
+lrdn0485:288165:288225 [0] NCCL INFO Channel 04/0 : 5[1] -> 8[0] [receive] via NET/IB/0/GDRDMA
+lrdn0485:288165:288225 [0] NCCL INFO Channel 05/0 : 5[1] -> 8[0] [receive] via NET/IB/1/GDRDMA
+lrdn0485:288165:288225 [0] NCCL INFO Channel 00/0 : 8[0] -> 12[0] [send] via NET/IB/0/GDRDMA
+lrdn0485:288165:288225 [0] NCCL INFO Channel 01/0 : 8[0] -> 12[0] [send] via NET/IB/1(9)/GDRDMA
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 07/0 : 5[1] -> 11[3] [send] via NET/IB/3(7)/GDRDMA
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 07/0 : 11[3] -> 5[1] [receive] via NET/IB/3/GDRDMA
+lrdn0485:288165:288225 [0] NCCL INFO Channel 00/0 : 0[0] -> 8[0] [receive] via NET/IB/0/GDRDMA
+lrdn0485:288168:288226 [3] NCCL INFO Channel 03/0 : 3[3] -> 11[3] [receive] via NET/IB/3/GDRDMA
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 04/0 : 4[0] -> 12[0] [receive] via NET/IB/0/GDRDMA
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 07/0 : 7[3] -> 3[3] [receive] via NET/IB/3/GDRDMA
+lrdn0485:288165:288225 [0] NCCL INFO Channel 01/0 : 0[0] -> 8[0] [receive] via NET/IB/1/GDRDMA
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 05/0 : 4[0] -> 12[0] [receive] via NET/IB/1/GDRDMA
+lrdn0485:288168:288226 [3] NCCL INFO Channel 03/0 : 11[3] -> 3[3] [send] via NET/IB/3/GDRDMA
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 04/0 : 12[0] -> 4[0] [send] via NET/IB/0/GDRDMA
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 02/0 : 3[3] -> 0[0] via P2P/CUMEM/read
+lrdn0485:288165:288225 [0] NCCL INFO Channel 00/0 : 8[0] -> 0[0] [send] via NET/IB/0/GDRDMA
+lrdn0485:288165:288225 [0] NCCL INFO Channel 01/0 : 8[0] -> 0[0] [send] via NET/IB/1(9)/GDRDMA
+lrdn0485:288168:288226 [3] NCCL INFO Channel 07/0 : 11[3] -> 5[1] [send] via NET/IB/3/GDRDMA
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 05/0 : 12[0] -> 4[0] [send] via NET/IB/1(13)/GDRDMA
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 04/0 : 4[0] -> 0[0] [receive] via NET/IB/0/GDRDMA
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 04/0 : 8[0] -> 5[1] [receive] via NET/IB/0/GDRDMA
+lrdn0485:288168:288226 [3] NCCL INFO Channel 02/0 : 11[3] -> 6[2] [send] via NET/IB/2(10)/GDRDMA
+lrdn0485:288165:288225 [0] NCCL INFO Channel 00/0 : 12[0] -> 8[0] [receive] via NET/IB/0/GDRDMA
+lrdn0022:1834494:1834556 [0] NCCL INFO Channel 05/0 : 4[0] -> 0[0] [receive] via NET/IB/1/GDRDMA
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 06/0 : 3[3] -> 0[0] via P2P/CUMEM/read
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 06/0 : 10[2] -> 7[3] [receive] via NET/IB/2/GDRDMA
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 02/0 : 7[3] -> 4[0] via P2P/CUMEM/read
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 00/0 : 12[0] -> 8[0] [send] via NET/IB/0/GDRDMA
+lrdn0485:288165:288225 [0] NCCL INFO Channel 01/0 : 12[0] -> 8[0] [receive] via NET/IB/1/GDRDMA
+lrdn0502:3175067:3175127 [0] NCCL INFO Channel 01/0 : 12[0] -> 8[0] [send] via NET/IB/1(13)/GDRDMA
+lrdn0485:288168:288226 [3] NCCL INFO Channel 03/0 : 15[3] -> 11[3] [receive] via NET/IB/3/GDRDMA
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 03/0 : 2[2] -> 0[0] via P2P/CUMEM/read
+lrdn0485:288168:288226 [3] NCCL INFO Channel 02/0 : 11[3] -> 8[0] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 05/0 : 8[0] -> 5[1] [receive] via NET/IB/1/GDRDMA
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 06/0 : 6[2] -> 2[2] [send] via NET/IB/2/GDRDMA
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 00/0 : 9[1] -> 4[0] [receive] via NET/IB/0/GDRDMA
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 03/0 : 6[2] -> 4[0] via P2P/CUMEM/read
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 02/0 : 15[3] -> 12[0] via P2P/CUMEM/read
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 01/0 : 9[1] -> 4[0] [receive] via NET/IB/1/GDRDMA
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 07/0 : 2[2] -> 0[0] via P2P/CUMEM/read
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 04/0 : 4[0] -> 0[0] [send] via NET/IB/0/GDRDMA
+lrdn0485:288168:288226 [3] NCCL INFO Channel 06/0 : 11[3] -> 8[0] via P2P/CUMEM/read
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 06/0 : 7[3] -> 4[0] via P2P/CUMEM/read
+lrdn0474:3101000:3101063 [0] NCCL INFO Channel 05/0 : 4[0] -> 0[0] [send] via NET/IB/1(5)/GDRDMA
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 06/0 : 15[3] -> 12[0] via P2P/CUMEM/read
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 07/0 : 6[2] -> 4[0] via P2P/CUMEM/read
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 03/0 : 15[3] -> 13[1] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 03/0 : 10[2] -> 8[0] via P2P/CUMEM/read
+lrdn0485:288165:288225 [0] NCCL INFO Channel 04/0 : 8[0] -> 5[1] [send] via NET/IB/0/GDRDMA
+lrdn0485:288165:288225 [0] NCCL INFO Channel 05/0 : 8[0] -> 5[1] [send] via NET/IB/1(9)/GDRDMA
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 03/0 : 3[3] -> 1[1] via P2P/CUMEM/read
+lrdn0485:288168:288226 [3] NCCL INFO Channel 03/0 : 11[3] -> 9[1] via P2P/CUMEM/read
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 07/0 : 15[3] -> 13[1] via P2P/CUMEM/read
+lrdn0485:288166:288228 [1] NCCL INFO Channel 03/0 : 9[1] -> 7[3] [send] via NET/IB/3(11)/GDRDMA
+lrdn0485:288167:288227 [2] NCCL INFO Channel 07/0 : 10[2] -> 8[0] via P2P/CUMEM/read
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 03/0 : 9[1] -> 7[3] [receive] via NET/IB/3/GDRDMA
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 07/0 : 3[3] -> 1[1] via P2P/CUMEM/read
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 03/0 : 7[3] -> 5[1] via P2P/CUMEM/read
+lrdn0485:288168:288226 [3] NCCL INFO Channel 07/0 : 11[3] -> 9[1] via P2P/CUMEM/read
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 00/0 : 15[3] -> 14[2] via P2P/CUMEM/read
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 07/0 : 7[3] -> 5[1] via P2P/CUMEM/read
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/CUMEM/read
+lrdn0485:288168:288226 [3] NCCL INFO Channel 00/0 : 11[3] -> 10[2] via P2P/CUMEM/read
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 02/0 : 15[3] -> 14[2] via P2P/CUMEM/read
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 00/0 : 7[3] -> 6[2] via P2P/CUMEM/read
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 02/0 : 3[3] -> 2[2] via P2P/CUMEM/read
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 04/0 : 15[3] -> 14[2] via P2P/CUMEM/read
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 02/0 : 7[3] -> 6[2] via P2P/CUMEM/read
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 04/0 : 3[3] -> 2[2] via P2P/CUMEM/read
+lrdn0502:3175070:3175130 [3] NCCL INFO Channel 06/0 : 15[3] -> 14[2] via P2P/CUMEM/read
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 04/0 : 7[3] -> 6[2] via P2P/CUMEM/read
+lrdn0022:1834497:1834558 [3] NCCL INFO Channel 06/0 : 3[3] -> 2[2] via P2P/CUMEM/read
+lrdn0485:288168:288226 [3] NCCL INFO Channel 02/0 : 11[3] -> 10[2] via P2P/CUMEM/read
+lrdn0485:288166:288228 [1] NCCL INFO Channel 00/0 : 9[1] -> 8[0] via P2P/CUMEM/read
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 00/0 : 13[1] -> 12[0] via P2P/CUMEM/read
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 00/0 : 14[2] -> 13[1] via P2P/CUMEM/read
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM/read
+lrdn0474:3101003:3101062 [3] NCCL INFO Channel 06/0 : 7[3] -> 6[2] via P2P/CUMEM/read
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 00/0 : 6[2] -> 5[1] via P2P/CUMEM/read
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 00/0 : 2[2] -> 1[1] via P2P/CUMEM/read
+lrdn0502:3175068:3175128 [1] NCCL INFO Channel 04/0 : 13[1] -> 12[0] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 00/0 : 5[1] -> 4[0] via P2P/CUMEM/read
+lrdn0022:1834495:1834557 [1] NCCL INFO Channel 04/0 : 1[1] -> 0[0] via P2P/CUMEM/read
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 01/0 : 14[2] -> 13[1] via P2P/CUMEM/read
+lrdn0485:288168:288226 [3] NCCL INFO Channel 04/0 : 11[3] -> 10[2] via P2P/CUMEM/read
+lrdn0485:288166:288228 [1] NCCL INFO Channel 04/0 : 9[1] -> 8[0] via P2P/CUMEM/read
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 01/0 : 6[2] -> 5[1] via P2P/CUMEM/read
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 01/0 : 2[2] -> 1[1] via P2P/CUMEM/read
+lrdn0474:3101001:3101065 [1] NCCL INFO Channel 04/0 : 5[1] -> 4[0] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 00/0 : 10[2] -> 9[1] via P2P/CUMEM/read
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 04/0 : 2[2] -> 1[1] via P2P/CUMEM/read
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 04/0 : 14[2] -> 13[1] via P2P/CUMEM/read
+lrdn0485:288168:288226 [3] NCCL INFO Channel 06/0 : 11[3] -> 10[2] via P2P/CUMEM/read
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 04/0 : 6[2] -> 5[1] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 01/0 : 10[2] -> 9[1] via P2P/CUMEM/read
+lrdn0502:3175069:3175129 [2] NCCL INFO Channel 05/0 : 14[2] -> 13[1] via P2P/CUMEM/read
+lrdn0022:1834496:1834559 [2] NCCL INFO Channel 05/0 : 2[2] -> 1[1] via P2P/CUMEM/read
+lrdn0474:3101002:3101064 [2] NCCL INFO Channel 05/0 : 6[2] -> 5[1] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 04/0 : 10[2] -> 9[1] via P2P/CUMEM/read
+lrdn0485:288167:288227 [2] NCCL INFO Channel 05/0 : 10[2] -> 9[1] via P2P/CUMEM/read
+lrdn0022:1834494:1834556 [0] NCCL INFO Connected all trees
+lrdn0022:1834494:1834556 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+lrdn0022:1834494:1834556 [0] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+lrdn0022:1834495:1834557 [1] NCCL INFO Connected all trees
+lrdn0022:1834495:1834557 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+lrdn0022:1834495:1834557 [1] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+lrdn0022:1834497:1834558 [3] NCCL INFO Connected all trees
+lrdn0022:1834497:1834558 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+lrdn0022:1834497:1834558 [3] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+lrdn0022:1834496:1834559 [2] NCCL INFO Connected all trees
+lrdn0022:1834496:1834559 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+lrdn0022:1834496:1834559 [2] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+lrdn0485:288165:288225 [0] NCCL INFO Connected all trees
+lrdn0485:288165:288225 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+lrdn0485:288165:288225 [0] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+lrdn0485:288166:288228 [1] NCCL INFO Connected all trees
+lrdn0485:288166:288228 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+lrdn0485:288166:288228 [1] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+lrdn0485:288168:288226 [3] NCCL INFO Connected all trees
+lrdn0485:288168:288226 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+lrdn0485:288168:288226 [3] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+lrdn0485:288167:288227 [2] NCCL INFO Connected all trees
+lrdn0485:288167:288227 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+lrdn0485:288167:288227 [2] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+lrdn0502:3175067:3175127 [0] NCCL INFO Connected all trees
+lrdn0502:3175067:3175127 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+lrdn0502:3175067:3175127 [0] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+lrdn0474:3101000:3101063 [0] NCCL INFO Connected all trees
+lrdn0474:3101000:3101063 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+lrdn0474:3101000:3101063 [0] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+lrdn0502:3175070:3175130 [3] NCCL INFO Connected all trees
+lrdn0502:3175070:3175130 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+lrdn0502:3175070:3175130 [3] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+lrdn0502:3175069:3175129 [2] NCCL INFO Connected all trees
+lrdn0502:3175069:3175129 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+lrdn0502:3175069:3175129 [2] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+lrdn0474:3101001:3101065 [1] NCCL INFO Connected all trees
+lrdn0474:3101001:3101065 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+lrdn0474:3101001:3101065 [1] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+lrdn0474:3101002:3101064 [2] NCCL INFO Connected all trees
+lrdn0474:3101002:3101064 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+lrdn0474:3101002:3101064 [2] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+lrdn0502:3175068:3175128 [1] NCCL INFO Connected all trees
+lrdn0502:3175068:3175128 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+lrdn0502:3175068:3175128 [1] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+lrdn0474:3101003:3101062 [3] NCCL INFO Connected all trees
+lrdn0474:3101003:3101062 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+lrdn0474:3101003:3101062 [3] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+lrdn0485:288166:288228 [1] NCCL INFO comm 0x9abae60 rank 9 nranks 16 cudaDev 1 nvmlDev 1 busId 56000 commId 0xb6cf841d262439fc - Init COMPLETE
+lrdn0485:288165:288225 [0] NCCL INFO comm 0x98f5630 rank 8 nranks 16 cudaDev 0 nvmlDev 0 busId 1d000 commId 0xb6cf841d262439fc - Init COMPLETE
+lrdn0485:288168:288226 [3] NCCL INFO comm 0x9952050 rank 11 nranks 16 cudaDev 3 nvmlDev 3 busId c8000 commId 0xb6cf841d262439fc - Init COMPLETE
+lrdn0485:288167:288227 [2] NCCL INFO comm 0xa30dec0 rank 10 nranks 16 cudaDev 2 nvmlDev 2 busId 8f000 commId 0xb6cf841d262439fc - Init COMPLETE
+lrdn0474:3101001:3101065 [1] NCCL INFO comm 0x9fc2d20 rank 5 nranks 16 cudaDev 1 nvmlDev 1 busId 56000 commId 0xb6cf841d262439fc - Init COMPLETE
+lrdn0474:3101002:3101064 [2] NCCL INFO comm 0xaf89040 rank 6 nranks 16 cudaDev 2 nvmlDev 2 busId 8f000 commId 0xb6cf841d262439fc - Init COMPLETE
+lrdn0474:3101003:3101062 [3] NCCL INFO comm 0x9a52d80 rank 7 nranks 16 cudaDev 3 nvmlDev 3 busId c8000 commId 0xb6cf841d262439fc - Init COMPLETE
+lrdn0474:3101000:3101063 [0] NCCL INFO comm 0xa4a5b60 rank 4 nranks 16 cudaDev 0 nvmlDev 0 busId 1d000 commId 0xb6cf841d262439fc - Init COMPLETE
+lrdn0022:1834494:1834556 [0] NCCL INFO comm 0xaea9370 rank 0 nranks 16 cudaDev 0 nvmlDev 0 busId 1d000 commId 0xb6cf841d262439fc - Init COMPLETE
+lrdn0022:1834495:1834557 [1] NCCL INFO comm 0xa81bd50 rank 1 nranks 16 cudaDev 1 nvmlDev 1 busId 56000 commId 0xb6cf841d262439fc - Init COMPLETE
+lrdn0022:1834496:1834559 [2] NCCL INFO comm 0xa0f9920 rank 2 nranks 16 cudaDev 2 nvmlDev 2 busId 8f000 commId 0xb6cf841d262439fc - Init COMPLETE
+lrdn0022:1834497:1834558 [3] NCCL INFO comm 0xa717db0 rank 3 nranks 16 cudaDev 3 nvmlDev 3 busId c8000 commId 0xb6cf841d262439fc - Init COMPLETE
+lrdn0502:3175067:3175127 [0] NCCL INFO comm 0xae35880 rank 12 nranks 16 cudaDev 0 nvmlDev 0 busId 1d000 commId 0xb6cf841d262439fc - Init COMPLETE
+lrdn0502:3175068:3175128 [1] NCCL INFO comm 0xa6c0060 rank 13 nranks 16 cudaDev 1 nvmlDev 1 busId 56000 commId 0xb6cf841d262439fc - Init COMPLETE
+lrdn0502:3175070:3175130 [3] NCCL INFO comm 0xa6e6620 rank 15 nranks 16 cudaDev 3 nvmlDev 3 busId c8000 commId 0xb6cf841d262439fc - Init COMPLETE
+lrdn0502:3175069:3175129 [2] NCCL INFO comm 0x97cc450 rank 14 nranks 16 cudaDev 2 nvmlDev 2 busId 8f000 commId 0xb6cf841d262439fc - Init COMPLETE
 [Debug] train temporal samples (T=5, stride=6)
 [Debug] train temporal samples (T=5, stride=6)
 [Debug] train temporal samples (T=5, stride=6)
@@ -688,14 +688,14 @@ lrdn0808:41112:41171 [3] NCCL INFO comm 0xa197060 rank 15 nranks 16 cudaDev 3 nv
   idx=5598: airmass_rgb_20141107_1030.png -> [airmass_rgb_20141107_0930.png, airmass_rgb_20141107_1000.png, airmass_rgb_20141107_1030.png, airmass_rgb_20141107_1100.png, airmass_rgb_20141107_1130.png]
   idx=5598: airmass_rgb_20141107_1030.png -> [airmass_rgb_20141107_0930.png, airmass_rgb_20141107_1000.png, airmass_rgb_20141107_1030.png, airmass_rgb_20141107_1100.png, airmass_rgb_20141107_1130.png]
   idx=5598: airmass_rgb_20141107_1030.png -> [airmass_rgb_20141107_0930.png, airmass_rgb_20141107_1000.png, airmass_rgb_20141107_1030.png, airmass_rgb_20141107_1100.png, airmass_rgb_20141107_1130.png]
-  idx=0: airmass_rgb_20101011_0055.png -> [airmass_rgb_20101011_0055.png, airmass_rgb_20101011_0025.png, airmass_rgb_20101011_0055.png, airmass_rgb_20101011_0125.png, airmass_rgb_20101011_0155.png]
-  idx=0: airmass_rgb_20101011_0055.png -> [airmass_rgb_20101011_0055.png, airmass_rgb_20101011_0025.png, airmass_rgb_20101011_0055.png, airmass_rgb_20101011_0125.png, airmass_rgb_20101011_0155.png]
-  idx=0: airmass_rgb_20101011_0055.png -> [airmass_rgb_20101011_0055.png, airmass_rgb_20101011_0025.png, airmass_rgb_20101011_0055.png, airmass_rgb_20101011_0125.png, airmass_rgb_20101011_0155.png]
-  idx=0: airmass_rgb_20101011_0055.png -> [airmass_rgb_20101011_0055.png, airmass_rgb_20101011_0025.png, airmass_rgb_20101011_0055.png, airmass_rgb_20101011_0125.png, airmass_rgb_20101011_0155.png]
   idx=11196: airmass_rgb_20161029_0450.png -> [airmass_rgb_20161029_0350.png, airmass_rgb_20161029_0420.png, airmass_rgb_20161029_0450.png, airmass_rgb_20161029_0520.png, airmass_rgb_20161029_0550.png]
   idx=11196: airmass_rgb_20161029_0450.png -> [airmass_rgb_20161029_0350.png, airmass_rgb_20161029_0420.png, airmass_rgb_20161029_0450.png, airmass_rgb_20161029_0520.png, airmass_rgb_20161029_0550.png]
   idx=11196: airmass_rgb_20161029_0450.png -> [airmass_rgb_20161029_0350.png, airmass_rgb_20161029_0420.png, airmass_rgb_20161029_0450.png, airmass_rgb_20161029_0520.png, airmass_rgb_20161029_0550.png]
   idx=11196: airmass_rgb_20161029_0450.png -> [airmass_rgb_20161029_0350.png, airmass_rgb_20161029_0420.png, airmass_rgb_20161029_0450.png, airmass_rgb_20161029_0520.png, airmass_rgb_20161029_0550.png]
+  idx=0: airmass_rgb_20101011_0055.png -> [airmass_rgb_20101011_0055.png, airmass_rgb_20101011_0025.png, airmass_rgb_20101011_0055.png, airmass_rgb_20101011_0125.png, airmass_rgb_20101011_0155.png]
+  idx=0: airmass_rgb_20101011_0055.png -> [airmass_rgb_20101011_0055.png, airmass_rgb_20101011_0025.png, airmass_rgb_20101011_0055.png, airmass_rgb_20101011_0125.png, airmass_rgb_20101011_0155.png]
+  idx=0: airmass_rgb_20101011_0055.png -> [airmass_rgb_20101011_0055.png, airmass_rgb_20101011_0025.png, airmass_rgb_20101011_0055.png, airmass_rgb_20101011_0125.png, airmass_rgb_20101011_0155.png]
+  idx=0: airmass_rgb_20101011_0055.png -> [airmass_rgb_20101011_0055.png, airmass_rgb_20101011_0025.png, airmass_rgb_20101011_0055.png, airmass_rgb_20101011_0125.png, airmass_rgb_20101011_0155.png]
   idx=5598: airmass_rgb_20141107_1030.png -> [airmass_rgb_20141107_0930.png, airmass_rgb_20141107_1000.png, airmass_rgb_20141107_1030.png, airmass_rgb_20141107_1100.png, airmass_rgb_20141107_1130.png]
   idx=5598: airmass_rgb_20141107_1030.png -> [airmass_rgb_20141107_0930.png, airmass_rgb_20141107_1000.png, airmass_rgb_20141107_1030.png, airmass_rgb_20141107_1100.png, airmass_rgb_20141107_1130.png]
   idx=5598: airmass_rgb_20141107_1030.png -> [airmass_rgb_20141107_0930.png, airmass_rgb_20141107_1000.png, airmass_rgb_20141107_1030.png, airmass_rgb_20141107_1100.png, airmass_rgb_20141107_1130.png]
@@ -729,248 +729,127 @@ lrdn0808:41112:41171 [3] NCCL INFO comm 0xa197060 rank 15 nranks 16 cudaDev 3 nv
   idx=11196: airmass_rgb_20161029_0450.png -> [airmass_rgb_20161029_0350.png, airmass_rgb_20161029_0420.png, airmass_rgb_20161029_0450.png, airmass_rgb_20161029_0520.png, airmass_rgb_20161029_0550.png]
   idx=11196: airmass_rgb_20161029_0450.png -> [airmass_rgb_20161029_0350.png, airmass_rgb_20161029_0420.png, airmass_rgb_20161029_0450.png, airmass_rgb_20161029_0520.png, airmass_rgb_20161029_0550.png]
 [INFO] rank 0/16 device=cuda:0
-[INFO] batch_size per GPU=256 (global=4096)
-[INFO] lr scaled from 0.0005 to 0.008 for world_size=16
-Logging metrics to outputs/runs/exp_mpi_3/training_log.csv
-[Epoch 1] train: L=20.6645 (hm=0.0999, pr=0.6750, peak=1.5064)
-[Epoch 1] elapsed: 21.7s
-[Epoch 2] train: L=1252.9598 (hm=6.2612, pr=0.7287, peak=5.7233)
-          val:  L=2195423744.0000 (hm=10977116.0000, pr=486.5083)
+[INFO] batch_size per GPU=64 (global=1024)
+Logging metrics to outputs/runs/exp_mpi_4/training_log.csv
+[Epoch 1] train: L=20.7513 (hm=1.0030, pr=0.6915, peak=3.4118)
+[Epoch 1] elapsed: 15.1s
+[Epoch 2] train: L=1.0596 (hm=0.0190, pr=0.6789, peak=0.4754)
+          val:  L=4.0729 (hm=0.1648, pr=0.7765)
 [Epoch 2] checkpoint skip: epoch < best_ckpt_start_epoch (5)
-[Epoch 2] elapsed: 32.9s
-[Epoch 3] train: L=2485.2493 (hm=12.4223, pr=0.7823, peak=9.9210)
-[Epoch 3] elapsed: 16.0s
-[Epoch 4] train: L=268.7191 (hm=1.3401, pr=0.6909, peak=2.6775)
-          val:  L=51149280924139520.0000 (hm=255746411331584.0000, pr=3256143.2500)
+[Epoch 2] elapsed: 23.9s
+[Epoch 3] train: L=0.7296 (hm=0.0033, pr=0.6644, peak=0.1633)
+[Epoch 3] elapsed: 11.9s
+[Epoch 4] train: L=0.6663 (hm=0.0012, pr=0.6429, peak=0.1184)
+          val:  L=0.7546 (hm=0.0011, pr=0.7335)
 [Epoch 4] checkpoint skip: epoch < best_ckpt_start_epoch (5)
-[Epoch 4] elapsed: 32.2s
-[Epoch 5] train: L=50.0126 (hm=0.2466, pr=0.6893, peak=3.0455)
-[Epoch 5] elapsed: 16.6s
-[Epoch 6] train: L=32.8360 (hm=0.1608, pr=0.6755, peak=1.6291)
-          val:  L=164817993728.0000 (hm=824089856.0000, pr=9164.6191)
-[Epoch 6] no val improvement (164817993728.0000 >= 1000000000.0000); checkpoint not saved
-[Epoch 6] elapsed: 31.7s
-[Epoch 7] train: L=20.1692 (hm=0.0975, pr=0.6781, peak=0.1807)
-[Epoch 7] elapsed: 16.7s
-[Epoch 8] train: L=6.9918 (hm=0.0316, pr=0.6776, peak=0.0345)
-          val:  L=685746944.0000 (hm=3428729.0000, pr=1110.7478)
-[Epoch 8] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
+[Epoch 4] elapsed: 15.6s
+[Epoch 5] train: L=0.6338 (hm=0.0008, pr=0.6174, peak=0.0695)
+[Epoch 5] elapsed: 11.9s
+[Epoch 6] train: L=0.6066 (hm=0.0007, pr=0.5920, peak=0.0614)
+          val:  L=0.7482 (hm=0.0008, pr=0.7314)
+[Epoch 6] saving BEST checkpoint to outputs/runs/exp_mpi_4/best.ckpt ...
+[Epoch 6] best checkpoint saved in 0.07s
+[Epoch 6] elapsed: 15.5s
+[Epoch 7] train: L=0.5769 (hm=0.0007, pr=0.5625, peak=0.0512)
+[Epoch 7] elapsed: 11.5s
+[Epoch 8] train: L=0.5316 (hm=0.0008, pr=0.5166, peak=0.0510)
+          val:  L=0.7183 (hm=0.0008, pr=0.7013)
+[Epoch 8] saving BEST checkpoint to outputs/runs/exp_mpi_4/best.ckpt ...
 [Epoch 8] best checkpoint saved in 0.07s
-[Epoch 8] elapsed: 31.4s
-[Epoch 9] train: L=3.2938 (hm=0.0131, pr=0.6765, peak=0.1339)
-[Epoch 9] elapsed: 15.1s
-[Epoch 10] train: L=3.2538 (hm=0.0129, pr=0.6744, peak=0.2019)
-          val:  L=43386.5508 (hm=216.8032, pr=25.9093)
-[Epoch 10] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
-[Epoch 10] best checkpoint saved in 0.07s
-[Epoch 10] elapsed: 32.6s
-[Epoch 11] train: L=1.3839 (hm=0.0036, pr=0.6707, peak=0.0972)
-[Epoch 11] elapsed: 15.1s
-[Epoch 12] train: L=1.5191 (hm=0.0043, pr=0.6668, peak=0.0704)
-          val:  L=1098.7791 (hm=5.4814, pr=2.4913)
-[Epoch 12] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
-[Epoch 12] best checkpoint saved in 0.07s
-[Epoch 12] elapsed: 31.6s
-[Epoch 13] train: L=1.5551 (hm=0.0044, pr=0.6664, peak=0.0658)
-[Epoch 13] elapsed: 15.4s
-[Epoch 14] train: L=1.0227 (hm=0.0018, pr=0.6671, peak=0.0406)
-          val:  L=1.7127 (hm=0.0050, pr=0.7042)
-[Epoch 14] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
-[Epoch 14] best checkpoint saved in 0.08s
-[Epoch 14] elapsed: 32.1s
-[Epoch 15] train: L=1.0241 (hm=0.0018, pr=0.6651, peak=0.0349)
-[Epoch 15] elapsed: 15.5s
-[Epoch 16] train: L=0.8699 (hm=0.0010, pr=0.6619, peak=0.0203)
-          val:  L=1.7371 (hm=0.0046, pr=0.8140)
-[Epoch 16] no val improvement (1.7371 >= 1.7127); checkpoint not saved
-[Epoch 16] elapsed: 31.9s
-[Epoch 17] train: L=0.8686 (hm=0.0010, pr=0.6588, peak=0.0086)
-[Epoch 17] elapsed: 15.0s
-[Epoch 18] train: L=0.8735 (hm=0.0011, pr=0.6572, peak=0.0123)
-          val:  L=1.5106 (hm=0.0033, pr=0.8534)
-[Epoch 18] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
-[Epoch 18] best checkpoint saved in 0.07s
-[Epoch 18] elapsed: 31.8s
-[Epoch 19] train: L=0.7945 (hm=0.0007, pr=0.6555, peak=0.0178)
-[Epoch 19] elapsed: 15.6s
-[Epoch 20] train: L=0.8023 (hm=0.0007, pr=0.6552, peak=0.0299)
-          val:  L=0.9100 (hm=0.0009, pr=0.7248)
-[Epoch 20] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
-[Epoch 20] best checkpoint saved in 0.08s
-[Epoch 20] elapsed: 31.9s
-[Epoch 21] train: L=0.7825 (hm=0.0006, pr=0.6546, peak=0.0198)
-[Epoch 21] elapsed: 15.5s
-[Epoch 22] train: L=0.7855 (hm=0.0007, pr=0.6542, peak=0.0160)
-          val:  L=0.8079 (hm=0.0006, pr=0.6842)
-[Epoch 22] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
-[Epoch 22] best checkpoint saved in 0.08s
-[Epoch 22] elapsed: 32.5s
-[Epoch 23] train: L=0.7748 (hm=0.0006, pr=0.6534, peak=0.0095)
-[Epoch 23] elapsed: 15.1s
-[Epoch 24] train: L=0.7699 (hm=0.0006, pr=0.6539, peak=0.0097)
-          val:  L=0.7963 (hm=0.0006, pr=0.6815)
-[Epoch 24] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
-[Epoch 24] best checkpoint saved in 0.07s
-[Epoch 24] elapsed: 31.7s
-[Epoch 25] train: L=0.7708 (hm=0.0006, pr=0.6534, peak=0.0120)
-[Epoch 25] elapsed: 15.6s
-[Epoch 26] train: L=0.7679 (hm=0.0006, pr=0.6526, peak=0.0063)
-          val:  L=0.7933 (hm=0.0006, pr=0.6813)
-[Epoch 26] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
-[Epoch 26] best checkpoint saved in 0.08s
-[Epoch 26] elapsed: 31.9s
-[Epoch 27] train: L=0.7683 (hm=0.0006, pr=0.6529, peak=0.0067)
-[Epoch 27] elapsed: 16.0s
-[Epoch 28] train: L=0.7644 (hm=0.0006, pr=0.6512, peak=0.0075)
-          val:  L=0.7938 (hm=0.0006, pr=0.6831)
-[Epoch 28] no val improvement (0.7938 >= 0.7933); checkpoint not saved
-[Epoch 28] elapsed: 31.5s
-[Epoch 29] train: L=0.7650 (hm=0.0006, pr=0.6511, peak=0.0095)
-[Epoch 29] elapsed: 15.6s
-[Epoch 30] train: L=0.7655 (hm=0.0006, pr=0.6514, peak=0.0081)
-          val:  L=0.7848 (hm=0.0005, pr=0.6749)
-[Epoch 30] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
-[Epoch 30] best checkpoint saved in 0.08s
-[Epoch 30] elapsed: 32.0s
-[Epoch 31] train: L=0.7638 (hm=0.0006, pr=0.6505, peak=0.0060)
-[Epoch 31] elapsed: 15.2s
-[Epoch 32] train: L=0.7645 (hm=0.0006, pr=0.6512, peak=0.0056)
-          val:  L=0.7869 (hm=0.0006, pr=0.6768)
-[Epoch 32] no val improvement (0.7869 >= 0.7848); checkpoint not saved
-[Epoch 32] elapsed: 31.8s
-[Epoch 33] train: L=0.7633 (hm=0.0006, pr=0.6501, peak=0.0070)
-[Epoch 33] elapsed: 15.7s
-[Epoch 34] train: L=0.7638 (hm=0.0006, pr=0.6508, peak=0.0058)
-          val:  L=0.7818 (hm=0.0005, pr=0.6726)
-[Epoch 34] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
-[Epoch 34] best checkpoint saved in 0.08s
-[Epoch 34] elapsed: 32.0s
-[Epoch 35] train: L=0.7627 (hm=0.0006, pr=0.6501, peak=0.0055)
-[Epoch 35] elapsed: 15.8s
-[Epoch 36] train: L=0.7618 (hm=0.0006, pr=0.6490, peak=0.0069)
-          val:  L=0.7930 (hm=0.0005, pr=0.6831)
-[Epoch 36] no val improvement (0.7930 >= 0.7818); checkpoint not saved
-[Epoch 36] elapsed: 31.2s
-[Epoch 37] train: L=0.7624 (hm=0.0006, pr=0.6498, peak=0.0067)
-[Epoch 37] elapsed: 15.8s
-[Epoch 38] train: L=0.7613 (hm=0.0006, pr=0.6492, peak=0.0059)
-          val:  L=0.7865 (hm=0.0005, pr=0.6767)
-[Epoch 38] no val improvement (0.7865 >= 0.7818); checkpoint not saved
-[Epoch 38] elapsed: 31.1s
-[Epoch 39] train: L=0.7614 (hm=0.0006, pr=0.6492, peak=0.0060)
-[Epoch 39] elapsed: 15.7s
-[Epoch 40] train: L=0.7612 (hm=0.0006, pr=0.6489, peak=0.0061)
-          val:  L=0.7865 (hm=0.0005, pr=0.6767)
-[Epoch 40] no val improvement (0.7865 >= 0.7818); checkpoint not saved
-[Epoch 40] elapsed: 31.8s
-[Epoch 41] train: L=0.7612 (hm=0.0006, pr=0.6493, peak=0.0057)
-[Epoch 41] elapsed: 15.8s
-[Epoch 42] train: L=0.7607 (hm=0.0006, pr=0.6485, peak=0.0057)
-          val:  L=0.7836 (hm=0.0005, pr=0.6738)
-[Epoch 42] no val improvement (0.7836 >= 0.7818); checkpoint not saved
-[Epoch 42] elapsed: 31.8s
-[Epoch 43] train: L=0.7610 (hm=0.0006, pr=0.6487, peak=0.0061)
-[Epoch 43] elapsed: 15.3s
-[Epoch 44] train: L=0.7596 (hm=0.0006, pr=0.6478, peak=0.0065)
-          val:  L=0.7871 (hm=0.0005, pr=0.6772)
-[Epoch 44] no val improvement (0.7871 >= 0.7818); checkpoint not saved
-[Epoch 44] elapsed: 31.5s
-[Epoch 45] train: L=0.7600 (hm=0.0006, pr=0.6480, peak=0.0064)
-[Epoch 45] elapsed: 15.5s
-[Epoch 46] train: L=0.7583 (hm=0.0006, pr=0.6465, peak=0.0061)
-          val:  L=0.7892 (hm=0.0005, pr=0.6793)
-[Epoch 46] no val improvement (0.7892 >= 0.7818); checkpoint not saved
-[Epoch 46] elapsed: 31.6s
-[Epoch 47] train: L=0.7596 (hm=0.0006, pr=0.6474, peak=0.0060)
-[Epoch 47] elapsed: 14.9s
-[Epoch 48] train: L=0.7582 (hm=0.0006, pr=0.6464, peak=0.0057)
-          val:  L=0.7981 (hm=0.0005, pr=0.6881)
-[Epoch 48] no val improvement (0.7981 >= 0.7818); checkpoint not saved
-[Epoch 48] elapsed: 31.6s
-[Epoch 49] train: L=0.7585 (hm=0.0006, pr=0.6465, peak=0.0060)
-[Epoch 49] elapsed: 15.5s
-[Epoch 50] train: L=0.7577 (hm=0.0006, pr=0.6459, peak=0.0061)
-          val:  L=0.8031 (hm=0.0005, pr=0.6932)
-[Epoch 50] no val improvement (0.8031 >= 0.7818); checkpoint not saved
-[Epoch 50] elapsed: 31.3s
-Done. Best: outputs/runs/exp_mpi_3/best.ckpt
-lrdn0090:2401189:2401275 [0] NCCL INFO [Service thread] Connection closed by localRank 3
-lrdn0090:2401190:2401274 [1] NCCL INFO [Service thread] Connection closed by localRank 3
-lrdn0090:2401191:2401273 [2] NCCL INFO [Service thread] Connection closed by localRank 3
-lrdn0090:2401192:2401272 [3] NCCL INFO [Service thread] Connection closed by localRank 3
-lrdn0090:2401189:2401275 [0] NCCL INFO [Service thread] Connection closed by localRank 0
-lrdn0090:2401190:2401274 [1] NCCL INFO [Service thread] Connection closed by localRank 0
-lrdn0090:2401191:2401273 [2] NCCL INFO [Service thread] Connection closed by localRank 0
-lrdn0090:2401192:2401272 [3] NCCL INFO [Service thread] Connection closed by localRank 0
-lrdn0786:3734536:3734618 [0] NCCL INFO [Service thread] Connection closed by localRank 0
-lrdn0786:3734537:3734617 [1] NCCL INFO [Service thread] Connection closed by localRank 1
-lrdn0786:3734537:3734617 [1] NCCL INFO [Service thread] Connection closed by localRank 0
-lrdn0786:3734537:3734617 [1] NCCL INFO [Service thread] Connection closed by localRank 3
-lrdn0090:2401189:2401275 [0] NCCL INFO [Service thread] Connection closed by localRank 1
-lrdn0786:3734538:3734620 [2] NCCL INFO [Service thread] Connection closed by localRank 1
-lrdn0786:3734538:3734620 [2] NCCL INFO [Service thread] Connection closed by localRank 0
-lrdn0786:3734538:3734620 [2] NCCL INFO [Service thread] Connection closed by localRank 3
-lrdn0786:3734539:3734619 [3] NCCL INFO [Service thread] Connection closed by localRank 0
-lrdn0786:3734539:3734619 [3] NCCL INFO [Service thread] Connection closed by localRank 1
-lrdn0750:2924821:2924904 [1] NCCL INFO [Service thread] Connection closed by localRank 2
-lrdn0750:2924821:2924904 [1] NCCL INFO [Service thread] Connection closed by localRank 3
-lrdn0750:2924821:2924904 [1] NCCL INFO [Service thread] Connection closed by localRank 1
-lrdn0090:2401190:2401274 [1] NCCL INFO [Service thread] Connection closed by localRank 1
-lrdn0786:3734536:3734618 [0] NCCL INFO [Service thread] Connection closed by localRank 1
-lrdn0786:3734536:3734618 [0] NCCL INFO [Service thread] Connection closed by localRank 3
-lrdn0786:3734539:3734619 [3] NCCL INFO [Service thread] Connection closed by localRank 3
-lrdn0786:3734536:3734618 [0] NCCL INFO [Service thread] Connection closed by localRank 2
-lrdn0750:2924820:2924901 [0] NCCL INFO [Service thread] Connection closed by localRank 3
-lrdn0786:3734537:3734617 [1] NCCL INFO [Service thread] Connection closed by localRank 2
-lrdn0750:2924820:2924901 [0] NCCL INFO [Service thread] Connection closed by localRank 1
-lrdn0750:2924820:2924901 [0] NCCL INFO [Service thread] Connection closed by localRank 2
-lrdn0786:3734538:3734620 [2] NCCL INFO [Service thread] Connection closed by localRank 2
-lrdn0786:3734539:3734619 [3] NCCL INFO [Service thread] Connection closed by localRank 2
-lrdn0808:41109:41190 [0] NCCL INFO [Service thread] Connection closed by localRank 1
-lrdn0808:41109:41190 [0] NCCL INFO [Service thread] Connection closed by localRank 0
-lrdn0090:2401191:2401273 [2] NCCL INFO [Service thread] Connection closed by localRank 1
-lrdn0090:2401192:2401272 [3] NCCL INFO [Service thread] Connection closed by localRank 1
-lrdn0808:41110:41191 [1] NCCL INFO [Service thread] Connection closed by localRank 1
-lrdn0808:41110:41191 [1] NCCL INFO [Service thread] Connection closed by localRank 0
-lrdn0808:41109:41190 [0] NCCL INFO [Service thread] Connection closed by localRank 2
-lrdn0090:2401189:2401275 [0] NCCL INFO [Service thread] Connection closed by localRank 2
-lrdn0090:2401190:2401274 [1] NCCL INFO [Service thread] Connection closed by localRank 2
-lrdn0090:2401191:2401273 [2] NCCL INFO [Service thread] Connection closed by localRank 2
-lrdn0090:2401192:2401272 [3] NCCL INFO [Service thread] Connection closed by localRank 2
-lrdn0750:2924822:2924903 [2] NCCL INFO [Service thread] Connection closed by localRank 2
-lrdn0750:2924822:2924903 [2] NCCL INFO [Service thread] Connection closed by localRank 3
-lrdn0750:2924822:2924903 [2] NCCL INFO [Service thread] Connection closed by localRank 1
-lrdn0750:2924823:2924902 [3] NCCL INFO [Service thread] Connection closed by localRank 3
-lrdn0750:2924823:2924902 [3] NCCL INFO [Service thread] Connection closed by localRank 2
-lrdn0750:2924823:2924902 [3] NCCL INFO [Service thread] Connection closed by localRank 1
-lrdn0808:41110:41191 [1] NCCL INFO [Service thread] Connection closed by localRank 2
-lrdn0750:2924820:2924901 [0] NCCL INFO [Service thread] Connection closed by localRank 0
-lrdn0808:41109:41190 [0] NCCL INFO [Service thread] Connection closed by localRank 3
-lrdn0750:2924821:2924904 [1] NCCL INFO [Service thread] Connection closed by localRank 0
-lrdn0808:41110:41191 [1] NCCL INFO [Service thread] Connection closed by localRank 3
-lrdn0750:2924822:2924903 [2] NCCL INFO [Service thread] Connection closed by localRank 0
-lrdn0750:2924823:2924902 [3] NCCL INFO [Service thread] Connection closed by localRank 0
-lrdn0808:41111:41193 [2] NCCL INFO [Service thread] Connection closed by localRank 1
-lrdn0808:41111:41193 [2] NCCL INFO [Service thread] Connection closed by localRank 0
-lrdn0808:41112:41192 [3] NCCL INFO [Service thread] Connection closed by localRank 1
-lrdn0808:41112:41192 [3] NCCL INFO [Service thread] Connection closed by localRank 0
-lrdn0808:41111:41193 [2] NCCL INFO [Service thread] Connection closed by localRank 2
-lrdn0808:41112:41192 [3] NCCL INFO [Service thread] Connection closed by localRank 3
-lrdn0808:41111:41193 [2] NCCL INFO [Service thread] Connection closed by localRank 3
-lrdn0808:41112:41192 [3] NCCL INFO [Service thread] Connection closed by localRank 2
-lrdn0090:2401190:2401190 [1] NCCL INFO comm 0xa8e78f0 rank 1 nranks 16 cudaDev 1 busId 56000 - Abort COMPLETE
-lrdn0808:41110:41110 [1] NCCL INFO comm 0x9bccb30 rank 13 nranks 16 cudaDev 1 busId 56000 - Abort COMPLETE
-lrdn0090:2401192:2401192 [3] NCCL INFO comm 0x9bf4080 rank 3 nranks 16 cudaDev 3 busId c8000 - Abort COMPLETE
-lrdn0808:41111:41111 [2] NCCL INFO comm 0x92c62f0 rank 14 nranks 16 cudaDev 2 busId 8f000 - Abort COMPLETE
-lrdn0090:2401189:2401189 [0] NCCL INFO comm 0x9bf5580 rank 0 nranks 16 cudaDev 0 busId 1d000 - Abort COMPLETE
-lrdn0750:2924822:2924822 [2] NCCL INFO comm 0xae11890 rank 6 nranks 16 cudaDev 2 busId 8f000 - Abort COMPLETE
-lrdn0750:2924821:2924821 [1] NCCL INFO comm 0x9415c20 rank 5 nranks 16 cudaDev 1 busId 56000 - Abort COMPLETE
-lrdn0808:41109:41109 [0] NCCL INFO comm 0x9395400 rank 12 nranks 16 cudaDev 0 busId 1d000 - Abort COMPLETE
-lrdn0786:3734538:3734538 [2] NCCL INFO comm 0xa455b30 rank 10 nranks 16 cudaDev 2 busId 8f000 - Abort COMPLETE
-lrdn0750:2924823:2924823 [3] NCCL INFO comm 0x9060970 rank 7 nranks 16 cudaDev 3 busId c8000 - Abort COMPLETE
-lrdn0786:3734537:3734537 [1] NCCL INFO comm 0xa1315b0 rank 9 nranks 16 cudaDev 1 busId 56000 - Abort COMPLETE
-lrdn0786:3734539:3734539 [3] NCCL INFO comm 0xa505050 rank 11 nranks 16 cudaDev 3 busId c8000 - Abort COMPLETE
-lrdn0786:3734536:3734536 [0] NCCL INFO comm 0xa0e5830 rank 8 nranks 16 cudaDev 0 busId 1d000 - Abort COMPLETE
-lrdn0808:41112:41112 [3] NCCL INFO comm 0xa197060 rank 15 nranks 16 cudaDev 3 busId c8000 - Abort COMPLETE
-lrdn0090:2401191:2401191 [2] NCCL INFO comm 0x930b960 rank 2 nranks 16 cudaDev 2 busId 8f000 - Abort COMPLETE
-lrdn0750:2924820:2924820 [0] NCCL INFO comm 0x9e42490 rank 4 nranks 16 cudaDev 0 busId 1d000 - Abort COMPLETE
+[Epoch 8] elapsed: 15.0s
+[Epoch 9] train: L=0.4601 (hm=0.0009, pr=0.4429, peak=0.0581)
+[Epoch 9] elapsed: 11.5s
+[Epoch 10] train: L=0.3562 (hm=0.0010, pr=0.3371, peak=0.0694)
+          val:  L=0.7310 (hm=0.0009, pr=0.7125)
+[Epoch 10] no val improvement (0.7310 >= 0.7183); checkpoint not saved
+[Epoch 10] elapsed: 15.6s
+[Epoch 11] train: L=0.2433 (hm=0.0010, pr=0.2231, peak=0.0786)
+[Epoch 11] elapsed: 11.4s
+[Epoch 12] train: L=0.1318 (hm=0.0010, pr=0.1113, peak=0.0886)
+          val:  L=1.1084 (hm=0.0009, pr=1.0911)
+[Epoch 12] no val improvement (1.1084 >= 0.7183); checkpoint not saved
+[Epoch 12] elapsed: 15.0s
+[Epoch 13] train: L=0.0684 (hm=0.0009, pr=0.0505, peak=0.0851)
+[Epoch 13] elapsed: 11.2s
+[Epoch 14] train: L=0.0495 (hm=0.0008, pr=0.0335, peak=0.0745)
+          val:  L=0.9926 (hm=0.0009, pr=0.9746)
+[Epoch 14] no val improvement (0.9926 >= 0.7183); checkpoint not saved
+[Epoch 14] elapsed: 15.6s
+[Epoch 15] train: L=0.0407 (hm=0.0007, pr=0.0258, peak=0.0670)
+[Epoch 15] elapsed: 11.5s
+[Epoch 16] train: L=0.0350 (hm=0.0007, pr=0.0206, peak=0.0603)
+          val:  L=0.8945 (hm=0.0008, pr=0.8780)
+[Epoch 16] no val improvement (0.8945 >= 0.7183); checkpoint not saved
+[Epoch 16] elapsed: 15.0s
+[Epoch 17] train: L=0.0340 (hm=0.0007, pr=0.0205, peak=0.0559)
+[Epoch 17] elapsed: 11.3s
+[Epoch 18] train: L=0.0319 (hm=0.0007, pr=0.0184, peak=0.0528)
+          val:  L=1.1341 (hm=0.0008, pr=1.1190)
+[Epoch 18] no val improvement (1.1341 >= 0.7183); checkpoint not saved
+[Epoch 18] elapsed: 15.1s
+[Epoch 19] train: L=0.0292 (hm=0.0007, pr=0.0161, peak=0.0476)
+[Epoch 19] elapsed: 11.4s
+[Epoch 20] train: L=0.0248 (hm=0.0006, pr=0.0122, peak=0.0454)
+          val:  L=1.3035 (hm=0.0007, pr=1.2888)
+[Epoch 20] no val improvement (1.3035 >= 0.7183); checkpoint not saved
+[Epoch 20] elapsed: 15.6s
+[Epoch 21] train: L=0.0259 (hm=0.0006, pr=0.0134, peak=0.0446)
+[Epoch 21] elapsed: 11.6s
+[Epoch 22] train: L=0.0233 (hm=0.0006, pr=0.0113, peak=0.0443)
+          val:  L=1.1554 (hm=0.0007, pr=1.1406)
+[Epoch 22] no val improvement (1.1554 >= 0.7183); checkpoint not saved
+[Epoch 22] elapsed: 15.2s
+[Epoch 23] train: L=0.0214 (hm=0.0006, pr=0.0096, peak=0.0437)
+[Epoch 23] elapsed: 11.2s
+[Epoch 24] train: L=0.0219 (hm=0.0006, pr=0.0101, peak=0.0438)
+          val:  L=1.5804 (hm=0.0007, pr=1.5658)
+[Epoch 24] no val improvement (1.5804 >= 0.7183); checkpoint not saved
+[Epoch 24] elapsed: 14.9s
+[Epoch 25] train: L=0.0213 (hm=0.0006, pr=0.0096, peak=0.0467)
+[Epoch 25] elapsed: 11.6s
+[Epoch 26] train: L=0.0206 (hm=0.0006, pr=0.0089, peak=0.0469)
+          val:  L=1.5313 (hm=0.0007, pr=1.5169)
+[Epoch 26] no val improvement (1.5313 >= 0.7183); checkpoint not saved
+[Epoch 26] elapsed: 14.9s
+[Epoch 27] train: L=0.0203 (hm=0.0006, pr=0.0091, peak=0.0468)
+[Epoch 27] elapsed: 11.6s
+[Epoch 28] train: L=0.0186 (hm=0.0006, pr=0.0075, peak=0.0504)
+          val:  L=1.2793 (hm=0.0007, pr=1.2648)
+[Epoch 28] no val improvement (1.2793 >= 0.7183); checkpoint not saved
+[Epoch 28] elapsed: 15.2s
+[Epoch 29] train: L=0.0175 (hm=0.0005, pr=0.0065, peak=0.0525)
+[Epoch 29] elapsed: 11.6s
+[Epoch 30] train: L=0.0179 (hm=0.0006, pr=0.0068, peak=0.0544)
+          val:  L=1.1955 (hm=0.0007, pr=1.1817)
+[Epoch 30] no val improvement (1.1955 >= 0.7183); checkpoint not saved
+[Epoch 30] elapsed: 15.1s
+[Epoch 31] train: L=0.0185 (hm=0.0005, pr=0.0078, peak=0.0574)
+[Epoch 31] elapsed: 11.7s
+[Epoch 32] train: L=0.0157 (hm=0.0005, pr=0.0053, peak=0.0596)
+          val:  L=1.0776 (hm=0.0007, pr=1.0636)
+[Epoch 32] no val improvement (1.0776 >= 0.7183); checkpoint not saved
+[Epoch 32] elapsed: 15.3s
+[Epoch 33] train: L=0.0166 (hm=0.0005, pr=0.0064, peak=0.0649)
+[Epoch 33] elapsed: 11.4s
+[Epoch 34] train: L=0.0158 (hm=0.0005, pr=0.0057, peak=0.0683)
+          val:  L=1.7416 (hm=0.0007, pr=1.7275)
+[Epoch 34] no val improvement (1.7416 >= 0.7183); checkpoint not saved
+[Epoch 34] elapsed: 15.2s
+[Epoch 35] train: L=0.0164 (hm=0.0005, pr=0.0064, peak=0.0708)
+[Epoch 35] elapsed: 11.4s
+[Epoch 36] train: L=0.0160 (hm=0.0005, pr=0.0066, peak=0.0770)
+          val:  L=1.5675 (hm=0.0007, pr=1.5539)
+[Epoch 36] no val improvement (1.5675 >= 0.7183); checkpoint not saved
+[Epoch 36] elapsed: 15.2s
+[Epoch 37] train: L=0.0147 (hm=0.0005, pr=0.0051, peak=0.0840)
+[Epoch 37] elapsed: 11.4s
+[Epoch 38] train: L=0.0138 (hm=0.0005, pr=0.0047, peak=0.0892)
+          val:  L=1.4600 (hm=0.0007, pr=1.4467)
+[Epoch 38] no val improvement (1.4600 >= 0.7183); checkpoint not saved
+[Epoch 38] elapsed: 15.7s
+[Epoch 39] train: L=0.0135 (hm=0.0004, pr=0.0049, peak=0.0963)
+[Epoch 39] elapsed: 11.7s
+[Epoch 40] train: L=0.0126 (hm=0.0004, pr=0.0046, peak=0.1083)
+          val:  L=2.0081 (hm=0.0007, pr=1.9943)
+[Epoch 40] no val improvement (2.0081 >= 0.7183); checkpoint not saved
+[Epoch 40] elapsed: 15.2s
