@@ -18,9 +18,9 @@ source $HOME/videomae/bin/activate
 
 
 # parametri principali
-#CONFIG="config/default.yml"
-#TRAIN_CSV="manifests/train.csv"
-#VAL_CSV="manifests/val.csv"
+CONFIG="config/default.yml"
+TRAIN_CSV="manifests/train.csv"
+VAL_CSV="manifests/val.csv"
 LOG_DIR="outputs/runs/exp_mpi_2"
 mkdir -p "$LOG_DIR"
 
