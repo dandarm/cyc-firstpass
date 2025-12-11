@@ -1,19 +1,19 @@
-[lrdn0029.leonardo.local:886849] MCW rank 0 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn0029.leonardo.local:886849] MCW rank 1 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn0029.leonardo.local:886849] MCW rank 2 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn0029.leonardo.local:886849] MCW rank 3 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
-[lrdn0765.leonardo.local:2883535] MCW rank 12 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn0765.leonardo.local:2883535] MCW rank 13 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn0765.leonardo.local:2883535] MCW rank 14 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn0765.leonardo.local:2883535] MCW rank 15 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
-[lrdn0730.leonardo.local:1948627] MCW rank 8 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn0730.leonardo.local:1948627] MCW rank 9 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn0730.leonardo.local:1948627] MCW rank 10 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn0730.leonardo.local:1948627] MCW rank 11 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
-[lrdn0700.leonardo.local:2612261] MCW rank 4 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn0700.leonardo.local:2612261] MCW rank 5 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn0700.leonardo.local:2612261] MCW rank 6 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn0700.leonardo.local:2612261] MCW rank 7 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
+[lrdn0024.leonardo.local:1740854] MCW rank 0 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
+[lrdn0024.leonardo.local:1740854] MCW rank 1 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
+[lrdn0024.leonardo.local:1740854] MCW rank 2 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
+[lrdn0024.leonardo.local:1740854] MCW rank 3 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
+[lrdn0267.leonardo.local:1091235] MCW rank 8 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
+[lrdn0267.leonardo.local:1091235] MCW rank 9 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
+[lrdn0267.leonardo.local:1091235] MCW rank 10 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
+[lrdn0267.leonardo.local:1091235] MCW rank 11 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
+[lrdn0241.leonardo.local:1169841] MCW rank 4 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
+[lrdn0241.leonardo.local:1169841] MCW rank 5 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
+[lrdn0241.leonardo.local:1169841] MCW rank 6 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
+[lrdn0241.leonardo.local:1169841] MCW rank 7 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
+[lrdn0331.leonardo.local:4027665] MCW rank 12 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
+[lrdn0331.leonardo.local:4027665] MCW rank 13 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
+[lrdn0331.leonardo.local:4027665] MCW rank 14 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
+[lrdn0331.leonardo.local:4027665] MCW rank 15 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
 /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
   _torch_pytree._register_pytree_node(
 /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
@@ -46,158 +46,3 @@
   _torch_pytree._register_pytree_node(
 /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
   _torch_pytree._register_pytree_node(
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 497, in <module>
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 497, in <module>
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 497, in <module>
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 497, in <module>
-    main()
-    main()
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 145, in main
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 145, in main
-    main()
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 145, in main
-    cfg = yaml.safe_load(open(args.config))
-    cfg = yaml.safe_load(open(args.config))
-                         ^^^^^^^^^^^^^^^^^
-                         ^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: ''
-FileNotFoundError: [Errno 2] No such file or directory: ''
-    main()
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 145, in main
-    cfg = yaml.safe_load(open(args.config))
-                         ^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: ''
-    cfg = yaml.safe_load(open(args.config))
-                         ^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: ''
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 497, in <module>
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 497, in <module>
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 497, in <module>
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 497, in <module>
-    main()
-    main()
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 145, in main
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 145, in main
-    main()
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 145, in main
-    cfg = yaml.safe_load(open(args.config))
-    cfg = yaml.safe_load(open(args.config))
-                         ^^^^^^^^^^^^^^^^^
-                         ^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: ''
-FileNotFoundError: [Errno 2] No such file or directory: ''
-    main()
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 145, in main
-    cfg = yaml.safe_load(open(args.config))
-                         ^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: ''
-    cfg = yaml.safe_load(open(args.config))
-                         ^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: ''
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 497, in <module>
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 497, in <module>
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 497, in <module>
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 497, in <module>
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 497, in <module>
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 497, in <module>
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 497, in <module>
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 497, in <module>
-    main()
-    main()
-    main()
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 145, in main
-    main()
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 145, in main
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 145, in main
-    main()
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 145, in main
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 145, in main
-    main()
-    cfg = yaml.safe_load(open(args.config))
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 145, in main
-    cfg = yaml.safe_load(open(args.config))
-    cfg = yaml.safe_load(open(args.config))
-                         ^^^^^^^^^^^^^^^^^
-    cfg = yaml.safe_load(open(args.config))
-                         ^^^^^^^^^^^^^^^^^
-                         ^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: ''
-FileNotFoundError: [Errno 2] No such file or directory: ''
-                         ^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: ''
-FileNotFoundError: [Errno 2] No such file or directory: ''
-    main()
-    cfg = yaml.safe_load(open(args.config))
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 145, in main
-                         ^^^^^^^^^^^^^^^^^
-    cfg = yaml.safe_load(open(args.config))
-FileNotFoundError: [Errno 2] No such file or directory: ''
-                         ^^^^^^^^^^^^^^^^^
-    main()
-FileNotFoundError: [Errno 2] No such file or directory: ''
-  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 145, in main
-    cfg = yaml.safe_load(open(args.config))
-                         ^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: ''
-    cfg = yaml.safe_load(open(args.config))
-                         ^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: ''
---------------------------------------------------------------------------
-Primary job  terminated normally, but 1 process returned
-a non-zero exit code. Per user-direction, the job has been aborted.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-mpirun detected that one or more processes exited with non-zero status, thus causing
-the job to be terminated. The first process to do so was:
-
-  Process name: [[18521,1],3]
-  Exit code:    1
---------------------------------------------------------------------------
