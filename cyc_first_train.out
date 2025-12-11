@@ -801,3 +801,176 @@ Logging metrics to outputs/runs/exp_mpi_3/training_log.csv
 [Epoch 21] train: L=0.7825 (hm=0.0006, pr=0.6546, peak=0.0198)
 [Epoch 21] elapsed: 15.5s
 [Epoch 22] train: L=0.7855 (hm=0.0007, pr=0.6542, peak=0.0160)
+          val:  L=0.8079 (hm=0.0006, pr=0.6842)
+[Epoch 22] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
+[Epoch 22] best checkpoint saved in 0.08s
+[Epoch 22] elapsed: 32.5s
+[Epoch 23] train: L=0.7748 (hm=0.0006, pr=0.6534, peak=0.0095)
+[Epoch 23] elapsed: 15.1s
+[Epoch 24] train: L=0.7699 (hm=0.0006, pr=0.6539, peak=0.0097)
+          val:  L=0.7963 (hm=0.0006, pr=0.6815)
+[Epoch 24] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
+[Epoch 24] best checkpoint saved in 0.07s
+[Epoch 24] elapsed: 31.7s
+[Epoch 25] train: L=0.7708 (hm=0.0006, pr=0.6534, peak=0.0120)
+[Epoch 25] elapsed: 15.6s
+[Epoch 26] train: L=0.7679 (hm=0.0006, pr=0.6526, peak=0.0063)
+          val:  L=0.7933 (hm=0.0006, pr=0.6813)
+[Epoch 26] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
+[Epoch 26] best checkpoint saved in 0.08s
+[Epoch 26] elapsed: 31.9s
+[Epoch 27] train: L=0.7683 (hm=0.0006, pr=0.6529, peak=0.0067)
+[Epoch 27] elapsed: 16.0s
+[Epoch 28] train: L=0.7644 (hm=0.0006, pr=0.6512, peak=0.0075)
+          val:  L=0.7938 (hm=0.0006, pr=0.6831)
+[Epoch 28] no val improvement (0.7938 >= 0.7933); checkpoint not saved
+[Epoch 28] elapsed: 31.5s
+[Epoch 29] train: L=0.7650 (hm=0.0006, pr=0.6511, peak=0.0095)
+[Epoch 29] elapsed: 15.6s
+[Epoch 30] train: L=0.7655 (hm=0.0006, pr=0.6514, peak=0.0081)
+          val:  L=0.7848 (hm=0.0005, pr=0.6749)
+[Epoch 30] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
+[Epoch 30] best checkpoint saved in 0.08s
+[Epoch 30] elapsed: 32.0s
+[Epoch 31] train: L=0.7638 (hm=0.0006, pr=0.6505, peak=0.0060)
+[Epoch 31] elapsed: 15.2s
+[Epoch 32] train: L=0.7645 (hm=0.0006, pr=0.6512, peak=0.0056)
+          val:  L=0.7869 (hm=0.0006, pr=0.6768)
+[Epoch 32] no val improvement (0.7869 >= 0.7848); checkpoint not saved
+[Epoch 32] elapsed: 31.8s
+[Epoch 33] train: L=0.7633 (hm=0.0006, pr=0.6501, peak=0.0070)
+[Epoch 33] elapsed: 15.7s
+[Epoch 34] train: L=0.7638 (hm=0.0006, pr=0.6508, peak=0.0058)
+          val:  L=0.7818 (hm=0.0005, pr=0.6726)
+[Epoch 34] saving BEST checkpoint to outputs/runs/exp_mpi_3/best.ckpt ...
+[Epoch 34] best checkpoint saved in 0.08s
+[Epoch 34] elapsed: 32.0s
+[Epoch 35] train: L=0.7627 (hm=0.0006, pr=0.6501, peak=0.0055)
+[Epoch 35] elapsed: 15.8s
+[Epoch 36] train: L=0.7618 (hm=0.0006, pr=0.6490, peak=0.0069)
+          val:  L=0.7930 (hm=0.0005, pr=0.6831)
+[Epoch 36] no val improvement (0.7930 >= 0.7818); checkpoint not saved
+[Epoch 36] elapsed: 31.2s
+[Epoch 37] train: L=0.7624 (hm=0.0006, pr=0.6498, peak=0.0067)
+[Epoch 37] elapsed: 15.8s
+[Epoch 38] train: L=0.7613 (hm=0.0006, pr=0.6492, peak=0.0059)
+          val:  L=0.7865 (hm=0.0005, pr=0.6767)
+[Epoch 38] no val improvement (0.7865 >= 0.7818); checkpoint not saved
+[Epoch 38] elapsed: 31.1s
+[Epoch 39] train: L=0.7614 (hm=0.0006, pr=0.6492, peak=0.0060)
+[Epoch 39] elapsed: 15.7s
+[Epoch 40] train: L=0.7612 (hm=0.0006, pr=0.6489, peak=0.0061)
+          val:  L=0.7865 (hm=0.0005, pr=0.6767)
+[Epoch 40] no val improvement (0.7865 >= 0.7818); checkpoint not saved
+[Epoch 40] elapsed: 31.8s
+[Epoch 41] train: L=0.7612 (hm=0.0006, pr=0.6493, peak=0.0057)
+[Epoch 41] elapsed: 15.8s
+[Epoch 42] train: L=0.7607 (hm=0.0006, pr=0.6485, peak=0.0057)
+          val:  L=0.7836 (hm=0.0005, pr=0.6738)
+[Epoch 42] no val improvement (0.7836 >= 0.7818); checkpoint not saved
+[Epoch 42] elapsed: 31.8s
+[Epoch 43] train: L=0.7610 (hm=0.0006, pr=0.6487, peak=0.0061)
+[Epoch 43] elapsed: 15.3s
+[Epoch 44] train: L=0.7596 (hm=0.0006, pr=0.6478, peak=0.0065)
+          val:  L=0.7871 (hm=0.0005, pr=0.6772)
+[Epoch 44] no val improvement (0.7871 >= 0.7818); checkpoint not saved
+[Epoch 44] elapsed: 31.5s
+[Epoch 45] train: L=0.7600 (hm=0.0006, pr=0.6480, peak=0.0064)
+[Epoch 45] elapsed: 15.5s
+[Epoch 46] train: L=0.7583 (hm=0.0006, pr=0.6465, peak=0.0061)
+          val:  L=0.7892 (hm=0.0005, pr=0.6793)
+[Epoch 46] no val improvement (0.7892 >= 0.7818); checkpoint not saved
+[Epoch 46] elapsed: 31.6s
+[Epoch 47] train: L=0.7596 (hm=0.0006, pr=0.6474, peak=0.0060)
+[Epoch 47] elapsed: 14.9s
+[Epoch 48] train: L=0.7582 (hm=0.0006, pr=0.6464, peak=0.0057)
+          val:  L=0.7981 (hm=0.0005, pr=0.6881)
+[Epoch 48] no val improvement (0.7981 >= 0.7818); checkpoint not saved
+[Epoch 48] elapsed: 31.6s
+[Epoch 49] train: L=0.7585 (hm=0.0006, pr=0.6465, peak=0.0060)
+[Epoch 49] elapsed: 15.5s
+[Epoch 50] train: L=0.7577 (hm=0.0006, pr=0.6459, peak=0.0061)
+          val:  L=0.8031 (hm=0.0005, pr=0.6932)
+[Epoch 50] no val improvement (0.8031 >= 0.7818); checkpoint not saved
+[Epoch 50] elapsed: 31.3s
+Done. Best: outputs/runs/exp_mpi_3/best.ckpt
+lrdn0090:2401189:2401275 [0] NCCL INFO [Service thread] Connection closed by localRank 3
+lrdn0090:2401190:2401274 [1] NCCL INFO [Service thread] Connection closed by localRank 3
+lrdn0090:2401191:2401273 [2] NCCL INFO [Service thread] Connection closed by localRank 3
+lrdn0090:2401192:2401272 [3] NCCL INFO [Service thread] Connection closed by localRank 3
+lrdn0090:2401189:2401275 [0] NCCL INFO [Service thread] Connection closed by localRank 0
+lrdn0090:2401190:2401274 [1] NCCL INFO [Service thread] Connection closed by localRank 0
+lrdn0090:2401191:2401273 [2] NCCL INFO [Service thread] Connection closed by localRank 0
+lrdn0090:2401192:2401272 [3] NCCL INFO [Service thread] Connection closed by localRank 0
+lrdn0786:3734536:3734618 [0] NCCL INFO [Service thread] Connection closed by localRank 0
+lrdn0786:3734537:3734617 [1] NCCL INFO [Service thread] Connection closed by localRank 1
+lrdn0786:3734537:3734617 [1] NCCL INFO [Service thread] Connection closed by localRank 0
+lrdn0786:3734537:3734617 [1] NCCL INFO [Service thread] Connection closed by localRank 3
+lrdn0090:2401189:2401275 [0] NCCL INFO [Service thread] Connection closed by localRank 1
+lrdn0786:3734538:3734620 [2] NCCL INFO [Service thread] Connection closed by localRank 1
+lrdn0786:3734538:3734620 [2] NCCL INFO [Service thread] Connection closed by localRank 0
+lrdn0786:3734538:3734620 [2] NCCL INFO [Service thread] Connection closed by localRank 3
+lrdn0786:3734539:3734619 [3] NCCL INFO [Service thread] Connection closed by localRank 0
+lrdn0786:3734539:3734619 [3] NCCL INFO [Service thread] Connection closed by localRank 1
+lrdn0750:2924821:2924904 [1] NCCL INFO [Service thread] Connection closed by localRank 2
+lrdn0750:2924821:2924904 [1] NCCL INFO [Service thread] Connection closed by localRank 3
+lrdn0750:2924821:2924904 [1] NCCL INFO [Service thread] Connection closed by localRank 1
+lrdn0090:2401190:2401274 [1] NCCL INFO [Service thread] Connection closed by localRank 1
+lrdn0786:3734536:3734618 [0] NCCL INFO [Service thread] Connection closed by localRank 1
+lrdn0786:3734536:3734618 [0] NCCL INFO [Service thread] Connection closed by localRank 3
+lrdn0786:3734539:3734619 [3] NCCL INFO [Service thread] Connection closed by localRank 3
+lrdn0786:3734536:3734618 [0] NCCL INFO [Service thread] Connection closed by localRank 2
+lrdn0750:2924820:2924901 [0] NCCL INFO [Service thread] Connection closed by localRank 3
+lrdn0786:3734537:3734617 [1] NCCL INFO [Service thread] Connection closed by localRank 2
+lrdn0750:2924820:2924901 [0] NCCL INFO [Service thread] Connection closed by localRank 1
+lrdn0750:2924820:2924901 [0] NCCL INFO [Service thread] Connection closed by localRank 2
+lrdn0786:3734538:3734620 [2] NCCL INFO [Service thread] Connection closed by localRank 2
+lrdn0786:3734539:3734619 [3] NCCL INFO [Service thread] Connection closed by localRank 2
+lrdn0808:41109:41190 [0] NCCL INFO [Service thread] Connection closed by localRank 1
+lrdn0808:41109:41190 [0] NCCL INFO [Service thread] Connection closed by localRank 0
+lrdn0090:2401191:2401273 [2] NCCL INFO [Service thread] Connection closed by localRank 1
+lrdn0090:2401192:2401272 [3] NCCL INFO [Service thread] Connection closed by localRank 1
+lrdn0808:41110:41191 [1] NCCL INFO [Service thread] Connection closed by localRank 1
+lrdn0808:41110:41191 [1] NCCL INFO [Service thread] Connection closed by localRank 0
+lrdn0808:41109:41190 [0] NCCL INFO [Service thread] Connection closed by localRank 2
+lrdn0090:2401189:2401275 [0] NCCL INFO [Service thread] Connection closed by localRank 2
+lrdn0090:2401190:2401274 [1] NCCL INFO [Service thread] Connection closed by localRank 2
+lrdn0090:2401191:2401273 [2] NCCL INFO [Service thread] Connection closed by localRank 2
+lrdn0090:2401192:2401272 [3] NCCL INFO [Service thread] Connection closed by localRank 2
+lrdn0750:2924822:2924903 [2] NCCL INFO [Service thread] Connection closed by localRank 2
+lrdn0750:2924822:2924903 [2] NCCL INFO [Service thread] Connection closed by localRank 3
+lrdn0750:2924822:2924903 [2] NCCL INFO [Service thread] Connection closed by localRank 1
+lrdn0750:2924823:2924902 [3] NCCL INFO [Service thread] Connection closed by localRank 3
+lrdn0750:2924823:2924902 [3] NCCL INFO [Service thread] Connection closed by localRank 2
+lrdn0750:2924823:2924902 [3] NCCL INFO [Service thread] Connection closed by localRank 1
+lrdn0808:41110:41191 [1] NCCL INFO [Service thread] Connection closed by localRank 2
+lrdn0750:2924820:2924901 [0] NCCL INFO [Service thread] Connection closed by localRank 0
+lrdn0808:41109:41190 [0] NCCL INFO [Service thread] Connection closed by localRank 3
+lrdn0750:2924821:2924904 [1] NCCL INFO [Service thread] Connection closed by localRank 0
+lrdn0808:41110:41191 [1] NCCL INFO [Service thread] Connection closed by localRank 3
+lrdn0750:2924822:2924903 [2] NCCL INFO [Service thread] Connection closed by localRank 0
+lrdn0750:2924823:2924902 [3] NCCL INFO [Service thread] Connection closed by localRank 0
+lrdn0808:41111:41193 [2] NCCL INFO [Service thread] Connection closed by localRank 1
+lrdn0808:41111:41193 [2] NCCL INFO [Service thread] Connection closed by localRank 0
+lrdn0808:41112:41192 [3] NCCL INFO [Service thread] Connection closed by localRank 1
+lrdn0808:41112:41192 [3] NCCL INFO [Service thread] Connection closed by localRank 0
+lrdn0808:41111:41193 [2] NCCL INFO [Service thread] Connection closed by localRank 2
+lrdn0808:41112:41192 [3] NCCL INFO [Service thread] Connection closed by localRank 3
+lrdn0808:41111:41193 [2] NCCL INFO [Service thread] Connection closed by localRank 3
+lrdn0808:41112:41192 [3] NCCL INFO [Service thread] Connection closed by localRank 2
+lrdn0090:2401190:2401190 [1] NCCL INFO comm 0xa8e78f0 rank 1 nranks 16 cudaDev 1 busId 56000 - Abort COMPLETE
+lrdn0808:41110:41110 [1] NCCL INFO comm 0x9bccb30 rank 13 nranks 16 cudaDev 1 busId 56000 - Abort COMPLETE
+lrdn0090:2401192:2401192 [3] NCCL INFO comm 0x9bf4080 rank 3 nranks 16 cudaDev 3 busId c8000 - Abort COMPLETE
+lrdn0808:41111:41111 [2] NCCL INFO comm 0x92c62f0 rank 14 nranks 16 cudaDev 2 busId 8f000 - Abort COMPLETE
+lrdn0090:2401189:2401189 [0] NCCL INFO comm 0x9bf5580 rank 0 nranks 16 cudaDev 0 busId 1d000 - Abort COMPLETE
+lrdn0750:2924822:2924822 [2] NCCL INFO comm 0xae11890 rank 6 nranks 16 cudaDev 2 busId 8f000 - Abort COMPLETE
+lrdn0750:2924821:2924821 [1] NCCL INFO comm 0x9415c20 rank 5 nranks 16 cudaDev 1 busId 56000 - Abort COMPLETE
+lrdn0808:41109:41109 [0] NCCL INFO comm 0x9395400 rank 12 nranks 16 cudaDev 0 busId 1d000 - Abort COMPLETE
+lrdn0786:3734538:3734538 [2] NCCL INFO comm 0xa455b30 rank 10 nranks 16 cudaDev 2 busId 8f000 - Abort COMPLETE
+lrdn0750:2924823:2924823 [3] NCCL INFO comm 0x9060970 rank 7 nranks 16 cudaDev 3 busId c8000 - Abort COMPLETE
+lrdn0786:3734537:3734537 [1] NCCL INFO comm 0xa1315b0 rank 9 nranks 16 cudaDev 1 busId 56000 - Abort COMPLETE
+lrdn0786:3734539:3734539 [3] NCCL INFO comm 0xa505050 rank 11 nranks 16 cudaDev 3 busId c8000 - Abort COMPLETE
+lrdn0786:3734536:3734536 [0] NCCL INFO comm 0xa0e5830 rank 8 nranks 16 cudaDev 0 busId 1d000 - Abort COMPLETE
+lrdn0808:41112:41112 [3] NCCL INFO comm 0xa197060 rank 15 nranks 16 cudaDev 3 busId c8000 - Abort COMPLETE
+lrdn0090:2401191:2401191 [2] NCCL INFO comm 0x930b960 rank 2 nranks 16 cudaDev 2 busId 8f000 - Abort COMPLETE
+lrdn0750:2924820:2924820 [0] NCCL INFO comm 0x9e42490 rank 4 nranks 16 cudaDev 0 busId 1d000 - Abort COMPLETE
