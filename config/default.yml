@@ -1,7 +1,7 @@
 data:
   manifest_train: manifests/train.csv
   manifest_val:   manifests/val.csv
-  manifest_test:  manifests/test.csv
+  manifest_test:  no #manifests/test.csv
 
   image_col: image_path
   presence_col: presence

@@ -24,7 +24,7 @@ VAL_CSV="manifests/val.csv"
 LOG_DIR="outputs/runs/exp_mpi_2"
 mkdir -p "$LOG_DIR"
 
-TEMPORAL_T="3"
+TEMPORAL_T="5"
 TEMPORAL_STRIDE="6" 
 BATCH_SIZE="32"
 LR="3e-4"
