@@ -14,16 +14,16 @@ data:
 
 train:
   image_size: 384
-  batch_size: 256   # per GPU; global = batch_size * world_size
+  batch_size: 64   # per GPU; global = batch_size * world_size
   num_workers: 0
   dataloader_timeout_s: 60   # >0 per evitare deadlock: solleva eccezione se il dataloader si blocca
-  persistent_workers: false   # disattiva (false) se sospetti deadlock dei worker tra le epoche
+  persistent_workers: true   # disattiva (false) se sospetti deadlock dei worker tra le epoche
   epochs: 50
   lr: 5.0e-4
   weight_decay: 1.0e-4
   amp: true
-  scale_lr_by_world_size: true
-  seed: 491
+  scale_lr_by_world_size: false
+  seed: 492
   save_dir: checkpoints
   val_every: 2
   best_ckpt_start_epoch: 5
@@ -35,7 +35,7 @@ train:
 
 loss:
   heatmap_sigma_px: 8
-  w_heatmap: 200.0
+  w_heatmap: 20.0
   w_presence: 1.0
   auto_balance: false          # bilancia automaticamente le magnitudini di heatmap e presence
   auto_balance_clip: [0.1, 100.0]
