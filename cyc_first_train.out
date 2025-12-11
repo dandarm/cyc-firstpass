@@ -919,3 +919,118 @@ Logging metrics to outputs/runs/exp_mpi_2/training_log.csv
 [Epoch 54] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
 [Epoch 54] best checkpoint saved in 0.07s
 [Epoch 54] elapsed: 35.1s
+[Epoch 55] train: L=0.7382 (hm=0.0006, pr=0.6733, peak=0.0784)
+[Epoch 55] elapsed: 9.2s
+[Epoch 56] train: L=0.7382 (hm=0.0006, pr=0.6735, peak=0.0778)
+          val:  L=0.7359 (hm=0.0006, pr=0.6720)
+[Epoch 56] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
+[Epoch 56] best checkpoint saved in 0.07s
+[Epoch 56] elapsed: 34.6s
+[Epoch 57] train: L=0.7385 (hm=0.0006, pr=0.6739, peak=0.0772)
+[Epoch 57] elapsed: 9.7s
+[Epoch 58] train: L=0.7379 (hm=0.0006, pr=0.6736, peak=0.0767)
+          val:  L=0.7355 (hm=0.0006, pr=0.6720)
+[Epoch 58] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
+[Epoch 58] best checkpoint saved in 0.08s
+[Epoch 58] elapsed: 35.1s
+[Epoch 59] train: L=0.7377 (hm=0.0006, pr=0.6736, peak=0.0764)
+[Epoch 59] elapsed: 9.3s
+[Epoch 60] train: L=0.7372 (hm=0.0006, pr=0.6734, peak=0.0762)
+          val:  L=0.7351 (hm=0.0006, pr=0.6720)
+[Epoch 60] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
+[Epoch 60] best checkpoint saved in 0.07s
+[Epoch 60] elapsed: 35.0s
+[Epoch 61] train: L=0.7371 (hm=0.0006, pr=0.6734, peak=0.0761)
+[Epoch 61] elapsed: 9.7s
+[Epoch 62] train: L=0.7367 (hm=0.0006, pr=0.6733, peak=0.0761)
+          val:  L=0.7347 (hm=0.0006, pr=0.6721)
+[Epoch 62] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
+[Epoch 62] best checkpoint saved in 0.07s
+[Epoch 62] elapsed: 34.4s
+[Epoch 63] train: L=0.7368 (hm=0.0006, pr=0.6735, peak=0.0761)
+[Epoch 63] elapsed: 9.4s
+[Epoch 64] train: L=0.7363 (hm=0.0006, pr=0.6733, peak=0.0761)
+          val:  L=0.7343 (hm=0.0006, pr=0.6720)
+[Epoch 64] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
+[Epoch 64] best checkpoint saved in 0.07s
+[Epoch 64] elapsed: 35.2s
+[Epoch 65] train: L=0.7362 (hm=0.0006, pr=0.6733, peak=0.0762)
+[Epoch 65] elapsed: 9.5s
+[Epoch 66] train: L=0.7358 (hm=0.0006, pr=0.6732, peak=0.0762)
+          val:  L=0.7340 (hm=0.0006, pr=0.6720)
+[Epoch 66] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
+[Epoch 66] best checkpoint saved in 0.07s
+[Epoch 66] elapsed: 34.6s
+[Epoch 67] train: L=0.7357 (hm=0.0006, pr=0.6732, peak=0.0762)
+[Epoch 67] elapsed: 9.7s
+[Epoch 68] train: L=0.7359 (hm=0.0006, pr=0.6735, peak=0.0761)
+          val:  L=0.7338 (hm=0.0006, pr=0.6721)
+[Epoch 68] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
+[Epoch 68] best checkpoint saved in 0.07s
+[Epoch 68] elapsed: 35.0s
+[Epoch 69] train: L=0.7357 (hm=0.0006, pr=0.6735, peak=0.0759)
+[Epoch 69] elapsed: 9.7s
+[Epoch 70] train: L=0.7350 (hm=0.0006, pr=0.6731, peak=0.0755)
+          val:  L=0.7334 (hm=0.0006, pr=0.6721)
+[Epoch 70] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
+[Epoch 70] best checkpoint saved in 0.07s
+[Epoch 70] elapsed: 34.9s
+[Epoch 71] train: L=0.7356 (hm=0.0006, pr=0.6737, peak=0.0748)
+[Epoch 71] elapsed: 9.4s
+[Epoch 72] train: L=0.7354 (hm=0.0006, pr=0.6736, peak=0.0738)
+          val:  L=0.7333 (hm=0.0006, pr=0.6723)
+[Epoch 72] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
+[Epoch 72] best checkpoint saved in 0.07s
+[Epoch 72] elapsed: 35.1s
+[Epoch 73] train: L=0.7348 (hm=0.0006, pr=0.6734, peak=0.0724)
+[Epoch 73] elapsed: 9.7s
+[Epoch 74] train: L=0.7344 (hm=0.0006, pr=0.6732, peak=0.0708)
+          val:  L=0.7328 (hm=0.0006, pr=0.6721)
+[Epoch 74] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
+[Epoch 74] best checkpoint saved in 0.07s
+[Epoch 74] elapsed: 35.2s
+[Epoch 75] train: L=0.7345 (hm=0.0006, pr=0.6734, peak=0.0694)
+[Epoch 75] elapsed: 9.2s
+[Epoch 76] train: L=0.7346 (hm=0.0006, pr=0.6736, peak=0.0686)
+          val:  L=0.7325 (hm=0.0006, pr=0.6721)
+[Epoch 76] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
+[Epoch 76] best checkpoint saved in 0.07s
+[Epoch 76] elapsed: 35.9s
+[Epoch 77] train: L=0.7346 (hm=0.0006, pr=0.6737, peak=0.0685)
+[Epoch 77] elapsed: 9.9s
+[Epoch 78] train: L=0.7339 (hm=0.0006, pr=0.6733, peak=0.0688)
+          val:  L=0.7322 (hm=0.0006, pr=0.6721)
+[Epoch 78] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
+[Epoch 78] best checkpoint saved in 0.08s
+[Epoch 78] elapsed: 35.0s
+[Epoch 79] train: L=0.7345 (hm=0.0006, pr=0.6739, peak=0.0693)
+[Epoch 79] elapsed: 9.8s
+[Epoch 80] train: L=0.7342 (hm=0.0006, pr=0.6737, peak=0.0699)
+          val:  L=0.7319 (hm=0.0006, pr=0.6721)
+[Epoch 80] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
+[Epoch 80] best checkpoint saved in 0.07s
+[Epoch 80] elapsed: 36.0s
+[Epoch 81] train: L=0.7339 (hm=0.0006, pr=0.6737, peak=0.0706)
+[Epoch 81] elapsed: 9.4s
+[Epoch 82] train: L=0.7338 (hm=0.0006, pr=0.6737, peak=0.0712)
+          val:  L=0.7318 (hm=0.0006, pr=0.6723)
+[Epoch 82] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
+[Epoch 82] best checkpoint saved in 0.07s
+[Epoch 82] elapsed: 35.1s
+[Epoch 83] train: L=0.7336 (hm=0.0006, pr=0.6736, peak=0.0716)
+[Epoch 83] elapsed: 9.6s
+[Epoch 84] train: L=0.7334 (hm=0.0006, pr=0.6735, peak=0.0718)
+          val:  L=0.7313 (hm=0.0006, pr=0.6721)
+[Epoch 84] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
+[Epoch 84] best checkpoint saved in 0.07s
+[Epoch 84] elapsed: 36.5s
+[Epoch 85] train: L=0.7332 (hm=0.0006, pr=0.6735, peak=0.0716)
+[Epoch 85] elapsed: 9.0s
+[Epoch 86] train: L=0.7328 (hm=0.0006, pr=0.6733, peak=0.0710)
+          val:  L=0.7311 (hm=0.0006, pr=0.6721)
+[Epoch 86] saving BEST checkpoint to outputs/runs/exp_mpi_2/best.ckpt ...
+[Epoch 86] best checkpoint saved in 0.07s
+[Epoch 86] elapsed: 35.0s
+[Epoch 87] train: L=0.7333 (hm=0.0006, pr=0.6738, peak=0.0700)
+[Epoch 87] elapsed: 10.2s
+[Epoch 88] train: L=0.7333 (hm=0.0006, pr=0.6738, peak=0.0689)

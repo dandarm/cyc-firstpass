@@ -46,3 +46,4 @@
   _torch_pytree._register_pytree_node(
 /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
   _torch_pytree._register_pytree_node(
+slurmstepd: error: *** JOB 28296101 ON lrdn0024 CANCELLED AT 2025-12-11T15:01:20 DUE TO TIME LIMIT ***
