@@ -5,7 +5,7 @@
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=8
 #SBATCH --partition=boost_usr_prod
-#SBATCH --time=00:30:00
+#SBATCH --time=01:00:00
 #SBATCH --output=cyc_first_train.out
 #SBATCH --error=cyc_first.err
 
@@ -21,7 +21,7 @@ source $HOME/videomae/bin/activate
 CONFIG="config/default.yml"
 TRAIN_CSV="manifests/train.csv"
 VAL_CSV="manifests/val.csv"
-LOG_DIR="outputs/runs/exp_mpi_6"
+LOG_DIR="outputs/runs/exp_mpi_7"
 mkdir -p "$LOG_DIR"
 
 TEMPORAL_T="5"

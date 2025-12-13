@@ -23,7 +23,7 @@ train:
   weight_decay: 1.0e-4
   amp: true
   scale_lr_by_world_size: false
-  seed: 491
+  seed: 492
   save_dir: checkpoints
   val_every: 2
   best_ckpt_start_epoch: 5
