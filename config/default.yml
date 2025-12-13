@@ -37,7 +37,7 @@ train:
 loss:
   heatmap_sigma_px: 8
   w_heatmap: 1.0
-  w_presence: 1.0
+  w_presence: 1000.0
   auto_balance: false          # bilancia automaticamente le magnitudini di heatmap e presence
   auto_balance_clip: [0.1, 100.0]
   presence_label_smoothing: 0.05
