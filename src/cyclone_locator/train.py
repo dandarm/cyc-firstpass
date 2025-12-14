@@ -147,7 +147,7 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, r
                 L_pr = presence_loss_fn(pres_logit, pres_smooth) if presence_loss_fn else bce_logits(pres_logit, pres_smooth)
                 if log_combined_presence:
                     comb_prob = combine_presence_probs(pres_logit, hm_p)
-                    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth.view_as(comb_prob))
                 else:
                     L_pr_comb = torch.tensor(0.0, device=device)
                 _, _, L = combine_losses(L_hm, L_pr, loss_weights)
