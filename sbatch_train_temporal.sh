@@ -21,13 +21,11 @@ source $HOME/videomae/bin/activate
 CONFIG="config/default.yml"
 TRAIN_CSV="manifests/train.csv"
 VAL_CSV="manifests/val.csv"
-LOG_DIR="outputs/runs/exp_mpi_11"
+LOG_DIR="outputs/runs/exp_mpi_12"
 mkdir -p "$LOG_DIR"
 
 TEMPORAL_T="5"
 TEMPORAL_STRIDE="6" 
-BATCH_SIZE="32"
-LR="3e-4"
 
 export NCCL_DEBUG=INFO
 # per debug dettagliato e gestione errori asincroni NCCL
