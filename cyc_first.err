@@ -1,19 +1,19 @@
-[lrdn0005.leonardo.local:2474539] MCW rank 0 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn0005.leonardo.local:2474539] MCW rank 1 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn0005.leonardo.local:2474539] MCW rank 2 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn0005.leonardo.local:2474539] MCW rank 3 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
-[lrdn0228.leonardo.local:120401] MCW rank 8 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn0228.leonardo.local:120401] MCW rank 9 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn0017.leonardo.local:1146286] MCW rank 4 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn0228.leonardo.local:120401] MCW rank 10 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn0017.leonardo.local:1146286] MCW rank 5 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn0228.leonardo.local:120401] MCW rank 11 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
-[lrdn0017.leonardo.local:1146286] MCW rank 6 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn0017.leonardo.local:1146286] MCW rank 7 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
-[lrdn0321.leonardo.local:855601] MCW rank 12 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn0321.leonardo.local:855601] MCW rank 13 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn0321.leonardo.local:855601] MCW rank 14 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn0321.leonardo.local:855601] MCW rank 15 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
+[lrdn0222.leonardo.local:967256] MCW rank 0 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
+[lrdn0222.leonardo.local:967256] MCW rank 1 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
+[lrdn0222.leonardo.local:967256] MCW rank 2 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
+[lrdn0222.leonardo.local:967256] MCW rank 3 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
+[lrdn0443.leonardo.local:2707864] MCW rank 4 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
+[lrdn0443.leonardo.local:2707864] MCW rank 5 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
+[lrdn0443.leonardo.local:2707864] MCW rank 6 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
+[lrdn0443.leonardo.local:2707864] MCW rank 7 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
+[lrdn0537.leonardo.local:953444] MCW rank 8 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
+[lrdn0537.leonardo.local:953444] MCW rank 9 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
+[lrdn0537.leonardo.local:953444] MCW rank 10 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
+[lrdn0537.leonardo.local:953444] MCW rank 11 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
+[lrdn0603.leonardo.local:2584377] MCW rank 12 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
+[lrdn0603.leonardo.local:2584377] MCW rank 13 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
+[lrdn0603.leonardo.local:2584377] MCW rank 14 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
+[lrdn0603.leonardo.local:2584377] MCW rank 15 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
 /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
   _torch_pytree._register_pytree_node(
 /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
@@ -46,4 +46,238 @@
   _torch_pytree._register_pytree_node(
 /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
   _torch_pytree._register_pytree_node(
-slurmstepd: error: *** JOB 28988499 ON lrdn0005 CANCELLED AT 2025-12-14T02:46:48 DUE TO TIME LIMIT ***
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 563, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 496, in main
+    test_metrics = evaluate_loader(
+                   ^^^^^^^^^^^^^^^^
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 150, in evaluate_loader
+    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/functional.py", line 3118, in binary_cross_entropy
+    raise ValueError(
+ValueError: Using a target size (torch.Size([128, 1])) that is different to the input size (torch.Size([128])) is deprecated. Please ensure they have the same size.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 563, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 496, in main
+    test_metrics = evaluate_loader(
+                   ^^^^^^^^^^^^^^^^
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 150, in evaluate_loader
+    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/functional.py", line 3118, in binary_cross_entropy
+    raise ValueError(
+ValueError: Using a target size (torch.Size([128, 1])) that is different to the input size (torch.Size([128])) is deprecated. Please ensure they have the same size.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 563, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 496, in main
+    test_metrics = evaluate_loader(
+                   ^^^^^^^^^^^^^^^^
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 150, in evaluate_loader
+    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/functional.py", line 3118, in binary_cross_entropy
+    raise ValueError(
+ValueError: Using a target size (torch.Size([128, 1])) that is different to the input size (torch.Size([128])) is deprecated. Please ensure they have the same size.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 563, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 496, in main
+    test_metrics = evaluate_loader(
+                   ^^^^^^^^^^^^^^^^
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 150, in evaluate_loader
+    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/functional.py", line 3118, in binary_cross_entropy
+    raise ValueError(
+ValueError: Using a target size (torch.Size([128, 1])) that is different to the input size (torch.Size([128])) is deprecated. Please ensure they have the same size.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 563, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 496, in main
+    test_metrics = evaluate_loader(
+                   ^^^^^^^^^^^^^^^^
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 150, in evaluate_loader
+    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/functional.py", line 3118, in binary_cross_entropy
+    raise ValueError(
+ValueError: Using a target size (torch.Size([128, 1])) that is different to the input size (torch.Size([128])) is deprecated. Please ensure they have the same size.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 563, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 496, in main
+    test_metrics = evaluate_loader(
+                   ^^^^^^^^^^^^^^^^
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 150, in evaluate_loader
+    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/functional.py", line 3118, in binary_cross_entropy
+    raise ValueError(
+ValueError: Using a target size (torch.Size([128, 1])) that is different to the input size (torch.Size([128])) is deprecated. Please ensure they have the same size.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 563, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 496, in main
+    test_metrics = evaluate_loader(
+                   ^^^^^^^^^^^^^^^^
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 150, in evaluate_loader
+    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/functional.py", line 3118, in binary_cross_entropy
+    raise ValueError(
+ValueError: Using a target size (torch.Size([128, 1])) that is different to the input size (torch.Size([128])) is deprecated. Please ensure they have the same size.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 563, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 496, in main
+    test_metrics = evaluate_loader(
+                   ^^^^^^^^^^^^^^^^
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 150, in evaluate_loader
+    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/functional.py", line 3118, in binary_cross_entropy
+    raise ValueError(
+ValueError: Using a target size (torch.Size([128, 1])) that is different to the input size (torch.Size([128])) is deprecated. Please ensure they have the same size.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 563, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 496, in main
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 563, in <module>
+    test_metrics = evaluate_loader(
+                   ^^^^^^^^^^^^^^^^
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 150, in evaluate_loader
+    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/functional.py", line 3118, in binary_cross_entropy
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 496, in main
+    test_metrics = evaluate_loader(
+                   ^^^^^^^^^^^^^^^^
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 150, in evaluate_loader
+    raise ValueError(
+    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+ValueError: Using a target size (torch.Size([128, 1])) that is different to the input size (torch.Size([128])) is deprecated. Please ensure they have the same size.
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/functional.py", line 3118, in binary_cross_entropy
+    raise ValueError(
+ValueError: Using a target size (torch.Size([128, 1])) that is different to the input size (torch.Size([128])) is deprecated. Please ensure they have the same size.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 563, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 496, in main
+    test_metrics = evaluate_loader(
+                   ^^^^^^^^^^^^^^^^
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 150, in evaluate_loader
+    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/functional.py", line 3118, in binary_cross_entropy
+    raise ValueError(
+ValueError: Using a target size (torch.Size([128, 1])) that is different to the input size (torch.Size([128])) is deprecated. Please ensure they have the same size.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 563, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 496, in main
+    test_metrics = evaluate_loader(
+                   ^^^^^^^^^^^^^^^^
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 150, in evaluate_loader
+    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/functional.py", line 3118, in binary_cross_entropy
+    raise ValueError(
+ValueError: Using a target size (torch.Size([128, 1])) that is different to the input size (torch.Size([128])) is deprecated. Please ensure they have the same size.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 563, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 496, in main
+    test_metrics = evaluate_loader(
+                   ^^^^^^^^^^^^^^^^
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 150, in evaluate_loader
+    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/functional.py", line 3118, in binary_cross_entropy
+    raise ValueError(
+ValueError: Using a target size (torch.Size([128, 1])) that is different to the input size (torch.Size([128])) is deprecated. Please ensure they have the same size.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 563, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 496, in main
+    test_metrics = evaluate_loader(
+                   ^^^^^^^^^^^^^^^^
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 150, in evaluate_loader
+    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/functional.py", line 3118, in binary_cross_entropy
+    raise ValueError(
+ValueError: Using a target size (torch.Size([128, 1])) that is different to the input size (torch.Size([128])) is deprecated. Please ensure they have the same size.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 563, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 496, in main
+    test_metrics = evaluate_loader(
+                   ^^^^^^^^^^^^^^^^
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 150, in evaluate_loader
+    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/functional.py", line 3118, in binary_cross_entropy
+    raise ValueError(
+ValueError: Using a target size (torch.Size([128, 1])) that is different to the input size (torch.Size([128])) is deprecated. Please ensure they have the same size.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 563, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 496, in main
+    test_metrics = evaluate_loader(
+                   ^^^^^^^^^^^^^^^^
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 150, in evaluate_loader
+    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/functional.py", line 3118, in binary_cross_entropy
+    raise ValueError(
+ValueError: Using a target size (torch.Size([128, 1])) that is different to the input size (torch.Size([128])) is deprecated. Please ensure they have the same size.
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[60465,1],14]
+  Exit code:    1
+--------------------------------------------------------------------------
