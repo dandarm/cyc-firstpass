@@ -16,6 +16,7 @@ module load profile/deeplrn
 module load cineca-ai/4.3.0
 source $HOME/videomae/bin/activate
 
+export PYTHONUNBUFFERED=1
 
 # parametri principali
 CONFIG="config/default.yml"
