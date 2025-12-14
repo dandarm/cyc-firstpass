@@ -64,6 +64,31 @@ def combine_losses(L_hm, L_pr, loss_cfg):
     pr_w = loss_cfg["w_presence"]
     return hm_w, pr_w, hm_w * L_hm + pr_w * L_pr
 
+
+def focal_loss_with_logits(logits, targets, gamma: float = 2.0, alpha: float = None):
+    """
+    Binary focal loss on logits. Targets are probabilities (after smoothing).
+    """
+    ce = nn.functional.binary_cross_entropy_with_logits(logits, targets, reduction="none")
+    p = torch.sigmoid(logits)
+    p_t = p * targets + (1 - p) * (1 - targets)
+    focal_factor = (1 - p_t).pow(gamma)
+    if alpha is not None:
+        alpha_t = alpha * targets + (1 - alpha) * (1 - targets)
+        ce = ce * alpha_t
+    return (focal_factor * ce).mean()
+
+
+def combine_presence_probs(logits: torch.Tensor, heatmap: torch.Tensor) -> torch.Tensor:
+    """Replica la logica di inferenza: media tra sigmoid(logit) e picco heatmap."""
+    if heatmap.ndim == 4 and heatmap.shape[1] == 1:
+        heatmap = heatmap.squeeze(1)
+    probs = torch.sigmoid(logits).squeeze(1)
+    peak = heatmap.amax(dim=[-1, -2])
+    combined = 0.5 * probs + 0.5 * peak
+    combined = torch.clamp(combined, 1e-6, 1 - 1e-6)  # per BCE numericamente stabile
+    return combined
+
 def log_batch_temporal_samples(batch, temporal_selector, tag="train", max_samples=3):
     T = temporal_selector.temporal_T
     if T <= 1:
@@ -99,9 +124,11 @@ def log_temporal_debug_samples(dataset, tag="train", max_samples=3):
 
 def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, rank: int = 0,
                     distributed: bool = False, world_size: int = 1,
-                    presence_smoothing: float = 0.0):
+                    presence_smoothing: float = 0.0,
+                    presence_loss_fn=None,
+                    log_combined_presence: bool = False):
     #vL, vHm, vPr = [], [], []
-    sum_L, sum_hm, sum_pr = 0.0, 0.0, 0.0
+    sum_L, sum_hm, sum_pr, sum_pr_comb = 0.0, 0.0, 0.0, 0.0
     bad_batches = 0
     total_batches = 0
     with torch.no_grad():
@@ -117,32 +144,39 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, r
                 hm_p = torch.nan_to_num(hm_p, nan=0.0, posinf=1e4, neginf=-1e4)
                 pres_logit = torch.nan_to_num(pres_logit, nan=0.0, posinf=50.0, neginf=-50.0)
                 L_hm = hm_loss(hm_p, hm_t)
-                L_pr = bce_logits(pres_logit, pres_smooth)
+                L_pr = presence_loss_fn(pres_logit, pres_smooth) if presence_loss_fn else bce_logits(pres_logit, pres_smooth)
+                if log_combined_presence:
+                    comb_prob = combine_presence_probs(pres_logit, hm_p)
+                    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth)
+                else:
+                    L_pr_comb = torch.tensor(0.0, device=device)
                 _, _, L = combine_losses(L_hm, L_pr, loss_weights)
             if not torch.isfinite(L):
                 bad_batches += 1
                 if bad_batches <= 3 and rank == 0:
                     print(f"[WARN] non-finite val loss (rank {rank}), skipping batch")
                 continue
-            sum_L += L.item(); sum_hm += L_hm.item(); sum_pr += L_pr.item()
+            sum_L += L.item(); sum_hm += L_hm.item(); sum_pr += L_pr.item(); sum_pr_comb += L_pr_comb.item()
 
     totals = torch.tensor(
-        [sum_L, sum_hm, sum_pr, float(total_batches), float(bad_batches)],
+        [sum_L, sum_hm, sum_pr, sum_pr_comb, float(total_batches), float(bad_batches)],
         device=device
     )
     if distributed:
         dist.all_reduce(totals, op=dist.ReduceOp.SUM)
-    sum_L, sum_hm, sum_pr, total_batches, bad_batches = totals.tolist()
+    sum_L, sum_hm, sum_pr, sum_pr_comb, total_batches, bad_batches = totals.tolist()
     if total_batches - bad_batches > 0:
         mean_L = sum_L / (total_batches - bad_batches)
         mean_hm = sum_hm / (total_batches - bad_batches)
         mean_pr = sum_pr / (total_batches - bad_batches)
+        mean_pr_comb = sum_pr_comb / (total_batches - bad_batches)
     else:
-        mean_L = mean_hm = mean_pr = float("nan")
+        mean_L = mean_hm = mean_pr = mean_pr_comb = float("nan")
     return {
         "loss": float(mean_L),
         "hm": float(mean_hm),
         "presence": float(mean_pr),
+        "presence_combined": float(mean_pr_comb) if log_combined_presence else None,
         "bad_batches": int(bad_batches),
         "total_batches": int(total_batches)
     }
@@ -358,6 +392,17 @@ def main():
     hm_loss = HeatmapMSE()
     loss_weights = cfg["loss"]
     presence_smoothing = float(cfg["loss"].get("presence_label_smoothing", 0.0) or 0.0)
+    presence_loss_type = cfg["loss"].get("presence_loss", "bce")
+    focal_gamma = float(cfg["loss"].get("presence_focal_gamma", 2.0) or 2.0)
+    focal_alpha = cfg["loss"].get("presence_focal_alpha", None)
+    if focal_alpha is not None:
+        focal_alpha = float(focal_alpha)
+    if presence_loss_type == "focal":
+        def presence_loss_fn(logits, target):
+            return focal_loss_with_logits(logits, target, gamma=focal_gamma, alpha=focal_alpha)
+    else:
+        def presence_loss_fn(logits, target):
+            return bce_logits(logits, target)
 
     if is_main_process(rank):
         save_dir = cfg["train"]["save_dir"]; os.makedirs(save_dir, exist_ok=True)
@@ -371,7 +416,7 @@ def main():
         "epoch",
         "train_loss", "train_heatmap_loss", "train_presence_loss",
         "val_loss", "val_heatmap_loss", "val_presence_loss",
-        "test_loss", "test_heatmap_loss", "test_presence_loss"
+        "test_loss", "test_heatmap_loss", "test_presence_loss", "test_presence_combined_loss"
     ]
     if is_main_process(rank):
         print(f"[INFO] rank {rank}/{world_size} device={device}")
@@ -409,7 +454,7 @@ def main():
                 with autocast(enabled=cfg["train"]["amp"]):
                     hm_p, pres_logit = model(img)
                     L_hm = hm_loss(hm_p, hm_t)
-                    L_pr = bce_logits(pres_logit, pres_smooth)
+                    L_pr = presence_loss_fn(pres_logit, pres_smooth)
                     _, _, L = combine_losses(L_hm, L_pr, loss_weights)
                 if not torch.isfinite(L):
                     if is_main_process(rank):
@@ -443,13 +488,17 @@ def main():
                 val_metrics = evaluate_loader(
                     eval_model, va_loader, hm_loss, False, loss_weights, device,
                     rank=rank, distributed=distributed, world_size=world_size,
-                    presence_smoothing=presence_smoothing
+                    presence_smoothing=presence_smoothing,
+                    presence_loss_fn=presence_loss_fn,
+                    log_combined_presence=False
                 )
                 if test_loader is not None:
                     test_metrics = evaluate_loader(
                         eval_model, test_loader, hm_loss, False, loss_weights, device,
                         rank=rank, distributed=distributed, world_size=world_size,
-                        presence_smoothing=presence_smoothing
+                        presence_smoothing=presence_smoothing,
+                        presence_loss_fn=presence_loss_fn,
+                        log_combined_presence=True
                     )
                 eval_model.train()
 
@@ -492,7 +541,8 @@ def main():
                     "val_presence_loss": val_metrics["presence"] if val_metrics else "",
                     "test_loss": test_metrics["loss"] if test_metrics else "",
                     "test_heatmap_loss": test_metrics["hm"] if test_metrics else "",
-                    "test_presence_loss": test_metrics["presence"] if test_metrics else ""
+                    "test_presence_loss": test_metrics["presence"] if test_metrics else "",
+                    "test_presence_combined_loss": test_metrics["presence_combined"] if test_metrics else ""
                 }
                 writer.writerow(row); log_file.flush()
 

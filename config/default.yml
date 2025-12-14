@@ -1,7 +1,7 @@
 data:
   manifest_train: manifests/train.csv
   manifest_val:   manifests/val.csv
-  manifest_test:  no #manifests/test.csv
+  manifest_test:  manifests/test.csv
 
   image_col: image_path
   presence_col: presence
@@ -18,12 +18,12 @@ train:
   num_workers: 0
   dataloader_timeout_s: 60   # >0 per evitare deadlock: solleva eccezione se il dataloader si blocca
   persistent_workers: true   # disattiva (false) se sospetti deadlock dei worker tra le epoche
-  epochs: 1500
+  epochs: 100
   lr: 5.0e-4
-  weight_decay: 1.0e-4
+  weight_decay: 1.0e-5
   amp: true
   scale_lr_by_world_size: true
-  seed: 492
+  seed: 491
   save_dir: checkpoints
   val_every: 2
   best_ckpt_start_epoch: 5
@@ -38,6 +38,9 @@ loss:
   heatmap_sigma_px: 8
   w_heatmap: 1.0
   w_presence: 100.0
+  presence_loss: focal       # focal|bce (per la testa presenza)
+  presence_focal_gamma: 2.0
+  presence_focal_alpha: 0.25
   auto_balance: false          # bilancia automaticamente le magnitudini di heatmap e presence
   auto_balance_clip: [0.1, 100.0]
   presence_label_smoothing: 0.02
