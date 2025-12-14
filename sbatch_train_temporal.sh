@@ -28,7 +28,7 @@ mkdir -p "$LOG_DIR"
 TEMPORAL_T="5"
 TEMPORAL_STRIDE="6" 
 
-export NCCL_DEBUG=INFO
+#export NCCL_DEBUG=INFO
 # per debug dettagliato e gestione errori asincroni NCCL
 #export TORCH_DISTRIBUTED_DEBUG=DETAIL
 #export TORCH_NCCL_ASYNC_ERROR_HANDLING=1

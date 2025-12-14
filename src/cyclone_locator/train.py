@@ -275,7 +275,7 @@ def main():
         temporal_T=temporal_T,
         temporal_stride=temporal_stride
     )
-    log_temporal_debug_samples(ds_tr, tag="train")
+    #log_temporal_debug_samples(ds_tr, tag="train")
     ds_va = MedFullBasinDataset(
         cfg["data"]["manifest_val"],
         image_size=cfg["train"]["image_size"],
