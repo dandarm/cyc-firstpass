@@ -5,7 +5,7 @@
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=8
 #SBATCH --partition=boost_usr_prod
-#SBATCH --time=01:40:00
+#SBATCH --time=00:40:00
 #SBATCH --output=cyc_first_train.out
 #SBATCH --error=cyc_first.err
 

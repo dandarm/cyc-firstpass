@@ -17,8 +17,9 @@ source $HOME/videomae/bin/activate
 
 export PYTHONUNBUFFERED=1
 
+OUT_DIR="outputs/runs/exp_x3d_5"
+
 CONFIG_PATH="config/default.yml"
-OUT_DIR="outputs/preds"
 LETTERBOX_META="manifests/letterbox_meta.csv"
 METRICS_OUT="$OUT_DIR/metrics.json"
 SWEEP_CURVES_DIR="$OUT_DIR/curves"
@@ -28,10 +29,11 @@ CENTER_THRESHOLDS_KM=""
 PRESENCE_THRESHOLD="0.5"
 ROI_BASE_RADIUS_PX="128"
 ROI_SIGMA_MULTIPLIER="2.0"
+PRESENCE_FROM_PEAK="true"
 
-CHECKPOINT_PATH="outputs/runs/exp_mpi_13/best.ckpt"
+CHECKPOINT_PATH="$OUT_DIR/best.ckpt"
 MANIFEST_CSV="manifests/test.csv"
-SAVE_PREDS="outputs/runs/exp_mpi_13/preds_test.csv"
+SAVE_PREDS="$OUT_DIR/preds_test.csv"
 
 mkdir -p "$OUT_DIR" "$SWEEP_CURVES_DIR"
 if [[ "$EXPORT_ROI" == "true" ]]; then
@@ -59,4 +61,5 @@ python -u -m src.cyclone_locator.infer \
   --sweep-curves "$SWEEP_CURVES_DIR" \
   --roi-base-radius "$ROI_BASE_RADIUS_PX" \
   --roi-sigma-multiplier "$ROI_SIGMA_MULTIPLIER" \
+  $( [[ "$PRESENCE_FROM_PEAK" == "true" ]] && echo "--presence-from-peak" ) \
   "${EXTRA_ARGS[@]}"

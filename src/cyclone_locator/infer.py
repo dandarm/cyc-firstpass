@@ -73,6 +73,8 @@ def parse_args() -> argparse.Namespace:
                         help="Override dimensione finestra temporale (default: config.train.temporal_T o 1)")
     parser.add_argument("--temporal_stride", type=int, default=None,
                         help="Override stride temporale tra frame (default: config.train.temporal_stride o 1)")
+    parser.add_argument("--presence-from-peak", action="store_true",
+                        help="Usa solo il picco della heatmap come presenza (ignora la head presence)")
     return parser.parse_args()
 
 
@@ -432,6 +434,7 @@ def run_inference(
     stride: int,
     soft_argmax: bool,
     amp: bool,
+    presence_from_peak: bool = False,
 ) -> List[Dict[str, float]]:
     predictions: List[Dict[str, float]] = []
     autocast_enabled = amp and device.type == "cuda"
@@ -443,10 +446,13 @@ def run_inference(
             images = batch[input_key].to(device)
             with torch.cuda.amp.autocast(enabled=autocast_enabled):
                 heatmaps_pred, logits = model(images)
-            probs_raw = torch.sigmoid(logits).squeeze(1)
             heatmaps = heatmaps_pred.squeeze(1)
-            combined_probs = combine_presence(probs_raw, heatmaps)
+            probs_raw = torch.sigmoid(logits).squeeze(1)
             peaks = heatmaps.amax(dim=[1, 2])
+            if presence_from_peak:
+                combined_probs = torch.clamp(peaks, 1e-6, 1 - 1e-6)
+            else:
+                combined_probs = combine_presence(probs_raw, heatmaps)
 
             heatmaps_np = heatmaps.cpu().numpy()
             probs_np = combined_probs.cpu().numpy()
@@ -551,6 +557,7 @@ def main():
     threshold_for_metrics = args.threshold if args.threshold is not None else presence_threshold_default
     roi_base_radius = args.roi_base_radius or cfg.get("infer", {}).get("roi_base_radius_px", 112)
     roi_sigma_multiplier = args.roi_sigma_multiplier or cfg.get("infer", {}).get("roi_sigma_multiplier", 2.5)
+    presence_from_peak = bool(args.presence_from_peak)
 
     device_name = args.device or ("cuda" if torch.cuda.is_available() else "cpu")
     device = torch.device(device_name)
@@ -581,7 +588,7 @@ def main():
     )
 
     model = build_model(cfg, args.checkpoint, device, logger, temporal_T=temporal_T)
-    preds = run_inference(model, loader, device, stride, args.soft_argmax, args.amp)
+    preds = run_inference(model, loader, device, stride, args.soft_argmax, args.amp, presence_from_peak=presence_from_peak)
     preds_df = pd.DataFrame(preds).sort_values("manifest_idx").reset_index(drop=True)
     if args.threshold is not None:
         preds_df["presence_pred"] = (preds_df["presence_prob"] >= args.threshold).astype(int)

@@ -34,6 +34,7 @@ train:
   temporal_T: 5             # numero di frame temporali (early fusion canali)
   temporal_stride: 6        # salto tra frame temporali (>=1)
   presence_dropout: 0.2     # dropout tra GAP e FC della testa presenza
+  presence_from_peak: false # se true, usa solo il picco heatmap per la presenza (head disattivata)
 
 loss:
   heatmap_sigma_px: 8
