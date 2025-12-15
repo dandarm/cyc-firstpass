@@ -73,6 +73,7 @@ def parse_args() -> argparse.Namespace:
                         help="Override dimensione finestra temporale (default: config.train.temporal_T o 1)")
     parser.add_argument("--temporal_stride", type=int, default=None,
                         help="Override stride temporale tra frame (default: config.train.temporal_stride o 1)")
+    parser.add_argument("--backbone", default=None, help="Override del backbone (default: config.train.backbone)")
     parser.add_argument("--presence-from-peak", action="store_true",
                         help="Usa solo il picco della heatmap come presenza (ignora la head presence)")
     return parser.parse_args()
@@ -568,6 +569,9 @@ def main():
     if manifest_df.empty:
         logger.error("Manifest is empty after filtering, aborting")
         return
+
+    if args.backbone:
+        cfg.setdefault("train", {})["backbone"] = args.backbone
 
     logger.info("Temporal window: T=%d, stride=%d", temporal_T, temporal_stride)
 
