@@ -18,7 +18,7 @@ train:
   num_workers: 0
   dataloader_timeout_s: 60   # >0 per evitare deadlock: solleva eccezione se il dataloader si blocca
   persistent_workers: true   # disattiva (false) se sospetti deadlock dei worker tra le epoche
-  epochs: 100
+  epochs: 50
   lr: 5.0e-4
   weight_decay: 1.0e-5
   amp: true
