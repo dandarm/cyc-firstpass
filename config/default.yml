@@ -14,13 +14,13 @@ data:
 
 train:
   image_size: 384
-  batch_size: 256   # per GPU; global = batch_size * world_size
+  batch_size: 128   # per GPU; global = batch_size * world_size
   num_workers: 0
   dataloader_timeout_s: 60   # >0 per evitare deadlock: solleva eccezione se il dataloader si blocca
-  persistent_workers: false   # disattiva (false) se sospetti deadlock dei worker tra le epoche
-  epochs: 500
-  lr: 2.0e-4
-  weight_decay: 1.0e-4
+  persistent_workers: true   # disattiva (false) se sospetti deadlock dei worker tra le epoche
+  epochs: 100
+  lr: 5.0e-4
+  weight_decay: 1.0e-5
   amp: true
   scale_lr_by_world_size: true
   seed: 491
@@ -30,13 +30,20 @@ train:
   backbone: resnet18        # resnet18|resnet50
   heatmap_stride: 4         # output 128x128 quando input 512
   use_aug: false            # puoi mettere true se serve
+  temporal_T: 5             # numero di frame temporali (early fusion canali)
+  temporal_stride: 6        # salto tra frame temporali (>=1)
+  presence_dropout: 0.2     # dropout tra GAP e FC della testa presenza
 
 loss:
   heatmap_sigma_px: 8
-  w_heatmap: 100.0
-  w_presence: 1.0
+  w_heatmap: 1.0
+  w_presence: 100.0
+  presence_loss: focal       # focal|bce (per la testa presenza)
+  presence_focal_gamma: 2.0
+  presence_focal_alpha: 0.25
   auto_balance: false          # bilancia automaticamente le magnitudini di heatmap e presence
   auto_balance_clip: [0.1, 100.0]
+  presence_label_smoothing: 0.02
 
 infer:
   batch_size: 128

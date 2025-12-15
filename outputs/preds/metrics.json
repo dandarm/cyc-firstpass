@@ -1,0 +1,47 @@
+{
+  "dataset_size": 4708,
+  "n_with_gt_presence": 4708,
+  "n_with_gt_center": 2116,
+  "threshold_used": 0.5,
+  "presence_metrics_combined": {
+    "auprc": 0.5370039375428584,
+    "roc_auc": 0.5100021478039161,
+    "threshold": 0.5,
+    "precision_at_tau": 1.0,
+    "recall_at_tau": 0.020793950850661626,
+    "f1_at_tau": 0.040740740740740744,
+    "confusion_matrix": {
+      "tp": 44,
+      "fp": 0,
+      "tn": 2592,
+      "fn": 2072
+    }
+  },
+  "presence_metrics_logit": {
+    "auprc": 0.5375626950368457,
+    "roc_auc": 0.512521168084436,
+    "threshold": 0.5,
+    "precision_at_tau": 0.7624309392265194,
+    "recall_at_tau": 0.13043478260869565,
+    "f1_at_tau": 0.22276029055690072,
+    "confusion_matrix": {
+      "tp": 276,
+      "fp": 86,
+      "tn": 2506,
+      "fn": 1840
+    }
+  },
+  "center_metrics_px": {
+    "policy": "detection_first",
+    "unit": "px",
+    "count": 44,
+    "mae_px": 157.3827809862256,
+    "medae_px": 82.54089895318563,
+    "pct_within_px": {
+      "8": 0.0,
+      "16": 0.0,
+      "24": 0.0,
+      "32": 0.0
+    }
+  }
+}

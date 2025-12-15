@@ -1,0 +1,19 @@
+2025-12-14 21:51:48,992 - INFO - Starting inference
+2025-12-14 21:51:48,992 - INFO - Args: {'config': 'config/default.yml', 'checkpoint': 'outputs/runs/exp_mpi_13/best.ckpt', 'manifest_csv': 'manifests/test.csv', 'letterbox_meta': 'manifests/letterbox_meta.csv', 'export_roi': False, 'roi_dir': None, 'out_dir': 'outputs/preds', 'save_preds': 'outputs/runs/exp_mpi_13/preds_test.csv', 'metrics_out': 'outputs/preds/metrics.json', 'sweep_curves': 'outputs/preds/curves', 'threshold': 0.5, 'batch_size': None, 'num_workers': 4, 'device': None, 'amp': False, 'soft_argmax': False, 'oracle_localization': False, 'center_thresholds_px': [8, 16, 24, 32], 'center_thresholds_km': [25, 50, 100, 200], 'heatmap_stride': None, 'image_size': None, 'roi_base_radius': 128, 'roi_sigma_multiplier': 2.0, 'temporal_T': None, 'temporal_stride': None}
+2025-12-14 21:51:50,761 - INFO - Manifest loaded: 4708 records (4708 with presence GT, 2116 with center GT)
+2025-12-14 21:51:50,761 - INFO - Temporal window: T=5, stride=6
+2025-12-14 21:51:55,673 - INFO - Loaded checkpoint outputs/runs/exp_mpi_13/best.ckpt with backbone=resnet18
+2025-12-14 21:52:53,129 - INFO - Inference done on 4708 samples in 57.5s (81.9 img/s, 12.20s / 1k)
+2025-12-14 22:00:45,151 - INFO - Starting inference
+2025-12-14 22:00:45,151 - INFO - Args: {'config': 'config/default.yml', 'checkpoint': 'outputs/runs/exp_mpi_13/best.ckpt', 'manifest_csv': 'manifests/test.csv', 'letterbox_meta': 'manifests/letterbox_meta.csv', 'export_roi': False, 'roi_dir': None, 'out_dir': 'outputs/preds', 'save_preds': 'outputs/runs/exp_mpi_13/preds_test.csv', 'metrics_out': 'outputs/preds/metrics.json', 'sweep_curves': 'outputs/preds/curves', 'threshold': 0.5, 'batch_size': None, 'num_workers': 4, 'device': None, 'amp': False, 'soft_argmax': False, 'oracle_localization': False, 'center_thresholds_px': [8, 16, 24, 32], 'center_thresholds_km': [25, 50, 100, 200], 'heatmap_stride': None, 'image_size': None, 'roi_base_radius': 128, 'roi_sigma_multiplier': 2.0, 'temporal_T': None, 'temporal_stride': None}
+2025-12-14 22:00:47,379 - INFO - Manifest loaded: 4708 records (4708 with presence GT, 2116 with center GT)
+2025-12-14 22:00:47,379 - INFO - Temporal window: T=5, stride=6
+2025-12-14 22:00:52,005 - INFO - Loaded checkpoint outputs/runs/exp_mpi_13/best.ckpt with backbone=resnet18
+2025-12-14 22:01:46,366 - INFO - Inference done on 4708 samples in 54.4s (86.6 img/s, 11.55s / 1k)
+2025-12-14 22:01:48,878 - INFO - Loaded letterbox meta for 95232 frames
+2025-12-14 22:01:48,895 - WARNING - Missing letterbox meta for 4708 samples while computing x_orig/y_orig
+2025-12-14 22:01:48,897 - INFO - ROI export disattivato: meta caricati ma non verranno salvati ritagli.
+2025-12-14 22:01:48,938 - INFO - Predictions saved to outputs/runs/exp_mpi_13/preds_test.csv
+2025-12-14 22:01:48,983 - INFO - Skipping geo metrics: no valid samples with original coordinates.
+2025-12-14 22:01:48,985 - INFO - Metrics saved to outputs/preds/metrics.json
+2025-12-14 22:01:48,994 - INFO - Saved sweep curves to outputs/preds/curves
