@@ -145,7 +145,12 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, r
                 hm_p, pres_logit = model(img)
                 hm_p = torch.nan_to_num(hm_p, nan=0.0, posinf=1e4, neginf=-1e4)
                 pres_logit = torch.nan_to_num(pres_logit, nan=0.0, posinf=50.0, neginf=-50.0)
-                L_hm = hm_loss(hm_p, hm_t)
+                hm_per = hm_loss(hm_p, hm_t, reduction="none")
+                pos_mask = (pres.squeeze(1) > 0.5).float()
+                neg_mask = 1.0 - pos_mask
+                neg_mult = float(loss_weights.get("heatmap_neg_multiplier", 1.0) or 1.0)
+                weight = pos_mask + neg_mult * neg_mask
+                L_hm = (hm_per * weight).sum() / torch.clamp(weight.sum(), min=1.0)
                 L_pr = presence_loss_fn(pres_logit, pres_smooth) if presence_loss_fn else bce_logits(pres_logit, pres_smooth)
                 if log_combined_presence:
                     comb_prob = combine_presence_probs(pres_logit, hm_p)
@@ -463,11 +468,17 @@ def main():
                 hm_t = batch["heatmap"].to(device, non_blocking=True)
                 pres = batch["presence"].to(device, non_blocking=True)
                 pres_smooth = smooth_targets(pres, presence_smoothing)
+                pres_raw = pres.squeeze(1)
 
                 opt.zero_grad(set_to_none=True)
                 with autocast(enabled=cfg["train"]["amp"]):
                     hm_p, pres_logit = model(img)
-                    L_hm = hm_loss(hm_p, hm_t)
+                    hm_per = hm_loss(hm_p, hm_t, reduction="none")
+                    pos_mask = (pres_raw > 0.5).float()
+                    neg_mask = 1.0 - pos_mask
+                    neg_mult = float(cfg["loss"].get("heatmap_neg_multiplier", 1.0) or 1.0)
+                    weight = pos_mask + neg_mult * neg_mask
+                    L_hm = (hm_per * weight).sum() / torch.clamp(weight.sum(), min=1.0)
                     L_pr = presence_loss_fn(pres_logit, pres_smooth)
                     _, _, L = combine_losses(L_hm, L_pr, loss_weights)
                 if not torch.isfinite(L):

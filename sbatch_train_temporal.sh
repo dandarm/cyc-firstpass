@@ -30,6 +30,7 @@ TEMPORAL_STRIDE="4"
 
 # Argomenti attivi per il nuovo modello 3D X3D
 BACKBONE="x3d_xs"
+HEATMAP_NEG_MULT="0.2"
 
 #export NCCL_DEBUG=INFO
 # per debug dettagliato e gestione errori asincroni NCCL
@@ -53,4 +54,5 @@ mpirun --map-by socket:PE=${CPUS_PER_TASK} --report-bindings \
     --temporal_T "$TEMPORAL_T" \
     --temporal_stride "$TEMPORAL_STRIDE" \
     --num_workers "$CPUS_PER_TASK" \
-    --dataloader_timeout_s 130
+    --dataloader_timeout_s 130 \
+    --heatmap_neg_multiplier "$HEATMAP_NEG_MULT"
