@@ -279,3 +279,46 @@ Logging metrics to outputs/runs/exp_x3d_4/training_log.csv
           val:  L=4.5596 (hm=0.0010, pr=0.4559)
 [Epoch 86] no val improvement (4.5596 >= 2.3049); checkpoint not saved
 [Epoch 86] elapsed: 34.6s
+[Epoch 87] train: L=0.0077 (hm=0.0010, pr=0.0007, peak=0.0158)
+[Epoch 87] elapsed: 22.2s
+[Epoch 88] train: L=0.0139 (hm=0.0010, pr=0.0013, peak=0.0144)
+          val:  L=4.5303 (hm=0.0010, pr=0.4529)
+[Epoch 88] no val improvement (4.5303 >= 2.3049); checkpoint not saved
+[Epoch 88] elapsed: 35.4s
+[Epoch 89] train: L=0.0151 (hm=0.0010, pr=0.0014, peak=0.0232)
+[Epoch 89] elapsed: 22.8s
+[Epoch 90] train: L=0.0126 (hm=0.0010, pr=0.0012, peak=0.0241)
+          val:  L=8.1176 (hm=0.0010, pr=0.8117)
+[Epoch 90] no val improvement (8.1176 >= 2.3049); checkpoint not saved
+[Epoch 90] elapsed: 35.6s
+[Epoch 91] train: L=0.0168 (hm=0.0010, pr=0.0016, peak=0.0234)
+[Epoch 91] elapsed: 23.3s
+[Epoch 92] train: L=0.0145 (hm=0.0010, pr=0.0013, peak=0.0241)
+          val:  L=10.7632 (hm=0.0010, pr=1.0762)
+[Epoch 92] no val improvement (10.7632 >= 2.3049); checkpoint not saved
+[Epoch 92] elapsed: 34.5s
+[Epoch 93] train: L=0.0134 (hm=0.0010, pr=0.0012, peak=0.0222)
+[Epoch 93] elapsed: 22.9s
+[Epoch 94] train: L=0.0170 (hm=0.0010, pr=0.0016, peak=0.0224)
+          val:  L=3.8185 (hm=0.0010, pr=0.3817)
+[Epoch 94] no val improvement (3.8185 >= 2.3049); checkpoint not saved
+[Epoch 94] elapsed: 35.7s
+[Epoch 95] train: L=0.0147 (hm=0.0010, pr=0.0014, peak=0.0196)
+[Epoch 95] elapsed: 23.0s
+[Epoch 96] train: L=0.0164 (hm=0.0010, pr=0.0015, peak=0.0163)
+          val:  L=3.2228 (hm=0.0010, pr=0.3222)
+[Epoch 96] no val improvement (3.2228 >= 2.3049); checkpoint not saved
+[Epoch 96] elapsed: 34.2s
+[Epoch 97] train: L=0.0088 (hm=0.0010, pr=0.0008, peak=0.0165)
+[Epoch 97] elapsed: 22.9s
+[Epoch 98] train: L=0.0131 (hm=0.0010, pr=0.0012, peak=0.0162)
+          val:  L=17.2873 (hm=0.0010, pr=1.7286)
+[Epoch 98] no val improvement (17.2873 >= 2.3049); checkpoint not saved
+[Epoch 98] elapsed: 34.8s
+[Epoch 99] train: L=0.0104 (hm=0.0010, pr=0.0009, peak=0.0202)
+[Epoch 99] elapsed: 23.1s
+[Epoch 100] train: L=0.0115 (hm=0.0010, pr=0.0010, peak=0.0153)
+          val:  L=2.9754 (hm=0.0010, pr=0.2974)
+[Epoch 100] no val improvement (2.9754 >= 2.3049); checkpoint not saved
+[Epoch 100] elapsed: 35.0s
+Done. Best: outputs/runs/exp_x3d_4/best.ckpt
