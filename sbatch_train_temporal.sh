@@ -5,7 +5,7 @@
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=8
 #SBATCH --partition=boost_usr_prod
-#SBATCH --time=00:40:00
+#SBATCH --time=01:40:00
 #SBATCH --output=cyc_first_train.out
 #SBATCH --error=cyc_first.err
 
@@ -22,10 +22,10 @@ export PYTHONUNBUFFERED=1
 CONFIG="config/default.yml"
 TRAIN_CSV="manifests/train.csv"
 VAL_CSV="manifests/val.csv"
-LOG_DIR="outputs/runs/exp_x3d_2"
+LOG_DIR="outputs/runs/exp_x3d_3"
 mkdir -p "$LOG_DIR"
 
-TEMPORAL_T="7"
+TEMPORAL_T="5"
 TEMPORAL_STRIDE="4" 
 
 # Argomenti attivi per il nuovo modello 3D X3D

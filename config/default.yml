@@ -40,8 +40,8 @@ loss:
   w_heatmap: 1.0
   w_presence: 10.0
   presence_loss: focal       # focal|bce (per la testa presenza)
-  presence_focal_gamma: 3.0
-  presence_focal_alpha: 0.25
+  presence_focal_gamma: 1.5
+  presence_focal_alpha: 0.75
   auto_balance: false          # bilancia automaticamente le magnitudini di heatmap e presence
   auto_balance_clip: [0.1, 100.0]
   presence_label_smoothing: 0.03
