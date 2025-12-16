@@ -385,6 +385,8 @@ def main():
         worker_init_fn=seed_worker if num_workers > 0 else None
     )
 
+    presence_from_peak = bool(cfg["train"].get("presence_from_peak", False))
+
     # Model
     backbone_name = cfg["train"]["backbone"]
     pretrained_backbone = bool(cfg["train"].get("backbone_pretrained", True))
@@ -435,8 +437,6 @@ def main():
     else:
         def presence_loss_fn(logits, target):
             return bce_logits(logits, target)
-    presence_from_peak = bool(cfg["train"].get("presence_from_peak", False))
-    presence_from_peak = bool(cfg["train"].get("presence_from_peak", False))
 
     if is_main_process(rank):
         save_dir = cfg["train"]["save_dir"]; os.makedirs(save_dir, exist_ok=True)
