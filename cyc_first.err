@@ -1,19 +1,19 @@
-[lrdn1636.leonardo.local:4112590] MCW rank 0 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn1636.leonardo.local:4112590] MCW rank 1 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn1636.leonardo.local:4112590] MCW rank 2 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn1636.leonardo.local:4112590] MCW rank 3 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
-[lrdn1641.leonardo.local:735726] MCW rank 4 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn1641.leonardo.local:735726] MCW rank 5 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn1641.leonardo.local:735726] MCW rank 6 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn1641.leonardo.local:735726] MCW rank 7 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
-[lrdn1642.leonardo.local:2717428] MCW rank 8 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn1642.leonardo.local:2717428] MCW rank 9 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn1642.leonardo.local:2717428] MCW rank 10 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn1642.leonardo.local:2717428] MCW rank 11 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
-[lrdn1643.leonardo.local:3340556] MCW rank 12 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
-[lrdn1643.leonardo.local:3340556] MCW rank 13 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
-[lrdn1643.leonardo.local:3340556] MCW rank 14 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
-[lrdn1643.leonardo.local:3340556] MCW rank 15 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
+[lrdn1575.leonardo.local:3541196] MCW rank 0 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
+[lrdn1575.leonardo.local:3541196] MCW rank 1 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
+[lrdn1575.leonardo.local:3541196] MCW rank 2 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
+[lrdn1575.leonardo.local:3541196] MCW rank 3 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
+[lrdn1576.leonardo.local:485142] MCW rank 4 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
+[lrdn1576.leonardo.local:485142] MCW rank 5 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
+[lrdn1576.leonardo.local:485142] MCW rank 6 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
+[lrdn1576.leonardo.local:485142] MCW rank 7 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
+[lrdn1581.leonardo.local:1593543] MCW rank 8 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
+[lrdn1581.leonardo.local:1593543] MCW rank 9 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
+[lrdn1581.leonardo.local:1593543] MCW rank 10 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
+[lrdn1581.leonardo.local:1593543] MCW rank 11 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
+[lrdn1582.leonardo.local:368215] MCW rank 12 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [B/B/B/B/B/B/B/B/./././././././././././././././././././././././.]
+[lrdn1582.leonardo.local:368215] MCW rank 13 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././B/B/B/B/B/B/B/B/./././././././././././././././.]
+[lrdn1582.leonardo.local:368215] MCW rank 14 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]], socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]], socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]], socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././B/B/B/B/B/B/B/B/./././././././.]
+[lrdn1582.leonardo.local:368215] MCW rank 15 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]], socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]], socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]], socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././B/B/B/B/B/B/B/B]
 /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
   _torch_pytree._register_pytree_node(
 /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
@@ -46,3 +46,443 @@
   _torch_pytree._register_pytree_node(
 /leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
   _torch_pytree._register_pytree_node(
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 610, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 489, in main
+    hm_p, pres_logit = model(img)
+                       ^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1413, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 15: 319 320
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 610, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 489, in main
+    hm_p, pres_logit = model(img)
+                       ^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1413, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 6: 319 320
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 610, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 489, in main
+    hm_p, pres_logit = model(img)
+                       ^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1413, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 14: 319 320
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 610, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 489, in main
+    hm_p, pres_logit = model(img)
+                       ^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1413, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 5: 319 320
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 610, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 489, in main
+    hm_p, pres_logit = model(img)
+                       ^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1413, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 13: 319 320
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 610, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 489, in main
+    hm_p, pres_logit = model(img)
+                       ^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1413, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 12: 319 320
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 610, in <module>
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 610, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 489, in main
+    hm_p, pres_logit = model(img)
+                       ^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1413, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 3: 319 320
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 610, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 489, in main
+    hm_p, pres_logit = model(img)
+                       ^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1413, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 10: 319 320
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 489, in main
+    hm_p, pres_logit = model(img)
+                       ^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1413, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 2: 319 320
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 610, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 489, in main
+    hm_p, pres_logit = model(img)
+                       ^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1413, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 1: 319 320
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 610, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 489, in main
+    hm_p, pres_logit = model(img)
+                       ^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1413, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 11: 319 320
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 610, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 489, in main
+    hm_p, pres_logit = model(img)
+                       ^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1413, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 0: 319 320
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 610, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 489, in main
+    hm_p, pres_logit = model(img)
+                       ^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1413, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 4: 319 320
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 610, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 489, in main
+    hm_p, pres_logit = model(img)
+                       ^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1413, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 9: 319 320
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 610, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 489, in main
+    hm_p, pres_logit = model(img)
+                       ^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1413, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 7: 319 320
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 610, in <module>
+    main()
+  File "/leonardo/home/userexternal/ddarmien/cyc-firstpass/src/cyclone_locator/train.py", line 489, in main
+    hm_p, pres_logit = model(img)
+                       ^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1413, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 8: 319 320
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+Exception in thread Thread-1 (_pin_memory_loop):
+Traceback (most recent call last):
+  File "/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/python-3.11.6-i5k3c6ggftqkzgqyymfbkynpgm2lgjtd/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/python-3.11.6-i5k3c6ggftqkzgqyymfbkynpgm2lgjtd/lib/python3.11/threading.py", line 982, in run
+    self._target(*self._args, **self._kwargs)
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/utils/data/_utils/pin_memory.py", line 53, in _pin_memory_loop
+    do_one_step()
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/utils/data/_utils/pin_memory.py", line 30, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/python-3.11.6-i5k3c6ggftqkzgqyymfbkynpgm2lgjtd/lib/python3.11/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/opt/libraries/cineca-ai/4.3.0/none/cineca-ai-env/lib/python3.11/site-packages/torch/multiprocessing/reductions.py", line 495, in rebuild_storage_fd
+    fd = df.detach()
+         ^^^^^^^^^^^
+  File "/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/python-3.11.6-i5k3c6ggftqkzgqyymfbkynpgm2lgjtd/lib/python3.11/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/python-3.11.6-i5k3c6ggftqkzgqyymfbkynpgm2lgjtd/lib/python3.11/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/python-3.11.6-i5k3c6ggftqkzgqyymfbkynpgm2lgjtd/lib/python3.11/multiprocessing/connection.py", line 518, in Client
+    c = SocketClient(address)
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/leonardo/prod/spack/5.2/install/0.21/linux-rhel8-icelake/gcc-8.5.0/python-3.11.6-i5k3c6ggftqkzgqyymfbkynpgm2lgjtd/lib/python3.11/multiprocessing/connection.py", line 646, in SocketClient
+    s.connect(address)
+ConnectionRefusedError: [Errno 111] Connection refused
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[39068,1],15]
+  Exit code:    1
+--------------------------------------------------------------------------

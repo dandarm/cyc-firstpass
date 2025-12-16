@@ -1,0 +1,1 @@
+epoch,train_loss,train_heatmap_loss,train_presence_loss,val_loss,val_heatmap_loss,val_presence_loss,test_loss,test_heatmap_loss,test_presence_loss,test_presence_combined_loss
