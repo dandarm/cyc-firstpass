@@ -76,6 +76,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--backbone", default=None, help="Override del backbone (default: config.train.backbone)")
     parser.add_argument("--presence-from-peak", action="store_true",
                         help="Usa solo il picco della heatmap come presenza (ignora la head presence)")
+    parser.add_argument("--peak-threshold", type=float, default=None,
+                        help="Soglia τ da usare quando presence-from-peak è attivo (default: --threshold o infer.presence_threshold)")
     return parser.parse_args()
 
 
@@ -451,6 +453,8 @@ def run_inference(
             probs_raw = torch.sigmoid(logits).squeeze(1)
             peaks = heatmaps.amax(dim=[1, 2])
             if presence_from_peak:
+                peaks = torch.sigmoid(peaks)
+            if presence_from_peak:
                 combined_probs = torch.clamp(peaks, 1e-6, 1 - 1e-6)
             else:
                 combined_probs = combine_presence(probs_raw, heatmaps)
@@ -555,7 +559,10 @@ def main():
     temporal_stride = max(1, int(args.temporal_stride or cfg.get("train", {}).get("temporal_stride", 1)))
     batch_size = args.batch_size or cfg.get("train", {}).get("batch_size", 32)
     presence_threshold_default = cfg.get("infer", {}).get("presence_threshold", 0.5)
-    threshold_for_metrics = args.threshold if args.threshold is not None else presence_threshold_default
+    if args.presence_from_peak and args.peak_threshold is not None:
+        threshold_for_metrics = args.peak_threshold
+    else:
+        threshold_for_metrics = args.threshold if args.threshold is not None else presence_threshold_default
     roi_base_radius = args.roi_base_radius or cfg.get("infer", {}).get("roi_base_radius_px", 112)
     roi_sigma_multiplier = args.roi_sigma_multiplier or cfg.get("infer", {}).get("roi_sigma_multiplier", 2.5)
     presence_from_peak = bool(args.presence_from_peak)
@@ -594,8 +601,9 @@ def main():
     model = build_model(cfg, args.checkpoint, device, logger, temporal_T=temporal_T)
     preds = run_inference(model, loader, device, stride, args.soft_argmax, args.amp, presence_from_peak=presence_from_peak)
     preds_df = pd.DataFrame(preds).sort_values("manifest_idx").reset_index(drop=True)
-    if args.threshold is not None:
-        preds_df["presence_pred"] = (preds_df["presence_prob"] >= args.threshold).astype(int)
+    if args.threshold is not None or args.peak_threshold is not None:
+        tau = args.peak_threshold if args.presence_from_peak and args.peak_threshold is not None else args.threshold
+        preds_df["presence_pred"] = (preds_df["presence_prob"] >= tau).astype(int)
 
     meta_map = None
     if args.letterbox_meta:

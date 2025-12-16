@@ -31,6 +31,7 @@ ROI_BASE_RADIUS_PX="128"
 ROI_SIGMA_MULTIPLIER="2.0"
 PRESENCE_FROM_PEAK="true"
 BACKBONE="x3d_xs"
+PEAK_THRESHOLD="0.15"
 
 CHECKPOINT_PATH="$OUT_DIR/best.ckpt"
 MANIFEST_CSV="manifests/test.csv"
@@ -58,6 +59,7 @@ python -u -m src.cyclone_locator.infer \
   --letterbox-meta "$LETTERBOX_META" \
   --backbone "$BACKBONE" \
   --threshold "$PRESENCE_THRESHOLD" \
+  $( [[ -n "$PEAK_THRESHOLD" ]] && echo "--peak-threshold $PEAK_THRESHOLD" ) \
   --save-preds "$SAVE_PREDS" \
   --metrics-out "$METRICS_OUT" \
   --sweep-curves "$SWEEP_CURVES_DIR" \
