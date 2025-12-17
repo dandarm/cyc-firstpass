@@ -14,15 +14,17 @@ class SimpleBaseline(nn.Module):
     - out heatmap size: input/4 (se 3 deconv su feature stride 32 -> saliamo a /4)
     """
     def __init__(self, backbone="resnet18", out_heatmap_ch=1, temporal_T: int = 1,
-                 presence_dropout: float = 0.0):
+                 presence_dropout: float = 0.0, pretrained: bool = True):
         super().__init__()
         temporal_T = max(1, int(temporal_T))
         presence_dropout = max(0.0, float(presence_dropout))
         if backbone == "resnet18":
-            m = tvm.resnet18(weights=tvm.ResNet18_Weights.IMAGENET1K_V1)
+            weights = tvm.ResNet18_Weights.IMAGENET1K_V1 if pretrained else None
+            m = tvm.resnet18(weights=weights)
             feat_ch = 512
         elif backbone == "resnet50":
-            m = tvm.resnet50(weights=tvm.ResNet50_Weights.IMAGENET1K_V2)
+            weights = tvm.ResNet50_Weights.IMAGENET1K_V2 if pretrained else None
+            m = tvm.resnet50(weights=weights)
             feat_ch = 2048
         else:
             raise ValueError("backbone must be resnet18|resnet50")
@@ -59,6 +61,7 @@ class SimpleBaseline(nn.Module):
         self.head_presence_gap = nn.AdaptiveAvgPool2d((1,1))
         self.head_presence_dropout = nn.Dropout(p=presence_dropout) if presence_dropout > 0 else nn.Identity()
         self.head_presence_fc  = nn.Linear(256, 1)
+        self.input_is_video = False
 
     def forward(self, x):
         """

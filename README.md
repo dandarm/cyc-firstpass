@@ -70,6 +70,12 @@ python -m src.cyclone_locator.train \
   --log_dir outputs/runs/exp1
 ```
 
+Backbone disponibili:
+
+- `resnet18` / `resnet50`: early-fusion 2D, i frame temporali vengono concatenati sui canali.
+- `x3d_xs` / `x3d_s`: backbone 3D puro stile X3D che mantiene la dimensione temporale fino al pooling adattivo (nessuna
+  fusione temporale nei primi layer) e accetta sequenze di lunghezza configurabile (`temporal_T`, `temporal_stride`).
+
 
 ## Inferenza / Eval
 Il nuovo entrypoint supporta sia la sola inferenza sia una modalità di valutazione completa

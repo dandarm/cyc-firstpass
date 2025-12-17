@@ -22,11 +22,15 @@ export PYTHONUNBUFFERED=1
 CONFIG="config/default.yml"
 TRAIN_CSV="manifests/train.csv"
 VAL_CSV="manifests/val.csv"
-LOG_DIR="outputs/runs/exp_mpi_13"
+LOG_DIR="outputs/runs/exp_x3d_7"
 mkdir -p "$LOG_DIR"
 
 TEMPORAL_T="5"
-TEMPORAL_STRIDE="6" 
+TEMPORAL_STRIDE="4" 
+
+# Argomenti attivi per il nuovo modello 3D X3D
+BACKBONE="x3d_xs"
+HEATMAP_NEG_MULT="1.0"
 
 #export NCCL_DEBUG=INFO
 # per debug dettagliato e gestione errori asincroni NCCL
@@ -46,7 +50,9 @@ mpirun --map-by socket:PE=${CPUS_PER_TASK} --report-bindings \
     --train_csv "$TRAIN_CSV" \
     --val_csv "$VAL_CSV" \
     --log_dir "$LOG_DIR" \
+    --backbone "$BACKBONE" \
     --temporal_T "$TEMPORAL_T" \
     --temporal_stride "$TEMPORAL_STRIDE" \
     --num_workers "$CPUS_PER_TASK" \
-    --dataloader_timeout_s 30
+    --dataloader_timeout_s 130 \
+    --heatmap_neg_multiplier "$HEATMAP_NEG_MULT"

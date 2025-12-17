@@ -156,6 +156,8 @@ class MedFullBasinDataset(Dataset):
         if fused.shape[2] != ch * len(frames):
             raise ValueError("Unexpected channel mismatch in temporal fusion")
         img_t = torch.from_numpy(fused).permute(2,0,1)
+        video_t = torch.stack([torch.from_numpy(f).permute(2, 0, 1) for f in frames], dim=0)
+        video_t = video_t.permute(1, 0, 2, 3)  # (C,T,H,W)
 
         # target heatmap a risoluzione ridotta
         if presence == 1:
@@ -170,7 +172,8 @@ class MedFullBasinDataset(Dataset):
             hm = torch.clamp(hm, 0.0, 0.02)
 
         sample = {
-            "image": img_t,                        # (C,H,W) float32
+            "image": img_t,                        # (C,H,W) float32 (temporal early fusion)
+            "video": video_t,                      # (C,T,H,W) float32 (explicit temporal dim)
             "heatmap": hm.unsqueeze(0),            # (1,Ho,Wo)
             "presence": torch.tensor([presence], dtype=torch.float32),
             # meta serve solo in inferenza; in training teniamo lo stretto necessario

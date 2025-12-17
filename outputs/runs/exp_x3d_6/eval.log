@@ -1,0 +1,18 @@
+2025-12-16 02:31:51,798 - INFO - Starting inference
+2025-12-16 02:31:51,798 - INFO - Args: {'config': 'config/default.yml', 'checkpoint': 'outputs/runs/exp_x3d_6/best.ckpt', 'manifest_csv': 'manifests/test.csv', 'letterbox_meta': 'manifests/letterbox_meta.csv', 'export_roi': False, 'roi_dir': None, 'out_dir': 'outputs/runs/exp_x3d_6', 'save_preds': 'outputs/runs/exp_x3d_6/preds_test.csv', 'metrics_out': 'outputs/runs/exp_x3d_6/metrics.json', 'sweep_curves': 'outputs/runs/exp_x3d_6/curves', 'threshold': 0.5, 'batch_size': None, 'num_workers': 4, 'device': None, 'amp': False, 'soft_argmax': False, 'oracle_localization': False, 'center_thresholds_px': [8, 16, 24, 32], 'center_thresholds_km': [25, 50, 100, 200], 'heatmap_stride': None, 'image_size': None, 'roi_base_radius': 128, 'roi_sigma_multiplier': 2.0, 'temporal_T': None, 'temporal_stride': None, 'backbone': 'x3d_xs', 'presence_from_peak': True, 'peak_threshold': None}
+2025-12-16 02:31:52,501 - INFO - Manifest loaded: 4708 records (4708 with presence GT, 2116 with center GT)
+2025-12-16 02:31:52,501 - INFO - Temporal window: T=5, stride=6
+2025-12-16 02:31:55,849 - INFO - Loaded checkpoint outputs/runs/exp_x3d_6/best.ckpt with backbone=x3d_xs
+2025-12-16 02:32:58,467 - INFO - Inference done on 4708 samples in 62.6s (75.2 img/s, 13.30s / 1k)
+2025-12-16 02:33:00,980 - INFO - Loaded letterbox meta for 95232 frames
+2025-12-16 02:33:00,995 - WARNING - Missing letterbox meta for 4708 samples while computing x_orig/y_orig
+2025-12-16 02:33:00,997 - INFO - ROI export disattivato: meta caricati ma non verranno salvati ritagli.
+2025-12-16 02:33:01,035 - INFO - Predictions saved to outputs/runs/exp_x3d_6/preds_test.csv
+2025-12-16 02:33:01,080 - INFO - Skipping geo metrics: no valid samples with original coordinates.
+2025-12-16 02:33:01,081 - INFO - Metrics saved to outputs/runs/exp_x3d_6/metrics.json
+2025-12-16 02:33:01,090 - INFO - Saved sweep curves to outputs/runs/exp_x3d_6/curves
+2025-12-16 19:16:14,276 - INFO - Starting inference
+2025-12-16 19:16:14,277 - INFO - Args: {'config': 'config/default.yml', 'checkpoint': 'outputs/runs/exp_x3d_6/best.ckpt', 'manifest_csv': 'manifests/test.csv', 'letterbox_meta': 'manifests/letterbox_meta.csv', 'export_roi': False, 'roi_dir': None, 'out_dir': 'outputs/runs/exp_x3d_6', 'save_preds': 'outputs/runs/exp_x3d_6/preds_test.csv', 'metrics_out': 'outputs/runs/exp_x3d_6/metrics.json', 'sweep_curves': 'outputs/runs/exp_x3d_6/curves', 'threshold': 0.5, 'batch_size': None, 'num_workers': 4, 'device': None, 'amp': False, 'soft_argmax': False, 'oracle_localization': False, 'center_thresholds_px': [8, 16, 24, 32], 'center_thresholds_km': [25, 50, 100, 200], 'heatmap_stride': None, 'image_size': None, 'roi_base_radius': 128, 'roi_sigma_multiplier': 2.0, 'temporal_T': None, 'temporal_stride': None, 'backbone': 'x3d_xs', 'presence_from_peak': True, 'peak_threshold': None}
+2025-12-16 19:16:15,899 - INFO - Manifest loaded: 4708 records (4708 with presence GT, 2116 with center GT)
+2025-12-16 19:16:15,899 - INFO - Temporal window: T=5, stride=6
+2025-12-16 19:16:19,203 - INFO - Loaded checkpoint outputs/runs/exp_x3d_6/best.ckpt with backbone=x3d_xs

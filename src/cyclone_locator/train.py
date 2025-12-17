@@ -7,6 +7,7 @@ from torch.cuda.amp import autocast, GradScaler
 
 from cyclone_locator.datasets.med_fullbasin import MedFullBasinDataset
 from cyclone_locator.models.simplebaseline import SimpleBaseline
+from cyclone_locator.models.x3d_backbone import X3DBackbone
 from cyclone_locator.losses.heatmap_loss import HeatmapMSE
 from cyclone_locator.utils.distributed import (
     cleanup_distributed,
@@ -35,6 +36,8 @@ def parse_args():
     ap.add_argument("--num_workers", type=int, help="Override dataloader workers (use 0 to debug NCCL stalls)")
     ap.add_argument("--dataloader_timeout_s", type=int, help="Timeout (s) for DataLoader get_batch to avoid deadlocks")
     ap.add_argument("--persistent_workers", type=int, choices=[0,1], help="Set persistent_workers (1=keep workers alive between epochs)")
+    ap.add_argument("--heatmap_neg_multiplier", type=float, help="Scale factor for heatmap loss on negative samples")
+    ap.add_argument("--presence_from_peak", type=int, choices=[0,1], help="If 1, disable presence head and use heatmap peak as presence prob")
     return ap.parse_args()
 
 def set_seed(sd):
@@ -126,7 +129,9 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, r
                     distributed: bool = False, world_size: int = 1,
                     presence_smoothing: float = 0.0,
                     presence_loss_fn=None,
-                    log_combined_presence: bool = False):
+                    log_combined_presence: bool = False,
+                    input_key: str = "image",
+                    presence_from_peak: bool = False):
     #vL, vHm, vPr = [], [], []
     sum_L, sum_hm, sum_pr, sum_pr_comb = 0.0, 0.0, 0.0, 0.0
     bad_batches = 0
@@ -134,7 +139,7 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, r
     with torch.no_grad():
         for batch in loader:
             total_batches += 1
-            img = batch["image"].to(device, non_blocking=True)
+            img = batch[input_key].to(device, non_blocking=True)
             hm_t = batch["heatmap"].to(device, non_blocking=True)
             pres = batch["presence"].to(device, non_blocking=True)
             pres_smooth = smooth_targets(pres, presence_smoothing)
@@ -143,13 +148,26 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, r
                 hm_p, pres_logit = model(img)
                 hm_p = torch.nan_to_num(hm_p, nan=0.0, posinf=1e4, neginf=-1e4)
                 pres_logit = torch.nan_to_num(pres_logit, nan=0.0, posinf=50.0, neginf=-50.0)
-                L_hm = hm_loss(hm_p, hm_t)
-                L_pr = presence_loss_fn(pres_logit, pres_smooth) if presence_loss_fn else bce_logits(pres_logit, pres_smooth)
-                if log_combined_presence:
-                    comb_prob = combine_presence_probs(pres_logit, hm_p)
-                    L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth.view_as(comb_prob))
+                hm_per = hm_loss(hm_p, hm_t, reduction="none")
+                pos_mask = (pres.squeeze(1) > 0.5).float()
+                neg_mask = 1.0 - pos_mask
+                neg_mult = float(loss_weights.get("heatmap_neg_multiplier", 1.0) or 1.0)
+                weight = pos_mask + neg_mult * neg_mask
+                L_hm = (hm_per * weight).sum() / torch.clamp(weight.sum(), min=1.0)
+                if presence_from_peak:
+                    peak = hm_p.amax(dim=[-1, -2])
+                    L_pr = nn.functional.binary_cross_entropy_with_logits(peak, pres_smooth.view_as(peak))
+                    if log_combined_presence:
+                        L_pr_comb = nn.functional.binary_cross_entropy_with_logits(peak, pres_smooth.view_as(peak))
+                    else:
+                        L_pr_comb = torch.tensor(0.0, device=device)
                 else:
-                    L_pr_comb = torch.tensor(0.0, device=device)
+                    L_pr = presence_loss_fn(pres_logit, pres_smooth) if presence_loss_fn else bce_logits(pres_logit, pres_smooth)
+                    if log_combined_presence:
+                        comb_prob = combine_presence_probs(pres_logit, hm_p)
+                        L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth.view_as(comb_prob))
+                    else:
+                        L_pr_comb = torch.tensor(0.0, device=device)
                 _, _, L = combine_losses(L_hm, L_pr, loss_weights)
             if not torch.isfinite(L):
                 bad_batches += 1
@@ -198,6 +216,10 @@ def main():
         cfg["train"]["heatmap_stride"] = args.heatmap_stride
     if args.heatmap_sigma_px:
         cfg["loss"]["heatmap_sigma_px"] = args.heatmap_sigma_px
+    if args.heatmap_neg_multiplier is not None:
+        cfg["loss"]["heatmap_neg_multiplier"] = args.heatmap_neg_multiplier
+    if args.presence_from_peak is not None:
+        cfg["train"]["presence_from_peak"] = bool(args.presence_from_peak)
     if args.backbone:
         cfg["train"]["backbone"] = args.backbone
     if args.temporal_T:
@@ -366,22 +388,37 @@ def main():
         worker_init_fn=seed_worker if num_workers > 0 else None
     )
 
+    presence_from_peak = bool(cfg["train"].get("presence_from_peak", False))
+
     # Model
-    model = SimpleBaseline(
-        backbone=cfg["train"]["backbone"],
-        out_heatmap_ch=1,
-        temporal_T=temporal_T,
-        presence_dropout=cfg["train"].get("presence_dropout", 0.0)
-    )
+    backbone_name = cfg["train"]["backbone"]
+    pretrained_backbone = bool(cfg["train"].get("backbone_pretrained", True))
+    if backbone_name.startswith("x3d"):
+        model = X3DBackbone(
+            backbone=backbone_name,
+            out_heatmap_ch=1,
+            presence_dropout=cfg["train"].get("presence_dropout", 0.0),
+            pretrained=pretrained_backbone,
+        )
+    else:
+        model = SimpleBaseline(
+            backbone=backbone_name,
+            out_heatmap_ch=1,
+            temporal_T=temporal_T,
+            presence_dropout=cfg["train"].get("presence_dropout", 0.0),
+            pretrained=pretrained_backbone,
+        )
     model = model.to(device)
     if distributed:
         model = torch.nn.parallel.DistributedDataParallel(
             model,
             device_ids=[local_rank] if device.type == "cuda" else None,
             output_device=local_rank if device.type == "cuda" else None,
-            broadcast_buffers=False
+            broadcast_buffers=False,
+            find_unused_parameters=presence_from_peak  # presence head non usata se si usa solo il picco
         )
     model_to_save = model.module if distributed else model
+    input_key = "video" if getattr(model_to_save, "input_is_video", False) else "image"
 
 
     # Optim
@@ -445,16 +482,26 @@ def main():
             losses = []; hm_losses = []; pres_losses = []; peak_preds = []
             for batch in tr_loader:
                 #log_batch_temporal_samples(batch, ds_tr.temporal_selector, tag=f"train batch ", max_samples=3)   #{batch_idx}
-                img = batch["image"].to(device, non_blocking=True)
+                img = batch[input_key].to(device, non_blocking=True)
                 hm_t = batch["heatmap"].to(device, non_blocking=True)
                 pres = batch["presence"].to(device, non_blocking=True)
                 pres_smooth = smooth_targets(pres, presence_smoothing)
+                pres_raw = pres.squeeze(1)
 
                 opt.zero_grad(set_to_none=True)
                 with autocast(enabled=cfg["train"]["amp"]):
                     hm_p, pres_logit = model(img)
-                    L_hm = hm_loss(hm_p, hm_t)
-                    L_pr = presence_loss_fn(pres_logit, pres_smooth)
+                    hm_per = hm_loss(hm_p, hm_t, reduction="none")
+                    pos_mask = (pres_raw > 0.5).float()
+                    neg_mask = 1.0 - pos_mask
+                    neg_mult = float(cfg["loss"].get("heatmap_neg_multiplier", 1.0) or 1.0)
+                    weight = pos_mask + neg_mult * neg_mask
+                    L_hm = (hm_per * weight).sum() / torch.clamp(weight.sum(), min=1.0)
+                    if presence_from_peak:
+                        peak = hm_p.amax(dim=[-1, -2])
+                        L_pr = nn.functional.binary_cross_entropy_with_logits(peak, pres_smooth.view_as(peak))
+                    else:
+                        L_pr = presence_loss_fn(pres_logit, pres_smooth)
                     _, _, L = combine_losses(L_hm, L_pr, loss_weights)
                 if not torch.isfinite(L):
                     if is_main_process(rank):
@@ -490,7 +537,9 @@ def main():
                     rank=rank, distributed=distributed, world_size=world_size,
                     presence_smoothing=presence_smoothing,
                     presence_loss_fn=presence_loss_fn,
-                    log_combined_presence=False
+                    log_combined_presence=False,
+                    input_key=input_key,
+                    presence_from_peak=presence_from_peak
                 )
                 if test_loader is not None:
                     test_metrics = evaluate_loader(
@@ -498,7 +547,9 @@ def main():
                         rank=rank, distributed=distributed, world_size=world_size,
                         presence_smoothing=presence_smoothing,
                         presence_loss_fn=presence_loss_fn,
-                        log_combined_presence=True
+                        log_combined_presence=True,
+                        input_key=input_key,
+                        presence_from_peak=presence_from_peak
                     )
                 eval_model.train()
 

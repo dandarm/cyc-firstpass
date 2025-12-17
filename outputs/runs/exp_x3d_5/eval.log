@@ -1,0 +1,30 @@
+2025-12-16 00:47:38,472 - INFO - Starting inference
+2025-12-16 00:47:38,473 - INFO - Args: {'config': 'config/default.yml', 'checkpoint': 'outputs/runs/exp_x3d_5/best.ckpt', 'manifest_csv': 'manifests/test.csv', 'letterbox_meta': 'manifests/letterbox_meta.csv', 'export_roi': False, 'roi_dir': None, 'out_dir': 'outputs/runs/exp_x3d_5', 'save_preds': 'outputs/runs/exp_x3d_5/preds_test.csv', 'metrics_out': 'outputs/runs/exp_x3d_5/metrics.json', 'sweep_curves': 'outputs/runs/exp_x3d_5/curves', 'threshold': 0.5, 'batch_size': None, 'num_workers': 4, 'device': None, 'amp': False, 'soft_argmax': False, 'oracle_localization': False, 'center_thresholds_px': [8, 16, 24, 32], 'center_thresholds_km': [25, 50, 100, 200], 'heatmap_stride': None, 'image_size': None, 'roi_base_radius': 128, 'roi_sigma_multiplier': 2.0, 'temporal_T': None, 'temporal_stride': None, 'presence_from_peak': True}
+2025-12-16 00:47:39,190 - INFO - Manifest loaded: 4708 records (4708 with presence GT, 2116 with center GT)
+2025-12-16 00:47:39,190 - INFO - Temporal window: T=5, stride=6
+2025-12-16 00:56:52,619 - INFO - Starting inference
+2025-12-16 00:56:52,620 - INFO - Args: {'config': 'config/default.yml', 'checkpoint': 'outputs/runs/exp_x3d_5/best.ckpt', 'manifest_csv': 'manifests/test.csv', 'letterbox_meta': 'manifests/letterbox_meta.csv', 'export_roi': False, 'roi_dir': None, 'out_dir': 'outputs/runs/exp_x3d_5', 'save_preds': 'outputs/runs/exp_x3d_5/preds_test.csv', 'metrics_out': 'outputs/runs/exp_x3d_5/metrics.json', 'sweep_curves': 'outputs/runs/exp_x3d_5/curves', 'threshold': 0.5, 'batch_size': None, 'num_workers': 4, 'device': None, 'amp': False, 'soft_argmax': False, 'oracle_localization': False, 'center_thresholds_px': [8, 16, 24, 32], 'center_thresholds_km': [25, 50, 100, 200], 'heatmap_stride': None, 'image_size': None, 'roi_base_radius': 128, 'roi_sigma_multiplier': 2.0, 'temporal_T': None, 'temporal_stride': None, 'backbone': 'x3d_xs', 'presence_from_peak': True}
+2025-12-16 00:56:53,646 - INFO - Manifest loaded: 4708 records (4708 with presence GT, 2116 with center GT)
+2025-12-16 00:56:53,646 - INFO - Temporal window: T=5, stride=6
+2025-12-16 00:56:56,877 - INFO - Loaded checkpoint outputs/runs/exp_x3d_5/best.ckpt with backbone=x3d_xs
+2025-12-16 00:58:03,449 - INFO - Inference done on 4708 samples in 66.6s (70.7 img/s, 14.14s / 1k)
+2025-12-16 00:58:05,938 - INFO - Loaded letterbox meta for 95232 frames
+2025-12-16 00:58:05,953 - WARNING - Missing letterbox meta for 4708 samples while computing x_orig/y_orig
+2025-12-16 00:58:05,955 - INFO - ROI export disattivato: meta caricati ma non verranno salvati ritagli.
+2025-12-16 00:58:05,994 - INFO - Predictions saved to outputs/runs/exp_x3d_5/preds_test.csv
+2025-12-16 00:58:06,036 - INFO - Skipping geo metrics: no valid samples with original coordinates.
+2025-12-16 00:58:06,038 - INFO - Metrics saved to outputs/runs/exp_x3d_5/metrics.json
+2025-12-16 00:58:06,047 - INFO - Saved sweep curves to outputs/runs/exp_x3d_5/curves
+2025-12-16 01:21:32,267 - INFO - Starting inference
+2025-12-16 01:21:32,268 - INFO - Args: {'config': 'config/default.yml', 'checkpoint': 'outputs/runs/exp_x3d_5/best.ckpt', 'manifest_csv': 'manifests/test.csv', 'letterbox_meta': 'manifests/letterbox_meta.csv', 'export_roi': False, 'roi_dir': None, 'out_dir': 'outputs/runs/exp_x3d_5', 'save_preds': 'outputs/runs/exp_x3d_5/preds_test.csv', 'metrics_out': 'outputs/runs/exp_x3d_5/metrics.json', 'sweep_curves': 'outputs/runs/exp_x3d_5/curves', 'threshold': 0.5, 'batch_size': None, 'num_workers': 4, 'device': None, 'amp': False, 'soft_argmax': False, 'oracle_localization': False, 'center_thresholds_px': [8, 16, 24, 32], 'center_thresholds_km': [25, 50, 100, 200], 'heatmap_stride': None, 'image_size': None, 'roi_base_radius': 128, 'roi_sigma_multiplier': 2.0, 'temporal_T': None, 'temporal_stride': None, 'backbone': 'x3d_xs', 'presence_from_peak': True, 'peak_threshold': 0.15}
+2025-12-16 01:21:33,786 - INFO - Manifest loaded: 4708 records (4708 with presence GT, 2116 with center GT)
+2025-12-16 01:21:33,786 - INFO - Temporal window: T=5, stride=6
+2025-12-16 01:21:36,746 - INFO - Loaded checkpoint outputs/runs/exp_x3d_5/best.ckpt with backbone=x3d_xs
+2025-12-16 01:22:44,518 - INFO - Inference done on 4708 samples in 67.8s (69.5 img/s, 14.39s / 1k)
+2025-12-16 01:22:46,958 - INFO - Loaded letterbox meta for 95232 frames
+2025-12-16 01:22:46,974 - WARNING - Missing letterbox meta for 4708 samples while computing x_orig/y_orig
+2025-12-16 01:22:46,975 - INFO - ROI export disattivato: meta caricati ma non verranno salvati ritagli.
+2025-12-16 01:22:47,016 - INFO - Predictions saved to outputs/runs/exp_x3d_5/preds_test.csv
+2025-12-16 01:22:47,059 - INFO - Skipping geo metrics: no valid samples with original coordinates.
+2025-12-16 01:22:47,061 - INFO - Metrics saved to outputs/runs/exp_x3d_5/metrics.json
+2025-12-16 01:22:47,072 - INFO - Saved sweep curves to outputs/runs/exp_x3d_5/curves

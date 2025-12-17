@@ -43,16 +43,13 @@ class TemporalWindowSelector:
         if center_idx is None:
             return [center_path for _ in range(self.temporal_T)]
 
+        # Clamp outside-the-range offsets to the closest available frame so the
+        # sequence stays monotonic in time even near the boundaries.
         window: List[str] = []
         for offset in range(-self.half, self.half + 1):
             stride_offset = offset * self.temporal_stride
-            candidate_idx = center_idx + stride_offset
-            if 0 <= candidate_idx < len(files):
-                candidate = files[candidate_idx]
-            else:
-                candidate = center_path
-            if not os.path.exists(candidate):
-                candidate = center_path
+            candidate_idx = max(0, min(center_idx + stride_offset, len(files) - 1))
+            candidate = files[candidate_idx] if os.path.exists(files[candidate_idx]) else center_path
             window.append(candidate)
 
         return window

@@ -14,6 +14,7 @@ import yaml
 
 from cyclone_locator.datasets.temporal_utils import TemporalWindowSelector
 from cyclone_locator.models.simplebaseline import SimpleBaseline
+from cyclone_locator.models.x3d_backbone import X3DBackbone
 from cyclone_locator.utils.geometry import crop_square
 from cyclone_locator.utils.metric import peak_and_width
 from cyclone_locator import metrics as metrics_lib
@@ -72,6 +73,11 @@ def parse_args() -> argparse.Namespace:
                         help="Override dimensione finestra temporale (default: config.train.temporal_T o 1)")
     parser.add_argument("--temporal_stride", type=int, default=None,
                         help="Override stride temporale tra frame (default: config.train.temporal_stride o 1)")
+    parser.add_argument("--backbone", default=None, help="Override del backbone (default: config.train.backbone)")
+    parser.add_argument("--presence-from-peak", action="store_true",
+                        help="Usa solo il picco della heatmap come presenza (ignora la head presence)")
+    parser.add_argument("--peak-threshold", type=float, default=None,
+                        help="Soglia τ da usare quando presence-from-peak è attivo (default: --threshold o infer.presence_threshold)")
     return parser.parse_args()
 
 
@@ -360,8 +366,10 @@ class EvalDataset(Dataset):
             self.logger.warning("Channel mismatch in temporal fusion (%d vs expected %d)", fused.shape[2], ch * len(frames))
             self.warned_size = True
         tensor = torch.from_numpy(fused).permute(2, 0, 1)
+        video = torch.stack([torch.from_numpy(f).permute(2, 0, 1) for f in frames], dim=0).permute(1, 0, 2, 3)
         return {
             "image": tensor,
+            "video": video,
             "image_path": path,
             "manifest_idx": int(row["manifest_idx"])
         }
@@ -369,14 +377,19 @@ class EvalDataset(Dataset):
 
 def collate_batch(batch: List[Dict[str, torch.Tensor]]) -> Dict[str, torch.Tensor]:
     images = torch.stack([b["image"] for b in batch], dim=0)
+    videos = torch.stack([b["video"] for b in batch], dim=0)
     paths = [b["image_path"] for b in batch]
     manifest_idx = [b["manifest_idx"] for b in batch]
-    return {"image": images, "image_path": paths, "manifest_idx": manifest_idx}
+    return {"image": images, "video": videos, "image_path": paths, "manifest_idx": manifest_idx}
 
 
 def build_model(cfg: dict, checkpoint_path: str, device: torch.device, logger: logging.Logger, temporal_T: int) -> torch.nn.Module:
     backbone = cfg.get("train", {}).get("backbone", "resnet18")
-    model = SimpleBaseline(backbone=backbone, temporal_T=temporal_T)
+    pretrained = bool(cfg.get("train", {}).get("backbone_pretrained", True))
+    if backbone.startswith("x3d"):
+        model = X3DBackbone(backbone=backbone, pretrained=pretrained)
+    else:
+        model = SimpleBaseline(backbone=backbone, temporal_T=temporal_T, pretrained=pretrained)
     state = torch.load(checkpoint_path, map_location="cpu")
     weights = state.get("model", state)
     model.load_state_dict(weights, strict=True)
@@ -424,6 +437,7 @@ def run_inference(
     stride: int,
     soft_argmax: bool,
     amp: bool,
+    presence_from_peak: bool = False,
 ) -> List[Dict[str, float]]:
     predictions: List[Dict[str, float]] = []
     autocast_enabled = amp and device.type == "cuda"
@@ -431,13 +445,19 @@ def run_inference(
     total = 0
     with torch.no_grad():
         for batch in data_loader:
-            images = batch["image"].to(device)
+            input_key = "video" if getattr(model, "input_is_video", False) else "image"
+            images = batch[input_key].to(device)
             with torch.cuda.amp.autocast(enabled=autocast_enabled):
                 heatmaps_pred, logits = model(images)
-            probs_raw = torch.sigmoid(logits).squeeze(1)
             heatmaps = heatmaps_pred.squeeze(1)
-            combined_probs = combine_presence(probs_raw, heatmaps)
+            probs_raw = torch.sigmoid(logits).squeeze(1)
             peaks = heatmaps.amax(dim=[1, 2])
+            if presence_from_peak:
+                peaks = torch.sigmoid(peaks)
+            if presence_from_peak:
+                combined_probs = torch.clamp(peaks, 1e-6, 1 - 1e-6)
+            else:
+                combined_probs = combine_presence(probs_raw, heatmaps)
 
             heatmaps_np = heatmaps.cpu().numpy()
             probs_np = combined_probs.cpu().numpy()
@@ -539,9 +559,13 @@ def main():
     temporal_stride = max(1, int(args.temporal_stride or cfg.get("train", {}).get("temporal_stride", 1)))
     batch_size = args.batch_size or cfg.get("train", {}).get("batch_size", 32)
     presence_threshold_default = cfg.get("infer", {}).get("presence_threshold", 0.5)
-    threshold_for_metrics = args.threshold if args.threshold is not None else presence_threshold_default
+    if args.presence_from_peak and args.peak_threshold is not None:
+        threshold_for_metrics = args.peak_threshold
+    else:
+        threshold_for_metrics = args.threshold if args.threshold is not None else presence_threshold_default
     roi_base_radius = args.roi_base_radius or cfg.get("infer", {}).get("roi_base_radius_px", 112)
     roi_sigma_multiplier = args.roi_sigma_multiplier or cfg.get("infer", {}).get("roi_sigma_multiplier", 2.5)
+    presence_from_peak = bool(args.presence_from_peak)
 
     device_name = args.device or ("cuda" if torch.cuda.is_available() else "cpu")
     device = torch.device(device_name)
@@ -552,6 +576,9 @@ def main():
     if manifest_df.empty:
         logger.error("Manifest is empty after filtering, aborting")
         return
+
+    if args.backbone:
+        cfg.setdefault("train", {})["backbone"] = args.backbone
 
     logger.info("Temporal window: T=%d, stride=%d", temporal_T, temporal_stride)
 
@@ -572,10 +599,11 @@ def main():
     )
 
     model = build_model(cfg, args.checkpoint, device, logger, temporal_T=temporal_T)
-    preds = run_inference(model, loader, device, stride, args.soft_argmax, args.amp)
+    preds = run_inference(model, loader, device, stride, args.soft_argmax, args.amp, presence_from_peak=presence_from_peak)
     preds_df = pd.DataFrame(preds).sort_values("manifest_idx").reset_index(drop=True)
-    if args.threshold is not None:
-        preds_df["presence_pred"] = (preds_df["presence_prob"] >= args.threshold).astype(int)
+    if args.threshold is not None or args.peak_threshold is not None:
+        tau = args.peak_threshold if args.presence_from_peak and args.peak_threshold is not None else args.threshold
+        preds_df["presence_pred"] = (preds_df["presence_prob"] >= tau).astype(int)
 
     meta_map = None
     if args.letterbox_meta:
