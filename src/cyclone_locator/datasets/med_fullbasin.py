@@ -56,6 +56,17 @@ class MedFullBasinDataset(Dataset):
         # normalizza path a absolute per la join
         self.df["image_path_abs"] = self.df["image_path"].apply(lambda p: os.path.abspath(p))
 
+        # mappa ausiliaria per recuperare rapidamente le presence dei frame
+        self._presence_map = {r["image_path_abs"]: int(r["presence"]) for _, r in self.df.iterrows()}
+
+    def _presence_probability(self, window_paths, default_presence):
+        values = []
+        for p in window_paths:
+            values.append(self._presence_map.get(p, default_presence))
+        if not values:
+            return float(default_presence)
+        return float(np.mean(values))
+
     def __len__(self):
         return len(self.df)
 
@@ -130,8 +141,10 @@ class MedFullBasinDataset(Dataset):
         #print(np.mean((frames[0] - frames[1])**2).item(),
         #      np.mean((frames[1] - frames[2])**2).item())
 
-        presence = int(row["presence"])
-        if presence == 1:
+        presence_center = int(row["presence"])
+        presence_prob = self._presence_probability(window_paths, presence_center)
+
+        if presence_center == 1:
             if self.letterboxed_manifest and self._has_resized_keypoints and \
                not pd.isna(row["x_pix_resized"]) and not pd.isna(row["y_pix_resized"]):
                 xg = float(row["x_pix_resized"])
@@ -147,7 +160,7 @@ class MedFullBasinDataset(Dataset):
         # augment minimi (opzionali)
         if self.use_aug and np.random.rand() < 0.5:
             frames = [np.fliplr(f).copy() for f in frames]
-            if presence == 1:
+            if presence_center == 1:
                 xg = self.image_size - 1 - xg
 
         frames = [self._normalize_frame(f) for f in frames]
@@ -160,7 +173,7 @@ class MedFullBasinDataset(Dataset):
         video_t = video_t.permute(1, 0, 2, 3)  # (C,T,H,W)
 
         # target heatmap a risoluzione ridotta
-        if presence == 1:
+        if presence_center == 1:
             cx_hm = xg / self.stride
             cy_hm = yg / self.stride
             hm = torch.from_numpy(
@@ -175,7 +188,7 @@ class MedFullBasinDataset(Dataset):
             "image": img_t,                        # (C,H,W) float32 (temporal early fusion)
             "video": video_t,                      # (C,T,H,W) float32 (explicit temporal dim)
             "heatmap": hm.unsqueeze(0),            # (1,Ho,Wo)
-            "presence": torch.tensor([presence], dtype=torch.float32),
+            "presence": torch.tensor([presence_prob], dtype=torch.float32),
             # meta serve solo in inferenza; in training teniamo lo stretto necessario
             "meta_scale": meta["scale"],
             "meta_pad_x": meta["pad_x"],
