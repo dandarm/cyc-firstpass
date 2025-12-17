@@ -60,9 +60,33 @@ class MedFullBasinDataset(Dataset):
         self._presence_map = {r["image_path_abs"]: int(r["presence"]) for _, r in self.df.iterrows()}
 
     def _presence_probability(self, window_paths, default_presence):
+        """Compute a probabilistic presence based on the full temporal span.
+
+        Instead of counting only the selected frames, we collect all manifest
+        rows between the earliest and latest frame of the window. This captures
+        the actual temporal coverage implied by the stride, yielding smoother
+        probabilities near label transitions.
+        """
+
+        if not window_paths:
+            return float(default_presence)
+
+        dir_path = os.path.dirname(window_paths[0])
+        self.temporal_selector._ensure_dir(dir_path)
+        files = self.temporal_selector._dir_cache.get(dir_path, [])
+        idx_map = self.temporal_selector._dir_index.get(dir_path, {})
+
+        indices = [idx_map.get(os.path.basename(p)) for p in window_paths if os.path.basename(p) in idx_map]
+        if not indices:
+            return float(default_presence)
+
+        start, end = min(indices), max(indices)
         values = []
-        for p in window_paths:
-            values.append(self._presence_map.get(p, default_presence))
+        for i in range(start, end + 1):
+            path = files[i]
+            abs_path = os.path.abspath(path)
+            values.append(self._presence_map.get(abs_path, default_presence))
+
         if not values:
             return float(default_presence)
         return float(np.mean(values))
