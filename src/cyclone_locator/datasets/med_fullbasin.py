@@ -3,10 +3,9 @@ from torch.utils.data import Dataset
 
 from cyclone_locator.datasets.temporal_utils import TemporalWindowSelector
 
-def make_gaussian_heatmap(H, W, cx, cy, sigma):
-    """Heatmap gaussiana centrata in (cx,cy) su mappa HxW (float32)."""
-    yy, xx = np.mgrid[0:H, 0:W]
-    g = np.exp(-((xx - cx)**2 + (yy - cy)**2) / (2*sigma*sigma))
+def make_gaussian_heatmap_from_grid(xx, yy, cx, cy, sigma):
+    """Heatmap gaussiana centrata in (cx,cy) su griglie (xx,yy) (float32)."""
+    g = np.exp(-((xx - cx) ** 2 + (yy - cy) ** 2) / (2 * sigma * sigma))
     return g.astype(np.float32)
 
 class MedFullBasinDataset(Dataset):
@@ -27,6 +26,10 @@ class MedFullBasinDataset(Dataset):
         self.sigma = float(heatmap_sigma_px)
         self.use_aug = bool(use_aug)
         self.temporal_selector = TemporalWindowSelector(temporal_T, temporal_stride)
+
+        yy, xx = np.mgrid[0 : self.Ho, 0 : self.Wo]
+        self._hm_xx = xx.astype(np.float32)
+        self._hm_yy = yy.astype(np.float32)
 
         self.df["image_path"] = self.df["image_path"].astype(str)
 
@@ -56,8 +59,36 @@ class MedFullBasinDataset(Dataset):
         # normalizza path a absolute per la join
         self.df["image_path_abs"] = self.df["image_path"].apply(lambda p: os.path.abspath(p))
 
-        # mappa ausiliaria per recuperare rapidamente le presence dei frame
-        self._presence_map = {r["image_path_abs"]: int(r["presence"]) for _, r in self.df.iterrows()}
+        # mappe ausiliarie per presenza/coordinate per frame
+        self._frame_info = {}
+        for row in self.df.itertuples(index=False):
+            abs_path = getattr(row, "image_path_abs")
+            info = {"presence": int(getattr(row, "presence"))}
+            if self._has_resized_keypoints:
+                info["x_pix_resized"] = getattr(row, "x_pix_resized")
+                info["y_pix_resized"] = getattr(row, "y_pix_resized")
+            if self._has_orig_keypoints:
+                info["cx"] = getattr(row, "cx")
+                info["cy"] = getattr(row, "cy")
+            self._frame_info[abs_path] = info
+
+        self._presence_map = {p: info["presence"] for p, info in self._frame_info.items()}
+
+    def _meta_for_path_abs(self, abs_path: str) -> dict:
+        if self.letterboxed_manifest:
+            return dict(scale=1.0, pad_x=0.0, pad_y=0.0,
+                        out_size=self.image_size, orig_w=self.image_size, orig_h=self.image_size)
+        if self.use_pre_lb:
+            r = self.meta_map.get(abs_path, None)
+            if r is None:
+                raise KeyError(f"no letterbox meta for {abs_path}")
+            return dict(scale=float(r["scale"]),
+                        pad_x=float(r["pad_x"]),
+                        pad_y=float(r["pad_y"]),
+                        out_size=int(r["out_size"]),
+                        orig_w=int(r["orig_w"]),
+                        orig_h=int(r["orig_h"]))
+        raise RuntimeError("use_pre_letterboxed=False non supportato in questa configurazione")
 
     def _presence_probability(self, window_paths, default_presence):
         """Compute a probabilistic presence based on the full temporal span.
@@ -90,6 +121,81 @@ class MedFullBasinDataset(Dataset):
         if not values:
             return float(default_presence)
         return float(np.mean(values))
+
+    def _span_abs_paths_from_window(self, window_paths):
+        if not window_paths:
+            return []
+        dir_path = os.path.dirname(window_paths[0])
+        self.temporal_selector._ensure_dir(dir_path)
+        files = self.temporal_selector._dir_cache.get(dir_path, [])
+        idx_map = self.temporal_selector._dir_index.get(dir_path, {})
+        indices = [idx_map.get(os.path.basename(p)) for p in window_paths if os.path.basename(p) in idx_map]
+        if not indices:
+            return []
+        start, end = min(indices), max(indices)
+        return [os.path.abspath(files[i]) for i in range(start, end + 1)]
+
+    def _keypoint_lb_from_abs(self, abs_path: str):
+        info = self._frame_info.get(abs_path)
+        if not info:
+            return None
+        if int(info.get("presence", 0)) != 1:
+            return None
+
+        if self.letterboxed_manifest and self._has_resized_keypoints:
+            xg = info.get("x_pix_resized")
+            yg = info.get("y_pix_resized")
+            if xg is None or yg is None or pd.isna(xg) or pd.isna(yg):
+                return None
+            return float(xg), float(yg)
+
+        if self._has_orig_keypoints:
+            cx = info.get("cx")
+            cy = info.get("cy")
+            if cx is None or cy is None or pd.isna(cx) or pd.isna(cy):
+                return None
+            meta = self._meta_for_path_abs(abs_path)
+            xg, yg = self._forward_map_xy(float(cx), float(cy), meta)
+            return float(xg), float(yg)
+
+        return None
+
+    def _soft_target_heatmap(self, window_paths, presence_prob: float, fallback_xy_lb=None):
+        """Build a soft heatmap target over the full temporal span.
+
+        The returned heatmap has max value ~= presence_prob, so the peak is
+        numerically congruent with the (soft) presence label.
+        """
+        p = float(np.clip(presence_prob, 0.0, 1.0))
+        if p <= 0.0:
+            return None
+
+        span_abs_paths = self._span_abs_paths_from_window(window_paths)
+        coords = []
+        for abs_path in span_abs_paths:
+            xy = self._keypoint_lb_from_abs(abs_path)
+            if xy is not None:
+                coords.append(xy)
+
+        if not coords and fallback_xy_lb is not None:
+            coords = [fallback_xy_lb]
+
+        if not coords:
+            return torch.zeros((self.Ho, self.Wo), dtype=torch.float32)
+
+        acc = np.zeros((self.Ho, self.Wo), dtype=np.float32)
+        sigma_hm = self.sigma / self.stride
+        for xg, yg in coords:
+            cx_hm = xg / self.stride
+            cy_hm = yg / self.stride
+            acc += make_gaussian_heatmap_from_grid(self._hm_xx, self._hm_yy, cx_hm, cy_hm, sigma_hm)
+
+        mx = float(acc.max())
+        if mx > 0:
+            acc = (acc / mx) * p
+        else:
+            acc[:] = 0.0
+        return torch.from_numpy(acc)
 
     def __len__(self):
         return len(self.df)
@@ -197,16 +303,11 @@ class MedFullBasinDataset(Dataset):
         video_t = video_t.permute(1, 0, 2, 3)  # (C,T,H,W)
 
         # target heatmap a risoluzione ridotta
-        if presence_center == 1:
-            cx_hm = xg / self.stride
-            cy_hm = yg / self.stride
-            hm = torch.from_numpy(
-                make_gaussian_heatmap(self.Ho, self.Wo, cx_hm, cy_hm, self.sigma / self.stride)
-            )
+        if float(presence_prob) > 0.0:
+            fallback = (float(xg), float(yg)) if presence_center == 1 else None
+            hm = self._soft_target_heatmap(window_paths, presence_prob, fallback_xy_lb=fallback)
         else:
-            noise_level = 0.01
-            hm = torch.rand((self.Ho, self.Wo), dtype=torch.float32) * noise_level
-            hm = torch.clamp(hm, 0.0, 0.02)
+            hm = torch.zeros((self.Ho, self.Wo), dtype=torch.float32)
 
         sample = {
             "image": img_t,                        # (C,H,W) float32 (temporal early fusion)
