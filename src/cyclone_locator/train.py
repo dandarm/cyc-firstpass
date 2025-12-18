@@ -8,7 +8,7 @@ from torch.cuda.amp import autocast, GradScaler
 from cyclone_locator.datasets.med_fullbasin import MedFullBasinDataset
 from cyclone_locator.models.simplebaseline import SimpleBaseline
 from cyclone_locator.models.x3d_backbone import X3DBackbone
-from cyclone_locator.losses.heatmap_loss import HeatmapMSE
+from cyclone_locator.losses.heatmap_loss import HeatmapMSE, HeatmapFocal
 from cyclone_locator.utils.distributed import (
     cleanup_distributed,
     get_resources,
@@ -426,7 +426,14 @@ def main():
     scaled_lr = base_lr * world_size if (distributed and cfg["train"].get("scale_lr_by_world_size", True)) else base_lr
     opt = torch.optim.AdamW(model.parameters(), lr=scaled_lr, weight_decay=cfg["train"]["weight_decay"])
     scaler = GradScaler(enabled=cfg["train"]["amp"] and device.type == "cuda")
-    hm_loss = HeatmapMSE()
+    heatmap_loss_type = cfg["loss"].get("heatmap_loss", "mse")
+    if heatmap_loss_type == "focal":
+        hm_loss = HeatmapFocal(
+            alpha=float(cfg["loss"].get("heatmap_focal_alpha", 2.0) or 2.0),
+            beta=float(cfg["loss"].get("heatmap_focal_beta", 4.0) or 4.0),
+        )
+    else:
+        hm_loss = HeatmapMSE()
     loss_weights = cfg["loss"]
     presence_smoothing = float(cfg["loss"].get("presence_label_smoothing", 0.0) or 0.0)
     presence_loss_type = cfg["loss"].get("presence_loss", "bce")

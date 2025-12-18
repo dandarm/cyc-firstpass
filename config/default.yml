@@ -38,6 +38,9 @@ train:
 
 loss:
   heatmap_sigma_px: 8
+  heatmap_loss: focal          # mse|focal (focal stile CenterNet per evitare heatmap piatte)
+  heatmap_focal_alpha: 2.0     # alpha (modulating) per focal heatmap
+  heatmap_focal_beta: 4.0      # beta (penalizza i falsi picchi vicino al GT gaussian)
   w_heatmap: 1.0
   w_presence: 0.0
   heatmap_neg_multiplier: 0.2   # fattore di peso per la heatmap dei negativi (0=ignora, 1=pari ai positivi)
