@@ -1,4 +1,4 @@
-import os, cv2, torch, numpy as np, pandas as pd
+import os, warnings, cv2, torch, numpy as np, pandas as pd
 from torch.utils.data import Dataset
 
 from cyclone_locator.datasets.temporal_utils import TemporalWindowSelector
@@ -26,6 +26,10 @@ class MedFullBasinDataset(Dataset):
         self.sigma = float(heatmap_sigma_px)
         self.use_aug = bool(use_aug)
         self.temporal_selector = TemporalWindowSelector(temporal_T, temporal_stride)
+        # In caso di file mancanti/corrotti, possiamo fare retry su un altro indice
+        # per evitare che il DataLoader termini con eccezione.
+        self.max_missing_retries = 25
+        self._missing_warned = 0
 
         yy, xx = np.mgrid[0 : self.Ho, 0 : self.Wo]
         self._hm_xx = xx.astype(np.float32)
@@ -209,9 +213,10 @@ class MedFullBasinDataset(Dataset):
         r = self.meta_map.get(orig_abs, None)
         if r is None:
             raise KeyError(f"no letterbox meta for {orig_abs}")
-        img = cv2.imread(r["resized_path"], cv2.IMREAD_UNCHANGED)
+        resized_path = r["resized_path"]
+        img = cv2.imread(resized_path, cv2.IMREAD_UNCHANGED)
         if img is None:
-            raise FileNotFoundError(r["resized_path"])
+            raise FileNotFoundError(f"resized not found/readable: {resized_path} (orig: {orig_abs})")
         scale = float(r["scale"])
         scale_x = float(r["scale_x"]) if "scale_x" in r else scale
         scale_y = float(r["scale_y"]) if "scale_y" in r else scale
@@ -261,10 +266,30 @@ class MedFullBasinDataset(Dataset):
         return frame_np / 255.0
 
     def __getitem__(self, idx):
-        row = self.df.iloc[idx]
-        orig_abs = row["image_path_abs"]
+        # Se l'immagine centrale manca/cv2 non riesce a leggerla, non abortire:
+        # prova un altro indice e continua.
+        last_err = None
+        row = None
+        orig_abs = None
+        center_img = None
+        meta = None
+        for k in range(max(1, int(self.max_missing_retries))):
+            row = self.df.iloc[idx]
+            orig_abs = row["image_path_abs"]
+            try:
+                center_img, meta = self._load_letterboxed(orig_abs)
+                break
+            except (FileNotFoundError, KeyError, ValueError) as e:
+                last_err = e
+                if self._missing_warned < 10:
+                    warnings.warn(f"[MedFullBasinDataset] skip missing sample idx={idx} path={orig_abs}: {e}")
+                    self._missing_warned += 1
+                idx = (int(idx) + 1) % len(self.df)
+        else:
+            raise RuntimeError(
+                f"Too many missing/corrupt samples (last idx={idx}, path={orig_abs}): {last_err}"
+            )
 
-        center_img, meta = self._load_letterboxed(orig_abs)
         window_paths = self.temporal_selector.get_window(orig_abs)
 
         frames = []
