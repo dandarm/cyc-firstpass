@@ -5,7 +5,7 @@
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=8
 #SBATCH --partition=boost_usr_prod
-#SBATCH --time=00:40:00
+#SBATCH --time=02:40:00
 #SBATCH --output=cyc_first_train.out
 #SBATCH --error=cyc_first.err
 
@@ -22,7 +22,7 @@ export PYTHONUNBUFFERED=1
 CONFIG="config/default.yml"
 TRAIN_CSV="manifests/train.csv"
 VAL_CSV="manifests/val.csv"
-LOG_DIR="outputs/runs/exp_x3dm_heatmapfocal"
+LOG_DIR="outputs/runs/exp_x3dm_heatmapfocal_2"
 mkdir -p "$LOG_DIR"
 
 TEMPORAL_T="16"
@@ -30,7 +30,7 @@ TEMPORAL_STRIDE="4"
 
 # Argomenti attivi per il nuovo modello 3D X3D
 BACKBONE="x3d_m"  #"x3d_xs"
-HEATMAP_NEG_MULT="0.25"
+HEATMAP_NEG_MULT="0.5"
 
 #export NCCL_DEBUG=INFO
 # per debug dettagliato e gestione errori asincroni NCCL

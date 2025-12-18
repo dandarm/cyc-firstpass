@@ -14,18 +14,18 @@ data:
 
 train:
   image_size: 224
-  batch_size: 64   # per GPU; global = batch_size * world_size
+  batch_size: 256    # per GPU; global = batch_size * world_size
   num_workers: 30
   dataloader_timeout_s: 60   # >0 per evitare deadlock: solleva eccezione se il dataloader si blocca
   persistent_workers: true   # disattiva (false) se sospetti deadlock dei worker tra le epoche
-  epochs: 30
+  epochs: 200
   lr: 5.0e-4
   weight_decay: 1.0e-5
   amp: true
   scale_lr_by_world_size: true
   seed: 493
   save_dir: checkpoints
-  val_every: 2
+  val_every: 10
   best_ckpt_start_epoch: 5
   backbone: x3d_m        # resnet18|resnet50|x3d_xs|x3d_s|x3d_m
   backbone_pretrained: true # usa pesi pre-addestrati per il backbone
