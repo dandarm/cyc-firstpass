@@ -124,3 +124,55 @@ Logging metrics to outputs/runs/exp_x3dm_heatmapfocal_2/training_log.csv
 [Epoch 41] elapsed: 46.4s
 [Epoch 42] train: L=0.0017 (hm=0.0017, pr=0.4039, peak=-1.2821)
 [Epoch 42] elapsed: 46.0s
+[Epoch 43] train: L=0.0017 (hm=0.0017, pr=0.4032, peak=-1.2936)
+[Epoch 43] elapsed: 43.9s
+[Epoch 44] train: L=0.0017 (hm=0.0017, pr=0.4006, peak=-1.3147)
+[Epoch 44] elapsed: 42.7s
+[Epoch 45] train: L=0.0017 (hm=0.0017, pr=0.3999, peak=-1.3261)
+[Epoch 45] elapsed: 46.2s
+[Epoch 46] train: L=0.0017 (hm=0.0017, pr=0.3983, peak=-1.3488)
+[Epoch 46] elapsed: 44.5s
+[Epoch 47] train: L=0.0017 (hm=0.0017, pr=0.3974, peak=-1.3644)
+[Epoch 47] elapsed: 43.0s
+[Epoch 48] train: L=0.0017 (hm=0.0017, pr=0.3959, peak=-1.3831)
+[Epoch 48] elapsed: 43.7s
+[Epoch 49] train: L=0.0017 (hm=0.0017, pr=0.3954, peak=-1.3980)
+[Epoch 49] elapsed: 41.7s
+[Epoch 50] train: L=0.0017 (hm=0.0017, pr=0.3936, peak=-1.4184)
+          val:  L=0.0054 (hm=0.0054, pr=0.6077)
+[Epoch 50] no val improvement (0.0054 >= 0.0050); checkpoint not saved
+[Epoch 50] elapsed: 64.2s
+[Epoch 51] train: L=0.0017 (hm=0.0017, pr=0.3920, peak=-1.4341)
+[Epoch 51] elapsed: 43.8s
+[Epoch 52] train: L=0.0017 (hm=0.0017, pr=0.3922, peak=-1.4369)
+[Epoch 52] elapsed: 45.0s
+[Epoch 53] train: L=0.0017 (hm=0.0017, pr=0.3915, peak=-1.4404)
+[Epoch 53] elapsed: 42.2s
+[Epoch 54] train: L=0.0017 (hm=0.0017, pr=0.3902, peak=-1.4557)
+[Epoch 54] elapsed: 44.1s
+[Epoch 55] train: L=0.0016 (hm=0.0016, pr=0.3893, peak=-1.4676)
+[Epoch 55] elapsed: 44.0s
+[Epoch 56] train: L=0.0016 (hm=0.0016, pr=0.3889, peak=-1.4742)
+[Epoch 56] elapsed: 44.3s
+[Epoch 57] train: L=0.0016 (hm=0.0016, pr=0.3888, peak=-1.4755)
+[Epoch 57] elapsed: 43.7s
+[Epoch 58] train: L=0.0016 (hm=0.0016, pr=0.3882, peak=-1.4755)
+[Epoch 58] elapsed: 43.1s
+[Epoch 59] train: L=0.0016 (hm=0.0016, pr=0.3876, peak=-1.4770)
+[Epoch 59] elapsed: 42.4s
+[Epoch 60] train: L=0.0016 (hm=0.0016, pr=0.3865, peak=-1.4858)
+          val:  L=0.0054 (hm=0.0054, pr=0.6056)
+[Epoch 60] no val improvement (0.0054 >= 0.0050); checkpoint not saved
+[Epoch 60] elapsed: 64.2s
+[Epoch 61] train: L=0.0016 (hm=0.0016, pr=0.3859, peak=-1.4960)
+[Epoch 61] elapsed: 44.7s
+[Epoch 62] train: L=0.0016 (hm=0.0016, pr=0.3852, peak=-1.5047)
+[Epoch 62] elapsed: 41.7s
+[Epoch 63] train: L=0.0016 (hm=0.0016, pr=0.3844, peak=-1.5124)
+[Epoch 63] elapsed: 42.8s
+[Epoch 64] train: L=0.0016 (hm=0.0016, pr=0.3838, peak=-1.5175)
+[Epoch 64] elapsed: 46.1s
+[Epoch 65] train: L=0.0016 (hm=0.0016, pr=0.3827, peak=-1.5251)
+[Epoch 65] elapsed: 43.1s
+[Epoch 66] train: L=0.0016 (hm=0.0016, pr=0.3822, peak=-1.5314)
+[Epoch 66] elapsed: 44.5s
