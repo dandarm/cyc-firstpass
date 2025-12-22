@@ -115,3 +115,42 @@ Logging metrics to outputs/runs/exp_x3dm_heatmapfocal_BCE_3/training_log.csv
 [Epoch 38] elapsed: 47.3s
 [Epoch 39] train: L=0.2605 (hm=0.0066, pr=0.1692, peak=-0.6875)
 [Epoch 39] elapsed: 47.1s
+[Epoch 40] train: L=0.2601 (hm=0.0064, pr=0.1691, peak=-0.6933)
+          val:  L=2.0821 (hm=0.0218, pr=1.3735)
+[Epoch 40] saving BEST checkpoint to outputs/runs/exp_x3dm_heatmapfocal_BCE_3/best.ckpt ...
+[Epoch 40] best checkpoint saved in 0.06s
+[Epoch 40] elapsed: 68.8s
+[Epoch 41] train: L=0.2600 (hm=0.0062, pr=0.1692, peak=-0.6864)
+[Epoch 41] elapsed: 47.6s
+[Epoch 42] train: L=0.2598 (hm=0.0060, pr=0.1692, peak=-0.6931)
+[Epoch 42] elapsed: 45.7s
+[Epoch 43] train: L=0.2594 (hm=0.0059, pr=0.1690, peak=-0.6817)
+[Epoch 43] elapsed: 48.5s
+[Epoch 44] train: L=0.2596 (hm=0.0058, pr=0.1692, peak=-0.6971)
+[Epoch 44] elapsed: 47.5s
+[Epoch 45] train: L=0.2592 (hm=0.0057, pr=0.1690, peak=-0.6900)
+[Epoch 45] elapsed: 46.7s
+[Epoch 46] train: L=0.2595 (hm=0.0056, pr=0.1692, peak=-0.6949)
+[Epoch 46] elapsed: 54.5s
+[Epoch 47] train: L=0.2590 (hm=0.0055, pr=0.1690, peak=-0.6885)
+[Epoch 47] elapsed: 48.9s
+[Epoch 48] train: L=0.2593 (hm=0.0054, pr=0.1692, peak=-0.6899)
+[Epoch 48] elapsed: 48.4s
+[Epoch 49] train: L=0.2600 (hm=0.0054, pr=0.1697, peak=-0.7025)
+[Epoch 49] elapsed: 48.3s
+[Epoch 50] train: L=0.2603 (hm=0.0057, pr=0.1698, peak=-0.6760)
+          val:  L=2.1855 (hm=0.0253, pr=1.4402)
+[Epoch 50] no val improvement (2.1855 >= 2.0821); checkpoint not saved
+[Epoch 50] elapsed: 69.2s
+[Epoch 51] train: L=0.2613 (hm=0.0064, pr=0.1699, peak=-0.6581)
+[Epoch 51] elapsed: 52.3s
+[Epoch 52] train: L=0.2612 (hm=0.0068, pr=0.1696, peak=-0.6870)
+[Epoch 52] elapsed: 48.1s
+[Epoch 53] train: L=0.2607 (hm=0.0063, pr=0.1696, peak=-0.6780)
+[Epoch 53] elapsed: 48.6s
+[Epoch 54] train: L=0.2598 (hm=0.0059, pr=0.1693, peak=-0.6996)
+[Epoch 54] elapsed: 46.9s
+[Epoch 55] train: L=0.2594 (hm=0.0055, pr=0.1692, peak=-0.6937)
+[Epoch 55] elapsed: 47.2s
+[Epoch 56] train: L=0.2588 (hm=0.0053, pr=0.1690, peak=-0.6953)
+[Epoch 56] elapsed: 46.6s
