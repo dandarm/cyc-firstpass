@@ -39,11 +39,13 @@ train:
 loss:
   heatmap_sigma_px: 8
   heatmap_loss: focal          # mse|focal (focal stile CenterNet per evitare heatmap piatte)
-  heatmap_focal_alpha: 2.0     # alpha (modulating) per focal heatmap
-  heatmap_focal_beta: 4.0      # beta (penalizza i falsi picchi vicino al GT gaussian)
+  heatmap_focal_alpha: 1.2     # alpha (modulating) per focal heatmap
+  heatmap_focal_beta: 2.0      # beta (penalizza i falsi picchi vicino al GT gaussian)
   w_heatmap: 1.0
-  w_presence: 0.0
+  w_presence: 0.0              # peso della loss della head presence (se usata)
+  w_peak_bce: 1.5              # peso BCE-with-logits sul picco heatmap (quando presence_from_peak=true)
   heatmap_neg_multiplier: 0.2   # fattore di peso per la heatmap dei negativi (0=ignora, 1=pari ai positivi)
+  heatmap_pos_multiplier: 1.0   # fattore di peso per la heatmap dei positivi
   presence_loss: focal       # focal|bce (per la testa presenza)
   presence_focal_gamma: 1.5
   presence_focal_alpha: 0.75
@@ -52,7 +54,9 @@ loss:
   presence_label_smoothing: 0.03
 
 infer:
-  batch_size: 128
+  batch_size: 64
+  presence_from_peak: false   # se true, usa il picco heatmap come presenza in inferenza
+  peak_threshold: null        # soglia τ per il picco (se null usa presence_threshold)
   presence_threshold: 0.5
   topk_peaks: 1
   roi_base_radius_px: 112    # metà tile 224

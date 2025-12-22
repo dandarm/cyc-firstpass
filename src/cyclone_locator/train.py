@@ -39,6 +39,7 @@ def parse_args():
     ap.add_argument("--dataloader_timeout_s", type=int, help="Timeout (s) for DataLoader get_batch to avoid deadlocks")
     ap.add_argument("--persistent_workers", type=int, choices=[0,1], help="Set persistent_workers (1=keep workers alive between epochs)")
     ap.add_argument("--heatmap_neg_multiplier", type=float, help="Scale factor for heatmap loss on negative samples")
+    ap.add_argument("--heatmap_pos_multiplier", type=float, help="Scale factor for heatmap loss on positive samples")
     ap.add_argument("--presence_from_peak", type=int, choices=[0,1], help="If 1, disable presence head and use heatmap peak as presence prob")
     return ap.parse_args()
 
@@ -195,7 +196,8 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, r
                 pos_mask = (pres.squeeze(1) > 0.5).float()
                 neg_mask = 1.0 - pos_mask
                 neg_mult = float(loss_weights.get("heatmap_neg_multiplier", 1.0) or 1.0)
-                weight = pos_mask + neg_mult * neg_mask
+                pos_mult = float(loss_weights.get("heatmap_pos_multiplier", 1.0) or 1.0)
+                weight = pos_mult * pos_mask + neg_mult * neg_mask
                 L_hm = (hm_per * weight).sum() / torch.clamp(weight.sum(), min=1.0)
                 if presence_from_peak:
                     peak = hm_p.amax(dim=[-1, -2])
@@ -211,7 +213,10 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, r
                         L_pr_comb = nn.functional.binary_cross_entropy(comb_prob, pres_smooth.view_as(comb_prob))
                     else:
                         L_pr_comb = torch.tensor(0.0, device=device)
-                _, _, L = combine_losses(L_hm, L_pr, loss_weights)
+                hm_w = float(loss_weights.get("w_heatmap", 1.0) or 1.0)
+                pr_w_key = "w_peak_bce" if presence_from_peak else "w_presence"
+                pr_w = float(loss_weights.get(pr_w_key, 1.0) or 1.0)
+                L = hm_w * L_hm + pr_w * L_pr
             if not torch.isfinite(L):
                 bad_batches += 1
                 if bad_batches <= 3 and rank == 0:
@@ -261,6 +266,8 @@ def main():
         cfg["loss"]["heatmap_sigma_px"] = args.heatmap_sigma_px
     if args.heatmap_neg_multiplier is not None:
         cfg["loss"]["heatmap_neg_multiplier"] = args.heatmap_neg_multiplier
+    if args.heatmap_pos_multiplier is not None:
+        cfg["loss"]["heatmap_pos_multiplier"] = args.heatmap_pos_multiplier
     if args.presence_from_peak is not None:
         cfg["train"]["presence_from_peak"] = bool(args.presence_from_peak)
     if args.backbone:
@@ -582,14 +589,18 @@ def main():
                         pos_mask = (pres_raw > 0.5).float()
                         neg_mask = 1.0 - pos_mask
                         neg_mult = float(cfg["loss"].get("heatmap_neg_multiplier", 1.0) or 1.0)
-                        weight = pos_mask + neg_mult * neg_mask
+                        pos_mult = float(cfg["loss"].get("heatmap_pos_multiplier", 1.0) or 1.0)
+                        weight = pos_mult * pos_mask + neg_mult * neg_mask
                         L_hm = (hm_per * weight).sum() / torch.clamp(weight.sum(), min=1.0)
                         if presence_from_peak:
                             peak = hm_p.amax(dim=[-1, -2])
                             L_pr = nn.functional.binary_cross_entropy_with_logits(peak, pres_smooth.view_as(peak))
                         else:
                             L_pr = presence_loss_fn(pres_logit, pres_smooth)
-                        _, _, L = combine_losses(L_hm, L_pr, loss_weights)
+                        hm_w = float(loss_weights.get("w_heatmap", 1.0) or 1.0)
+                        pr_w_key = "w_peak_bce" if presence_from_peak else "w_presence"
+                        pr_w = float(loss_weights.get(pr_w_key, 1.0) or 1.0)
+                        L = hm_w * L_hm + pr_w * L_pr
                 if not torch.isfinite(L):
                     if is_main_process(rank):
                         print(f"[ERROR] non-finite train loss at epoch {epoch}; aborting to avoid hang.")

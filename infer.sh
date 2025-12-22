@@ -17,9 +17,9 @@ PRESENCE_THRESHOLD="0.5"
 ROI_BASE_RADIUS_PX="128"
 ROI_SIGMA_MULTIPLIER="2.0"
 
-CHECKPOINT_PATH="outputs/runs/exp_mpi_13/best.ckpt"
+CHECKPOINT_PATH="outputs/runs/exp_x3dm_heatmapfocal_2/best.ckpt"
 MANIFEST_CSV="manifests/test.csv"
-SAVE_PREDS="outputs/runs/exp_mpi_13/preds_test.csv"
+SAVE_PREDS="outputs/runs/exp_x3dm_heatmapfocal_2/preds_test.csv"
 
 mkdir -p "$OUT_DIR"
 mkdir -p "$SWEEP_CURVES_DIR"

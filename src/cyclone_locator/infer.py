@@ -571,13 +571,16 @@ def main():
     temporal_stride = max(1, int(args.temporal_stride or cfg.get("train", {}).get("temporal_stride", 1)))
     batch_size = args.batch_size or cfg.get("train", {}).get("batch_size", 32)
     presence_threshold_default = cfg.get("infer", {}).get("presence_threshold", 0.5)
-    if args.presence_from_peak and args.peak_threshold is not None:
+    presence_from_peak = bool(args.presence_from_peak or cfg.get("infer", {}).get("presence_from_peak", False))
+    peak_threshold_default = cfg.get("infer", {}).get("peak_threshold", None)
+    if presence_from_peak and args.peak_threshold is not None:
         threshold_for_metrics = args.peak_threshold
+    elif presence_from_peak and args.peak_threshold is None and peak_threshold_default is not None:
+        threshold_for_metrics = float(peak_threshold_default)
     else:
         threshold_for_metrics = args.threshold if args.threshold is not None else presence_threshold_default
     roi_base_radius = args.roi_base_radius or cfg.get("infer", {}).get("roi_base_radius_px", 112)
     roi_sigma_multiplier = args.roi_sigma_multiplier or cfg.get("infer", {}).get("roi_sigma_multiplier", 2.5)
-    presence_from_peak = bool(args.presence_from_peak)
 
     device_name = args.device or ("cuda" if torch.cuda.is_available() else "cpu")
     device = torch.device(device_name)
