@@ -383,3 +383,28 @@ Logging metrics to outputs/runs/exp_x3dm_heatmapfocal_BCE_3/training_log.csv
 [Epoch 157] elapsed: 50.0s
 [Epoch 158] train: L=0.2568 (hm=0.0036, pr=0.1688, peak=-0.7008)
 [Epoch 158] elapsed: 48.6s
+[Epoch 159] train: L=0.2574 (hm=0.0036, pr=0.1692, peak=-0.6924)
+[Epoch 159] elapsed: 47.5s
+[Epoch 160] train: L=0.2571 (hm=0.0036, pr=0.1690, peak=-0.6851)
+          val:  L=1.7051 (hm=0.0167, pr=1.1256)
+[Epoch 160] saving BEST checkpoint to outputs/runs/exp_x3dm_heatmapfocal_BCE_3/best.ckpt ...
+[Epoch 160] best checkpoint saved in 0.06s
+[Epoch 160] elapsed: 67.9s
+[Epoch 161] train: L=0.2570 (hm=0.0036, pr=0.1689, peak=-0.6940)
+[Epoch 161] elapsed: 47.4s
+[Epoch 162] train: L=0.2571 (hm=0.0036, pr=0.1690, peak=-0.6954)
+[Epoch 162] elapsed: 48.0s
+[Epoch 163] train: L=0.2569 (hm=0.0036, pr=0.1688, peak=-0.6863)
+[Epoch 163] elapsed: 47.0s
+[Epoch 164] train: L=0.2575 (hm=0.0037, pr=0.1692, peak=-0.6976)
+[Epoch 164] elapsed: 47.8s
+[Epoch 165] train: L=0.2571 (hm=0.0037, pr=0.1690, peak=-0.6928)
+[Epoch 165] elapsed: 51.4s
+[Epoch 166] train: L=0.2571 (hm=0.0036, pr=0.1690, peak=-0.6910)
+[Epoch 166] elapsed: 49.2s
+[Epoch 167] train: L=0.2569 (hm=0.0036, pr=0.1689, peak=-0.7018)
+[Epoch 167] elapsed: 50.3s
+[Epoch 168] train: L=0.2571 (hm=0.0036, pr=0.1689, peak=-0.6947)
+[Epoch 168] elapsed: 50.1s
+[Epoch 169] train: L=0.2574 (hm=0.0036, pr=0.1691, peak=-0.6969)
+[Epoch 169] elapsed: 48.0s
