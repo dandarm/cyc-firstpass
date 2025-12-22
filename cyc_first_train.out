@@ -335,3 +335,51 @@ Logging metrics to outputs/runs/exp_x3dm_heatmapfocal_BCE_3/training_log.csv
 [Epoch 136] elapsed: 47.1s
 [Epoch 137] train: L=0.2573 (hm=0.0038, pr=0.1691, peak=-0.6915)
 [Epoch 137] elapsed: 52.1s
+[Epoch 138] train: L=0.2574 (hm=0.0037, pr=0.1692, peak=-0.6967)
+[Epoch 138] elapsed: 48.6s
+[Epoch 139] train: L=0.2572 (hm=0.0037, pr=0.1690, peak=-0.6983)
+[Epoch 139] elapsed: 47.8s
+[Epoch 140] train: L=0.2574 (hm=0.0037, pr=0.1691, peak=-0.6917)
+          val:  L=1.7698 (hm=0.0175, pr=1.1682)
+[Epoch 140] saving BEST checkpoint to outputs/runs/exp_x3dm_heatmapfocal_BCE_3/best.ckpt ...
+[Epoch 140] best checkpoint saved in 0.06s
+[Epoch 140] elapsed: 69.3s
+[Epoch 141] train: L=0.2569 (hm=0.0037, pr=0.1688, peak=-0.6856)
+[Epoch 141] elapsed: 46.2s
+[Epoch 142] train: L=0.2572 (hm=0.0037, pr=0.1690, peak=-0.6985)
+[Epoch 142] elapsed: 47.5s
+[Epoch 143] train: L=0.2573 (hm=0.0037, pr=0.1691, peak=-0.6907)
+[Epoch 143] elapsed: 46.1s
+[Epoch 144] train: L=0.2567 (hm=0.0037, pr=0.1687, peak=-0.6901)
+[Epoch 144] elapsed: 50.4s
+[Epoch 145] train: L=0.2571 (hm=0.0037, pr=0.1690, peak=-0.6914)
+[Epoch 145] elapsed: 49.4s
+[Epoch 146] train: L=0.2573 (hm=0.0036, pr=0.1691, peak=-0.6879)
+[Epoch 146] elapsed: 46.2s
+[Epoch 147] train: L=0.2571 (hm=0.0036, pr=0.1690, peak=-0.6950)
+[Epoch 147] elapsed: 46.5s
+[Epoch 148] train: L=0.2571 (hm=0.0036, pr=0.1690, peak=-0.6904)
+[Epoch 148] elapsed: 47.4s
+[Epoch 149] train: L=0.2576 (hm=0.0036, pr=0.1693, peak=-0.6943)
+[Epoch 149] elapsed: 47.4s
+[Epoch 150] train: L=0.2566 (hm=0.0037, pr=0.1686, peak=-0.6888)
+          val:  L=1.7247 (hm=0.0171, pr=1.1384)
+[Epoch 150] saving BEST checkpoint to outputs/runs/exp_x3dm_heatmapfocal_BCE_3/best.ckpt ...
+[Epoch 150] best checkpoint saved in 0.06s
+[Epoch 150] elapsed: 69.2s
+[Epoch 151] train: L=0.2573 (hm=0.0036, pr=0.1691, peak=-0.6881)
+[Epoch 151] elapsed: 45.5s
+[Epoch 152] train: L=0.2570 (hm=0.0036, pr=0.1689, peak=-0.6955)
+[Epoch 152] elapsed: 48.7s
+[Epoch 153] train: L=0.2575 (hm=0.0036, pr=0.1692, peak=-0.6972)
+[Epoch 153] elapsed: 49.1s
+[Epoch 154] train: L=0.2572 (hm=0.0036, pr=0.1690, peak=-0.6925)
+[Epoch 154] elapsed: 52.8s
+[Epoch 155] train: L=0.2571 (hm=0.0036, pr=0.1689, peak=-0.6960)
+[Epoch 155] elapsed: 48.7s
+[Epoch 156] train: L=0.2573 (hm=0.0036, pr=0.1691, peak=-0.6886)
+[Epoch 156] elapsed: 49.3s
+[Epoch 157] train: L=0.2573 (hm=0.0036, pr=0.1691, peak=-0.6892)
+[Epoch 157] elapsed: 50.0s
+[Epoch 158] train: L=0.2568 (hm=0.0036, pr=0.1688, peak=-0.7008)
+[Epoch 158] elapsed: 48.6s
