@@ -17,7 +17,7 @@ source $HOME/videomae/bin/activate
 
 export PYTHONUNBUFFERED=1
 
-OUT_DIR="outputs/runs/exp_x3d_6"
+OUT_DIR="outputs/runs/exp_x3dm_heatmapfocal_BCE_3"
 
 CONFIG_PATH="config/default.yml"
 LETTERBOX_META="manifests/letterbox_meta.csv"
@@ -30,7 +30,7 @@ PRESENCE_THRESHOLD="0.5"
 ROI_BASE_RADIUS_PX="128"
 ROI_SIGMA_MULTIPLIER="2.0"
 PRESENCE_FROM_PEAK="true"
-BACKBONE="x3d_xs"
+BACKBONE="x3d_m"
 PEAK_THRESHOLD=""
 
 CHECKPOINT_PATH="$OUT_DIR/best.ckpt"
