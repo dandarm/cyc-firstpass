@@ -47,7 +47,7 @@ loss:
   peak_tau: 0.5                # τ per logsumexp (più piccolo -> più simile a max)
   w_heatmap: 1.0
   w_presence: 0.0              # peso della loss della head presence (se usata)
-  w_peak_bce: 1.5              # peso BCE-with-logits sul picco heatmap (quando presence_from_peak=true)
+  w_peak_bce: 1.0              # peso BCE-with-logits sul picco heatmap (quando presence_from_peak=true)
   heatmap_neg_multiplier: 0.2   # fattore di peso per la heatmap dei negativi (0=ignora, 1=pari ai positivi)
   heatmap_pos_multiplier: 1.2   # fattore di peso per la heatmap dei positivi
   presence_loss: focal       # focal|bce (per la testa presenza)

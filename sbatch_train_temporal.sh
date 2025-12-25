@@ -23,7 +23,7 @@ export PYTHONUNBUFFERED=1
 CONFIG="config/default.yml"
 TRAIN_CSV="manifests/train.csv"
 VAL_CSV="manifests/val.csv"
-LOG_DIR="outputs/runs/exp_x3dm_dsnt_2"
+LOG_DIR="outputs/runs/exp_x3dm_dsnt_3"
 mkdir -p "$LOG_DIR"
 
 TEMPORAL_T="16"
@@ -33,9 +33,9 @@ TEMPORAL_STRIDE="4"
 BACKBONE="x3d_m"  #"x3d_xs"
 HEATMAP_NEG_MULT="0.5"
 HEATMAP_POS_MULT="1.5"
-HEATMAP_LOSS="focal"      # mse|focal|dsnt
+HEATMAP_LOSS="dsnt"      # mse|focal|dsnt
 DSNT_TAU="1.5"            # temperatura per softmax2D (DSNT)
-DSNT_COORD_LOSS="l1"      # l1|l2
+DSNT_COORD_LOSS="l2"      # l1|l2
 PEAK_POOL="logsumexp"     # max|logsumexp (togliere 'max' = meno fragile)
 PEAK_TAU="0.5"            # tau per logsumexp (più piccolo -> più simile a max)
 
