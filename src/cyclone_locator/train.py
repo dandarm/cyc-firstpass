@@ -27,6 +27,11 @@ def parse_args():
     ap.add_argument("--image_size", type=int)
     ap.add_argument("--heatmap_stride", type=int)
     ap.add_argument("--heatmap_sigma_px", type=float)
+    ap.add_argument("--heatmap_loss", choices=["mse", "focal", "dsnt"], help="Heatmap loss type")
+    ap.add_argument("--dsnt_tau", type=float, help="Temperature tau for DSNT softmax2D")
+    ap.add_argument("--dsnt_coord_loss", choices=["l1", "l2"], help="Coordinate loss for DSNT")
+    ap.add_argument("--peak_pool", choices=["max", "logsumexp"], help="Pooling for presence_from_peak (default: max)")
+    ap.add_argument("--peak_tau", type=float, help="Temperature tau for peak_pool=logsumexp")
     ap.add_argument("--backbone")
     ap.add_argument("--temporal_T", type=int)
     ap.add_argument("--temporal_stride", type=int)
@@ -99,6 +104,23 @@ def coord_loss_per_sample(pred_xy: torch.Tensor, target_xy: torch.Tensor, loss_t
     if loss_type in {"l2", "mse"}:
         return ((pred_xy - target_xy) ** 2).sum(dim=1)
     raise ValueError(f"Unknown dsnt_coord_loss: {loss_type}")
+
+
+def spatial_peak_pool(logits: torch.Tensor, pool: str = "max", tau: float = 1.0) -> torch.Tensor:
+    """
+    logits: (B,1,H,W)
+    Returns: (B,1) pooled logits.
+    """
+    if logits.ndim != 4 or logits.shape[1] != 1:
+        raise ValueError(f"Expected logits shape (B,1,H,W), got {logits.shape}")
+    pool = str(pool).lower().strip()
+    if pool == "max":
+        return logits.amax(dim=[-1, -2])
+    if pool == "logsumexp":
+        if tau <= 0:
+            raise ValueError("tau must be > 0 for logsumexp pooling")
+        return float(tau) * torch.logsumexp(logits / float(tau), dim=[-1, -2])
+    raise ValueError(f"Unknown peak_pool: {pool}")
 
 def estimate_conv3d_max_batch(model: nn.Module, temporal_T: int, image_size: int, device: torch.device) -> int | None:
     """Estimate max per-process batch size before Conv3d hits int32 indexing limits.
@@ -194,7 +216,9 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, r
                     presence_from_peak: bool = False,
                     heatmap_loss_type: str = "mse",
                     dsnt_tau: float = 1.0,
-                    dsnt_coord_loss: str = "l1"):
+                    dsnt_coord_loss: str = "l1",
+                    peak_pool: str = "max",
+                    peak_tau: float = 1.0):
     #vL, vHm, vPr = [], [], []
     sum_L, sum_hm, sum_pr, sum_pr_comb = 0.0, 0.0, 0.0, 0.0
     bad_batches = 0
@@ -230,7 +254,7 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, r
                     weight = pos_mult * pos_mask + neg_mult * neg_mask
                     L_hm = (hm_per * weight).sum() / torch.clamp(weight.sum(), min=1.0)
                 if presence_from_peak:
-                    peak = hm_p.amax(dim=[-1, -2])
+                    peak = spatial_peak_pool(hm_p, pool=peak_pool, tau=float(peak_tau))
                     L_pr = nn.functional.binary_cross_entropy_with_logits(peak, pres_smooth.view_as(peak))
                     if log_combined_presence:
                         L_pr_comb = nn.functional.binary_cross_entropy_with_logits(peak, pres_smooth.view_as(peak))
@@ -294,6 +318,16 @@ def main():
         cfg["train"]["heatmap_stride"] = args.heatmap_stride
     if args.heatmap_sigma_px:
         cfg["loss"]["heatmap_sigma_px"] = args.heatmap_sigma_px
+    if args.heatmap_loss:
+        cfg["loss"]["heatmap_loss"] = args.heatmap_loss
+    if args.dsnt_tau is not None:
+        cfg["loss"]["dsnt_tau"] = float(args.dsnt_tau)
+    if args.dsnt_coord_loss:
+        cfg["loss"]["dsnt_coord_loss"] = str(args.dsnt_coord_loss)
+    if args.peak_pool:
+        cfg["loss"]["peak_pool"] = str(args.peak_pool)
+    if args.peak_tau is not None:
+        cfg["loss"]["peak_tau"] = float(args.peak_tau)
     if args.heatmap_neg_multiplier is not None:
         cfg["loss"]["heatmap_neg_multiplier"] = args.heatmap_neg_multiplier
     if args.heatmap_pos_multiplier is not None:
@@ -535,6 +569,8 @@ def main():
     heatmap_loss_type = cfg["loss"].get("heatmap_loss", "mse")
     dsnt_tau = float(cfg["loss"].get("dsnt_tau", 1.0) or 1.0)
     dsnt_coord_loss = str(cfg["loss"].get("dsnt_coord_loss", "l1") or "l1")
+    peak_pool = str(cfg["loss"].get("peak_pool", "max") or "max")
+    peak_tau = float(cfg["loss"].get("peak_tau", 1.0) or 1.0)
     if str(heatmap_loss_type).lower().strip() == "dsnt":
         hm_loss = None
     elif heatmap_loss_type == "focal":
@@ -638,7 +674,7 @@ def main():
                             weight = pos_mult * pos_mask + neg_mult * neg_mask
                             L_hm = (hm_per * weight).sum() / torch.clamp(weight.sum(), min=1.0)
                         if presence_from_peak:
-                            peak = hm_p.amax(dim=[-1, -2])
+                            peak = spatial_peak_pool(hm_p, pool=peak_pool, tau=float(peak_tau))
                             L_pr = nn.functional.binary_cross_entropy_with_logits(peak, pres_smooth.view_as(peak))
                         else:
                             L_pr = presence_loss_fn(pres_logit, pres_smooth)
@@ -656,7 +692,7 @@ def main():
                     opt.zero_grad(set_to_none=True)
 
                 losses.append(L.item()); hm_losses.append(L_hm.item()); pres_losses.append(L_pr.item())
-                peak_preds.append(hm_p.detach().amax(dim=[-1, -2]).mean().item())
+                peak_preds.append(spatial_peak_pool(hm_p.detach(), pool=peak_pool, tau=float(peak_tau)).mean().item())
 
             if last_micro_step != -1 and last_micro_step != (grad_accum_steps - 1):
                 scaler.step(opt); scaler.update()
@@ -692,6 +728,8 @@ def main():
                     heatmap_loss_type=heatmap_loss_type,
                     dsnt_tau=dsnt_tau,
                     dsnt_coord_loss=dsnt_coord_loss,
+                    peak_pool=peak_pool,
+                    peak_tau=peak_tau,
                 )
                 if test_loader is not None:
                     test_metrics = evaluate_loader(
@@ -705,6 +743,8 @@ def main():
                         heatmap_loss_type=heatmap_loss_type,
                         dsnt_tau=dsnt_tau,
                         dsnt_coord_loss=dsnt_coord_loss,
+                        peak_pool=peak_pool,
+                        peak_tau=peak_tau,
                     )
                 eval_model.train()
 

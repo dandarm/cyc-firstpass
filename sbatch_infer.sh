@@ -32,6 +32,10 @@ ROI_SIGMA_MULTIPLIER="2.0"
 PRESENCE_FROM_PEAK="true"
 BACKBONE="x3d_m"
 PEAK_THRESHOLD=""
+PEAK_POOL="logsumexp"
+PEAK_TAU="0.5"
+SOFT_ARGMAX="true"
+SOFT_ARGMAX_TAU="1.0"
 
 CHECKPOINT_PATH="$OUT_DIR/best.ckpt"
 MANIFEST_CSV="manifests/test.csv"
@@ -66,4 +70,8 @@ python -u -m src.cyclone_locator.infer \
   --roi-base-radius "$ROI_BASE_RADIUS_PX" \
   --roi-sigma-multiplier "$ROI_SIGMA_MULTIPLIER" \
   $( [[ "$PRESENCE_FROM_PEAK" == "true" ]] && echo "--presence-from-peak" ) \
+  $( [[ -n "$PEAK_POOL" ]] && echo "--peak-pool $PEAK_POOL" ) \
+  $( [[ -n "$PEAK_TAU" ]] && echo "--peak-tau $PEAK_TAU" ) \
+  $( [[ "$SOFT_ARGMAX" == "true" ]] && echo "--soft-argmax" ) \
+  $( [[ -n "$SOFT_ARGMAX_TAU" ]] && echo "--soft-argmax-tau $SOFT_ARGMAX_TAU" ) \
   "${EXTRA_ARGS[@]}"

@@ -80,6 +80,10 @@ def parse_args() -> argparse.Namespace:
                         help="Usa solo il picco della heatmap come presenza (ignora la head presence)")
     parser.add_argument("--peak-threshold", type=float, default=None,
                         help="Soglia τ da usare quando presence-from-peak è attivo (default: --threshold o infer.presence_threshold)")
+    parser.add_argument("--peak-pool", choices=["max", "logsumexp"], default=None,
+                        help="Pooling per presence-from-peak (default: infer.peak_pool o 'max')")
+    parser.add_argument("--peak-tau", type=float, default=None,
+                        help="Temperatura τ per peak-pool=logsumexp (default: infer.peak_tau o 1.0)")
     return parser.parse_args()
 
 
@@ -450,6 +454,27 @@ def combine_presence(presence_prob: torch.Tensor, heatmap: torch.Tensor) -> torc
     return 0.5 * presence_prob + 0.5 * peak
 
 
+def spatial_peak_pool(heatmap_logits: torch.Tensor, pool: str = "max", tau: float = 1.0) -> torch.Tensor:
+    """
+    heatmap_logits: (B,H,W) or (B,1,H,W)
+    Returns: (B,) pooled logits.
+    """
+    if heatmap_logits.ndim == 4 and heatmap_logits.shape[1] == 1:
+        x = heatmap_logits.squeeze(1)
+    elif heatmap_logits.ndim == 3:
+        x = heatmap_logits
+    else:
+        raise ValueError(f"Expected heatmap logits shape (B,H,W) or (B,1,H,W), got {heatmap_logits.shape}")
+    pool = str(pool).lower().strip()
+    if pool == "max":
+        return x.amax(dim=[-1, -2])
+    if pool == "logsumexp":
+        if tau <= 0:
+            raise ValueError("tau must be > 0 for logsumexp pooling")
+        return float(tau) * torch.logsumexp(x / float(tau), dim=[-1, -2])
+    raise ValueError(f"Unknown peak_pool: {pool}")
+
+
 def run_inference(
     model: torch.nn.Module,
     data_loader: DataLoader,
@@ -459,6 +484,8 @@ def run_inference(
     soft_argmax_tau: float,
     amp: bool,
     presence_from_peak: bool = False,
+    peak_pool: str = "max",
+    peak_tau: float = 1.0,
 ) -> List[Dict[str, float]]:
     predictions: List[Dict[str, float]] = []
     autocast_enabled = amp and device.type == "cuda"
@@ -472,7 +499,7 @@ def run_inference(
                 heatmaps_pred, logits = model(images)
             heatmaps = heatmaps_pred.squeeze(1)
             probs_raw = torch.sigmoid(logits).squeeze(1)
-            peaks = heatmaps.amax(dim=[1, 2])
+            peaks = spatial_peak_pool(heatmaps_pred, pool=peak_pool, tau=float(peak_tau))
             if presence_from_peak:
                 peaks = torch.sigmoid(peaks)
             if presence_from_peak:
@@ -581,6 +608,10 @@ def main():
     batch_size = args.batch_size or cfg.get("train", {}).get("batch_size", 32)
     presence_threshold_default = cfg.get("infer", {}).get("presence_threshold", 0.5)
     presence_from_peak = bool(args.presence_from_peak or cfg.get("infer", {}).get("presence_from_peak", False))
+    peak_pool_default = cfg.get("infer", {}).get("peak_pool", "max")
+    peak_tau_default = cfg.get("infer", {}).get("peak_tau", 1.0)
+    peak_pool = str(args.peak_pool) if args.peak_pool is not None else str(peak_pool_default or "max")
+    peak_tau = float(args.peak_tau) if args.peak_tau is not None else float(peak_tau_default or 1.0)
     peak_threshold_default = cfg.get("infer", {}).get("peak_threshold", None)
     if presence_from_peak and args.peak_threshold is not None:
         threshold_for_metrics = args.peak_threshold
@@ -637,6 +668,8 @@ def main():
         soft_argmax_tau,
         args.amp,
         presence_from_peak=presence_from_peak,
+        peak_pool=peak_pool,
+        peak_tau=peak_tau,
     )
     preds_df = pd.DataFrame(preds).sort_values("manifest_idx").reset_index(drop=True)
     if args.threshold is not None or args.peak_threshold is not None:

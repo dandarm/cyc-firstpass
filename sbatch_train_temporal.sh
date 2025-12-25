@@ -8,6 +8,7 @@
 #SBATCH --time=02:40:00
 #SBATCH --output=cyc_first_train.out
 #SBATCH --error=cyc_first.err
+#SBATCH --exclude=lrdn0495        # evita nodo con GPU in errore ECC (vedi cyc_first.err: rank 5)
 
 # set -x  # uncomment per debug
 # set -euo pipefail
@@ -32,6 +33,11 @@ TEMPORAL_STRIDE="4"
 BACKBONE="x3d_m"  #"x3d_xs"
 HEATMAP_NEG_MULT="0.5"
 HEATMAP_POS_MULT="1.5"
+HEATMAP_LOSS="focal"      # mse|focal|dsnt
+DSNT_TAU="1.5"            # temperatura per softmax2D (DSNT)
+DSNT_COORD_LOSS="l1"      # l1|l2
+PEAK_POOL="logsumexp"     # max|logsumexp (togliere 'max' = meno fragile)
+PEAK_TAU="0.5"            # tau per logsumexp (più piccolo -> più simile a max)
 
 #export NCCL_DEBUG=INFO
 # per debug dettagliato e gestione errori asincroni NCCL
@@ -51,6 +57,11 @@ mpirun --map-by socket:PE=${CPUS_PER_TASK} --report-bindings \
     --train_csv "$TRAIN_CSV" \
     --val_csv "$VAL_CSV" \
     --log_dir "$LOG_DIR" \
+    --heatmap_loss "$HEATMAP_LOSS" \
+    --dsnt_tau "$DSNT_TAU" \
+    --dsnt_coord_loss "$DSNT_COORD_LOSS" \
+    --peak_pool "$PEAK_POOL" \
+    --peak_tau "$PEAK_TAU" \
     --backbone "$BACKBONE" \
     --temporal_T "$TEMPORAL_T" \
     --temporal_stride "$TEMPORAL_STRIDE" \
