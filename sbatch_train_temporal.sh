@@ -23,7 +23,7 @@ export PYTHONUNBUFFERED=1
 CONFIG="config/default.yml"
 TRAIN_CSV="manifests/train.csv"
 VAL_CSV="manifests/val.csv"
-LOG_DIR="outputs/runs/exp_x3dm_dsnt_3"
+LOG_DIR="outputs/runs/exp_x3dm_dsnt_4"
 mkdir -p "$LOG_DIR"
 
 TEMPORAL_T="16"
@@ -31,12 +31,11 @@ TEMPORAL_STRIDE="4"
 
 # Argomenti attivi per il nuovo modello 3D X3D
 BACKBONE="x3d_m"  #"x3d_xs"
-HEATMAP_NEG_MULT="0.5"
-HEATMAP_POS_MULT="1.5"
+HEATMAP_NEG_MULT="0.7"
+HEATMAP_POS_MULT="1.2"
 HEATMAP_LOSS="dsnt"      # mse|focal|dsnt
-DSNT_TAU="1.5"            # temperatura per softmax2D (DSNT)
-DSNT_COORD_LOSS="l2"      # l1|l2
-PEAK_POOL="logsumexp"     # max|logsumexp (togliere 'max' = meno fragile)
+DSNT_TAU="0.7"            # temperatura per softmax2D (DSNT)
+DSNT_COORD_LOSS="l1"      # l1|l2
 PEAK_TAU="0.5"            # tau per logsumexp (più piccolo -> più simile a max)
 
 #export NCCL_DEBUG=INFO
@@ -60,7 +59,6 @@ mpirun --map-by socket:PE=${CPUS_PER_TASK} --report-bindings \
     --heatmap_loss "$HEATMAP_LOSS" \
     --dsnt_tau "$DSNT_TAU" \
     --dsnt_coord_loss "$DSNT_COORD_LOSS" \
-    --peak_pool "$PEAK_POOL" \
     --peak_tau "$PEAK_TAU" \
     --backbone "$BACKBONE" \
     --temporal_T "$TEMPORAL_T" \

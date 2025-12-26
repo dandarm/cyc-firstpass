@@ -37,15 +37,15 @@ train:
   presence_from_peak: true # se true, usa solo il picco heatmap per la presenza (head disattivata)
 
 loss:
-  heatmap_sigma_px: 8
-  heatmap_loss: dsnt          # mse|focal|dsnt (dsnt: regressione coordinate via softmax2D + expectation)
+  heatmap_sigma_px: 10
+  heatmap_loss: dsnt           # mse|focal|dsnt (dsnt: regressione coordinate via softmax2D + expectation)
   heatmap_focal_alpha: 1.2     # alpha (modulating) per focal heatmap
   heatmap_focal_beta: 2.0      # beta (penalizza i falsi picchi vicino al GT gaussian)
   dsnt_tau: 1.4                # τ per softmax2D (dsnt); >1 rende la distribuzione più smooth
   dsnt_coord_loss: l2          # l1|l2 (loss sulle coordinate DSNT in spazio heatmap)
-  peak_pool: max               # max|logsumexp (pooling spaziale per presence_from_peak)
+  peak_pool: logsumexp               # max|logsumexp (pooling spaziale per presence_from_peak)
   peak_tau: 0.5                # τ per logsumexp (più piccolo -> più simile a max)
-  w_heatmap: 1.0
+  w_heatmap: 1.5               # peso della loss della head heatmap
   w_presence: 0.0              # peso della loss della head presence (se usata)
   w_peak_bce: 1.0              # peso BCE-with-logits sul picco heatmap (quando presence_from_peak=true)
   heatmap_neg_multiplier: 0.2   # fattore di peso per la heatmap dei negativi (0=ignora, 1=pari ai positivi)
@@ -61,7 +61,7 @@ infer:
   batch_size: 64
   presence_from_peak: true   # se true, usa il picco heatmap come presenza in inferenza
   peak_threshold: null        # soglia τ per il picco (se null usa presence_threshold)
-  peak_pool: max              # max|logsumexp (pooling spaziale per presence_from_peak)
+  peak_pool: logsumexp              # max|logsumexp (pooling spaziale per presence_from_peak)
   peak_tau: 0.5               # τ per logsumexp (più piccolo -> più simile a max)
   presence_threshold: 0.5
   center_tau: 1.0             # τ per soft-argmax (se --soft-argmax attivo)

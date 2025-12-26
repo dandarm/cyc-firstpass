@@ -122,6 +122,27 @@ def spatial_peak_pool(logits: torch.Tensor, pool: str = "max", tau: float = 1.0)
         return float(tau) * torch.logsumexp(logits / float(tau), dim=[-1, -2])
     raise ValueError(f"Unknown peak_pool: {pool}")
 
+
+def center_mae_px(pred_xy_hm: torch.Tensor, target_xy_hm: torch.Tensor, valid: torch.Tensor, stride: int) -> torch.Tensor:
+    """
+    pred_xy_hm, target_xy_hm: (B,2) in heatmap pixel coordinates.
+    valid: (B,) float/bool mask (1=valid target).
+    Returns: scalar MAE (mean over valid samples) in input pixels.
+    """
+    if pred_xy_hm.shape != target_xy_hm.shape or pred_xy_hm.ndim != 2 or pred_xy_hm.shape[1] != 2:
+        raise ValueError(f"Expected pred/target shape (B,2), got {pred_xy_hm.shape} vs {target_xy_hm.shape}")
+    if valid.ndim != 1 or valid.shape[0] != pred_xy_hm.shape[0]:
+        raise ValueError(f"Expected valid shape (B,), got {valid.shape}")
+    stride = int(stride)
+    if stride <= 0:
+        raise ValueError("stride must be > 0")
+
+    mask = valid > 0.5
+    if mask.sum() == 0:
+        return torch.tensor(float("nan"), device=pred_xy_hm.device, dtype=pred_xy_hm.dtype)
+    mae_hm = (pred_xy_hm - target_xy_hm).abs().mean(dim=1)  # (B,) mean(|dx|,|dy|)
+    return mae_hm[mask].mean() * float(stride)
+
 def estimate_conv3d_max_batch(model: nn.Module, temporal_T: int, image_size: int, device: torch.device) -> int | None:
     """Estimate max per-process batch size before Conv3d hits int32 indexing limits.
 
@@ -218,9 +239,12 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, r
                     dsnt_tau: float = 1.0,
                     dsnt_coord_loss: str = "l1",
                     peak_pool: str = "max",
-                    peak_tau: float = 1.0):
+                    peak_tau: float = 1.0,
+                    heatmap_stride: int = 4):
     #vL, vHm, vPr = [], [], []
     sum_L, sum_hm, sum_pr, sum_pr_comb = 0.0, 0.0, 0.0, 0.0
+    sum_mae_px = 0.0
+    n_mae = 0.0
     bad_batches = 0
     total_batches = 0
     with torch.no_grad():
@@ -245,6 +269,7 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, r
                     pos_mult = float(loss_weights.get("heatmap_pos_multiplier", 1.0) or 1.0)
                     weight = pos_mult * valid * pres_w
                     L_hm = (hm_per * weight).sum() / torch.clamp(weight.sum(), min=1.0)
+                    mae_px = center_mae_px(pred_xy, target_xy, valid, heatmap_stride)
                 else:
                     hm_per = hm_loss(hm_p, hm_t, reduction="none")
                     pos_mask = (pres.squeeze(1) > 0.5).float()
@@ -253,6 +278,7 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, r
                     pos_mult = float(loss_weights.get("heatmap_pos_multiplier", 1.0) or 1.0)
                     weight = pos_mult * pos_mask + neg_mult * neg_mask
                     L_hm = (hm_per * weight).sum() / torch.clamp(weight.sum(), min=1.0)
+                    mae_px = torch.tensor(float("nan"), device=device)
                 if presence_from_peak:
                     peak = spatial_peak_pool(hm_p, pool=peak_pool, tau=float(peak_tau))
                     L_pr = nn.functional.binary_cross_entropy_with_logits(peak, pres_smooth.view_as(peak))
@@ -277,26 +303,31 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, r
                     print(f"[WARN] non-finite val loss (rank {rank}), skipping batch")
                 continue
             sum_L += L.item(); sum_hm += L_hm.item(); sum_pr += L_pr.item(); sum_pr_comb += L_pr_comb.item()
+            if torch.isfinite(mae_px):
+                sum_mae_px += float(mae_px.item())
+                n_mae += 1.0
 
     totals = torch.tensor(
-        [sum_L, sum_hm, sum_pr, sum_pr_comb, float(total_batches), float(bad_batches)],
+        [sum_L, sum_hm, sum_pr, sum_pr_comb, sum_mae_px, n_mae, float(total_batches), float(bad_batches)],
         device=device
     )
     if distributed:
         dist.all_reduce(totals, op=dist.ReduceOp.SUM)
-    sum_L, sum_hm, sum_pr, sum_pr_comb, total_batches, bad_batches = totals.tolist()
+    sum_L, sum_hm, sum_pr, sum_pr_comb, sum_mae_px, n_mae, total_batches, bad_batches = totals.tolist()
     if total_batches - bad_batches > 0:
         mean_L = sum_L / (total_batches - bad_batches)
         mean_hm = sum_hm / (total_batches - bad_batches)
         mean_pr = sum_pr / (total_batches - bad_batches)
         mean_pr_comb = sum_pr_comb / (total_batches - bad_batches)
+        mean_mae_px = (sum_mae_px / n_mae) if n_mae > 0 else float("nan")
     else:
-        mean_L = mean_hm = mean_pr = mean_pr_comb = float("nan")
+        mean_L = mean_hm = mean_pr = mean_pr_comb = mean_mae_px = float("nan")
     return {
         "loss": float(mean_L),
         "hm": float(mean_hm),
         "presence": float(mean_pr),
         "presence_combined": float(mean_pr_comb) if log_combined_presence else None,
+        "center_mae_px": float(mean_mae_px),
         "bad_batches": int(bad_batches),
         "total_batches": int(total_batches)
     }
@@ -605,9 +636,12 @@ def main():
     log_fields = [
         "epoch",
         "train_loss", "train_heatmap_loss", "train_presence_loss",
+        "train_center_mae_px",
         "val_loss", "val_heatmap_loss", "val_presence_loss",
+        "val_center_mae_px",
         "test_loss", "test_heatmap_loss", "test_presence_loss", "test_presence_combined_loss"
     ]
+    log_fields.append("test_center_mae_px")
     if is_main_process(rank):
         print(f"[INFO] rank {rank}/{world_size} device={device}")
         print(f"[INFO] batch_size per GPU={cfg['train']['batch_size']} (global={cfg['train']['batch_size'] * world_size})")
@@ -635,7 +669,7 @@ def main():
                 train_sampler.set_epoch(epoch)
 
             model.train()
-            losses = []; hm_losses = []; pres_losses = []; peak_preds = []
+            losses = []; hm_losses = []; pres_losses = []; peak_preds = []; mae_center_px = []
             opt.zero_grad(set_to_none=True)
             last_micro_step = -1
             for batch_idx, batch in enumerate(tr_loader):
@@ -665,6 +699,7 @@ def main():
                             pos_mult = float(cfg["loss"].get("heatmap_pos_multiplier", 1.0) or 1.0)
                             weight = pos_mult * valid * pres_w
                             L_hm = (hm_per * weight).sum() / torch.clamp(weight.sum(), min=1.0)
+                            mae_px = center_mae_px(pred_xy, target_xy, valid, cfg["train"]["heatmap_stride"])
                         else:
                             hm_per = hm_loss(hm_p, hm_t, reduction="none")
                             pos_mask = (pres_raw > 0.5).float()
@@ -673,6 +708,7 @@ def main():
                             pos_mult = float(cfg["loss"].get("heatmap_pos_multiplier", 1.0) or 1.0)
                             weight = pos_mult * pos_mask + neg_mult * neg_mask
                             L_hm = (hm_per * weight).sum() / torch.clamp(weight.sum(), min=1.0)
+                            mae_px = torch.tensor(float("nan"), device=device)
                         if presence_from_peak:
                             peak = spatial_peak_pool(hm_p, pool=peak_pool, tau=float(peak_tau))
                             L_pr = nn.functional.binary_cross_entropy_with_logits(peak, pres_smooth.view_as(peak))
@@ -693,6 +729,8 @@ def main():
 
                 losses.append(L.item()); hm_losses.append(L_hm.item()); pres_losses.append(L_pr.item())
                 peak_preds.append(spatial_peak_pool(hm_p.detach(), pool=peak_pool, tau=float(peak_tau)).mean().item())
+                if torch.isfinite(mae_px):
+                    mae_center_px.append(float(mae_px.item()))
 
             if last_micro_step != -1 and last_micro_step != (grad_accum_steps - 1):
                 scaler.step(opt); scaler.update()
@@ -702,13 +740,17 @@ def main():
             tr_hm = float(np.mean(hm_losses)) if hm_losses else 0.0
             tr_pr = float(np.mean(pres_losses)) if pres_losses else 0.0
             tr_peak = float(np.mean(peak_preds)) if peak_preds else 0.0
+            tr_mae_px = float(np.mean(mae_center_px)) if mae_center_px else float("nan")
 
-            metrics_tensor = torch.tensor([tr_loss, tr_hm, tr_pr, tr_peak], device=device)
+            metrics_tensor = torch.tensor([tr_loss, tr_hm, tr_pr, tr_peak, tr_mae_px], device=device)
             metrics_tensor = reduce_mean(metrics_tensor)
-            tr_loss, tr_hm, tr_pr, tr_peak = [float(x) for x in metrics_tensor.tolist()]
+            tr_loss, tr_hm, tr_pr, tr_peak, tr_mae_px = [float(x) for x in metrics_tensor.tolist()]
 
             if is_main_process(rank):
-                print(f"[Epoch {epoch}] train: L={tr_loss:.4f} (hm={tr_hm:.4f}, pr={tr_pr:.4f}, peak={tr_peak:.4f})")
+                msg = f"[Epoch {epoch}] train: L={tr_loss:.4f} (hm={tr_hm:.4f}, pr={tr_pr:.4f}, peak={tr_peak:.4f})"
+                if np.isfinite(tr_mae_px):
+                    msg += f", mae_px={tr_mae_px:.2f}"
+                print(msg)
 
             val_metrics = None; test_metrics = None
             if epoch % cfg["train"]["val_every"] == 0:
@@ -730,6 +772,7 @@ def main():
                     dsnt_coord_loss=dsnt_coord_loss,
                     peak_pool=peak_pool,
                     peak_tau=peak_tau,
+                    heatmap_stride=cfg["train"]["heatmap_stride"],
                 )
                 if test_loader is not None:
                     test_metrics = evaluate_loader(
@@ -745,6 +788,7 @@ def main():
                         dsnt_coord_loss=dsnt_coord_loss,
                         peak_pool=peak_pool,
                         peak_tau=peak_tau,
+                        heatmap_stride=cfg["train"]["heatmap_stride"],
                     )
                 eval_model.train()
 
@@ -761,7 +805,10 @@ def main():
                         print(msg)
                         if total and val_metrics["bad_batches"] == total:
                             raise RuntimeError("Validation produced only non-finite batches; aborting.")
-                    print(f"          val:  L={val_score:.4f} (hm={val_metrics['hm']:.4f}, pr={val_metrics['presence']:.4f})")
+                    msg = f"          val:  L={val_score:.4f} (hm={val_metrics['hm']:.4f}, pr={val_metrics['presence']:.4f})"
+                    if np.isfinite(val_metrics.get('center_mae_px', float('nan'))):
+                        msg += f", mae_px={val_metrics['center_mae_px']:.2f}"
+                    print(msg)
 
                     if epoch < best_start_epoch:
                         print(f"[Epoch {epoch}] checkpoint skip: epoch < best_ckpt_start_epoch ({best_start_epoch})")
@@ -782,13 +829,16 @@ def main():
                     "train_loss": tr_loss,
                     "train_heatmap_loss": tr_hm,
                     "train_presence_loss": tr_pr,
+                    "train_center_mae_px": "" if not np.isfinite(tr_mae_px) else tr_mae_px,
                     "val_loss": val_metrics["loss"] if val_metrics else "",
                     "val_heatmap_loss": val_metrics["hm"] if val_metrics else "",
                     "val_presence_loss": val_metrics["presence"] if val_metrics else "",
+                    "val_center_mae_px": val_metrics.get("center_mae_px", "") if val_metrics else "",
                     "test_loss": test_metrics["loss"] if test_metrics else "",
                     "test_heatmap_loss": test_metrics["hm"] if test_metrics else "",
                     "test_presence_loss": test_metrics["presence"] if test_metrics else "",
-                    "test_presence_combined_loss": test_metrics["presence_combined"] if test_metrics else ""
+                    "test_presence_combined_loss": test_metrics["presence_combined"] if test_metrics else "",
+                    "test_center_mae_px": test_metrics.get("center_mae_px", "") if test_metrics else "",
                 }
                 writer.writerow(row); log_file.flush()
 
