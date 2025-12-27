@@ -17,7 +17,8 @@ source $HOME/videomae/bin/activate
 
 export PYTHONUNBUFFERED=1
 
-OUT_DIR="outputs/runs/exp_x3dm_heatmapfocal_BCE_3"
+RUN_DIR="outputs/runs/exp_x3dm_dsnt_6_notempstride"
+OUT_DIR="$RUN_DIR/preds"
 
 CONFIG_PATH="config/default.yml"
 LETTERBOX_META="manifests/letterbox_meta.csv"
@@ -30,16 +31,16 @@ PRESENCE_THRESHOLD="0.5"
 ROI_BASE_RADIUS_PX="128"
 ROI_SIGMA_MULTIPLIER="2.0"
 PRESENCE_FROM_PEAK="true"
-BACKBONE="x3d_m"
+BACKBONE=""              # se vuoto usa config.train.backbone
 PEAK_THRESHOLD=""
-PEAK_POOL="logsumexp"
-PEAK_TAU="0.5"
-SOFT_ARGMAX="true"
-SOFT_ARGMAX_TAU="1.0"
+PEAK_POOL=""             # se vuoto usa infer.peak_pool
+PEAK_TAU=""              # se vuoto usa infer.peak_tau
+SOFT_ARGMAX="true"       # consigliato per modelli DSNT
+SOFT_ARGMAX_TAU=""       # se vuoto usa infer.center_tau (o loss.dsnt_tau fallback)
 
-CHECKPOINT_PATH="$OUT_DIR/best.ckpt"
+CHECKPOINT_PATH="$RUN_DIR/best.ckpt"
 MANIFEST_CSV="manifests/test.csv"
-SAVE_PREDS="$OUT_DIR/preds_test.csv"
+SAVE_PREDS="$RUN_DIR/preds_test.csv"
 
 mkdir -p "$OUT_DIR" "$SWEEP_CURVES_DIR"
 if [[ "$EXPORT_ROI" == "true" ]]; then
@@ -61,7 +62,7 @@ python -u -m src.cyclone_locator.infer \
   --out_dir "$OUT_DIR" \
   --manifest_csv "$MANIFEST_CSV" \
   --letterbox-meta "$LETTERBOX_META" \
-  --backbone "$BACKBONE" \
+  $( [[ -n "$BACKBONE" ]] && echo "--backbone $BACKBONE" ) \
   --threshold "$PRESENCE_THRESHOLD" \
   $( [[ -n "$PEAK_THRESHOLD" ]] && echo "--peak-threshold $PEAK_THRESHOLD" ) \
   --save-preds "$SAVE_PREDS" \
