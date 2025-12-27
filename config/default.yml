@@ -3,6 +3,10 @@ data:
   manifest_val:   manifests/val.csv
   manifest_test:  manifests/test.csv
 
+  # Subsampling dei "center frame" usati per costruire le clip (riduce ridondanza tra clip adiacenti)
+  # Default: 1 (usa tutte le righe). Esempio: 4 -> usa 1 riga ogni 4 come center frame.
+  manifest_stride: 8
+
   image_col: image_path
   presence_col: presence
   cx_col: cx
@@ -32,7 +36,7 @@ train:
   heatmap_stride: 4         # output 128x128 quando input 512
   use_aug: false            # puoi mettere true se serve
   temporal_T: 16             # numero di frame temporali (early fusion canali)
-  temporal_stride: 4        # salto tra frame temporali (>=1)
+  temporal_stride: 1        # salto tra frame temporali (>=1)
   presence_dropout: 0.2     # dropout tra GAP e FC della testa presenza
   presence_from_peak: true # se true, usa solo il picco heatmap per la presenza (head disattivata)
 

@@ -507,7 +507,8 @@ def main():
         letterbox_meta_csv=cfg["data"]["letterbox_meta_csv"],
         letterbox_size_assert=cfg["data"]["letterbox_size_assert"],
         temporal_T=temporal_T,
-        temporal_stride=temporal_stride
+        temporal_stride=temporal_stride,
+        manifest_stride=int(cfg["data"].get("manifest_stride", 1) or 1),
     )
     #log_temporal_debug_samples(ds_tr, tag="train")
     ds_va = MedFullBasinDataset(
@@ -520,7 +521,8 @@ def main():
         letterbox_meta_csv=cfg["data"]["letterbox_meta_csv"],
         letterbox_size_assert=cfg["data"]["letterbox_size_assert"],
         temporal_T=temporal_T,
-        temporal_stride=temporal_stride
+        temporal_stride=temporal_stride,
+        manifest_stride=int(cfg["data"].get("manifest_stride", 1) or 1),
     )
 
     test_loader = None
@@ -537,7 +539,8 @@ def main():
                 letterbox_meta_csv=cfg["data"]["letterbox_meta_csv"],
                 letterbox_size_assert=cfg["data"]["letterbox_size_assert"],
                 temporal_T=temporal_T,
-                temporal_stride=temporal_stride
+                temporal_stride=temporal_stride,
+                manifest_stride=int(cfg["data"].get("manifest_stride", 1) or 1),
             )
 
             test_sampler = DistributedSampler(

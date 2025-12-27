@@ -17,8 +17,9 @@ class MedFullBasinDataset(Dataset):
     def __init__(self, csv_path, image_size=512, heatmap_stride=4,
                  heatmap_sigma_px=8, use_aug=False,
                  use_pre_letterboxed=True, letterbox_meta_csv=None, letterbox_size_assert=None,
-                 temporal_T=1, temporal_stride=1):
-        self.df = pd.read_csv(csv_path)
+                 temporal_T=1, temporal_stride=1,
+                 manifest_stride: int = 1):
+        full_df = pd.read_csv(csv_path)
         self.image_size = int(image_size)
         self.stride = int(heatmap_stride)
         self.Ho = self.image_size // self.stride
@@ -37,9 +38,9 @@ class MedFullBasinDataset(Dataset):
         self._hm_xx_t = torch.from_numpy(self._hm_xx)
         self._hm_yy_t = torch.from_numpy(self._hm_yy)
 
-        self.df["image_path"] = self.df["image_path"].astype(str)
+        full_df["image_path"] = full_df["image_path"].astype(str)
 
-        cols = set(self.df.columns)
+        cols = set(full_df.columns)
         self._has_resized_keypoints = {"x_pix_resized", "y_pix_resized"}.issubset(cols)
         self._has_orig_keypoints = {"cx", "cy"}.issubset(cols)
         if not self._has_resized_keypoints and not self._has_orig_keypoints:
@@ -63,11 +64,19 @@ class MedFullBasinDataset(Dataset):
             self.meta_map = {r["orig_path_abs"]: r for _, r in meta_df.iterrows()}
 
         # normalizza path a absolute per la join
-        self.df["image_path_abs"] = self.df["image_path"].apply(lambda p: os.path.abspath(p))
+        full_df["image_path_abs"] = full_df["image_path"].apply(lambda p: os.path.abspath(p))
+
+        manifest_stride = int(manifest_stride) if manifest_stride is not None else 1
+        if manifest_stride < 1:
+            manifest_stride = 1
+        if manifest_stride > 1:
+            self.df = full_df.iloc[::manifest_stride].reset_index(drop=True)
+        else:
+            self.df = full_df
 
         # mappe ausiliarie per presenza/coordinate per frame
         self._frame_info = {}
-        for row in self.df.itertuples(index=False):
+        for row in full_df.itertuples(index=False):
             abs_path = getattr(row, "image_path_abs")
             info = {"presence": int(getattr(row, "presence"))}
             if self._has_resized_keypoints:

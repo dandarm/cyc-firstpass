@@ -23,11 +23,11 @@ export PYTHONUNBUFFERED=1
 CONFIG="config/default.yml"
 TRAIN_CSV="manifests/train.csv"
 VAL_CSV="manifests/val.csv"
-LOG_DIR="outputs/runs/exp_x3dm_dsnt_5"
+LOG_DIR="outputs/runs/exp_x3dm_dsnt_6_notempstride"
 mkdir -p "$LOG_DIR"
 
 TEMPORAL_T="16"
-TEMPORAL_STRIDE="4" 
+TEMPORAL_STRIDE="1" 
 
 # Argomenti attivi per il nuovo modello 3D X3D
 BACKBONE="x3d_m"  #"x3d_xs"
