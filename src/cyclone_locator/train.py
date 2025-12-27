@@ -614,6 +614,7 @@ def main():
             out_heatmap_ch=1,
             presence_dropout=cfg["train"].get("presence_dropout", 0.0),
             pretrained=pretrained_backbone,
+            heatmap_stride=int(cfg["train"]["heatmap_stride"]),
         )
     else:
         model = SimpleBaseline(
@@ -622,6 +623,7 @@ def main():
             temporal_T=temporal_T,
             presence_dropout=cfg["train"].get("presence_dropout", 0.0),
             pretrained=pretrained_backbone,
+            heatmap_stride=int(cfg["train"]["heatmap_stride"]),
         )
     model = model.to(device)
 

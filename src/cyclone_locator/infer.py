@@ -405,13 +405,20 @@ def collate_batch(batch: List[Dict[str, torch.Tensor]]) -> Dict[str, torch.Tenso
     return {"image": images, "video": videos, "image_path": paths, "manifest_idx": manifest_idx}
 
 
-def build_model(cfg: dict, checkpoint_path: str, device: torch.device, logger: logging.Logger, temporal_T: int) -> torch.nn.Module:
+def build_model(
+    cfg: dict,
+    checkpoint_path: str,
+    device: torch.device,
+    logger: logging.Logger,
+    temporal_T: int,
+    heatmap_stride: int,
+) -> torch.nn.Module:
     backbone = cfg.get("train", {}).get("backbone", "resnet18")
     pretrained = bool(cfg.get("train", {}).get("backbone_pretrained", True))
     if backbone.startswith("x3d"):
-        model = X3DBackbone(backbone=backbone, pretrained=pretrained)
+        model = X3DBackbone(backbone=backbone, pretrained=pretrained, heatmap_stride=int(heatmap_stride))
     else:
-        model = SimpleBaseline(backbone=backbone, temporal_T=temporal_T, pretrained=pretrained)
+        model = SimpleBaseline(backbone=backbone, temporal_T=temporal_T, pretrained=pretrained, heatmap_stride=int(heatmap_stride))
     state = torch.load(checkpoint_path, map_location="cpu")
     weights = state.get("model", state)
     model.load_state_dict(weights, strict=True)
@@ -653,7 +660,7 @@ def main():
         collate_fn=collate_batch,
     )
 
-    model = build_model(cfg, args.checkpoint, device, logger, temporal_T=temporal_T)
+    model = build_model(cfg, args.checkpoint, device, logger, temporal_T=temporal_T, heatmap_stride=stride)
     center_tau_default = cfg.get("infer", {}).get("center_tau", None)
     if center_tau_default is None:
         center_tau_default = cfg.get("loss", {}).get("dsnt_tau", 1.0)

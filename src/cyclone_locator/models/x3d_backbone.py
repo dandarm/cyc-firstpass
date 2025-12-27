@@ -2,6 +2,7 @@ from pathlib import Path
 
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 def _get_x3d_builders():
     try:
@@ -99,10 +100,21 @@ class X3DBackbone(nn.Module):
         presence_dropout: float = 0.0,
         pretrained: bool = True,
         weights_path: str | None = "auto",
+        heatmap_stride: int = 4,
     ):
         super().__init__()
         self.backbone_name = backbone
         self.stem, feat_ch = _build_backbone(backbone, pretrained, weights_path)
+        self.base_heatmap_stride = 4  # decoder porta sempre a /4
+        heatmap_stride = int(heatmap_stride)
+        if heatmap_stride <= 0:
+            raise ValueError("heatmap_stride must be > 0")
+        if self.base_heatmap_stride % heatmap_stride != 0:
+            raise ValueError(
+                f"heatmap_stride={heatmap_stride} not supported (base stride is {self.base_heatmap_stride})"
+            )
+        self.heatmap_stride = heatmap_stride
+        self.heatmap_upsample_factor = self.base_heatmap_stride // heatmap_stride
 
         # Preserve temporal dynamics until this pooling collapses only T -> 1.
         self.temporal_pool = nn.AdaptiveAvgPool3d((1, None, None))
@@ -135,7 +147,16 @@ class X3DBackbone(nn.Module):
         y = self.deconv1(f)
         y = self.deconv2(y)
         y = self.deconv3(y)
-        heatmap = self.head_heatmap(y)
+        if self.heatmap_upsample_factor > 1:
+            y_hm = F.interpolate(
+                y,
+                scale_factor=self.heatmap_upsample_factor,
+                mode="bilinear",
+                align_corners=False,
+            )
+        else:
+            y_hm = y
+        heatmap = self.head_heatmap(y_hm)
 
         g = self.head_presence_gap(y).flatten(1)
         g = self.head_presence_dropout(g)

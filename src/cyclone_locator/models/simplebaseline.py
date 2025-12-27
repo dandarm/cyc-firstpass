@@ -14,10 +14,21 @@ class SimpleBaseline(nn.Module):
     - out heatmap size: input/4 (se 3 deconv su feature stride 32 -> saliamo a /4)
     """
     def __init__(self, backbone="resnet18", out_heatmap_ch=1, temporal_T: int = 1,
-                 presence_dropout: float = 0.0, pretrained: bool = True):
+                 presence_dropout: float = 0.0, pretrained: bool = True,
+                 heatmap_stride: int = 4):
         super().__init__()
         temporal_T = max(1, int(temporal_T))
         presence_dropout = max(0.0, float(presence_dropout))
+        self.base_heatmap_stride = 4  # decoder porta sempre a /4
+        heatmap_stride = int(heatmap_stride)
+        if heatmap_stride <= 0:
+            raise ValueError("heatmap_stride must be > 0")
+        if self.base_heatmap_stride % heatmap_stride != 0:
+            raise ValueError(
+                f"heatmap_stride={heatmap_stride} not supported (base stride is {self.base_heatmap_stride})"
+            )
+        self.heatmap_stride = heatmap_stride
+        self.heatmap_upsample_factor = self.base_heatmap_stride // heatmap_stride
         if backbone == "resnet18":
             weights = tvm.ResNet18_Weights.IMAGENET1K_V1 if pretrained else None
             m = tvm.resnet18(weights=weights)
@@ -74,7 +85,16 @@ class SimpleBaseline(nn.Module):
         y = self.deconv1(f)           # /16
         y = self.deconv2(y)           # /8
         y = self.deconv3(y)           # /4
-        heatmap = self.head_heatmap(y)
+        if self.heatmap_upsample_factor > 1:
+            y_hm = F.interpolate(
+                y,
+                scale_factor=self.heatmap_upsample_factor,
+                mode="bilinear",
+                align_corners=False,
+            )
+        else:
+            y_hm = y
+        heatmap = self.head_heatmap(y_hm)
 
         g = self.head_presence_gap(y).flatten(1)  # (B,256)
         g = self.head_presence_dropout(g)
