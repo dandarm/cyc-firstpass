@@ -19,21 +19,21 @@ data:
 train:
   image_size: 224
   batch_size: 128    # per GPU; global = batch_size * world_size
-  num_workers: 30
+  num_workers: 40
   dataloader_timeout_s: 60   # >0 per evitare deadlock: solleva eccezione se il dataloader si blocca
   persistent_workers: true   # disattiva (false) se sospetti deadlock dei worker tra le epoche
   epochs: 100
-  lr: 5.0e-4
+  lr: 9.0e-4
   weight_decay: 1.0e-5
   amp: true
   scale_lr_by_world_size: true
   seed: 493
   save_dir: checkpoints
-  val_every: 10
+  val_every: 1
   best_ckpt_start_epoch: 5
   backbone: x3d_m        # resnet18|resnet50|x3d_xs|x3d_s|x3d_m
   backbone_pretrained: true # usa pesi pre-addestrati per il backbone
-  heatmap_stride: 2         # output 128x128 quando input 512
+  heatmap_stride: 1         # output 128x128 quando input 512
   use_aug: false            # puoi mettere true se serve
   temporal_T: 16             # numero di frame temporali (early fusion canali)
   temporal_stride: 1        # salto tra frame temporali (>=1)
@@ -45,15 +45,15 @@ loss:
   heatmap_loss: dsnt           # mse|focal|dsnt (dsnt: regressione coordinate via softmax2D + expectation)
   heatmap_focal_alpha: 1.2     # alpha (modulating) per focal heatmap
   heatmap_focal_beta: 2.0      # beta (penalizza i falsi picchi vicino al GT gaussian)
-  dsnt_tau: 1.4                # τ per softmax2D (dsnt); >1 rende la distribuzione più smooth
+  dsnt_tau: 0.7                # τ per softmax2D (dsnt); >1 rende la distribuzione più smooth
   dsnt_coord_loss: l2          # l1|l2 (loss sulle coordinate DSNT in spazio heatmap)
   peak_pool: logsumexp               # max|logsumexp (pooling spaziale per presence_from_peak)
-  peak_tau: 0.5                # τ per logsumexp (più piccolo -> più simile a max)
+  peak_tau: 0.25                # τ per logsumexp (più piccolo -> più simile a max)
   w_heatmap_focal_reg: 1.0     # regolarizzatore extra: aggiunge una HeatmapFocal debole su DSNT (0=off)
-  heatmap_focal_reg_neg_multiplier: 0.1  # peso relativo del regolarizzatore sui negativi (0=solo positivi)
+  heatmap_focal_reg_neg_multiplier: 0.2  # peso relativo del regolarizzatore sui negativi (0=solo positivi)
   w_heatmap: 1.5               # peso della loss della head heatmap
   w_presence: 0.0              # peso della loss della head presence (se usata)
-  w_peak_bce: 1.0              # peso BCE-with-logits sul picco heatmap (quando presence_from_peak=true)
+  w_peak_bce: 10.0              # peso BCE-with-logits sul picco heatmap (quando presence_from_peak=true)
   heatmap_neg_multiplier: 0.4   # fattore di peso per la heatmap dei negativi (0=ignora, 1=pari ai positivi)
   heatmap_pos_multiplier: 1.2   # fattore di peso per la heatmap dei positivi
   presence_loss: focal       # focal|bce (per la testa presenza)
@@ -66,9 +66,9 @@ loss:
 infer:
   batch_size: 64
   presence_from_peak: true   # se true, usa il picco heatmap come presenza in inferenza
-  peak_threshold: null        # soglia τ per il picco (se null usa presence_threshold)
+  peak_threshold: 0.4        # soglia τ per il picco (se null usa presence_threshold)
   peak_pool: logsumexp              # max|logsumexp (pooling spaziale per presence_from_peak)
-  peak_tau: 0.5               # τ per logsumexp (più piccolo -> più simile a max)
+  peak_tau: 0.25               # τ per logsumexp (più piccolo -> più simile a max)
   presence_threshold: 0.5
   center_tau: 1.0             # τ per soft-argmax (se --soft-argmax attivo)
   topk_peaks: 1

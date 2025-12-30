@@ -478,7 +478,10 @@ def spatial_peak_pool(heatmap_logits: torch.Tensor, pool: str = "max", tau: floa
     if pool == "logsumexp":
         if tau <= 0:
             raise ValueError("tau must be > 0 for logsumexp pooling")
-        return float(tau) * torch.logsumexp(x / float(tau), dim=[-1, -2])
+        # Do pooling in float32 for stability under AMP / small tau.
+        x32 = (x / float(tau)).float()
+        pooled = torch.logsumexp(x32, dim=[-1, -2])
+        return float(tau) * pooled
     raise ValueError(f"Unknown peak_pool: {pool}")
 
 
@@ -498,12 +501,26 @@ def run_inference(
     autocast_enabled = amp and device.type == "cuda"
     start = time.time()
     total = 0
+    checked_stride = False
     with torch.no_grad():
         for batch in data_loader:
             input_key = "video" if getattr(model, "input_is_video", False) else "image"
             images = batch[input_key].to(device)
             with torch.cuda.amp.autocast(enabled=autocast_enabled):
                 heatmaps_pred, logits = model(images)
+            if not checked_stride:
+                frame_h = int(images.shape[-2])
+                hm_h = int(heatmaps_pred.shape[-2])
+                if hm_h <= 0:
+                    raise ValueError(f"Invalid heatmap height: {hm_h}")
+                stride_real = frame_h / float(hm_h)
+                if abs(stride_real - float(stride)) > 1e-6:
+                    raise ValueError(
+                        f"heatmap_stride mismatch: configured stride={stride} but model output implies stride={stride_real:.4f} "
+                        f"(frame_h={frame_h}, hm_h={hm_h}). "
+                        "Fix: pass the correct `--heatmap-stride` (or use a checkpoint/config with matching stride)."
+                    )
+                checked_stride = True
             heatmaps = heatmaps_pred.squeeze(1)
             probs_raw = torch.sigmoid(logits).squeeze(1)
             peaks = spatial_peak_pool(heatmaps_pred, pool=peak_pool, tau=float(peak_tau))

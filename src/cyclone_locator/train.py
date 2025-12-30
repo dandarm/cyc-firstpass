@@ -121,7 +121,10 @@ def spatial_peak_pool(logits: torch.Tensor, pool: str = "max", tau: float = 1.0)
     if pool == "logsumexp":
         if tau <= 0:
             raise ValueError("tau must be > 0 for logsumexp pooling")
-        return float(tau) * torch.logsumexp(logits / float(tau), dim=[-1, -2])
+        # Do pooling in float32 for stability under AMP / small tau.
+        x = (logits / float(tau)).float()
+        pooled = torch.logsumexp(x, dim=[-1, -2])
+        return float(tau) * pooled
     raise ValueError(f"Unknown peak_pool: {pool}")
 
 
@@ -266,8 +269,13 @@ def evaluate_loader(model, loader, hm_loss, amp_enabled, loss_weights, device, r
             # Val in full precision to reduce risk of overflow/NaN
             with autocast(enabled=amp_enabled):
                 hm_p, pres_logit = model(img)
-                hm_p = torch.nan_to_num(hm_p, nan=0.0, posinf=1e4, neginf=-1e4)
-                pres_logit = torch.nan_to_num(pres_logit, nan=0.0, posinf=50.0, neginf=-50.0)
+                if hm_p.shape[-2:] != hm_t.shape[-2:]:
+                    raise ValueError(
+                        f"Heatmap shape mismatch: pred={tuple(hm_p.shape)} tgt={tuple(hm_t.shape)}. "
+                        "Check heatmap_stride/config vs checkpoint/model."
+                    )
+                hm_p = torch.nan_to_num(hm_p, nan=0.0, posinf=50.0, neginf=-50.0).float()
+                pres_logit = torch.nan_to_num(pres_logit, nan=0.0, posinf=50.0, neginf=-50.0).float()
                 w_reg = float(loss_weights.get("w_heatmap_focal_reg", 0.0) or 0.0)
                 L_reg = torch.tensor(0.0, device=device)
                 if str(heatmap_loss_type).lower().strip() == "dsnt":
@@ -772,6 +780,14 @@ def main():
                 with sync_ctx:
                     with autocast(enabled=cfg["train"]["amp"]):
                         hm_p, pres_logit = model(img)
+                        if hm_p.shape[-2:] != hm_t.shape[-2:]:
+                            raise ValueError(
+                                f"Heatmap shape mismatch: pred={tuple(hm_p.shape)} tgt={tuple(hm_t.shape)}. "
+                                "Check heatmap_stride/config vs checkpoint/model."
+                            )
+                        # Stabilize numeric range under AMP (especially with logsumexp pooling and small tau).
+                        hm_p = torch.nan_to_num(hm_p, nan=0.0, posinf=50.0, neginf=-50.0).float()
+                        pres_logit = torch.nan_to_num(pres_logit, nan=0.0, posinf=50.0, neginf=-50.0).float()
                         if str(heatmap_loss_type).lower().strip() == "dsnt":
                             target_xy = batch["target_xy_hm"].to(device, non_blocking=True)
                             valid = batch["target_xy_valid"].to(device, non_blocking=True).squeeze(1)

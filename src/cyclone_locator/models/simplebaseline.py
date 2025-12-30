@@ -1,9 +1,17 @@
 import torch, torch.nn as nn, torch.nn.functional as F
 import torchvision.models as tvm
 
-def deconv_block(in_ch, out_ch):
+def resize_conv_block(in_ch, out_ch, *, mode: str = "bilinear"):
+    if mode not in {"bilinear", "nearest"}:
+        raise ValueError("mode must be 'bilinear' or 'nearest'")
+    upsample = nn.Upsample(
+        scale_factor=2,
+        mode=mode,
+        align_corners=False if mode == "bilinear" else None,
+    )
     return nn.Sequential(
-        nn.ConvTranspose2d(in_ch, out_ch, kernel_size=4, stride=2, padding=1, bias=False),
+        upsample,
+        nn.Conv2d(in_ch, out_ch, kernel_size=3, stride=1, padding=1, bias=False),
         nn.BatchNorm2d(out_ch),
         nn.ReLU(inplace=True)
     )
@@ -60,10 +68,10 @@ class SimpleBaseline(nn.Module):
             m.layer1, m.layer2, m.layer3, m.layer4
         )
 
-        # 3 deconv: riportano verso l'alto la risoluzione
-        self.deconv1 = deconv_block(feat_ch, 256)
-        self.deconv2 = deconv_block(256, 256)
-        self.deconv3 = deconv_block(256, 256)
+        # 3 resize-conv upsampling: evita checkerboard rispetto a ConvTranspose2d
+        self.up1 = resize_conv_block(feat_ch, 256, mode="bilinear")
+        self.up2 = resize_conv_block(256, 256, mode="bilinear")
+        self.up3 = resize_conv_block(256, 256, mode="bilinear")
 
         # Head heatmap (K=1 canale)
         self.head_heatmap = nn.Conv2d(256, out_heatmap_ch, kernel_size=1)
@@ -82,9 +90,9 @@ class SimpleBaseline(nn.Module):
           presence_logit: (B,1)
         """
         f = self.stem(x)              # (B,feat_ch,H/32,W/32)
-        y = self.deconv1(f)           # /16
-        y = self.deconv2(y)           # /8
-        y = self.deconv3(y)           # /4
+        y = self.up1(f)               # /16
+        y = self.up2(y)               # /8
+        y = self.up3(y)               # /4
         if self.heatmap_upsample_factor > 1:
             y_hm = F.interpolate(
                 y,
