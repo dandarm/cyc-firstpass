@@ -6,7 +6,7 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import List, Sequence
+from typing import Callable, List, Optional, Sequence
 
 import numpy as np
 import pandas as pd
@@ -37,7 +37,7 @@ def build_master_dataframe(
     image_paths: Sequence[Path],
     labeler: WindowsLabeling,
     attach_keypoints: bool,
-    letterbox_params,
+    project_fn: Optional[Callable[[float, float], tuple[int, int]]],
 ) -> tuple[pd.DataFrame, int]:
     records: List[Dict[str, object]] = []
     missing_ts: List[Path] = []
@@ -58,8 +58,8 @@ def build_master_dataframe(
         if presence == 1 and kp is not None:
             record["cx"] = kp.x
             record["cy"] = kp.y
-            if attach_keypoints:
-                x_lb, y_lb = project_keypoint(kp.x, kp.y, letterbox_params)
+            if attach_keypoints and project_fn is not None:
+                x_lb, y_lb = project_fn(kp.x, kp.y)
                 record["x_pix_resized"] = x_lb
                 record["y_pix_resized"] = y_lb
                 keypoint_attachments += 1
@@ -85,6 +85,22 @@ def build_master_dataframe(
     return df, keypoint_attachments
 
 
+def project_keypoint_stretch(
+    x: float,
+    y: float,
+    src_w: int,
+    src_h: int,
+    target_size: int,
+) -> tuple[int, int]:
+    sx = target_size / float(src_w)
+    sy = target_size / float(src_h)
+    x_lb = int(round(x * sx))
+    y_lb = int(round(y * sy))
+    clipped_x = int(np.clip(x_lb, 0, target_size - 1))
+    clipped_y = int(np.clip(y_lb, 0, target_size - 1))
+    return clipped_x, clipped_y
+
+
 def save_manifest(df: pd.DataFrame, path: Path) -> None:
     df_to_save = df.copy()
     df_to_save["datetime"] = df_to_save["datetime"].dt.strftime("%Y-%m-%d %H:%M:%S")
@@ -104,6 +120,12 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--images-dir", required=True)
     ap.add_argument("--orig-size", type=int, nargs=2, default=[1290, 420], metavar=("W", "H"))
     ap.add_argument("--target-size", type=int, default=512)
+    ap.add_argument(
+        "--resize-mode",
+        choices=["letterbox", "stretch"],
+        default="letterbox",
+        help="Modalità resize usata per le immagini (letterbox con padding oppure stretch).",
+    )
     ap.add_argument("--out-dir", required=True)
     ap.add_argument("--val-split", type=float, default=0.15)
     ap.add_argument("--test-split", type=float, default=0.15)
@@ -161,7 +183,19 @@ def main() -> None:
     attach_keypoints = False
     if args.attach_keypoints == "auto":
         attach_keypoints = labeler.has_keypoints()
-    letterbox_params = compute_letterbox_params(args.orig_size[0], args.orig_size[1], args.target_size)
+    project_fn = None
+    if attach_keypoints:
+        if args.resize_mode == "letterbox":
+            letterbox_params = compute_letterbox_params(args.orig_size[0], args.orig_size[1], args.target_size)
+            project_fn = lambda x, y: project_keypoint(x, y, letterbox_params)
+        else:
+            project_fn = lambda x, y: project_keypoint_stretch(
+                x,
+                y,
+                args.orig_size[0],
+                args.orig_size[1],
+                args.target_size,
+            )
 
     exts = [ext.strip() for ext in args.exts.split(",") if ext.strip()]
     image_paths = list_images(images_dir, exts)
@@ -172,7 +206,7 @@ def main() -> None:
         image_paths,
         labeler,
         attach_keypoints,
-        letterbox_params,
+        project_fn,
     )
 
     if args.buffer_hours > 0:

@@ -18,7 +18,7 @@ SRC = ROOT / "src"
 if SRC.exists():
     sys.path.insert(0, str(SRC))
 
-from cyclone_locator.transforms.letterbox import letterbox_image  # noqa: E402
+from cyclone_locator.transforms.letterbox import resize_image  # noqa: E402
 from time_windows import (  # noqa: E402
     CSV_ID_CANDIDATES,
     DEFAULT_CSV_TIME_FORMATS,
@@ -48,6 +48,12 @@ def build_argparser() -> argparse.ArgumentParser:
     p.add_argument("--src", required=True, type=Path, help="Directory di origine con i frame")
     p.add_argument("--out-dir", required=True, type=Path, help="Cartella di destinazione (conterrà resized/ e CSV)")
     p.add_argument("--image-size", type=int, default=512, help="Lato dell'immagine letterbox")
+    p.add_argument(
+        "--resize-mode",
+        choices=["letterbox", "stretch"],
+        default="letterbox",
+        help="Modalità resize: letterbox (AR + padding) oppure stretch (distorsione senza padding).",
+    )
     p.add_argument(
         "--buffer-hours",
         type=float,
@@ -107,6 +113,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         f"src={args.src}",
         f"out_dir={args.out_dir}",
         f"image_size={args.image_size}",
+        f"resize_mode={args.resize_mode}",
         f"buffer_hours={args.buffer_hours}",
         f"recurse={args.recurse}",
         f"preserve_structure={args.preserve_structure}",
@@ -196,12 +203,15 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             "in_core_window": in_core,
             "in_extended_window": 1,
             "event_ids": event_ids,
+            "resize_mode": args.resize_mode,
             "orig_w": "",
             "orig_h": "",
             "out_size": args.image_size,
             "w_new": "",
             "h_new": "",
             "scale": "",
+            "scale_x": "",
+            "scale_y": "",
             "pad_x": "",
             "pad_y": "",
             "status": "planned",
@@ -223,7 +233,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             if img is None:
                 raise FileNotFoundError(f"cannot read image: {src_path}")
             H, W = img.shape[:2]
-            lb, meta = letterbox_image(img, args.image_size)
+            resized, meta = resize_image(img, args.image_size, mode=args.resize_mode)
             meta_row.update(
                 {
                     "orig_w": W,
@@ -231,6 +241,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                     "w_new": meta["w_new"],
                     "h_new": meta["h_new"],
                     "scale": meta["scale"],
+                    "scale_x": meta.get("scale_x", meta["scale"]),
+                    "scale_y": meta.get("scale_y", meta["scale"]),
                     "pad_x": meta["pad_x"],
                     "pad_y": meta["pad_y"],
                 }
@@ -245,7 +257,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                     status = "exists"
                     msg = "already exists"
                 else:
-                    if not cv2.imwrite(str(dst_path), lb):
+                    if not cv2.imwrite(str(dst_path), resized):
                         raise IOError(f"cannot write: {dst_path}")
                     status = "written"
                     msg = "ok"
@@ -292,12 +304,15 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             "in_core_window",
             "in_extended_window",
             "event_ids",
+            "resize_mode",
             "orig_w",
             "orig_h",
             "out_size",
             "w_new",
             "h_new",
             "scale",
+            "scale_x",
+            "scale_y",
             "pad_x",
             "pad_y",
             "status",

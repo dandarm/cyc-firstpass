@@ -1,37 +1,45 @@
 #!/bin/bash
-set -euo pipefail
+#set -euo pipefail
 
 # Esegue l'allenamento con stacking temporale (early fusion) passando temporal_T
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
-TRAIN_CSV="manifests/train.csv"
+CONFIG="config/default.yml"
+TRAIN_CSV="manifests/train+test.csv"
 VAL_CSV="manifests/val.csv"
-IMAGE_SIZE="384"
-HEATMAP_STRIDE="4"
+
+HEATMAP_STRIDE="2"
 HEATMAP_SIGMA="8"
-BACKBONE="resnet18"
-TEMPORAL_T="3"
 
-EPOCHS="20"
-BATCH_SIZE="32"
-LR="3e-4"
-
-LOG_DIR="outputs/runs/exp13_temporalT${TEMPORAL_T}_bs${BATCH_SIZE}_buffer36_stride6"
-
+#LOG_DIR="outputs/runs/exp13_temporalT${TEMPORAL_T}_bs${BATCH_SIZE}_buffer36_stride6"
+LOG_DIR="outputs/runs/exp_35_train+test_manifeststride14" #    2_hm-upsample+conv_stride2_peakTopk"
 mkdir -p "$LOG_DIR"
 
+
+HEATMAP_NEG_MULT="1.0"
+HEATMAP_POS_MULT="1.0"
+
+DSNT_COORD_LOSS="l1"      # l1|l2
+
+
+
+BATCH_SIZE="48"
+LR="1e-3"
+MANIFEST_STRIDE="14"
+SEED="493"
+
 exec python -m src.cyclone_locator.train \
+  --config "$CONFIG" \
   --train_csv "$TRAIN_CSV" \
   --val_csv "$VAL_CSV" \
-  --image_size "$IMAGE_SIZE" \
+  --log_dir "$LOG_DIR" \
+  --dsnt_coord_loss "$DSNT_COORD_LOSS" \
   --heatmap_stride "$HEATMAP_STRIDE" \
   --heatmap_sigma_px "$HEATMAP_SIGMA" \
-  --backbone "$BACKBONE" \
-  --temporal_T "$TEMPORAL_T" \
-  --log_dir "$LOG_DIR" \
-  --bs "$BATCH_SIZE" 
-
-  #   --epochs "$EPOCHS" \
-  # 
-  # --lr "$LR" \
+  --heatmap_neg_multiplier "$HEATMAP_NEG_MULT" \
+  --heatmap_pos_multiplier "$HEATMAP_POS_MULT" \
+  --bs "$BATCH_SIZE" \
+  --lr "$LR" \
+  --manifest_stride "$MANIFEST_STRIDE" \
+  --seed "$SEED"

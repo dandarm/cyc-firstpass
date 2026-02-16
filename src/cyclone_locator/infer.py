@@ -1,4 +1,5 @@
 import argparse
+import math
 import json
 import logging
 import os
@@ -15,6 +16,7 @@ import yaml
 from cyclone_locator.datasets.temporal_utils import TemporalWindowSelector
 from cyclone_locator.models.simplebaseline import SimpleBaseline
 from cyclone_locator.models.x3d_backbone import X3DBackbone
+from cyclone_locator.models.energy_fusion import EnergyFusion, compute_energy_features
 from cyclone_locator.utils.geometry import crop_square
 from cyclone_locator.utils.metric import peak_and_width
 from cyclone_locator import metrics as metrics_lib
@@ -50,6 +52,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--threshold", type=float, default=None,
                         help="Soglia presence τ per metriche/ROI")
     parser.add_argument("--batch-size", type=int, default=None)
+    parser.add_argument("--bs", type=int, default=None,
+                        help="Alias di --batch-size (come train.py)")
     parser.add_argument("--num-workers", type=int, default=4)
     parser.add_argument("--device", default=None,
                         help="cuda|cpu (default: cuda se disponibile altrimenti cpu)")
@@ -57,6 +61,8 @@ def parse_args() -> argparse.Namespace:
                         help="Abilita autocast AMP in inferenza")
     parser.add_argument("--soft-argmax", action="store_true",
                         help="Usa soft-argmax per decodificare il centro (default argmax)")
+    parser.add_argument("--soft-argmax-tau", type=float, default=None,
+                        help="Temperatura τ per soft-argmax/DSNT (più alta -> più smooth)")
     parser.add_argument("--oracle-localization", action="store_true",
                         help="Valuta l'errore centro su tutti i GT positivi (ignora decisione binaria)")
     parser.add_argument("--center-thresholds-px", type=float, nargs="+", default=[8, 16, 24, 32])
@@ -76,8 +82,19 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--backbone", default=None, help="Override del backbone (default: config.train.backbone)")
     parser.add_argument("--presence-from-peak", action="store_true",
                         help="Usa solo il picco della heatmap come presenza (ignora la head presence)")
+    parser.add_argument("--presence-mode", choices=["head", "peak", "both", "energy"], default=None,
+                        help="Presence mode (override, default: infer.presence_mode/train.presence_mode)")
+    parser.add_argument("--peak-mode", choices=["logsumexp", "energy"], default=None,
+                        help="Peak mode override (default: loss.peak_mode)")
     parser.add_argument("--peak-threshold", type=float, default=None,
                         help="Soglia τ da usare quando presence-from-peak è attivo (default: --threshold o infer.presence_threshold)")
+    parser.add_argument("--peak-pool", choices=["max", "logsumexp"], default=None,
+                        help="Pooling per presence-from-peak (default: infer.peak_pool o 'max')")
+    parser.add_argument("--peak-tau", type=float, default=None,
+                        help="Temperatura τ per peak-pool=logsumexp (default: infer.peak_tau o 1.0)")
+    parser.add_argument("--presence-topk", type=int, default=None,
+                        help="Top-K per presence-from-peak con logsumexp (default: train.presence_topk o 0=all)")
+    
     return parser.parse_args()
 
 
@@ -189,32 +206,57 @@ def load_manifest(manifest_csv: str, logger: logging.Logger) -> pd.DataFrame:
 
 
 def load_letterbox_meta(meta_csv: str) -> Dict[str, Dict[str, float]]:
-    required = {"orig_path", "resized_path", "scale", "pad_x", "pad_y", "orig_w", "orig_h", "out_size"}
+    required_base = {"orig_path", "resized_path", "pad_x", "pad_y", "orig_w", "orig_h", "out_size"}
     meta_df = pd.read_csv(meta_csv)
-    missing = required - set(meta_df.columns)
+    before = len(meta_df)
+    meta_df = meta_df.dropna(subset=list(required_base))
+    if len(meta_df) < before:
+        logging.getLogger(LOGGER_NAME).warning("Dropped %d rows with NaN in letterbox meta %s", before - len(meta_df), meta_csv)
+    cols = set(meta_df.columns)
+    missing = required_base - cols
     if missing:
         raise ValueError(f"letterbox meta missing columns: {sorted(missing)}")
+    has_scale = "scale" in cols
+    has_scale_xy = {"scale_x", "scale_y"}.issubset(cols)
+    if not (has_scale or has_scale_xy):
+        raise ValueError("letterbox meta must include either 'scale' or ('scale_x' and 'scale_y')")
     base_dir = os.path.dirname(os.path.abspath(meta_csv))
     meta_map: Dict[str, Dict[str, float]] = {}
+    def _add_key(meta_map: Dict[str, Dict[str, float]], key: str, entry: Dict[str, float]) -> None:
+        if not key:
+            return
+        meta_map[key] = entry
+        # Also index by realpath to avoid mismatches with symlinks/alternate mounts.
+        real_key = os.path.realpath(key)
+        if real_key:
+            meta_map[real_key] = entry
+
     for _, row in meta_df.iterrows():
+        scale_x = float(row["scale_x"]) if "scale_x" in row else float(row["scale"])
+        scale_y = float(row["scale_y"]) if "scale_y" in row else float(row["scale"])
+        scale = float(row["scale"]) if "scale" in row and np.isfinite(row["scale"]) else float(scale_x)
         entry = {
             "orig_path": normalize_path(row["orig_path"], base_dir),
             "resized_path": normalize_path(row["resized_path"], base_dir),
-            "scale": float(row["scale"]),
+            "scale": float(scale),  # legacy scalar (use scale_x/scale_y for non-uniform resizes)
+            "scale_x": float(scale_x),
+            "scale_y": float(scale_y),
             "pad_x": float(row["pad_x"]),
             "pad_y": float(row["pad_y"]),
             "orig_w": int(row["orig_w"]),
             "orig_h": int(row["orig_h"]),
             "out_size": int(row["out_size"])
         }
-        meta_map[entry["orig_path"]] = entry
-        meta_map[entry["resized_path"]] = entry
+        _add_key(meta_map, entry["orig_path"], entry)
+        _add_key(meta_map, entry["resized_path"], entry)
     return meta_map
 
 
 def _convert_letterbox_to_original(x_lb: float, y_lb: float, meta: Dict[str, float]) -> Tuple[float, float]:
-    x_orig = (x_lb - meta["pad_x"]) / meta["scale"]
-    y_orig = (y_lb - meta["pad_y"]) / meta["scale"]
+    sx = float(meta.get("scale_x", meta["scale"]))
+    sy = float(meta.get("scale_y", meta["scale"]))
+    x_orig = (x_lb - meta["pad_x"]) / sx
+    y_orig = (y_lb - meta["pad_y"]) / sy
     return float(x_orig), float(y_orig)
 
 
@@ -383,25 +425,55 @@ def collate_batch(batch: List[Dict[str, torch.Tensor]]) -> Dict[str, torch.Tenso
     return {"image": images, "video": videos, "image_path": paths, "manifest_idx": manifest_idx}
 
 
-def build_model(cfg: dict, checkpoint_path: str, device: torch.device, logger: logging.Logger, temporal_T: int) -> torch.nn.Module:
+def build_model(
+    cfg: dict,
+    checkpoint_path: str,
+    device: torch.device,
+    logger: logging.Logger,
+    temporal_T: int,
+    heatmap_stride: int,
+    use_energy_fusion: bool = False,
+) -> torch.nn.Module:
     backbone = cfg.get("train", {}).get("backbone", "resnet18")
     pretrained = bool(cfg.get("train", {}).get("backbone_pretrained", True))
     if backbone.startswith("x3d"):
-        model = X3DBackbone(backbone=backbone, pretrained=pretrained)
+        model = X3DBackbone(backbone=backbone, pretrained=pretrained, heatmap_stride=int(heatmap_stride))
     else:
-        model = SimpleBaseline(backbone=backbone, temporal_T=temporal_T, pretrained=pretrained)
+        model = SimpleBaseline(backbone=backbone, temporal_T=temporal_T, pretrained=pretrained, heatmap_stride=int(heatmap_stride))
+    if use_energy_fusion:
+        loss_cfg = cfg.get("loss", {})
+        energy_b0 = float(loss_cfg.get("energy_init_b0", 0.0) or 0.0)
+        energy_wE = float(loss_cfg.get("energy_init_wE", 1.0) or 1.0)
+        energy_wC = float(loss_cfg.get("energy_init_wC", 1.0) or 1.0)
+        energy_wH = float(loss_cfg.get("energy_init_wH", 1.0) or 1.0)
+        model.energy_fusion = EnergyFusion(b0=energy_b0, wE=energy_wE, wC=energy_wC, wH=energy_wH)
     state = torch.load(checkpoint_path, map_location="cpu")
     weights = state.get("model", state)
-    model.load_state_dict(weights, strict=True)
+    if not use_energy_fusion:
+        drop_keys = [k for k in weights.keys() if str(k).startswith("energy_fusion.")]
+        if drop_keys:
+            for k in drop_keys:
+                weights.pop(k, None)
+            logger.warning("Dropped %d energy_fusion params from checkpoint (use_energy_fusion=False).", len(drop_keys))
+    try:
+        model.load_state_dict(weights, strict=True)
+    except RuntimeError as exc:
+        if use_energy_fusion:
+            logger.warning("Energy fusion params missing in checkpoint; loading with strict=False. (%s)", exc)
+            model.load_state_dict(weights, strict=False)
+        else:
+            raise
     model.to(device)
     model.eval()
     logger.info("Loaded checkpoint %s with backbone=%s", checkpoint_path, backbone)
     return model
 
 
-def decode_heatmap(hm: np.ndarray, stride: int, soft: bool = False) -> Tuple[float, float]:
+def decode_heatmap(hm: np.ndarray, stride: int, soft: bool = False, tau: float = 1.0) -> Tuple[float, float]:
     if soft:
-        logits = hm - hm.max()
+        if tau <= 0:
+            raise ValueError("tau must be > 0")
+        logits = (hm - hm.max()) / float(tau)
         weights = np.exp(logits)
         total = weights.sum()
         if total == 0:
@@ -430,44 +502,168 @@ def combine_presence(presence_prob: torch.Tensor, heatmap: torch.Tensor) -> torc
     return 0.5 * presence_prob + 0.5 * peak
 
 
+def spatial_peak_pool(
+    heatmap_logits: torch.Tensor,
+    pool: str = "max",
+    tau: float = 1.0,
+    topk: int | None = None,
+) -> torch.Tensor:
+    """
+    heatmap_logits: (B,H,W) or (B,1,H,W)
+    Returns: (B,) pooled logits.
+    """
+    if heatmap_logits.ndim == 4 and heatmap_logits.shape[1] == 1:
+        x = heatmap_logits.squeeze(1)
+    elif heatmap_logits.ndim == 3:
+        x = heatmap_logits
+    else:
+        raise ValueError(f"Expected heatmap logits shape (B,H,W) or (B,1,H,W), got {heatmap_logits.shape}")
+    pool = str(pool).lower().strip()
+    if pool == "max":
+        return x.amax(dim=[-1, -2])
+    if pool == "logsumexp":
+        if tau <= 0:
+            raise ValueError("tau must be > 0 for logsumexp pooling")
+        # Do pooling in float32 for stability under AMP / small tau.
+        x32 = (x / float(tau)).float()
+        if topk is not None and int(topk) > 0:
+            k = min(int(topk), x32.shape[-1] * x32.shape[-2])
+            flat = x32.flatten(1)
+            vals, _ = torch.topk(flat, k=k, dim=1)
+            pooled = torch.logsumexp(vals, dim=1)
+        else:
+            pooled = torch.logsumexp(x32, dim=[-1, -2])
+        return float(tau) * pooled
+    raise ValueError(f"Unknown peak_pool: {pool}")
+
+
+def _recenter_peak_logit(
+    peak_logit: torch.Tensor,
+    logits: torch.Tensor,
+    topk: int | None,
+    mode: str,
+) -> torch.Tensor:
+    mode = str(mode or "none").lower().strip()
+    if peak_logit.ndim == 1:
+        peak_logit = peak_logit.unsqueeze(1)
+    if mode in {"none", ""}:
+        return peak_logit
+    if mode in {"logk", "logk+median", "median+logk"}:
+        k = int(topk or (logits.shape[-1] * logits.shape[-2]))
+        if k > 0:
+            peak_logit = peak_logit - math.log(k)
+    if mode in {"median", "logk+median", "median+logk"}:
+        flat = logits.squeeze(1).flatten(1)
+        med = flat.median(dim=1).values
+        peak_logit = peak_logit - med.unsqueeze(1)
+    return peak_logit
+
+
+def compute_peak_logit(
+    logits: torch.Tensor,
+    pool: str,
+    tau: float,
+    topk: int | None,
+    center_mode: str,
+) -> torch.Tensor:
+    peak_logit = spatial_peak_pool(logits, pool=pool, tau=tau, topk=topk)
+    if peak_logit.ndim == 1:
+        peak_logit = peak_logit.unsqueeze(1)
+    if str(pool).lower().strip() == "logsumexp":
+        peak_logit = _recenter_peak_logit(peak_logit, logits, topk, center_mode)
+    return peak_logit
+
+
 def run_inference(
     model: torch.nn.Module,
     data_loader: DataLoader,
     device: torch.device,
     stride: int,
     soft_argmax: bool,
+    soft_argmax_tau: float,
     amp: bool,
-    presence_from_peak: bool = False,
+    presence_mode: str = "head",
+    peak_pool: str = "max",
+    peak_tau: float = 1.0,
+    presence_topk: int | None = None,
+    peak_logit_alpha: float = 0.5,
+    peak_logit_center: str = "none",
+    peak_mode: str = "logsumexp",
+    dsnt_tau: float = 1.0,
 ) -> List[Dict[str, float]]:
     predictions: List[Dict[str, float]] = []
     autocast_enabled = amp and device.type == "cuda"
     start = time.time()
     total = 0
+    checked_stride = False
     with torch.no_grad():
         for batch in data_loader:
             input_key = "video" if getattr(model, "input_is_video", False) else "image"
             images = batch[input_key].to(device)
             with torch.cuda.amp.autocast(enabled=autocast_enabled):
                 heatmaps_pred, logits = model(images)
+            if not checked_stride:
+                frame_h = int(images.shape[-2])
+                hm_h = int(heatmaps_pred.shape[-2])
+                if hm_h <= 0:
+                    raise ValueError(f"Invalid heatmap height: {hm_h}")
+                stride_real = frame_h / float(hm_h)
+                if abs(stride_real - float(stride)) > 1e-6:
+                    raise ValueError(
+                        f"heatmap_stride mismatch: configured stride={stride} but model output implies stride={stride_real:.4f} "
+                        f"(frame_h={frame_h}, hm_h={hm_h}). "
+                        "Fix: pass the correct `--heatmap-stride` (or use a checkpoint/config with matching stride)."
+                    )
+                checked_stride = True
             heatmaps = heatmaps_pred.squeeze(1)
             probs_raw = torch.sigmoid(logits).squeeze(1)
-            peaks = heatmaps.amax(dim=[1, 2])
-            if presence_from_peak:
-                peaks = torch.sigmoid(peaks)
-            if presence_from_peak:
-                combined_probs = torch.clamp(peaks, 1e-6, 1 - 1e-6)
+            presence_mode = str(presence_mode or "head").lower().strip()
+            if presence_mode not in {"head", "peak", "both", "energy"}:
+                raise ValueError(f"Invalid presence_mode: {presence_mode}")
+            peak_mode = str(peak_mode or "logsumexp").lower().strip()
+            use_energy = presence_mode == "energy"
+            use_peak = presence_mode in {"peak", "both"}
+            if use_peak and peak_mode == "energy":
+                logging.getLogger(LOGGER_NAME).warning(
+                    "peak_mode=energy ignored because presence_mode is not energy; falling back to logsumexp."
+                )
+                peak_mode = "logsumexp"
+            peak_logit = None
+            if use_energy:
+                energy_fusion = getattr(model, "energy_fusion", None)
+                if energy_fusion is None:
+                    raise ValueError("energy_fusion module not found on model (presence_mode=energy)")
+                E, C = compute_energy_features(heatmaps_pred, dsnt_tau=float(dsnt_tau), topk=presence_topk)
+                peak_logit = energy_fusion(E, C, logits)
+            elif use_peak:
+                peak_logit = compute_peak_logit(
+                    heatmaps_pred,
+                    pool=peak_pool,
+                    tau=float(peak_tau),
+                    topk=presence_topk,
+                    center_mode=peak_logit_center,
+                )
+            if presence_mode == "both" and peak_logit is not None:
+                comb_logit = logits + float(peak_logit_alpha) * peak_logit
+                combined_probs = torch.sigmoid(comb_logit).squeeze(1)
+            elif use_energy and peak_logit is not None:
+                combined_probs = torch.sigmoid(peak_logit).squeeze(1)
+            elif use_peak and peak_logit is not None:
+                combined_probs = torch.sigmoid(peak_logit).squeeze(1)
             else:
-                combined_probs = combine_presence(probs_raw, heatmaps)
+                combined_probs = probs_raw
+            combined_probs = torch.clamp(combined_probs, 1e-6, 1 - 1e-6)
 
             heatmaps_np = heatmaps.cpu().numpy()
             probs_np = combined_probs.cpu().numpy()
             probs_raw_np = probs_raw.cpu().numpy()
-            peaks_np = peaks.cpu().numpy()
+            peak_prob = torch.sigmoid(peak_logit).squeeze(1) if peak_logit is not None else torch.sigmoid(logits).squeeze(1)
+            peaks_np = peak_prob.detach().cpu().numpy()
             logits_np = logits.squeeze(1).cpu().numpy()
             manifest_idx_batch = batch["manifest_idx"]
             for i, path in enumerate(batch["image_path"]):
                 hm = heatmaps_np[i]
-                x_g, y_g = decode_heatmap(hm, stride=stride, soft=soft_argmax)
+                x_g, y_g = decode_heatmap(hm, stride=stride, soft=soft_argmax, tau=float(soft_argmax_tau))
                 _, _, _, width = peak_and_width(hm)
                 predictions.append({
                     "image_path": path,
@@ -557,15 +753,44 @@ def main():
     stride = args.heatmap_stride or cfg.get("train", {}).get("heatmap_stride", 4)
     temporal_T = max(1, int(args.temporal_T or cfg.get("train", {}).get("temporal_T", 1)))
     temporal_stride = max(1, int(args.temporal_stride or cfg.get("train", {}).get("temporal_stride", 1)))
-    batch_size = args.batch_size or cfg.get("train", {}).get("batch_size", 32)
+    batch_size = args.bs or args.batch_size or cfg.get("train", {}).get("batch_size", 32)
     presence_threshold_default = cfg.get("infer", {}).get("presence_threshold", 0.5)
-    if args.presence_from_peak and args.peak_threshold is not None:
+    presence_mode_cfg = cfg.get("infer", {}).get("presence_mode") or cfg.get("train", {}).get("presence_mode")
+    if args.presence_mode:
+        presence_mode = str(args.presence_mode)
+    elif presence_mode_cfg:
+        presence_mode = str(presence_mode_cfg)
+    else:
+        presence_mode = "peak" if bool(cfg.get("infer", {}).get("presence_from_peak", False)) else "head"
+    presence_mode = str(presence_mode or "head").lower().strip()
+    if presence_mode not in {"head", "peak", "both", "energy"}:
+        raise ValueError(f"Invalid presence_mode: {presence_mode}")
+    presence_from_peak = presence_mode == "peak"
+    peak_pool_default = cfg.get("infer", {}).get("peak_pool", "max")
+    peak_tau_default = cfg.get("infer", {}).get("peak_tau", 1.0)
+    peak_mode_default = cfg.get("loss", {}).get("peak_mode", "logsumexp")
+    peak_mode = str(args.peak_mode) if args.peak_mode is not None else str(peak_mode_default or "logsumexp")
+    if peak_mode not in {"logsumexp", "energy"}:
+        raise ValueError(f"Invalid peak_mode: {peak_mode}")
+    if presence_mode != "energy" and peak_mode == "energy":
+        logger.warning("peak_mode=energy ignored because presence_mode is not energy; falling back to logsumexp.")
+        peak_mode = "logsumexp"
+    peak_logit_alpha = float(cfg.get("loss", {}).get("peak_logit_alpha", 0.5) or 0.5)
+    peak_logit_center = str(cfg.get("loss", {}).get("peak_logit_center", "none") or "none")
+    presence_topk_default = cfg.get("train", {}).get("presence_topk", 0)
+    peak_pool = str(args.peak_pool) if args.peak_pool is not None else str(peak_pool_default or "max")
+    peak_tau = float(args.peak_tau) if args.peak_tau is not None else float(peak_tau_default or 1.0)
+    presence_topk_cfg = int(args.presence_topk) if args.presence_topk is not None else int(presence_topk_default or 0)
+    presence_topk = presence_topk_cfg if presence_topk_cfg > 0 else None
+    peak_threshold_default = cfg.get("infer", {}).get("peak_threshold", None)
+    if presence_from_peak and args.peak_threshold is not None:
         threshold_for_metrics = args.peak_threshold
+    elif presence_from_peak and args.peak_threshold is None and peak_threshold_default is not None:
+        threshold_for_metrics = float(peak_threshold_default)
     else:
         threshold_for_metrics = args.threshold if args.threshold is not None else presence_threshold_default
     roi_base_radius = args.roi_base_radius or cfg.get("infer", {}).get("roi_base_radius_px", 112)
     roi_sigma_multiplier = args.roi_sigma_multiplier or cfg.get("infer", {}).get("roi_sigma_multiplier", 2.5)
-    presence_from_peak = bool(args.presence_from_peak)
 
     device_name = args.device or ("cuda" if torch.cuda.is_available() else "cpu")
     device = torch.device(device_name)
@@ -598,11 +823,41 @@ def main():
         collate_fn=collate_batch,
     )
 
-    model = build_model(cfg, args.checkpoint, device, logger, temporal_T=temporal_T)
-    preds = run_inference(model, loader, device, stride, args.soft_argmax, args.amp, presence_from_peak=presence_from_peak)
+    use_energy = presence_mode == "energy"
+    model = build_model(
+        cfg,
+        args.checkpoint,
+        device,
+        logger,
+        temporal_T=temporal_T,
+        heatmap_stride=stride,
+        use_energy_fusion=use_energy,
+    )
+    center_tau_default = cfg.get("infer", {}).get("center_tau", None)
+    if center_tau_default is None:
+        center_tau_default = cfg.get("loss", {}).get("dsnt_tau", 1.0)
+    soft_argmax_tau = float(args.soft_argmax_tau) if args.soft_argmax_tau is not None else float(center_tau_default or 1.0)
+
+    preds = run_inference(
+        model,
+        loader,
+        device,
+        stride,
+        args.soft_argmax,
+        soft_argmax_tau,
+        args.amp,
+        presence_mode=presence_mode,
+        peak_pool=peak_pool,
+        peak_tau=peak_tau,
+        presence_topk=presence_topk,
+        peak_logit_alpha=peak_logit_alpha,
+        peak_logit_center=peak_logit_center,
+        peak_mode=peak_mode,
+        dsnt_tau=float(cfg.get("loss", {}).get("dsnt_tau", 1.0)),
+    )
     preds_df = pd.DataFrame(preds).sort_values("manifest_idx").reset_index(drop=True)
     if args.threshold is not None or args.peak_threshold is not None:
-        tau = args.peak_threshold if args.presence_from_peak and args.peak_threshold is not None else args.threshold
+        tau = args.peak_threshold if presence_from_peak and args.peak_threshold is not None else args.threshold
         preds_df["presence_pred"] = (preds_df["presence_prob"] >= tau).astype(int)
 
     meta_map = None
@@ -666,7 +921,50 @@ def main():
         if "image_path_y" in joined.columns:
             joined = joined.rename(columns={"image_path_x": "image_path"})
             joined = joined.drop(columns=["image_path_y"])
-        y_true = joined["presence"].to_numpy()
+        # --- Presence GT handling (soft -> binary at 0.5) ---
+        # Training can use a probabilistic presence over the temporal span; mirror that here for evaluation by:
+        # 1) computing presence_gt_prob over the temporal window
+        # 2) binarizing it at 0.5 for PR/ROC/AUPRC.
+        def _build_presence_map(df: pd.DataFrame) -> dict[str, float]:
+            if "image_path" not in df.columns or "presence" not in df.columns:
+                return {}
+            out: dict[str, float] = {}
+            for r in df.itertuples(index=False):
+                try:
+                    p = os.path.abspath(getattr(r, "image_path"))
+                    out[p] = float(getattr(r, "presence"))
+                except Exception:
+                    continue
+            return out
+
+        def _presence_probability(window_paths: list[str], selector: TemporalWindowSelector, presence_map: dict[str, float], default_presence: float = 0.0) -> float:
+            if not window_paths:
+                return float(default_presence)
+            dir_path = os.path.dirname(window_paths[0])
+            selector._ensure_dir(dir_path)
+            files = selector._dir_cache.get(dir_path, [])
+            idx_map = selector._dir_index.get(dir_path, {})
+            indices = [idx_map.get(os.path.basename(p)) for p in window_paths if os.path.basename(p) in idx_map]
+            if not indices:
+                return float(default_presence)
+            start, end = min(indices), max(indices)
+            values = []
+            for i in range(start, end + 1):
+                abs_path = os.path.abspath(files[i])
+                values.append(presence_map.get(abs_path, default_presence))
+            if not values:
+                return float(default_presence)
+            return float(np.mean(values))
+
+        presence_map = _build_presence_map(manifest_df)
+        selector = TemporalWindowSelector(temporal_T=temporal_T, temporal_stride=temporal_stride)
+        presence_gt_prob = []
+        for p in joined["image_path"].tolist():
+            w = selector.get_window(p)
+            presence_gt_prob.append(_presence_probability(w, selector, presence_map, default_presence=0.0))
+        joined["presence_gt_prob"] = np.asarray(presence_gt_prob, dtype=float)
+        y_true = (joined["presence_gt_prob"].to_numpy() >= 0.5).astype(int)
+
         y_score_combined = joined["presence_prob"].to_numpy()
         y_score_logit = joined["presence_prob_raw"].to_numpy() if "presence_prob_raw" in joined.columns else None
         if {"x_pix_resized", "y_pix_resized"}.issubset(joined.columns):
@@ -687,6 +985,7 @@ def main():
                 "n_with_gt_presence": int(np.isfinite(y_true).sum()),
                 "n_with_gt_center": int(finite_centers.sum()),
                 "threshold_used": float(threshold_for_metrics) if threshold_for_metrics is not None else None,
+                "gt_presence_rule": "presence_gt_prob>=0.5 (temporal-span mean over window)",
             }
             metrics_payload["presence_metrics_combined"] = metrics_lib.presence_aggregate(
                 y_true,

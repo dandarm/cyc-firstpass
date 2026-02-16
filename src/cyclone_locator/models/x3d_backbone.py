@@ -2,11 +2,20 @@ from pathlib import Path
 
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
-try:
-    from pytorchvideo.models.hub import x3d_s, x3d_xs
-except ImportError as exc:  # pragma: no cover - handled at runtime
-    raise ImportError("pytorchvideo is required for X3D backbones (install pytorchvideo>=0.1).") from exc
+def _get_x3d_builders():
+    try:
+        from pytorchvideo.models.hub import x3d_s, x3d_xs
+        try:
+            from pytorchvideo.models.hub import x3d_m  # type: ignore
+        except ImportError:  # pragma: no cover - depends on pytorchvideo version
+            x3d_m = None
+    except ImportError as exc:  # pragma: no cover - handled at runtime
+        raise ImportError(
+            "pytorchvideo is required for X3D backbones (install pytorchvideo>=0.1)."
+        ) from exc
+    return x3d_xs, x3d_s, x3d_m
 
 
 def _load_local_checkpoint(base: nn.Module, weights_path: Path):
@@ -22,6 +31,10 @@ def _resolve_weights_path(variant: str, weights_path: str | None):
     root-level checkpoint matching the variant.
     """
     if weights_path == "auto":
+        if variant == "x3d_m":
+            candidate = Path(__file__).resolve().parents[3] / "X3D_M.pyth"
+            if candidate.exists():
+                return candidate
         if variant == "x3d_xs":
             candidate = Path(__file__).resolve().parents[3] / "X3D_XS.pyth"
             if candidate.exists():
@@ -32,6 +45,7 @@ def _resolve_weights_path(variant: str, weights_path: str | None):
 
 def _build_backbone(variant: str, pretrained: bool, weights_path: str | None):
     resolved_path = _resolve_weights_path(variant, weights_path)
+    x3d_xs, x3d_s, x3d_m = _get_x3d_builders()
 
     if variant == "x3d_xs":
         base = x3d_xs(pretrained=pretrained and resolved_path is None)
@@ -41,8 +55,16 @@ def _build_backbone(variant: str, pretrained: bool, weights_path: str | None):
         base = x3d_s(pretrained=pretrained and resolved_path is None)
         if resolved_path:
             _load_local_checkpoint(base, resolved_path)
+    elif variant == "x3d_m":
+        if x3d_m is None:  # pragma: no cover - depends on pytorchvideo version
+            raise ImportError(
+                "Your pytorchvideo installation does not expose x3d_m; upgrade pytorchvideo."
+            )
+        base = x3d_m(pretrained=pretrained and resolved_path is None)
+        if resolved_path:
+            _load_local_checkpoint(base, resolved_path)
     else:
-        raise ValueError("variant must be x3d_xs|x3d_s")
+        raise ValueError("variant must be x3d_xs|x3d_s|x3d_m")
 
     # Drop the classification head and keep only the feature extractor blocks.
     stem = nn.Sequential(*list(base.blocks[:-1]))
@@ -56,8 +78,21 @@ def _build_backbone(variant: str, pretrained: bool, weights_path: str | None):
 
 
 def deconv_block(in_ch, out_ch):
+    # Back-compat alias (ConvTranspose2d removed to avoid checkerboard artifacts)
+    return resize_conv_block(in_ch, out_ch, mode="bilinear")
+
+
+def resize_conv_block(in_ch, out_ch, *, mode: str = "bilinear"):
+    if mode not in {"bilinear", "nearest"}:
+        raise ValueError("mode must be 'bilinear' or 'nearest'")
+    upsample = nn.Upsample(
+        scale_factor=2,
+        mode=mode,
+        align_corners=False if mode == "bilinear" else None,
+    )
     return nn.Sequential(
-        nn.ConvTranspose2d(in_ch, out_ch, kernel_size=4, stride=2, padding=1, bias=False),
+        upsample,
+        nn.Conv2d(in_ch, out_ch, kernel_size=3, stride=1, padding=1, bias=False),
         nn.BatchNorm2d(out_ch),
         nn.ReLU(inplace=True),
     )
@@ -78,17 +113,28 @@ class X3DBackbone(nn.Module):
         presence_dropout: float = 0.0,
         pretrained: bool = True,
         weights_path: str | None = "auto",
+        heatmap_stride: int = 4,
     ):
         super().__init__()
         self.backbone_name = backbone
         self.stem, feat_ch = _build_backbone(backbone, pretrained, weights_path)
+        self.base_heatmap_stride = 4  # decoder porta sempre a /4
+        heatmap_stride = int(heatmap_stride)
+        if heatmap_stride <= 0:
+            raise ValueError("heatmap_stride must be > 0")
+        if self.base_heatmap_stride % heatmap_stride != 0:
+            raise ValueError(
+                f"heatmap_stride={heatmap_stride} not supported (base stride is {self.base_heatmap_stride})"
+            )
+        self.heatmap_stride = heatmap_stride
+        self.heatmap_upsample_factor = self.base_heatmap_stride // heatmap_stride
 
         # Preserve temporal dynamics until this pooling collapses only T -> 1.
         self.temporal_pool = nn.AdaptiveAvgPool3d((1, None, None))
 
-        self.deconv1 = deconv_block(feat_ch, 256)
-        self.deconv2 = deconv_block(256, 256)
-        self.deconv3 = deconv_block(256, 256)
+        self.up1 = resize_conv_block(feat_ch, 256, mode="bilinear")
+        self.up2 = resize_conv_block(256, 256, mode="bilinear")
+        self.up3 = resize_conv_block(256, 256, mode="bilinear")
 
         self.head_heatmap = nn.Conv2d(256, out_heatmap_ch, kernel_size=1)
         self.head_presence_gap = nn.AdaptiveAvgPool2d((1, 1))
@@ -111,10 +157,19 @@ class X3DBackbone(nn.Module):
         f = self.stem(x)  # (B, C, T', H', W')
         f = self.temporal_pool(f).squeeze(2)  # -> (B, C, H', W')
 
-        y = self.deconv1(f)
-        y = self.deconv2(y)
-        y = self.deconv3(y)
-        heatmap = self.head_heatmap(y)
+        y = self.up1(f)
+        y = self.up2(y)
+        y = self.up3(y)
+        if self.heatmap_upsample_factor > 1:
+            y_hm = F.interpolate(
+                y,
+                scale_factor=self.heatmap_upsample_factor,
+                mode="bilinear",
+                align_corners=False,
+            )
+        else:
+            y_hm = y
+        heatmap = self.head_heatmap(y_hm)
 
         g = self.head_presence_gap(y).flatten(1)
         g = self.head_presence_dropout(g)

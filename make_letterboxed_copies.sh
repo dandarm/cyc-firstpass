@@ -7,13 +7,14 @@ cd "$SCRIPT_DIR"
 
 WINDOWS_CSV="mini_data_input/medicanes_new_windows.csv"
 SRC_DIR="/media/fenrir/disk1/danieleda/download_EUMETSAT_data/from_gcloud"
-OUT_DIR="/media/fenrir/disk1/danieleda/resized"
+OUT_DIR="/media/fenrir/disk1/danieleda/resized-stretched"
 META_CSV="manifests/letterbox_meta.csv"
-IMAGE_SIZE="384"
-BUFFER_HOURS="96"
+IMAGE_SIZE="224"
+RESIZE_MODE="stretch" # letterbox|stretch
+BUFFER_HOURS="36"
 RECURSE="true"
 PRESERVE_STRUCTURE="false"
-WORKERS="10"
+WORKERS="20"
 # opzionali: TIME_REGEX="..."  STRPTIME_FORMATS=("yyyy-MM-ddTHH-mm" "yyyyMMdd_HHmm")  CSV_STRPTIME_FORMATS=("yyyy-MM-dd HH:mm")
 
 mkdir -p "$OUT_DIR"
@@ -41,6 +42,7 @@ exec python scripts/make_letterboxed_copies.py \
   --out-dir "$OUT_DIR" \
   --meta-csv "$META_CSV" \
   --image-size "$IMAGE_SIZE" \
+  --resize-mode "$RESIZE_MODE" \
   --buffer-hours "$BUFFER_HOURS" \
   --workers "$WORKERS" \
   "${EXTRA_ARGS[@]}"

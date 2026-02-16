@@ -18,7 +18,8 @@ HEATMAP_SIGMA="8"
 # OLD_LOG_DIR="outputs/runs/exp7"
 
 # Argomenti attivi per il nuovo modello 3D X3D
-BACKBONE="x3d_xs"
+# Varianti supportate: x3d_xs | x3d_s | x3d_m
+BACKBONE="x3d_m"
 TEMPORAL_T="5"
 TEMPORAL_STRIDE="6"
 

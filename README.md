@@ -73,7 +73,7 @@ python -m src.cyclone_locator.train \
 Backbone disponibili:
 
 - `resnet18` / `resnet50`: early-fusion 2D, i frame temporali vengono concatenati sui canali.
-- `x3d_xs` / `x3d_s`: backbone 3D puro stile X3D che mantiene la dimensione temporale fino al pooling adattivo (nessuna
+- `x3d_xs` / `x3d_s` / `x3d_m`: backbone 3D puro stile X3D che mantiene la dimensione temporale fino al pooling adattivo (nessuna
   fusione temporale nei primi layer) e accetta sequenze di lunghezza configurabile (`temporal_T`, `temporal_stride`).
 
 

@@ -8,7 +8,7 @@ SRC = ROOT / "src"
 if SRC.exists():
     sys.path.insert(0, str(SRC))
 
-from cyclone_locator.transforms.letterbox import letterbox_image
+from cyclone_locator.transforms.letterbox import resize_image
 
 def iter_images(root, exts):
     root = pathlib.Path(root)
@@ -21,6 +21,12 @@ def main():
     ap.add_argument("--in_dir", required=True)
     ap.add_argument("--out_dir", required=True)
     ap.add_argument("--size", type=int, default=384, help="output square size, e.g. 512/448/320/…")
+    ap.add_argument(
+        "--resize-mode",
+        choices=["letterbox", "stretch"],
+        default="letterbox",
+        help="Modalità resize: letterbox (AR + padding) oppure stretch (distorsione senza padding).",
+    )
     ap.add_argument("--exts", default=".png,.jpg,.jpeg,.tif,.tiff,.bmp", help="comma-separated")
     ap.add_argument("--preserve_tree", action="store_true",
                     help="replicate the input directory structure under out_dir/resized")
@@ -49,7 +55,7 @@ def main():
             print(f"[WARN] cannot read: {ipath}", file=sys.stderr)
             continue
 
-        lb, meta = letterbox_image(img, args.size)
+        lb, meta = resize_image(img, args.size, mode=args.resize_mode)
         if not cv2.imwrite(str(opath), lb):
             print(f"[WARN] cannot write: {opath}", file=sys.stderr)
             continue
@@ -57,7 +63,9 @@ def main():
         meta_rows.append([
             str(ipath), str(opath),
             meta["orig_w"], meta["orig_h"], args.size,
-            meta["w_new"], meta["h_new"], meta["scale"], meta["pad_x"], meta["pad_y"]
+            meta["w_new"], meta["h_new"], meta["scale"],
+            meta.get("scale_x", meta["scale"]), meta.get("scale_y", meta["scale"]),
+            meta["pad_x"], meta["pad_y"], args.resize_mode
         ])
         count += 1
         if count % 500 == 0:
@@ -67,7 +75,7 @@ def main():
     with open(meta_csv, "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["orig_path","resized_path","orig_w","orig_h","out_size",
-                    "w_new","h_new","scale","pad_x","pad_y"])
+                    "w_new","h_new","scale","scale_x","scale_y","pad_x","pad_y","resize_mode"])
         w.writerows(meta_rows)
 
     print(f"[DONE] images: {count}")
